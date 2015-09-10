@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/09/10 19:55:04 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/09/10 23:41:22 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,8 @@ LIST=ft_list.o \
 	 ft_list_insert.o \
 	 ft_list_remove.o
 BTREE_ROOT=./srcs/btree/
-BTREE=ft_btree_foreach.o
+BTREE=ft_btree_foreach.o \
+	  ft_btree.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \
@@ -47,7 +48,8 @@ OBJ=ft_putchar.o \
 	ft_free_tab.o \
 	ft_strtab_foreach.o \
 	ft_putstrdata.o \
-	ft_str_numeric.o ft_sort_tab.o
+	ft_str_numeric.o \
+	ft_sort_tab.o
 
 all: ft_lib
 
@@ -61,16 +63,14 @@ ft_base: $(OBJ)
 	@echo "ft_lib base ok"
 ft_list: ft_base
 	@echo "Compiling chained lists parts..."
-	$(foreach i, $(LIST), \
+	@$(foreach i, $(LIST), \
 		$(GCC) -c $(LIST_ROOT)$(shell echo $i | sed -e "s/\.o/\.c/1"); \
 	)
-	@echo "Done"
 ft_btree: ft_base
 	@echo "Compiling btree support"
-	$(foreach i, $(BTREE), \
+	@$(foreach i, $(BTREE), \
 		$(GCC) -c $(BTREE_ROOT)$(shell echo $i | sed -e "s/\.o/\.c/1"); \
 	)
-	@echo "done"
 %.o: ./srcs/%.c
 	$(GCC) -c $<
 clean:
@@ -78,4 +78,3 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
-

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:43:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 19:22:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/14 16:39:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ t_list		*ft_list_sort(t_list *lst, int (*cmp)())
 		if ((*cmp)(x->data, x->next->data) > 0)
 		{
 			lst = ft_list_swap(x, x->next, lst);
+			x = lst;
 		}
 		else
 			x = x->next;

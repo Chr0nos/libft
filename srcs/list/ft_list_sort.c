@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:43:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/14 16:39:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/17 18:00:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,16 +15,14 @@
 t_list		*ft_list_swap(t_list *a, t_list *b, t_list *root)
 {
 	t_list	*parent;
-	t_list	*next;
 
 	parent = ft_list_parent(a, root);
 	if (parent)
 		parent->next = b;
 	else
 		root = b;
-	next = b->next;
+	a->next = b->next;
 	b->next = a;
-	a->next = next;
 	return (root);
 }
 

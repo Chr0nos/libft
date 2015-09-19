@@ -1,31 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_list_swap.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/22 19:43:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/17 20:15:49 by snicolet         ###   ########.fr       */
+/*   Created: 2015/09/17 18:04:05 by snicolet          #+#    #+#             */
+/*   Updated: 2015/09/17 20:13:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-t_list		*ft_list_sort(t_list *lst, int (*cmp)())
+t_list		*ft_list_swap(t_list *a, t_list *b, t_list *root)
 {
-	t_list	*x;
+	t_list	*parent;
 
-	x = lst;
-	while (x->next)
-	{
-		if ((*cmp)(x->data, x->next->data) > 0)
-		{
-			lst = ft_list_swap(x, x->next, lst);
-			x = lst;
-		}
-		else
-			x = x->next;
-	}
-	return (lst);
+	parent = ft_list_parent(a, root);
+	if (parent)
+		parent->next = b;
+	else
+		root = b;
+	a->next = b->next;
+	b->next = a;
+	return (root);
 }

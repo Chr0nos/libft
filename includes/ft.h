@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 19:21:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/22 12:36:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,6 @@ void	ft_strtab_foreach(char **tab, int size, void (*f)(char*));
 void	ft_putstrdata(void *data);
 int		ft_str_numeric(char *str);
 void	ft_sort_integer_table(int *tab, int size);
+void	ft_putbits(void *data, unsigned int size);
 
 #endif

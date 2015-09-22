@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/09/14 15:34:49 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/09/22 12:24:53 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,6 +14,7 @@ NAME=libft.a
 GCC=gcc -Wall -Werror -Wextra -Ofast -Wno-unused-result -I./includes
 LIST_ROOT=./srcs/list/
 LIST=ft_list.o \
+	 ft_list_swap.o \
 	 ft_list_sort.o \
 	 ft_list_push.o \
 	 ft_list_free.o \
@@ -50,7 +51,8 @@ OBJ=ft_putchar.o \
 	ft_strtab_foreach.o \
 	ft_putstrdata.o \
 	ft_str_numeric.o \
-	ft_sort_tab.o
+	ft_sort_tab.o \
+	ft_putbits.o
 
 all: ft_lib
 

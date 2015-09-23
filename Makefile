@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/09/22 12:24:53 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/09/23 11:17:39 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,26 +54,16 @@ OBJ=ft_putchar.o \
 	ft_sort_tab.o \
 	ft_putbits.o
 
-all: ft_lib
-
-ft_lib: ft_base ft_list ft_btree
+all: $(OBJ) $(LIST) $(BTREE)
 	@echo "Linking libft"
 	ar rc $(NAME) $(OBJ) $(LIST) $(BTREE)
 	@echo "done, now making lib index..."
 	ranlib $(NAME)
 	@echo "Done."
-ft_base: $(OBJ)
-	@echo "ft_lib base ok"
-ft_list: ft_base
-	@echo "Compiling chained lists parts..."
-	@$(foreach i, $(LIST), \
-		$(GCC) -c $(LIST_ROOT)$(shell echo $i | sed -e "s/\.o/\.c/1"); \
-	)
-ft_btree: ft_base
-	@echo "Compiling btree support"
-	@$(foreach i, $(BTREE), \
-		$(GCC) -c $(BTREE_ROOT)$(shell echo $i | sed -e "s/\.o/\.c/1"); \
-	)
+%.o: $(LIST_ROOT)%.c
+	$(GCC) -c $<
+%.o: $(BTREE_ROOT)%.c
+	$(GCC) -c $<
 %.o: ./srcs/%.c
 	$(GCC) -c $<
 clean:

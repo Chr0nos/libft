@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 21:29:31 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/27 01:21:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/27 12:00:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,5 +26,4 @@ void	ft_list_free(t_list *lst)
 		ft_list_free(next);
 	}
 	free(lst);
-	lst = 0;
 }

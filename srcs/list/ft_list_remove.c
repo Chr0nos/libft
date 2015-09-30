@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 23:55:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 19:22:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/30 13:24:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@ t_list	*ft_list_remove(t_list *lst, t_list *item)
 	if (lst != item)
 	{
 		parent = ft_list_parent(lst, item);
-		parent->next = next;
+		if (parent)
+			parent->next = next;
 	}
 	free(item);
 	return (next);

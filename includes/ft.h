@@ -6,16 +6,19 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/22 23:27:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/09/24 17:08:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
 # define FT_H
 
+typedef	unsigned int	t_size;
+
 void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putstr_error(char *str);
+void	ft_putstr_align_right(char *str, char fill, t_size len);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_strlen(char *str);
 void	ft_swap(int *a, int *b);
@@ -48,5 +51,9 @@ int		ft_str_numeric(char *str);
 void	ft_sort_integer_table(int *tab, int size);
 void	ft_putobits(unsigned char *x);
 void	ft_putbits(void *data, unsigned int size);
+void	ft_putmem(void *data, unsigned int size);
+void	ft_putmem_ascii(void *data, unsigned int size);
+int		ft_is_printable(char c);
+int		ft_str_is_printable(char *str);
 
 #endif

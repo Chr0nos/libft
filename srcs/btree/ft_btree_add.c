@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/01 15:53:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/01 20:38:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/01 20:58:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	ft_btree_add(t_btree *root, void *data, int (*f)())
 {
 	t_btree	*x;
+
 	if (f(root->data, data) <= 0)
 	{
 		if (root->left)

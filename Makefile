@@ -6,12 +6,11 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/01 20:33:18 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/01 20:36:26 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 GCC=gcc -Wall -Werror -Wextra -Ofast -Wno-unused-result -I./includes
-EXE=mingw32-
 RANLIB=ranlib
 AR=ar
 LIB=libft.a

@@ -6,12 +6,15 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/09/23 11:17:39 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/01 20:33:18 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-NAME=libft.a
 GCC=gcc -Wall -Werror -Wextra -Ofast -Wno-unused-result -I./includes
+EXE=mingw32-
+RANLIB=ranlib
+AR=ar
+LIB=libft.a
 LIST_ROOT=./srcs/list/
 LIST=ft_list.o \
 	 ft_list_swap.o \
@@ -27,7 +30,8 @@ LIST=ft_list.o \
 	 ft_list_search.o
 BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_foreach.o \
-	  ft_btree.o
+	  ft_btree.o \
+	  ft_btree_add.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \
@@ -52,13 +56,15 @@ OBJ=ft_putchar.o \
 	ft_putstrdata.o \
 	ft_str_numeric.o \
 	ft_sort_tab.o \
-	ft_putbits.o
-
+	ft_putbits.o \
+	ft_putmem.o \
+	ft_is_printable.o \
+	ft_puthex.o
 all: $(OBJ) $(LIST) $(BTREE)
 	@echo "Linking libft"
-	ar rc $(NAME) $(OBJ) $(LIST) $(BTREE)
+	$(AR) rc $(LIB) $(OBJ) $(LIST) $(BTREE)
 	@echo "done, now making lib index..."
-	ranlib $(NAME)
+	$(RANLIB) $(LIB)
 	@echo "Done."
 %.o: $(LIST_ROOT)%.c
 	$(GCC) -c $<
@@ -71,3 +77,7 @@ clean:
 fclean: clean
 	rm -f $(NAME)
 re: fclean all
+dll:
+	make GCC="mingw32-gcc -I./includes -Wall -Werror -Wextra \
+		-Wno-ununsed-result -Ofast" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
+		LIB="libft.dll"

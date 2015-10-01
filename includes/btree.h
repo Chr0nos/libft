@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 18:57:39 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 23:38:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/01 20:38:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ void				ft_btree_foreach_infix(t_btree *root, void (*f)(void *));
 void				ft_btree_foreach_prefix(t_btree *root, void (*f)(void *));
 void				ft_btree_foreach_suffix(t_btree *root, void (*f)(void *));
 t_btree				*ft_btree_create_node(void *data);
+void				ft_btree_add(t_btree *root, void *data, int (*f)());
 
 #endif

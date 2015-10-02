@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_btree_add.c                                     :+:      :+:    :+:   */
+/*   ft_btree_search.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/01 15:53:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/02 16:04:20 by snicolet         ###   ########.fr       */
+/*   Created: 2015/10/02 12:46:07 by snicolet          #+#    #+#             */
+/*   Updated: 2015/10/02 12:56:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 
-void	ft_btree_add(t_btree **root, void *data, int (*f)())
+t_btree		*ft_btree_search(t_btree *root, void *val, int (*f)())
 {
 	if (!root)
-		return ;
-	if (!*root)
-		*root = ft_btree_create_node(data);
-	if (f((*root)->data, data) < 0)
-	{
-		if ((*root)->left)
-			ft_btree_add(&(*root)->left, data, f);
-		else
-			ft_btree_insert(&(*root)->left, data, f);
-	}
-	else if ((*root)->right)
-		ft_btree_add(&(*root)->right, data, f);
-	else
-		ft_btree_insert(&(*root)->right, data, f);
+		return (0);
+	if (f(root->data, val) == 0)
+		return (root);
+	if (root->left)
+		ft_btree_search(root->left, val, f);
+	if (root->right)
+		ft_btree_search(root->right, val, f);
+	return (0);
 }

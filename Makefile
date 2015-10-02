@@ -6,11 +6,12 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/01 20:36:26 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/02 15:46:10 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
-GCC=gcc -Wall -Werror -Wextra -Ofast -Wno-unused-result -I./includes
+FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result
+GCC=gcc $(FLAGS) -I./includes
 RANLIB=ranlib
 AR=ar
 LIB=libft.a
@@ -30,7 +31,9 @@ LIST=ft_list.o \
 BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_foreach.o \
 	  ft_btree.o \
-	  ft_btree_add.o
+	  ft_btree_add.o \
+	  ft_btree_search.o \
+	  ft_btree_insert.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \

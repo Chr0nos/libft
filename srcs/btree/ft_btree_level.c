@@ -6,11 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/02 16:25:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/02 16:30:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/02 16:34:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_btree_level(t_btree *root, *t_btree item, int level)
+#include "btree.h"
+
+int		ft_btree_level(t_btree *root, t_btree *item, int level)
 {
 	if (!root)
 		return (-1);

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/24 17:08:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/07 16:52:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,5 +55,6 @@ void	ft_putmem(void *data, unsigned int size);
 void	ft_putmem_ascii(void *data, unsigned int size);
 int		ft_is_printable(char c);
 int		ft_str_is_printable(char *str);
+void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)());
 
 #endif

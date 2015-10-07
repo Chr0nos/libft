@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_list_at.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/22 19:43:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/07 16:33:49 by snicolet         ###   ########.fr       */
+/*   Created: 2015/10/07 15:29:12 by snicolet          #+#    #+#             */
+/*   Updated: 2015/10/07 16:34:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft.h"
 #include "list.h"
 
-void	ft_list_sort(t_list **lst, int (*cmp)())
+t_list		*ft_list_at(t_list *lst, t_size pos)
 {
-	t_list	*x;
+	t_size	p;
 
-	if ((!lst) || (!*lst))
-		return ;
-	x = *lst;
-	while (x->next)
-	{
-		if ((*cmp)(x->data, x->next->data) > 0)
-		{
-			ft_list_swap(x, x->next, lst);
-			x = *lst;
-		}
-		else
-			x = x->next;
-	}
+	p = 0;
+	while ((p < pos) && (lst))
+		lst = lst->next;
+	if (p == pos)
+		return (lst);
+	return (0);
 }

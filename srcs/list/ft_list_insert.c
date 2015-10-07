@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/26 00:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/14 16:49:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/07 12:35:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	ft_list_insert(t_list *parent, t_list *item)
 {
 	t_list	*tmp;
 
+	if (!parent)
+		return ;
 	tmp = parent->next;
 	parent->next = item;
 	item->next = tmp;

@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/02 16:30:25 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/07 13:56:42 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,8 @@ BTREE=ft_btree_foreach.o \
 	  ft_btree_add.o \
 	  ft_btree_search.o \
 	  ft_btree_insert.o \
-	  ft_btree_level.o
+	  ft_btree_level.o \
+	  ft_btree_parent.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \
@@ -63,7 +64,8 @@ OBJ=ft_putchar.o \
 	ft_putmem.o \
 	ft_is_printable.o \
 	ft_puthex.o
-all: $(OBJ) $(LIST) $(BTREE)
+lib: $(OBJ) $(LIST) $(BTREE)
+all: lib
 	@echo "Linking libft"
 	$(AR) rc $(LIB) $(OBJ) $(LIST) $(BTREE)
 	@echo "done, now making lib index..."
@@ -78,9 +80,12 @@ all: $(OBJ) $(LIST) $(BTREE)
 clean:
 	rm -f $(OBJ) $(LIST) $(BTREE)
 fclean: clean
-	rm -f $(NAME)
+	rm -f $(LIB) libft.so
 re: fclean all
 dll:
 	make GCC="mingw32-gcc -I./includes -Wall -Werror -Wextra \
 		-Wno-ununsed-result -Ofast" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
 		LIB="libft.dll"
+so:
+	make FLAGS="-fpic -Werror -Wall -Wextra -Wno-unused-result -Ofast" lib
+	$(GCC) -shared $(OBJ) $(LIST) $(BTREE) -o libft.so

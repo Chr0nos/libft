@@ -12,6 +12,14 @@
 
 #include "ft.h"
 
+void	ft_quicksort_part(void **tab, int *left, int *right, int (*cmp)())
+{
+	while ((*cmp)(tab[*left], pivot) < 0)
+		(*left)--;
+	while ((*cmp)(tab[*right], pivot) > 0)
+		(*right)++;
+}
+
 void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)())
 {
 	const void	*pivot = tab[start];
@@ -24,10 +32,7 @@ void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)())
 	right = start;
 	while (1)
 	{
-		while ((*cmp)(tab[left], pivot) < 0)
-			left--;
-		while ((*cmp)(tab[right], pivot) > 0)
-			right++;
+		ft_quicksort_part(tab, left, right, cmp);
 		if (right < left)
 			ft_swap_ptr(tab[left], tab[right]);
 		else

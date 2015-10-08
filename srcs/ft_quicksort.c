@@ -31,7 +31,7 @@ void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)())
 		if (right < left)
 			ft_swap_ptr(tab[left], tab[right]);
 		else
-			break;
+			break ;
 	}
 	ft_quicksort(tab, start, right, cmp);
 	ft_quicksort(tab, right + 1, end, cmp);

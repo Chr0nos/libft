@@ -32,7 +32,7 @@ void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)())
 	right = start;
 	while (1)
 	{
-		ft_quicksort_part(tab, left, right, cmp);
+		ft_quicksort_part(tab, &left, &right, cmp);
 		if (right < left)
 			ft_swap_ptr(tab[left], tab[right]);
 		else

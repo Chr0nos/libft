@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/08 11:59:22 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/08 12:27:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/08 17:37:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,10 @@
 typedef struct	s_quicksort
 {
 	void		**tab;
-	t_size		left;
-	t_size		right;
-	void		*pivot;
 	int			(*cmp)();
 }				t_quicksort;
 
-void			ft_quicksort_part(t_quicksort *s);
+t_size			ft_quicksort_part(t_quicksort *s, t_size start, t_size end);
 void			ft_quicksort(void **tab, t_size start, t_size end,
 				int (*cmp)());
 

@@ -6,38 +6,40 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/07 17:11:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/08 12:22:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+#include "ft_quicksort.h"
 
-void	ft_quicksort_part(void **tab, int *left, int *right, int (*cmp)())
+void	ft_quicksort_part(t_quicksort *s)
 {
-	while ((*cmp)(tab[*left], pivot) < 0)
-		(*left)--;
-	while ((*cmp)(tab[*right], pivot) > 0)
-		(*right)++;
+	while ((*s->cmp)(s->tab[s->left], s->pivot) < 0)
+		(s->left)--;
+	while ((*s->cmp)(s->tab[s->right], s->pivot) > 0)
+		(s->right)++;
 }
 
 void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)())
 {
-	const void	*pivot = tab[start];
-	t_size		left;
-	t_size		right;
+	t_quicksort	s;
 
 	if (start >= end)
 		return ;
-	left = end;
-	right = start;
+	s.pivot = tab[start];
+	s.left = end;
+	s.right = start;
+	s.cmp = cmp;
+	s.tab = tab;
 	while (1)
 	{
-		ft_quicksort_part(tab, &left, &right, cmp);
-		if (right < left)
-			ft_swap_ptr(tab[left], tab[right]);
+		ft_quicksort_part(&s);
+		if (s.right < s.left)
+			ft_swap_ptr(tab[s.left], tab[s.right]);
 		else
 			break ;
 	}
-	ft_quicksort(tab, start, right, cmp);
-	ft_quicksort(tab, right + 1, end, cmp);
+	ft_quicksort(tab, start, s.right, cmp);
+	ft_quicksort(tab, s.right + 1, end, cmp);
 }

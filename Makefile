@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/07 16:51:27 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/11 13:53:20 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,8 @@ OBJ=ft_putchar.o \
 	ft_putmem.o \
 	ft_is_printable.o \
 	ft_puthex.o \
-	ft_quicksort.o
+	ft_quicksort.o \
+	ft_is_sorted.o
 lib: $(OBJ) $(LIST) $(BTREE)
 all: lib
 	@echo "Linking libft"

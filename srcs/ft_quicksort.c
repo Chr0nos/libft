@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/12 12:38:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/12 17:51:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ t_size	ft_quicksort_part(void **tab, t_size start, t_size end, int (*cmp)())
 	pivot = tab[start];
 	while (1)
 	{
-		while ((*cmp)(tab[end], pivot) > 0)
+		while (((*cmp)(tab[end], pivot) >= 0) && (start < end))
 			end--;
 		while ((*cmp)(tab[start], pivot) < 0)
 			start++;

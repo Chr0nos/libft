@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/11 13:43:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/11 22:16:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/12 22:18:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,9 @@ int		ft_is_sorted(void **tab, t_size size, int (*cmp)())
 
 	if (size < 2)
 		return (1);
-	p = 0;
-	order = -1;
+	p = 1;
 	size--;
-	order = ((*cmp)(tab[p], tab[p + 1]) < 0 ? 0 : 1);
-	p++;
+	order = ((*cmp)(tab[0], tab[1]) < 0 ? 0 : 1);
 	while (p < size)
 	{
 		if (order == 0)

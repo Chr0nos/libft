@@ -6,11 +6,30 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/11 13:43:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/12 22:18:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/13 15:57:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+
+int		ft_is_sorted_get_order(void  **tab, t_size size, int (*cmp)())
+{
+	t_size	p;
+	int		r;
+
+	p = 0;
+	while (p < size)
+	{
+		r = (*cmp)(tab[p], tab[p + 1]);
+		if (r == 0)
+			p++;
+		else if (r > 0)
+			return (1);
+		else
+			return (0);
+	}
+	return (0);
+}
 
 int		ft_is_sorted(void **tab, t_size size, int (*cmp)())
 {
@@ -19,9 +38,9 @@ int		ft_is_sorted(void **tab, t_size size, int (*cmp)())
 
 	if (size < 2)
 		return (1);
-	p = 1;
+	p = 0;
 	size--;
-	order = ((*cmp)(tab[0], tab[1]) < 0 ? 0 : 1);
+	order = ft_is_sorted_get_order(tab, size, cmp);
 	while (p < size)
 	{
 		if (order == 0)

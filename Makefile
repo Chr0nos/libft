@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/11 13:53:20 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/29 13:03:48 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -36,7 +36,8 @@ BTREE=ft_btree_foreach.o \
 	  ft_btree_search.o \
 	  ft_btree_insert.o \
 	  ft_btree_level.o \
-	  ft_btree_parent.o
+	  ft_btree_parent.o \
+	  ft_btree_level_max.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \

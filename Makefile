@@ -6,12 +6,13 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/29 13:03:48 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/30 00:02:53 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
+EXTRA_FLAGS=
 FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result
-GCC=gcc $(FLAGS) -I./includes
+GCC=gcc $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIB=libft.a
@@ -67,7 +68,8 @@ OBJ=ft_putchar.o \
 	ft_is_printable.o \
 	ft_puthex.o \
 	ft_quicksort.o \
-	ft_is_sorted.o
+	ft_is_sorted.o \
+	ft_convert_base.o
 lib: $(OBJ) $(LIST) $(BTREE)
 all: lib
 	@echo "Linking libft"

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/13 15:35:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/29 19:16:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ int		ft_is_printable(char c);
 int		ft_str_is_printable(char *str);
 int		ft_is_sorted_get_order(void **tab, t_size size, int (*cmp)());
 int		ft_is_sorted(void **tab, t_size size, int (*cmp)());
+char	*ft_convert_base(int nb, t_size base, char *pattern);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/30 00:02:53 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/30 00:11:20 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,8 +70,9 @@ OBJ=ft_putchar.o \
 	ft_quicksort.o \
 	ft_is_sorted.o \
 	ft_convert_base.o
+all: static
 lib: $(OBJ) $(LIST) $(BTREE)
-all: lib
+static: lib
 	@echo "Linking libft"
 	$(AR) rc $(LIB) $(OBJ) $(LIST) $(BTREE)
 	@echo "done, now making lib index..."

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 13:20:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/31 22:45:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 22:54:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void				ft_list_push_sort(t_list **lst, void *data,
 t_list				**ft_list_map(t_list *lst);
 void				ft_list_swap(t_list *a, t_list *b, t_list **root);
 t_list				*ft_list_remove(t_list *lst, t_list *item);
-void				ft_list_insert(t_list *parent, t_list *item);
+void				ft_list_insert(t_list **parent, t_list *item);
 int					ft_list_insert_at(t_list *lst, void *val, unsigned int pos);
 void				ft_list_foreach(t_list *lst, void (*f)(void *));
 void				ft_list_foreach_suffix(t_list *lst, void (*f)(void *));

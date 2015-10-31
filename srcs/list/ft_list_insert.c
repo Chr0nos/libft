@@ -6,21 +6,26 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/26 00:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/07 12:40:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 23:00:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void	ft_list_insert(t_list *parent, t_list *item)
+void	ft_list_insert(t_list **parent, t_list *item)
 {
 	t_list	*tmp;
 
 	if (!parent)
 		return ;
-	tmp = parent->next;
-	parent->next = item;
-	item->next = tmp;
+	if (!*parent)
+		*parent = item;
+	else
+	{
+		tmp = (*parent)->next;
+		(*parent)->next = item;
+		item->next = tmp;
+	}
 }
 
 int		ft_list_insert_at(t_list *lst, void *val, unsigned int pos)
@@ -33,7 +38,7 @@ int		ft_list_insert_at(t_list *lst, void *val, unsigned int pos)
 	{
 		if (p == pos)
 		{
-			ft_list_insert(lst, ft_list_create_elem(val));
+			ft_list_insert(&lst, ft_list_create_elem(val));
 			return (1);
 		}
 		p++;

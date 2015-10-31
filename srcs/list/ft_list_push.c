@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/31 22:36:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 22:44:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,12 @@ void	ft_list_push_front(t_list **lst, void *data)
 	*lst = x;
 }
 
-t_list	*ft_list_push_sort(t_list **lst, void *data, int (*cmp)(void *, void *))
+void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)(void *, void *))
 {
 	t_list	*x;
 
 	if (!lst)
-		return (0);
+		return ;
 	if (!*lst)
 		*lst = ft_list_create_elem(data);
 	else
@@ -61,12 +61,11 @@ t_list	*ft_list_push_sort(t_list **lst, void *data, int (*cmp)(void *, void *))
 		{
 			if ((*cmp)(x->next->data, data) >= 0)
 			{
-				ft_list_insert(x, data);
-				return (*lst);
+				ft_list_insert(x, ft_list_create_elem(data));
+				return ;
 			}
 			x = x->next;
 		}
 		x->next = ft_list_create_elem(data);
 	}
-	return (*lst);
 }

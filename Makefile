@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/30 00:11:20 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/10/31 19:38:13 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,7 +29,8 @@ LIST=ft_list.o \
 	 ft_list_insert.o \
 	 ft_list_remove.o \
 	 ft_list_search.o \
-	 ft_list_at.o
+	 ft_list_at.o \
+	 ft_list_push_params.o
 BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_foreach.o \
 	  ft_btree.o \

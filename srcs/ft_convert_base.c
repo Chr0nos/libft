@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/29 17:00:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/30 16:31:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 01:56:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,6 @@ char	*ft_convert_base(int nb, t_size base, char *pattern)
 		nb /= base;
 	}
 	str[p] = '\0';
+	ft_strrev(str);
 	return (str);
 }

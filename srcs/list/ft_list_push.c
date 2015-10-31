@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/31 17:55:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 18:17:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,8 @@ void	ft_list_push_front(t_list **lst, void *data)
 	if (!lst)
 		return ;
 	x = ft_list_create_elem(data);
+	if (!x)
+		return ;
 	x->next = *lst;
 	*lst = x;
 }

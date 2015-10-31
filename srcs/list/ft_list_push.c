@@ -6,39 +6,40 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/07 13:34:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/10/31 17:55:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-t_list	*ft_list_push_back(t_list **lst, void *data)
+void	ft_list_push_back(t_list **lst, void *data)
 {
 	t_list	*x;
 	t_list	*last;
 
 	if (!lst)
-		return (0);
+		return ;
 	x = ft_list_create_elem(data);
 	if (!*lst)
 	{
 		*lst = x;
-		return (*lst);
+		return ;
 	}
-	last = ft_list_last(*lst);
-	if (last)
-		last->next = x;
-	return (*lst);
+	last = *lst;
+	while (last->next)
+		last = last->next;
+	last->next = x;
 }
 
-t_list	*ft_list_push_front(t_list **lst, void *data)
+void	ft_list_push_front(t_list **lst, void *data)
 {
 	t_list	*x;
 
+	if (!lst)
+		return ;
 	x = ft_list_create_elem(data);
 	x->next = *lst;
 	*lst = x;
-	return (*lst);
 }
 
 t_list	*ft_list_push_sort(t_list **lst, void *data, int (*cmp)(void *, void *))

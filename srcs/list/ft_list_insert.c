@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/26 00:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/31 23:00:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/02 20:53:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,4 +45,22 @@ int		ft_list_insert_at(t_list *lst, void *val, unsigned int pos)
 		lst = lst->next;
 	}
 	return (0);
+}
+
+void	ft_list_insert_before(t_list **root, t_list *parent, t_list *item)
+{
+	t_list	*last;
+
+	if (!root)
+		return ;
+	if ((!root) || (!parent))
+	{
+		*root = item;
+		return ;
+	}
+	last = ft_list_parent(parent, *root);
+	if (!last)
+		return ;
+	last->next = item;
+	item->next = parent;
 }

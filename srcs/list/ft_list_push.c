@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/02 15:52:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/02 22:10:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,9 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 	else
 	{
 		x = *lst;
-		while (x->next)
-		{
-			if ((*cmp)(x->next->data, data) >= 0)
-			{
-				ft_list_insert(&x, ft_list_create_elem(data));
-				return ;
-			}
+		while ((x) && ((*cmp)(x->data, data) <= 0))
 			x = x->next;
-		}
-		x->next = ft_list_create_elem(data);
+		ft_list_insert(&x, ft_list_create_elem(data));
 	}
 }
+

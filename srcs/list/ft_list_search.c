@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/14 15:29:45 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/14 15:35:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/02 15:57:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-t_list	*ft_list_search(t_list *lst, void *dataref, int (*cmp)(void *, void *))
+t_list	*ft_list_search(t_list *lst, void *dataref, int (*cmp)())
 {
 	while (lst)
 	{

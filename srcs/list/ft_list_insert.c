@@ -6,25 +6,30 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/26 00:02:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/02 20:53:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/03 22:39:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "list.h"
 
-void	ft_list_insert(t_list **parent, t_list *item)
+void	ft_list_insert(t_list **parent, void *data)
 {
 	t_list	*tmp;
+	t_list	*x;
 
 	if (!parent)
 		return ;
 	if (!*parent)
-		*parent = item;
+		*parent = ft_list_create_elem(data);
 	else
 	{
-		tmp = (*parent)->next;
-		(*parent)->next = item;
-		item->next = tmp;
+		x = ft_list_create_elem(data);
+		if (x)
+		{
+			tmp = (*parent)->next;
+			(*parent)->next = x;
+			x->next = tmp;
+		}
 	}
 }
 
@@ -33,7 +38,6 @@ int		ft_list_insert_at(t_list *lst, void *val, unsigned int pos)
 	unsigned int	p;
 
 	p = 0;
-	pos--;
 	while (lst)
 	{
 		if (p == pos)
@@ -47,20 +51,16 @@ int		ft_list_insert_at(t_list *lst, void *val, unsigned int pos)
 	return (0);
 }
 
-void	ft_list_insert_before(t_list **root, t_list *parent, t_list *item)
+void	ft_list_insert_before(t_list **parent, void *data)
 {
-	t_list	*last;
+	t_list	*x;
 
-	if (!root)
+	if (!parent)
 		return ;
-	if ((!root) || (!parent))
+	x = ft_list_create_elem(data);
+	if (x)
 	{
-		*root = item;
-		return ;
+		x->next = *parent;
+		*parent = x;
 	}
-	last = ft_list_parent(parent, *root);
-	if (!last)
-		return ;
-	last->next = item;
-	item->next = parent;
 }

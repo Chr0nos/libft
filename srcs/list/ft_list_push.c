@@ -53,7 +53,7 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 	if (lst)
 	{
 		x = *lst;
-		while ((x) && ((*cmp)(x->data, data) <= 0))
+		while ((x) && ((*cmp)(x->data, data) < 0))
 			x = x->next;
 		if (x == *lst)
 			ft_list_push_front(lst, data);

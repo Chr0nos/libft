@@ -58,7 +58,7 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 		if (x == *lst)
 			ft_list_push_front(lst, data);
 		else
-			ft_list_insert_before(&x, data);
+			ft_list_insert(&x, data);
 	}
 }
 

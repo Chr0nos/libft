@@ -14,7 +14,6 @@
 
 void	ft_list_insert(t_list **parent, void *data)
 {
-	t_list	*tmp;
 	t_list	*x;
 
 	if (!parent)
@@ -26,9 +25,8 @@ void	ft_list_insert(t_list **parent, void *data)
 		x = ft_list_create_elem(data);
 		if (x)
 		{
-			tmp = (*parent)->next;
+			x->next = (*parent)->next;
 			(*parent)->next = x;
-			x->next = tmp;
 		}
 	}
 }

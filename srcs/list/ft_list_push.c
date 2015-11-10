@@ -57,14 +57,16 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 		else
 		{
 			x = *lst;
-			while ((x->next) && ((*cmp)(x->data, data) < 0))
+			while ((x) && ((*cmp)(x->data, data) < 0))
 				x = x->next;
-			if (!x->next)
-				x->next = ft_list_create_elem(data);
-			else if (x == *lst)
+			if (x == *lst)
 				ft_list_push_front(lst, data);
+			else if (!x)
+				ft_list_push_back(lst, data);
+			else if (!x->next)
+				x->next = ft_list_create_elem(data);
 			else
-				ft_list_insert(&x, data);
+				ft_list_insert_before(&x, data);
 		}
 	}
 }

@@ -31,6 +31,7 @@ void				ft_list_sort(t_list **lst, int (*cmp)());
 void				ft_list_push_back(t_list **lst, void *data);
 void				ft_list_push_front(t_list **lst, void *data);
 void				ft_list_push_sort(t_list **lst, void *data, int (*cmp)());
+void				ft_list_push_sort_r(t_list **lst, void *data, int (*cmp)());
 t_list				**ft_list_map(t_list *lst);
 void				ft_list_swap(t_list *a, t_list *b, t_list **root);
 t_list				*ft_list_remove(t_list *lst, t_list *item);

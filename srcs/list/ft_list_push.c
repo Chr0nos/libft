@@ -17,20 +17,19 @@ void	ft_list_push_back(t_list **lst, void *data)
 	t_list	*x;
 	t_list	*last;
 
-	if (!lst)
-		return ;
 	x = ft_list_create_elem(data);
-	if (!x)
-		return ;
-	if (!*lst)
+	if (x)
 	{
-		*lst = x;
-		return ;
+		if (!*lst)
+			*lst = x;
+		else
+		{
+			last = *lst;
+			while (last->next)
+				last = last->next;
+			last->next = x;
+		}
 	}
-	last = *lst;
-	while (last->next)
-		last = last->next;
-	last->next = x;
 }
 
 void	ft_list_push_front(t_list **lst, void *data)
@@ -49,20 +48,22 @@ void	ft_list_push_front(t_list **lst, void *data)
 void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 {
 	t_list	*x;
+	t_list	*last;
 
 	if (!*lst)
 		*lst = ft_list_create_elem(data);
 	else
 	{
 		x = *lst;
+		last = 0;
 		while ((x) && ((*cmp)(x->data, data) < 0))
+		{
+			last = x;
 			x = x->next;
-		if (x == *lst)
+		}
+		if (!last)
 			ft_list_push_front(lst, data);
-		else if (!x)
-			ft_list_push_back(lst, data);
-		else
-			ft_list_insert(&x, data);
+		ft_list_insert(&last , data);
 	}
 }
 
@@ -73,5 +74,5 @@ void	ft_list_push_sort_r(t_list **lst, void *data, int (*cmp)())
 	else if (!(*lst)->next)
 		ft_list_insert_before(lst, data);
 	else
-		ft_list_push_sort(&((*lst)->next), data, cmp);
+		ft_list_push_sort_r(&((*lst)->next), data, cmp);
 }

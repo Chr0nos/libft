@@ -15,6 +15,8 @@
 
 t_list		*ft_list_parent(t_list *item, t_list *root)
 {
+	if (!root)
+		return (0);
 	while (root->next)
 	{
 		if (root->next == item)

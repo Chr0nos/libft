@@ -13,26 +13,6 @@
 #include "ft.h"
 #include <stdlib.h>
 
-int		ft_token_pos(char *str, char token, int n)
-{
-	int		p;
-	int		c;
-
-	p = 0;
-	c = 0;
-	while (str[p])
-	{
-		if (str[p] == token)
-		{
-			c++;
-			if (c == n)
-				return (p);
-		}
-		p++;
-	}
-	return (c);
-}
-
 char	**ft_str_split(char *str, char separator)
 {
 	int				space;

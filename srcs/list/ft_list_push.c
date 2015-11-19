@@ -67,13 +67,3 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 			ft_list_insert(&last , data);
 	}
 }
-
-void	ft_list_push_sort_r(t_list **lst, void *data, int (*cmp)())
-{
-	if (!*lst || ((*lst)->next && (*cmp)((*lst)->data, data) >= 0))
-		ft_list_insert(lst, data);
-	else if (!(*lst)->next)
-		ft_list_insert_before(lst, data);
-	else
-		ft_list_push_sort_r(&((*lst)->next), data, cmp);
-}

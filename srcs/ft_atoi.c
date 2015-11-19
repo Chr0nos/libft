@@ -12,7 +12,7 @@
 
 #include "ft.h"
 
-int		ft_atoi_error(char **str)
+static int	ft_atoi_error(char **str)
 {
 	if (!*str)
 		return (1);

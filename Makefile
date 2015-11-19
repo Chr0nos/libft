@@ -70,7 +70,8 @@ OBJ=ft_putchar.o \
 	ft_puthex.o \
 	ft_quicksort.o \
 	ft_is_sorted.o \
-	ft_convert_base.o
+	ft_convert_base.o \
+	ft_match.o
 all: static
 lib: $(OBJ) $(LIST) $(BTREE)
 static: lib

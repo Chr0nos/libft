@@ -34,7 +34,6 @@ char	*ft_strrev(char *str);
 char	*ft_itoa(int nb, char *buffer, unsigned char base);
 void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
-int		ft_atoi_error(char **str);
 void	ft_swap_ptr(void **p1, void **p2);
 void	ft_memset(char *str, char c, unsigned int n);
 void	*ft_memcpy(void *dest, void *src, unsigned int size);
@@ -56,8 +55,8 @@ void	ft_putmem(void *data, unsigned int size);
 void	ft_putmem_ascii(void *data, unsigned int size);
 int		ft_is_printable(char c);
 int		ft_str_is_printable(char *str);
-int		ft_is_sorted_get_order(void **tab, t_size size, int (*cmp)());
 int		ft_is_sorted(void **tab, t_size size, int (*cmp)());
 char	*ft_convert_base(int nb, t_size base, char *pattern);
+int     ft_match(char *s1, char *s2);
 
 #endif

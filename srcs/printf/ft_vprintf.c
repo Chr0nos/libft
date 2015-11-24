@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 13:07:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 16:50:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 #include "stdarg.h"
 
 void	ft_vprintf(const char *str, va_list *ap)

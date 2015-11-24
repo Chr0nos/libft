@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 18:57:39 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/29 13:22:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 16:49:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BTREE_H
 # define BTREE_H
-# include "ft.h"
+# include "libft.h"
 
 typedef struct		s_btree
 {

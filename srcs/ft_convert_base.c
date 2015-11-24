@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 #include <stdlib.h>
 
 char	*ft_convert_base(int nb, t_size base, char *pattern)

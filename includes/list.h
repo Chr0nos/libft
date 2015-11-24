@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 13:20:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/03 22:40:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 16:45:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
-# include "ft.h"
+# include "libft.h"
 
 typedef struct		s_list
 {

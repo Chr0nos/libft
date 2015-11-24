@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sort_tab.c                                      :+:      :+:    :+:   */
+/*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/28 09:30:35 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/28 09:33:26 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/24 15:22:35 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/24 15:27:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_sort_integer_table(int *tab, int size)
+char	*ft_strcat(char *dest, const char *src)
 {
-	int		p;
-	int		tmp;
-
-	p = 0;
-	while (p < size - 1)
-	{
-		if  (tab[p] > tab[p + 1])
-		{
-			tmp = tab[p];
-			tab[p] = tab[p + 1];
-			tab[p + 1] = tmp;
-			p = 0;
-		}
-		else
-			p++;
-	}
+	while (*dest)
+		dest++;
+	ft_strcpy(dest, (char*)src);
+	return (dest);
 }

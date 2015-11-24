@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 #include "list.h"
 
 t_list		*ft_list_at(t_list *lst, t_size pos)

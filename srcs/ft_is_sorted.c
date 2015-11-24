@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 
 static int	ft_is_sorted_get_order(void  **tab, t_size size, int (*cmp)())
 {

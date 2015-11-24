@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 #include "ft_quicksort.h"
 
 t_size	ft_quicksort_part(void **tab, t_size start, t_size end, int (*cmp)())

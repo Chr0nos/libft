@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft.h"
+#include "libft.h"
 #include "list.h"
 
 int		ft_list_strlen(t_list *lst)

@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/23 21:46:18 by snicolet         ###   ########.fr       */
+/*   Created: 2015/10/31 16:12:28 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/24 12:54:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft.h"
+#include <stdarg.h>
 
-void	ft_putnbr(int nb)
+void	ft_printf(const char* str, ...)
 {
-	char tmp[11];
+	va_list args;
 
-	ft_itoa(nb, tmp);
-	ft_putstr(tmp);
+	va_start(args, str);
+	ft_vprintf(str, &args);
+	va_end(args);
 }

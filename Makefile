@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/10/31 19:38:13 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/24 12:53:40 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,14 @@ BTREE=ft_btree_foreach.o \
 	  ft_btree_level.o \
 	  ft_btree_parent.o \
 	  ft_btree_level_max.o
+MEMORY_ROOT=./srcs/mem/
+MEMORY=ft_memset.o \
+	   ft_memcpy.o \
+	   ft_memccpy.o \
+	   ft_bzero.o
+PRINTF_ROOT=./srcs/printf/
+PRINTF=ft_printf.o \
+	   ft_vprintf.o
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \
@@ -54,7 +62,6 @@ OBJ=ft_putchar.o \
 	ft_atoi.o \
 	ft_putnbr.o \
 	ft_swap_ptr.o \
-	ft_mem.o \
 	ft_strany.o \
 	ft_str_only.o \
 	ft_strdup.o \
@@ -72,11 +79,12 @@ OBJ=ft_putchar.o \
 	ft_is_sorted.o \
 	ft_convert_base.o \
 	ft_match.o
+LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
 all: static
-lib: $(OBJ) $(LIST) $(BTREE)
+lib: $(LIB_CONTENT)
 static: lib
 	@echo "Linking libft"
-	$(AR) rc $(LIB) $(OBJ) $(LIST) $(BTREE)
+	$(AR) rc $(LIB) $(OBJ) $(MEMORY) $(LIST) $(BTREE)
 	@echo "done, now making lib index..."
 	$(RANLIB) $(LIB)
 	@echo "Done."
@@ -84,10 +92,14 @@ static: lib
 	$(GCC) -c $<
 %.o: $(BTREE_ROOT)%.c
 	$(GCC) -c $<
+%.o: $(MEMORY_ROOT)%.c
+	$(GCC) -c $<
+%.o: $(PRINTF_ROOT)%.c
+	$(GCC) -c $<
 %.o: ./srcs/%.c
 	$(GCC) -c $<
 clean:
-	rm -f $(OBJ) $(LIST) $(BTREE)
+	rm -f $(LIB_CONTENT)
 fclean: clean
 	rm -f $(LIB) libft.so
 re: fclean all
@@ -97,4 +109,4 @@ dll:
 		LIB="libft.dll"
 so:
 	make FLAGS="-fpic -Werror -Wall -Wextra -Wno-unused-result -Ofast" lib
-	$(GCC) -shared $(OBJ) $(LIST) $(BTREE) -o libft.so
+	$(GCC) -shared $(LIB_CONTENT) -o libft.so

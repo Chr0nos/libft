@@ -6,12 +6,14 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/30 00:33:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 12:57:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
 # define FT_H
+# include <unistd.h>
+# include "ft_printf.h"
 
 typedef	unsigned int	t_size;
 
@@ -59,5 +61,6 @@ int		ft_str_is_printable(char *str);
 int		ft_is_sorted(void **tab, t_size size, int (*cmp)());
 char	*ft_convert_base(int nb, t_size base, char *pattern);
 int     ft_match(char *s1, char *s2);
+void	ft_bzero(void *s, size_t n);
 
 #endif

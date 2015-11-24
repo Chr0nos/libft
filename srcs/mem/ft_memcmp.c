@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:17:56 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 14:58:10 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/24 15:14:34 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/24 15:20:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 
-void	*ft_memcpy(void *dest, void *src, size_t size)
+int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	size_t			p;
-	unsigned char	*d;
-	unsigned char	*s;
+	const unsigned char	*x;
+	const unsigned char	*y;
+	size_t				p;
 
-	d = dest;
-	s = src;
+	x = s1;
+	y = s2;
 	p = 0;
-	while (p < size)
+	while (p < n)
 	{
-		d[p] = s[p];
+		if (x[p] != y[p])
+			return (x[p] - y[p]);
 		p++;
 	}
-	return (dest);
+	return (0);
 }

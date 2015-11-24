@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 14:45:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 15:18:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,10 +38,11 @@ char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map);
 void	ft_putnbr(int nb);
 int		ft_atoi(char *str);
 void	ft_swap_ptr(void **p1, void **p2);
-void	ft_memset(char *str, char c, unsigned int n);
-void	*ft_memcpy(void *dest, void *src, unsigned int size);
+void	ft_memset(char *str, char c, size_t n);
+void	*ft_memcpy(void *dest, void *src, size_t);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_realloc(void *ptr, unsigned int size, unsigned int new_size);
 int		ft_strany(char c, char *list);
 int		ft_strany_string(char *str, char *list);

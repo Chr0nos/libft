@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/24 14:54:10 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/24 15:18:48 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -46,6 +46,7 @@ MEMORY=ft_memset.o \
 	   ft_memccpy.o \
 	   ft_memmove.o \
 	   ft_memchr.o \
+	   ft_memcmp.o \
 	   ft_bzero.o
 PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \

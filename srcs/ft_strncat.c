@@ -1,24 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcat.c                                        :+:      :+:    :+:   */
+/*   ft_strncat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 15:22:35 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 17:31:19 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/24 17:29:12 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/24 17:36:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "unistd.h"
 
-char	*ft_strcat(char *dest, const char *src)
+char	*ft_strncat(char *dest, const char *src, size_t n)
 {
 	char	*x;
 
 	x = dest;
 	while (*dest)
 		dest++;
-	ft_strcpy(dest, (char*)src);
+	ft_strncpy(dest, (char*)src, n);
 	return (x);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 20:19:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/25 13:34:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 size_t	ft_strlen(char *str)
 {
-	int		c;
+	size_t	c;
 
 	c = 0;
 	while ((*str) && ((str++)))
@@ -24,7 +24,7 @@ size_t	ft_strlen(char *str)
 
 size_t	ft_strsublen(char *str, char c)
 {
-	int		counter;
+	size_t	counter;
 
 	counter = 0;
 	while ((*str) && (*str != c) && (str++))

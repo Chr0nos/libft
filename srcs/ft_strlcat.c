@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:14:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/25 02:04:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/25 02:07:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size)
 		len++:
 		p++;
 	}
-	if (p < size)
+	if (len < size)
 		dst[p] = '\0';
 	return (len);
 }

@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/24 17:34:39 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/25 00:25:15 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,6 +57,7 @@ OBJ=ft_putchar.o \
 	ft_strcmp.o \
 	ft_strcat.o \
 	ft_strncat.o \
+	ft_strlcat.o \
 	ft_strlen.o \
 	ft_str_split.o \
 	ft_strcount.o \

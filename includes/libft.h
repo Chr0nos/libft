@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 17:35:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/25 00:24:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,15 @@ void	ft_putstr(char *str);
 void	ft_putstr_error(char *str);
 void	ft_putstr_align_right(char *str, char fill, t_size len);
 int		ft_strcmp(char *s1, char *s2);
-int		ft_strlen(char *str);
+size_t	ft_strlen(char *str);
 void	ft_swap(int *a, int *b);
-int		ft_strsublen(char *str, char c);
+size_t	ft_strsublen(char *str, char c);
 char	*ft_strcpy(char *dest, char *src);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strlcpy(char *dest, char *src);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
+size_t	ft_strlcat(char *dest, const char *src, size_t n);
 char	**ft_str_split(char *str, char separator);
 int		ft_strcount(char *str, char c);
 int		ft_strncount(char *str, char c, unsigned int n);

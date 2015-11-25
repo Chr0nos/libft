@@ -6,11 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/23 23:50:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/24 20:19:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strlen(char *str)
+#include "unistd.h"
+
+size_t	ft_strlen(char *str)
 {
 	int		c;
 
@@ -20,7 +22,7 @@ int		ft_strlen(char *str)
 	return (c);
 }
 
-int		ft_strsublen(char *str, char c)
+size_t	ft_strsublen(char *str, char c)
 {
 	int		counter;
 

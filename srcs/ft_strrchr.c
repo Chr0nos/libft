@@ -1,39 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 20:14:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/25 12:27:21 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/25 12:45:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "unistd.h"
-
-size_t	ft_strlcat(char *dst, const char *src, size_t size)
+char	*ft_strrchr(const char *s, int c)
 {
-	size_t	len;
-	size_t	p;
-
-	len = ft_strlen((char*)src);
-	if (len > size)
-		len = size;
-	while (*dst)
+	char	*x;
+	
+	x = 0;
+	while (*s)
 	{
-		len++;
-		dst++;
+		if (*s == c)
+			x = (char*)s;
+		s++;
 	}
-	p = 0;
-	while ((src[p]) && (len < size - 1))
-	{
-		dst[p] = src[p];
-		len++;
-		p++;
-	}
-	if (len < size)
-		dst[p] = '\0';
-	return (len);
+	return (x);
 }

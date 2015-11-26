@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/25 13:17:46 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/25 17:01:43 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,3 +116,5 @@ dll:
 so:
 	make FLAGS="-fpic -Werror -Wall -Wextra -Wno-unused-result -Ofast" lib
 	$(GCC) -shared $(LIB_CONTENT) -o libft.so
+mrproper: fclean
+	find . -name ".*.swp" -print -delete

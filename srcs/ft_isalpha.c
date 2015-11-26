@@ -6,14 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:49:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/26 12:54:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:29:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isalpha(const char *str)
+int		ft_isalpha(int c)
 {
-	while ((*str) && (((*str >= 'a') && (*str <= 'z')) ||
-				((*str >= 'A') && (*str <= 'Z'))))
-		str++;
-	return ((*str ? 0 : 1));
+	return ((((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'))) ? 1 : 0);
 }

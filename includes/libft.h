@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/26 14:56:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 15:18:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,8 +71,8 @@ int		ft_is_sorted(void **tab, t_size size, int (*cmp)());
 char	*ft_convert_base(int nb, t_size base, char *pattern);
 int     ft_match(char *s1, char *s2);
 void	ft_bzero(void *s, size_t n);
-int		ft_isalpha(const char *str);
-int		ft_isdigit(const char *str);
-int		ft_isalnum(const char *str);
+int		ft_isalpha(int c);
+int		ft_isdigit(int c);
+int		ft_isalnum(int c);
 
 #endif

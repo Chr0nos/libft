@@ -6,14 +6,15 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:17:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 14:58:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:27:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "unistd.h"
 
-void	ft_memset(char *str, char c, size_t n)
+void	*ft_memset(char *str, char c, size_t n)
 {
 	while (n--)
 		str[n] = c;
+	return (str);
 }

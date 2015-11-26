@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/25 17:01:43 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/26 12:53:47 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,7 @@ PRINTF=ft_printf.o \
 OBJ=ft_putchar.o \
 	ft_putstr.o \
 	ft_swap.o \
-	ft_strcmp.o \
+	ft_strcmp.o ft_strncmp.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \
 	ft_strlen.o \
 	ft_strchr.o ft_strrchr.o \
@@ -84,7 +84,8 @@ OBJ=ft_putchar.o \
 	ft_quicksort.o \
 	ft_is_sorted.o \
 	ft_convert_base.o \
-	ft_match.o
+	ft_match.o \
+	ft_isalpha.o
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
 all: static
 lib: $(LIB_CONTENT)

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/25 13:20:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 12:53:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_putstr(char *str);
 void	ft_putstr_error(char *str);
 void	ft_putstr_align_right(char *str, char fill, t_size len);
 int		ft_strcmp(char *s1, char *s2);
+int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(char *str);
 void	ft_swap(int *a, int *b);
 size_t	ft_strsublen(char *str, char c);
@@ -70,5 +71,6 @@ int		ft_is_sorted(void **tab, t_size size, int (*cmp)());
 char	*ft_convert_base(int nb, t_size base, char *pattern);
 int     ft_match(char *s1, char *s2);
 void	ft_bzero(void *s, size_t n);
+int		ft_isalpha(const char *str);
 
 #endif

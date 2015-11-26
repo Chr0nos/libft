@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/26 14:56:26 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/26 17:21:06 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,8 @@ OBJ=ft_putchar.o \
 	ft_match.o \
 	ft_isalpha.o \
 	ft_isdigit.o \
-	ft_isalnum.o
+	ft_isalnum.o \
+	ft_isascii.o
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
 all: static
 lib: $(LIB_CONTENT)

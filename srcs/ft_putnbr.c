@@ -6,16 +6,18 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/23 21:46:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:57:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdlib.h"
 
 void	ft_putnbr(int nb)
 {
-	char tmp[11];
+	char	*tmp;
 
-	ft_itoa(nb, tmp);
-	ft_putstr(tmp);
+	tmp = ft_itoa(nb);
+	if (tmp)
+		free(tmp);
 }

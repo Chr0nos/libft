@@ -6,17 +6,20 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/26 11:57:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 16:41:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "stdlib.h"
 
-char	*ft_itoa(int nb, char *buffer)
+char	*ft_itoa(int nb)
 {
 	int			p;
 	const char	*map = "0123456789";
+	char		*buffer;
 
+	buffer = malloc(sizeof(char) * 12);
 	p = 0;
 	if (nb == 0)
 		buffer[p++] = '0';

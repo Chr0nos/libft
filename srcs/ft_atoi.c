@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 14:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/30 09:47:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/26 09:21:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,12 @@ static int	ft_atoi_error(char **str)
 	if (!*str)
 		return (3);
 	return (0);
+}
+
+static void	skip_zeroes(char **str)
+{
+	while (**str == '0')
+		(*str)++;
 }
 
 int		ft_atoi(char *str)
@@ -42,6 +48,7 @@ int		ft_atoi(char *str)
 		negative = 1;
 		str++;
 	}
+	skip_zeroes(&str);
 	len = ft_strlen(str);
 	while (str[p])
 	{

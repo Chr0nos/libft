@@ -6,13 +6,15 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 14:01:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 01:11:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 01:44:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_isdigit(const char *str)
+#include "libft.h"
+
+int		ft_isdigit(int c)
 {
-	while ((*str) && ((*str >= '0') && (*str <= '9')))
-		str++;
-	return ((*str != '\0' ? 0 : 1));
+	if ((c >= '0') && (c <= '9'))
+		return (2048);
+	return (0);
 }

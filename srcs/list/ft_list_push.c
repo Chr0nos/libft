@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/03 22:55:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 11:10:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,6 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 		if (!last)
 			ft_list_push_front(lst, data);
 		else
-			ft_list_insert(&last , data);
+			ft_list_insert(&last, data);
 	}
 }

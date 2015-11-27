@@ -6,14 +6,14 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 01:13:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 11:10:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 char	*ft_strrchr(const char *s, int c)
 {
 	char	*x;
-	
+
 	x = 0;
 	while (*s)
 	{

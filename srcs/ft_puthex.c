@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/24 17:10:26 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/23 21:47:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 11:14:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,3 @@ void	ft_puthex(void *data, t_size size)
 		(void)block;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/25 12:45:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 01:13:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,5 +21,5 @@ char	*ft_strrchr(const char *s, int c)
 			x = (char*)s;
 		s++;
 	}
-	return (x);
+	return ((x ? x : (char*)s));
 }

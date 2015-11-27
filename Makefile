@@ -66,6 +66,7 @@ OBJ=ft_putchar.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_itoa.o \
+	ft_itobase.o \
 	ft_atoi.o \
 	ft_putnbr.o \
 	ft_swap_ptr.o \

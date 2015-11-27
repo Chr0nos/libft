@@ -1,26 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_itobase.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 13:46:49 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/27 14:01:10 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/27 14:02:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
-void	ft_putnbr(int nb)
+char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map)
 {
-	char	*tmp;
+	int			p;
 
-	tmp = ft_itoa(nb);
-	if (tmp)
+	if (base < 2)
+		return (0);
+	p = 0;
+	if (nb == 0)
+		buffer[p++] = '0';
+	if (nb < 0)
 	{
-		ft_putstr(tmp);
-		free(tmp);
+		buffer[p++] = '-';
+		nb *= -1;
 	}
-}
+	while (nb)
+	{
+		buffer[p] = map[nb % base];
+		nb /= base;
+		p++;
+	}
+	buffer[p] = '\0';
+	ft_strrev(buffer + ((buffer[0] == '-') ? 1 : 0));
+	return (buffer);
+}	

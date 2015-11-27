@@ -6,16 +6,17 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 12:14:01 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 09:43:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 12:16:58 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "unistd.h"
 
 char	*ft_strrev(char *str)
 {
-	int		pos_reverse;
-	int		pos_normal;
+	size_t	pos_reverse;
+	size_t	pos_normal;
 	char	tmp;
 
 	pos_reverse = ft_strlen(str) - 1;
@@ -23,10 +24,8 @@ char	*ft_strrev(char *str)
 	while (pos_normal < pos_reverse)
 	{
 		tmp = str[pos_normal];
-		str[pos_normal] = str[pos_reverse];
-		str[pos_reverse] = tmp;
-		pos_normal++;
-		pos_reverse--;
+		str[pos_normal++] = str[pos_reverse];
+		str[pos_reverse--] = tmp;
 	}
 	return (str);
 }

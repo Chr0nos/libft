@@ -1,39 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strrstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 20:14:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 00:35:32 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/27 00:13:17 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/27 00:24:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "unistd.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t size)
+static int	ft_is_same(const char a, const char b)
 {
-	size_t	len;
+	if (a == b)
+		return (1);
+	if ((a >= 'A') && (a <= 'Z') && (a + 'a' - 'A' == b))
+		return (1);
+	return (0);
+}
+
+char	*ft_strrstr(const char *str, const char *item)
+{
 	size_t	p;
 
-	len = ft_strlen((char*)src);
-	if (len > size)
-		len = size;
-	while (*dest)
+	if (!*item)
+		return ((char*)str);
+	while (*str)
 	{
-		len++;
-		dest++;
+		p = 0;
+		while (ft_is_same(str[p], item[p]))
+			if (!item[p++])
+				return ((char*)str);
+		str++;
 	}
-	p = 0;
-	while ((src[p]) && (len < size - 1))
-	{
-		dest[p] = src[p];
-		len++;
-		p++;
-	}
-	if (len < size)
-		dest[p] = '\0';
-	return (len);
+	return (0);
 }

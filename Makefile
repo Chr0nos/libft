@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/26 17:21:06 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/27 00:30:13 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ OBJ=ft_putchar.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \
 	ft_strlen.o \
 	ft_strchr.o ft_strrchr.o \
-	ft_strstr.o \
+	ft_strstr.o ft_strrstr.o \
 	ft_str_split.o \
 	ft_strcount.o \
 	ft_strcpy.o \
@@ -88,7 +88,9 @@ OBJ=ft_putchar.o \
 	ft_isalpha.o \
 	ft_isdigit.o \
 	ft_isalnum.o \
-	ft_isascii.o
+	ft_isascii.o \
+	ft_tolower.o \
+	ft_toupper.o
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
 all: static
 lib: $(LIB_CONTENT)

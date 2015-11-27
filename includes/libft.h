@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/26 17:20:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 00:38:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,9 @@ char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strlcpy(char *dest, char *src);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
-char	*ft_strstr(const char *str, const char *item);
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
+char	*ft_strstr(const char *str, const char *item);
+char	*ft_strrstr(const char *str, const char *iten);
 char	**ft_str_split(char *str, char separator);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
@@ -77,5 +78,7 @@ int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
 int		ft_isascii(int c);
+int		ft_tolower(int c);
+int		ft_toupper(int c);
 
 #endif

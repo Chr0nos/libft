@@ -1,29 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memalloc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 14:40:30 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 18:50:11 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/27 18:28:53 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/27 18:36:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+#include "stdlib.h"
 #include "string.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	*ft_memalloc(size_t size)
 {
-	size_t				p;
-	const unsigned char	*x;
+	void	*ptr;
 
-	x = s;
-	p = 0;
-	while (p < n)
-	{
-		if (x[p] == (const unsigned char)c)
-			return ((char*)x + p);
-		p++;
-	}
-	return (0);
+	ptr = malloc(size);
+	if (ptr)
+		ft_memset(ptr, 0, size);
+	return (ptr);
 }

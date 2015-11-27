@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:14:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 15:20:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 18:49:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include "string.h"
 
 int		ft_memcmp(const void *s1, const void *s2, size_t n)
 {

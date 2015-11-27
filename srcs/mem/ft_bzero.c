@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 21:36:44 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/23 21:48:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 18:48:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include "string.h"
 
 void	ft_bzero(void *s, size_t n)
 {

@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_memdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 14:40:30 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 18:50:11 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/27 18:37:44 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/27 18:41:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
+#include "stdlib.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_memdel(void **ap)
 {
-	size_t				p;
-	const unsigned char	*x;
-
-	x = s;
-	p = 0;
-	while (p < n)
+	if (*ap)
 	{
-		if (x[p] == (const unsigned char)c)
-			return ((char*)x + p);
-		p++;
+		free(*ap);
+		*ap = 0;
 	}
-	return (0);
 }

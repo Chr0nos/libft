@@ -47,7 +47,9 @@ MEMORY=ft_memset.o \
 	   ft_memmove.o \
 	   ft_memchr.o \
 	   ft_memcmp.o \
-	   ft_bzero.o
+	   ft_bzero.o \
+	   ft_memalloc.o \
+	   ft_memdel.o
 PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o

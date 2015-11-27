@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 17:54:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 18:48:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# include <unistd.h>
+# include <string.h>
 
 typedef	unsigned int	t_size;
 
@@ -54,6 +54,8 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
+void	*ft_memalloc(size_t size);
+void	ft_memdel(void *ap);
 void	*ft_realloc(void *ptr, unsigned int size, unsigned int new_size);
 int		ft_strany(char c, char *list);
 int		ft_strany_string(char *str, char *list);

@@ -6,14 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 00:46:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 09:50:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_H
 # define FT_H
 # include <unistd.h>
-# include "ft_printf.h"
 
 typedef	unsigned int	t_size;
 
@@ -42,6 +41,7 @@ int		ft_strcount(char *str, char c);
 int		ft_strncount(char *str, char c, unsigned int n);
 int		ft_pow(int nb, int power);
 char	*ft_strrev(char *str);
+char	*ft_strnrev(char *str, size_t n);
 char	*ft_itoa(int nb);
 char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map);
 void	ft_putnbr(int nb);

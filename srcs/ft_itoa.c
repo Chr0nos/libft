@@ -6,16 +6,17 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 01:33:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 09:45:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "stdlib.h"
+#include "unistd.h"
 
 char	*ft_itoa(int nb)
 {
-	int			p;
+	size_t		p;
 	const char	*map = "0123456789";
 	char		*buffer;
 
@@ -30,12 +31,14 @@ char	*ft_itoa(int nb)
 	}
 	while (nb)
 	{
-		buffer[p] = map[nb % 10];
+		buffer[p++] = map[nb % 10];
 		nb /= 10;
-		p++;
 	}
 	buffer[p] = '\0';
-	ft_strrev(buffer + ((buffer[0] == '-') ? 1 : 0));
+	if (buffer[0] == '0')
+		ft_strnrev(buffer + 1, ft_strlen(buffer + 1));
+	else
+		ft_strnrev(buffer, ft_strlen(buffer));
 	return (buffer);
 }
 

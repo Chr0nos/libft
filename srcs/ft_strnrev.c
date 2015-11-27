@@ -1,24 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*   ft_strnrev.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/31 16:12:28 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 09:55:12 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/27 09:39:28 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/27 09:54:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "ft_printf.h"
-#include <stdarg.h>
+#include "unistd.h"
 
-void	ft_printf(const char* str, ...)
+char	*ft_strnrev(char *str, size_t n)
 {
-	va_list args;
+	size_t			p;
+	const size_t	no = n;
+	char			tmp;
 
-	va_start(args, str);
-	ft_vprintf(str, &args);
-	va_end(args);
+	p = 0;
+	while (p < n)
+	{
+		tmp = str[p];
+		str[p] = str[n--];
+		str[p++] = tmp;
+	}
+	return (str + no);
 }

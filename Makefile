@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/27 01:00:15 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/27 09:45:51 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -64,7 +64,7 @@ OBJ=ft_putchar.o \
 	ft_strcpy.o \
 	ft_strclr.o \
 	ft_pow.o \
-	ft_strrev.o \
+	ft_strrev.o ft_strnrev.o \
 	ft_itoa.o \
 	ft_atoi.o \
 	ft_putnbr.o \

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 14:01:10 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 14:02:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 16:08:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,4 +35,4 @@ char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map)
 	buffer[p] = '\0';
 	ft_strrev(buffer + ((buffer[0] == '-') ? 1 : 0));
 	return (buffer);
-}	
+}

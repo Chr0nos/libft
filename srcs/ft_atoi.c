@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 14:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 11:11:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 20:30:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,11 @@ static int		ft_atoi_error(char **str)
 {
 	if (!*str)
 		return (1);
-	while ((ft_strany(**str, " \t\n\v\f\r+")) && (**str))
+	while ((ft_strany(**str, " \t\n\v\f\r+0")) && (**str))
 		(*str)++;
-	if (!ft_str_only_string(*str, "-0123456789"))
-		return (2);
 	if (!*str)
-		return (3);
+		return (2);
 	return (0);
-}
-
-static void		skip_zeroes(char **str)
-{
-	while (**str == '0')
-		(*str)++;
 }
 
 int				ft_atoi(char *str)
@@ -48,14 +40,13 @@ int				ft_atoi(char *str)
 		negative = 1;
 		str++;
 	}
-	skip_zeroes(&str);
 	len = ft_strlen(str);
-	while (str[p])
+	while (ft_isdigit(str[p]))
 	{
 		nb += (str[p] - '0') * (ft_pow(10, len - p - 1));
 		p++;
 	}
 	if (negative)
 		nb *= -1;
-	return (nb);
+	return ((str[p]) ? 0 : nb);
 }

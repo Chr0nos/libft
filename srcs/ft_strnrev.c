@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 09:39:28 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 09:54:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 10:53:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 char	*ft_strnrev(char *str, size_t n)
 {
 	size_t			p;
-	const size_t	no = n;
 	char			tmp;
 
 	p = 0;
@@ -26,5 +25,5 @@ char	*ft_strnrev(char *str, size_t n)
 		str[p] = str[n--];
 		str[p++] = tmp;
 	}
-	return (str + no);
+	return (str);
 }

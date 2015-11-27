@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 09:50:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/27 11:03:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ char	*ft_strnstr(const char *str, const char *item, size_t n);
 char	**ft_str_split(char *str, char separator);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+void	ft_strclr(char *s);
 int		ft_strcount(char *str, char c);
 int		ft_strncount(char *str, char c, unsigned int n);
 int		ft_pow(int nb, int power);

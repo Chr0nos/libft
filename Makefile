@@ -12,7 +12,8 @@
 
 EXTRA_FLAGS=
 FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result
-GCC=gcc $(FLAGS) -I./includes $(EXTRA_FLAGS)
+COMPILER=gcc
+GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIB=libft.a

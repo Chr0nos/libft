@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/25 13:37:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 13:09:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include "string.h"
 
 size_t	ft_strlen(char *str)
 {

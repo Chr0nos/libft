@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/26 12:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 18:10:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 13:08:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "unistd.h"
+#include "string.h"
 
 int		ft_strncmp(const char *s1, const char *s2, size_t n)
 {

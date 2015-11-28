@@ -94,6 +94,7 @@ OBJ=ft_putchar.o \
 	ft_isdigit.o \
 	ft_isalnum.o \
 	ft_isascii.o \
+	ft_isprint.o \
 	ft_tolower.o \
 	ft_toupper.o
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)

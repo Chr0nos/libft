@@ -1,23 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 12:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 14:48:09 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 14:55:00 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 15:02:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
-
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+int		ft_isprint(int c)
 {
-	size_t	p;
-
-	p = 0;
-	while ((s1[p] != '\0') && (s1[p] == s2[p]) && (p < n))
-		p++;
-	return (s1[p] - s2[p]);
+	return (((c >= 040) && (c <= 0176)) ? 1 : 0);
 }

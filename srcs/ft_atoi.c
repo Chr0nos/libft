@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 14:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 21:43:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 19:13:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 static int		ft_atoi_error(char **str)
 {
-	if (!*str)
-		return (1);
 	while ((ft_strany(**str, " \t\n\v\f\r")) && (**str))
 		(*str)++;
 	if (!*str)

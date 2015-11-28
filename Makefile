@@ -17,6 +17,7 @@ GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIB=libft.a
+LIBSO=libft.so
 LIST_ROOT=./srcs/list/
 LIST=ft_list.o \
 	 ft_list_swap.o \
@@ -98,14 +99,39 @@ OBJ=ft_putchar.o \
 	ft_tolower.o \
 	ft_toupper.o
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
-all: static
-lib: $(LIB_CONTENT)
-static: lib
+
+
+################################################
+##                                            ##
+## COMPILATION RULES : DONT TOUCH: IT'S MAGIC ##
+##                                            ##
+################################################
+
+all: $(LIB)
+$(LIB): $(LIB_CONTENT)
 	@echo "Linking libft"
-	$(AR) rc $(LIB) $(OBJ) $(MEMORY) $(LIST) $(BTREE)
+	$(AR) rc $(LIB) $(LIB_CONTENT)
 	@echo "done, now making lib index..."
 	$(RANLIB) $(LIB)
 	@echo "Done."
+clean:
+	rm -f $(LIB_CONTENT)
+fclean: clean
+	rm -f $(LIB) $(LIBSO)
+re: fclean all
+dll:
+	make COMPILER="mingw32-gcc" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
+		LIB="libft.dll"
+lib: $(LIB_CONTENT)
+$(LIBSO):
+	make FLAGS="-fpic $(FLAGS)" lib
+	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
+so: $(LIBSO)
+mrproper: fclean
+	find . -name ".*.swp" -print -delete
+
+### IMPLICIT RULES ###
+
 %.o: $(LIST_ROOT)%.c
 	$(GCC) -c $<
 %.o: $(BTREE_ROOT)%.c
@@ -116,17 +142,3 @@ static: lib
 	$(GCC) -c $<
 %.o: ./srcs/%.c
 	$(GCC) -c $<
-clean:
-	rm -f $(LIB_CONTENT)
-fclean: clean
-	rm -f $(LIB) libft.so
-re: fclean all
-dll:
-	make GCC="mingw32-gcc -I./includes -Wall -Werror -Wextra \
-		-Wno-ununsed-result -Ofast" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
-		LIB="libft.dll"
-so:
-	make FLAGS="-fpic -Werror -Wall -Wextra -Wno-unused-result -Ofast" lib
-	$(GCC) -shared $(LIB_CONTENT) -o libft.so
-mrproper: fclean
-	find . -name ".*.swp" -print -delete

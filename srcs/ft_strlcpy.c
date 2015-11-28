@@ -1,23 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strncmp.c                                       :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/26 12:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 15:10:43 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 15:45:01 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 15:45:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
-
-int		ft_strncmp(const char *s1, const char *s2, size_t n)
+char	*ft_strlcpy(char *dest, char *src)
 {
-	size_t	p;
+	int		p;
 
 	p = 0;
-	while ((s1[p] != '\0') && (s1[p] == s2[p]) && (p < n))
+	while (src[p])
+	{
+		dest[p] = src[p];
 		p++;
-	return ((unsigned char)s1[p] - (unsigned char)s2[p]);
+	}
+	return (dest);
 }

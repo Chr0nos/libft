@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 12:27:50 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/23 19:58:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 15:06:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int		ft_strcmp(char *s1, char *s2)
 	p = 0;
 	while ((s1[p]) && (s1[p] == s2[p]))
 		p++;
-	return (s1[p] - s2[p]);
+	return ((unsigned char)s1[p] - (unsigned char)s2[p]);
 }

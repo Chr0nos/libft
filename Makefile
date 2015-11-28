@@ -60,7 +60,7 @@ OBJ=ft_putchar.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \
-	ft_strlen.o \
+	ft_strlen.o ft_strsublen.o \
 	ft_strchr.o ft_strrchr.o \
 	ft_strstr.o ft_strrstr.o ft_strnstr.o \
 	ft_str_split.o \
@@ -69,6 +69,7 @@ OBJ=ft_putchar.o \
 	ft_strclr.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
+	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_itoa.o \
 	ft_itobase.o \
 	ft_atoi.o \

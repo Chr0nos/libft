@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_striter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 21:34:23 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 20:41:01 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 20:41:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
-
-size_t	ft_strlen(char *str)
+void	ft_striter(char *s, void (*f)(char *))
 {
-	size_t	c;
-
-	c = 0;
-	while (str[c])
-		c++;
-	return (c);
+	while (*s)
+		f(s++);
 }

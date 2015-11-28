@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 19:53:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 20:23:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,26 @@
 #include "stdlib.h"
 #include "string.h"
 
-char		*ft_itoa(int nb)
+static size_t	ft_itoa_len(int nb)
+{
+	size_t	p;
+
+	p = ((nb < 0) ? 1 : 0);
+	while (nb)
+	{
+		nb /= 10;
+		p++;
+	}
+	return (p + 1);
+}
+
+char			*ft_itoa(int nb)
 {
 	size_t		p;
 	const char	*map = "0123456789";
 	char		*buffer;
 
-	buffer = malloc(sizeof(char) * 12);
+	buffer = malloc(sizeof(char) * ft_itoa_len(nb));
 	if (!buffer)
 		return (NULL);
 	p = 0;

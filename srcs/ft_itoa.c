@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 20:33:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 16:36:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,15 @@ char		*ft_itoa(int nb)
 	const char	*map = "0123456789";
 	char		*buffer;
 
-	(void)map;
 	buffer = malloc(sizeof(char) * 12);
 	p = 0;
 	if (nb == 0)
 		buffer[p++] = '0';
 	else if (nb < 0)
-	{
 		buffer[p++] = '-';
-		nb *= -1;
-	}
 	while (nb)
 	{
-		//buffer[p++] = map[nb * ((nb < 0) ? -1 : 1) % 10];
-		buffer[p++] = (nb % 10) + '0';
+		buffer[p++] = map[(unsigned int)(nb * ((nb < 0) ? -1 : 1)) % 10];
 		nb /= 10;
 	}
 	buffer[p] = '\0';

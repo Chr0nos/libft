@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 19:46:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 19:53:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ char		*ft_itoa(int nb)
 	char		*buffer;
 
 	buffer = malloc(sizeof(char) * 12);
+	if (!buffer)
+		return (NULL);
 	p = 0;
 	if (nb == 0)
 		buffer[p++] = '0';

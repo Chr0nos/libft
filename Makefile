@@ -123,10 +123,10 @@ dll:
 	make COMPILER="mingw32-gcc" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
 		LIB="libft.dll"
 lib: $(LIB_CONTENT)
-$(LIBSO):
+$(LIBSO): $(LIB_CONTENT)
 	make FLAGS="-fpic $(FLAGS)" lib
 	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
-so: $(LIBSO)
+so: $(LIB_CONTENT) $(LIBSO)
 mrproper: fclean
 	find . -name ".*.swp" -print -delete
 

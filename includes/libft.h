@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 20:44:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/28 23:35:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@ void	ft_putchar(char c);
 void	ft_putstr(char *str);
 void	ft_putstr_error(char *str);
 void	ft_putstr_align_right(char *str, char fill, t_size len);
-int		ft_strcmp(char *s1, char *s2);
+int		ft_strcmp(const char *s1, const char *s2);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
-size_t	ft_strlen(char *str);
+size_t	ft_strlen(const char *str);
 void	ft_swap(int *a, int *b);
 size_t	ft_strsublen(char *str, char c);
 char	*ft_strcpy(char *dest, char *src);
@@ -34,6 +34,8 @@ size_t	ft_strlcat(char *dest, const char *src, size_t n);
 char	*ft_strstr(const char *str, const char *item);
 char	*ft_strrstr(const char *str, const char *iten);
 char	*ft_strnstr(const char *str, const char *item, size_t n);
+char	*ft_strmap(const char *s, char (*f)(char));
+char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	**ft_str_split(char *str, char separator);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
@@ -43,6 +45,8 @@ int		ft_strncount(char *str, char c, unsigned int n);
 char	*ft_strnew(size_t size);
 void	ft_striter(char *s, void (*f)(char *));
 void	ft_striteri(char *s, void (*f)(unsigned int, char *));
+int		ft_strequ(const char *s1, const char *s2);
+int		ft_strnequ(char const *s1, char const *s2, size_t n);
 void	ft_strdel(char **as);
 int		ft_pow(int nb, int power);
 char	*ft_strrev(char *str);

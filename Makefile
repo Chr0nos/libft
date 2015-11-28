@@ -67,6 +67,8 @@ OBJ=ft_putchar.o \
 	ft_strcount.o \
 	ft_strcpy.o ft_strncpy.o ft_strlcpy.o \
 	ft_strclr.o \
+	ft_strmap.o ft_strmapi.o \
+	ft_strequ.o ft_strnequ.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \

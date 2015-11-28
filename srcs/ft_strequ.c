@@ -1,21 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strequ.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/11 12:27:50 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 23:37:30 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 23:30:35 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 23:31:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
-{
-	int		p;
+#include "libft.h"
 
-	p = 0;
-	while ((s1[p]) && (s1[p] == s2[p]))
-		p++;
-	return ((unsigned char)s1[p] - (unsigned char)s2[p]);
+int		ft_strequ(char const *s1, char const *s2)
+{
+	return ((ft_strcmp(s1, s2) == 0) ? 1 : 0);
 }

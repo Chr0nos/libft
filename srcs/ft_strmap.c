@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_strmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/11 12:27:50 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 23:37:30 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 23:00:32 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 23:06:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strcmp(const char *s1, const char *s2)
-{
-	int		p;
+#include "libft.h"
+#include "stdlib.h"
 
-	p = 0;
-	while ((s1[p]) && (s1[p] == s2[p]))
-		p++;
-	return ((unsigned char)s1[p] - (unsigned char)s2[p]);
+char	*ft_strmap(char const *s, char (*f)(char))
+{
+	char	*x;
+	char	*x_base;
+
+	if (!(x = malloc(sizeof(char) * (ft_strlen(s) + 1))))
+		return (0);
+	x_base = x;
+	while (*s)
+		*(x++) = f(*(s++));
+	*x = '\0';
+	return (x_base);
 }

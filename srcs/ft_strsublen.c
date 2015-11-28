@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrchr.c                                       :+:      :+:    :+:   */
+/*   ft_strsublen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 22:15:23 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/28 21:33:55 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/28 21:35:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
 #include "string.h"
 
-char	*ft_strrchr(const char *s, int c)
+size_t	ft_strsublen(char *str, char c)
 {
-	size_t	n;
+	size_t	counter;
 
-	n = ft_strlen((char*)s);
-	if (!c)
-		return (((char*)(s + n)));
-	while (s[--n])
-	{
-		if (s[n] == (unsigned char)c)
-			return ((char*)&s[n]);
-	}
-	return (NULL);
+	counter = 0;
+	while ((*str) && (*str != c) && (str++))
+		counter++;
+	return (counter);
 }

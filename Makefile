@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 18:48:00 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 23:36:16 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ MEMORY=ft_memset.o \
 PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o
-OBJ=ft_putchar.o \
+OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putstr.o ft_putstr_align_right.o \
 	ft_putendl.o \
 	ft_swap.o \

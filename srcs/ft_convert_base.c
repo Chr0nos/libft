@@ -6,17 +6,17 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/29 17:00:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/31 01:56:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:49:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-char	*ft_convert_base(int nb, t_size base, char *pattern)
+char	*ft_convert_base(int nb, size_t base, char *pattern)
 {
 	char			*str;
-	t_size			p;
+	size_t			p;
 
 	if (base < 2)
 		return (0);

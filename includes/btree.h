@@ -6,13 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 18:57:39 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 16:49:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:51:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef BTREE_H
 # define BTREE_H
 # include "libft.h"
+# include "string.h"
 
 typedef struct		s_btree
 {
@@ -31,7 +32,6 @@ t_btree				*ft_btree_search(t_btree *root, void *data, int (*f)());
 t_btree				*ft_btree_parent(t_btree *root, t_btree *item);
 void				ft_btree_insert(t_btree **node, void *data, int (*f)());
 int					ft_btree_level(t_btree *root, t_btree *item, int level);
-t_size				ft_btree_level_max(t_btree *root);
-void				ft_btree_level_max_r(t_btree *root, t_size lvl, t_size *m);
+size_t				ft_btree_level_max(t_btree *root);
 
 #endif

@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_quicksort.h                                     :+:      :+:    :+:   */
+/*   ft_list_create_elem.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/10/08 11:59:22 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 11:17:24 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 17:29:33 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 17:29:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_QUICKSORT_H
-# define FT_QUICKSORT_H
-# include "libft.h"
+#include "libft.h"
+#include "stdlib.h"
 
-t_size	ft_quicksort_part(void **tab, t_size start, t_size end, int (*cmp)());
-void	ft_quicksort(void **tab, t_size start, t_size end, int (*cmp)());
+t_list		*ft_list_create_elem(void *data)
+{
+	t_list	*x;
 
-#endif
+	x = malloc(sizeof(t_list));
+	if (x)
+	{
+		x->data = data;
+		x->next = 0;
+	}
+	return (x);
+}

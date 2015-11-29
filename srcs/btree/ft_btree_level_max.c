@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/29 12:54:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/29 13:22:37 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:51:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "btree.h"
 
-void	ft_btree_level_max_r(t_btree *root, t_size lvl, t_size *m)
+static void		ft_btree_level_max_r(t_btree *root, size_t lvl, size_t *m)
 {
 	if (!root)
 		return ;
@@ -25,9 +25,9 @@ void	ft_btree_level_max_r(t_btree *root, t_size lvl, t_size *m)
 		ft_btree_level_max_r(root->right, lvl, m);
 }
 
-t_size	ft_btree_level_max(t_btree *root)
+size_t			ft_btree_level_max(t_btree *root)
 {
-	t_size	max;
+	size_t	max;
 
 	max = 0;
 	ft_btree_level_max_r(root, 0, &max);

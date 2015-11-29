@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 14:52:15 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 17:31:53 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,10 @@ AR=ar
 LIBSO=libft.so
 NAME=libft.a
 LIST_ROOT=./srcs/list/
-LIST=ft_list.o \
+LIST=ft_list_create_elem.o \
+	 ft_list_parent.o \
+	 ft_list_size.o \
+	 ft_list_last.o \
 	 ft_list_swap.o \
 	 ft_list_sort.o \
 	 ft_list_push.o \
@@ -56,7 +59,7 @@ PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o
 OBJ=ft_putchar.o \
-	ft_putstr.o \
+	ft_putstr.o ft_putstr_align_right.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \
@@ -73,6 +76,7 @@ OBJ=ft_putchar.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
+	ft_strjoin.o \
 	ft_itoa.o \
 	ft_itobase.o \
 	ft_atoi.o \

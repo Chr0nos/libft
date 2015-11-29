@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_list_size.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 11:02:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:32:20 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 17:29:10 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 17:29:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
 
-void	ft_putstr(const char *str)
+int			ft_list_size(t_list *lst)
 {
-	write(1, str, ft_strlen(str));
+	int		p;
+
+	p = 0;
+	while (lst)
+	{
+		p++;
+		lst = lst->next;
+	}
+	return (p);
 }
+

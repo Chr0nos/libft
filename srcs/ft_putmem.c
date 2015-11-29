@@ -6,16 +6,16 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 12:37:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/24 17:08:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:39:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putmem_ascii(void *data, unsigned int size)
+static void	ft_putmem_ascii(void *data, size_t size)
 {
 	unsigned char	*x;
-	unsigned int	p;
+	size_t			p;
 
 	x = data;
 	p = 0;
@@ -26,12 +26,12 @@ void	ft_putmem_ascii(void *data, unsigned int size)
 	}
 }
 
-void	ft_putmem(void *data, t_size size)
+void		ft_putmem(void *data, size_t size)
 {
-	unsigned int	pos_bin;
-	unsigned char	*x;
-	unsigned int	block;
-	unsigned int	bits_len;
+	size_t		pos_bin;
+	unsigned	*x;
+	size_t		block;
+	size_t		bits_len;
 
 	block = 4 * 8;
 	pos_bin = 0;

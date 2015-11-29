@@ -1,39 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 20:14:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:10:32 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 17:10:36 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 17:36:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "string.h"
 
-static size_t	ft_max(size_t nb, size_t max)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	return (nb > max ? max : nb);
-}
+	const size_t	len1 = ft_strlen(s1);
+	const size_t	len2 = ft_strlen(s2);
+	const size_t	size = len1 + len2;
+	char			*x;
 
-size_t			ft_strlcat(char *dest, const char *src, size_t size)
-{
-	const size_t	dlen = ft_max(ft_strlen(dest), size);
-	size_t			len;
-	size_t			p;
+	if (!(x = malloc(sizeof(char) * (size + 1))))
+		return (0);
+	ft_memcpy(x, s1, len1);
+	ft_memcpy(x + len1, s2, len2);
+	x[size] = '\0';
+	return (x);
 
-	if (dlen == size--)
-		return (dlen + dlen);
-	dest += dlen;
-	len = ft_strlen(src);
-	p = 0;
-	while ((src[p]) && (p < size - dlen))
-	{
-		dest[p] = src[p];
-		p++;
-	}
-	dest[p] = '\0';
-	return (len + dlen);
 }

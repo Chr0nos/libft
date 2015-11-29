@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr.c                                        :+:      :+:    :+:   */
+/*   ft_putstr_align_right.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/12 11:02:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:32:20 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 17:27:13 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 17:32:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "unistd.h"
 
-void	ft_putstr(const char *str)
+void	ft_putstr_align_right(char *str, char fill, size_t len)
 {
-	write(1, str, ft_strlen(str));
+	size_t	left;
+	size_t	size;
+
+	size = ft_strlen(str);
+	left = len - size;
+	while (left-- > 0)
+		ft_putchar(fill);
+	write(1, str, len);
 }
+

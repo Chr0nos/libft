@@ -6,15 +6,15 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/11 13:43:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 11:12:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:49:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_is_sorted_get_order(void **tab, t_size size, int (*cmp)())
+static int	ft_is_sorted_get_order(void **tab, size_t size, int (*cmp)())
 {
-	t_size	p;
+	size_t	p;
 	int		r;
 
 	p = 0;
@@ -31,9 +31,9 @@ static int	ft_is_sorted_get_order(void **tab, t_size size, int (*cmp)())
 	return (0);
 }
 
-int			ft_is_sorted(void **tab, t_size size, int (*cmp)())
+int			ft_is_sorted(void **tab, size_t size, int (*cmp)())
 {
-	t_size		p;
+	size_t		p;
 	int			order;
 
 	if (size < 2)

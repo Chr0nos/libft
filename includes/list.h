@@ -6,13 +6,14 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 13:20:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 16:45:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:49:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 # include "libft.h"
+# include "string.h"
 
 typedef struct		s_list
 {
@@ -25,7 +26,7 @@ t_list				*ft_list_last(t_list *item);
 t_list				*ft_list_parent(t_list *item, t_list *root);
 t_list				*ft_list_create_elem(void *data);
 t_list				*ft_list_last(t_list *item);
-t_list				*ft_list_at(t_list *lst, t_size pos);
+t_list				*ft_list_at(t_list *lst, size_t pos);
 t_list				*ft_list_push_params(int ac, char **av);
 void				ft_list_sort(t_list **lst, int (*cmp)());
 void				ft_list_push_back(t_list **lst, void *data);

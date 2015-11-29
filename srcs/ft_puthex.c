@@ -6,18 +6,18 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/24 17:10:26 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 11:14:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 17:41:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_puthex(void *data, t_size size)
+void	ft_puthex(void *data, size_t size)
 {
 	unsigned char	*c;
 	char			buffer[4];
-	unsigned int	p;
-	unsigned int	block;
+	size_t			p;
+	size_t			block;
 	const char		*pattern = "0123456789abcdef";
 
 	p = 0;

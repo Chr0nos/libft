@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 18:30:04 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 18:43:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 19:24:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static size_t	ft_strtrim_len(const char *s, const char *list)
 	return (p);
 }
 
-char	*ft_strtrim(const char *s)
+char			*ft_strtrim(const char *s)
 {
 	const char		*skiplist = " \n\t";
 	const size_t	len = ft_strtrim_len(s, skiplist);

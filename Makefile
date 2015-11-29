@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 17:56:13 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 18:43:05 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -73,6 +73,7 @@ OBJ=ft_putchar.o \
 	ft_strmap.o ft_strmapi.o \
 	ft_strequ.o ft_strnequ.o \
 	ft_strsub.o \
+	ft_strtrim.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
@@ -82,7 +83,7 @@ OBJ=ft_putchar.o \
 	ft_atoi.o \
 	ft_putnbr.o \
 	ft_swap_ptr.o \
-	ft_strany.o \
+	ft_strany.o ft_strany_string.o \
 	ft_str_only.o \
 	ft_strdup.o \
 	ft_putstr_list.o \

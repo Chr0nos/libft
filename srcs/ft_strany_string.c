@@ -1,22 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strany.c                                        :+:      :+:    :+:   */
+/*   ft_strany_string.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/20 17:37:05 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 18:41:38 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 18:41:06 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 18:41:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_strany(char c, const char *list)
+#include "libft.h"
+
+int		ft_strany_string(const char *src, const char *list)
 {
-	while (*list)
+	while (*src)
 	{
-		if (*list == c)
+		if (ft_strany(*src, list))
 			return (1);
-		list++;
+		src++;
 	}
 	return (0);
 }
+

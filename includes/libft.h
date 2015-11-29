@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:44:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 18:33:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,8 +64,8 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void *ap);
 void	*ft_realloc(void *ptr, unsigned int size, unsigned int new_size);
-int		ft_strany(char c, char *list);
-int		ft_strany_string(char *str, char *list);
+int		ft_strany(char c, const char *list);
+int		ft_strany_string(const char *str, const char *list);
 int		ft_str_only(char c, char *list);
 int		ft_str_only_string(char *str, char *list);
 char	*ft_strdup(char *str);

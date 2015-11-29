@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 18:48:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/29 20:03:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ int		ft_strnequ(char const *s1, char const *s2, size_t n);
 void	ft_strdel(char **as);
 char	*ft_strrev(char *str);
 char	*ft_strnrev(char *str, size_t n);
+char	*ft_strtrim(const char *s);
 char	*ft_itoa(int nb);
 char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map);
 void	ft_putnbr(int nb);

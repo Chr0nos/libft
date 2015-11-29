@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 17:31:53 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 17:56:13 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ LIST=ft_list_create_elem.o \
 	 ft_list_last.o \
 	 ft_list_swap.o \
 	 ft_list_sort.o \
-	 ft_list_push.o \
+	 ft_list_push_back.o ft_list_push_front.o ft_list_push_sort.o \
 	 ft_list_free.o \
 	 ft_list_foreach.o \
 	 ft_list_to.o \

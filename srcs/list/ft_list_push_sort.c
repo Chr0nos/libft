@@ -1,49 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push.c                                     :+:      :+:    :+:   */
+/*   ft_list_push_sort.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/22 19:56:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 11:10:46 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/29 17:55:02 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/29 17:55:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
-
-void	ft_list_push_back(t_list **lst, void *data)
-{
-	t_list	*x;
-	t_list	*last;
-
-	x = ft_list_create_elem(data);
-	if (x)
-	{
-		if (!*lst)
-			*lst = x;
-		else
-		{
-			last = *lst;
-			while (last->next)
-				last = last->next;
-			last->next = x;
-		}
-	}
-}
-
-void	ft_list_push_front(t_list **lst, void *data)
-{
-	t_list	*x;
-
-	if (!lst)
-		return ;
-	x = ft_list_create_elem(data);
-	if (!x)
-		return ;
-	x->next = *lst;
-	*lst = x;
-}
+#include "libft.h"
 
 void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 {
@@ -67,3 +34,4 @@ void	ft_list_push_sort(t_list **lst, void *data, int (*cmp)())
 			ft_list_insert(&last, data);
 	}
 }
+

@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 02:09:25 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 14:52:15 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,8 +16,8 @@ COMPILER=gcc
 GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
-LIB=libft.a
 LIBSO=libft.so
+NAME=libft.a
 LIST_ROOT=./srcs/list/
 LIST=ft_list.o \
 	 ft_list_swap.o \
@@ -69,6 +69,7 @@ OBJ=ft_putchar.o \
 	ft_strclr.o \
 	ft_strmap.o ft_strmapi.o \
 	ft_strequ.o ft_strnequ.o \
+	ft_strsub.o \
 	ft_pow.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
@@ -109,18 +110,18 @@ OBJ=ft_putchar.o \
 ################################################################################
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
 
-all: $(LIB)
-$(LIB): $(LIB_CONTENT)
+all: $(NAME)
+$(NAME): $(LIB_CONTENT)
 	@echo "Linking libft"
-	$(AR) rc $(LIB) $(LIB_CONTENT)
+	$(AR) rc $(NAME) $(LIB_CONTENT)
 	@echo "done, now making lib index..."
-	$(RANLIB) $(LIB)
+	$(RANLIB) $(NAME)
 	@echo "Done."
 
 #windows dll cross compill rule
 dll:
 	make COMPILER="mingw32-gcc" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
-		LIB="libft.dll"
+		NAME="libft.dll"
 
 #linker for libft.so
 $(LIBSO): $(LIB_CONTENT)
@@ -134,7 +135,7 @@ mrproper: fclean
 clean:
 	rm -f $(LIB_CONTENT)
 fclean: clean
-	rm -f $(LIB) $(LIBSO)
+	rm -f $(NAME) $(LIBSO)
 re: fclean all
 
 ################################################################################

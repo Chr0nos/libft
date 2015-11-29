@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/27 09:45:51 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/29 02:09:25 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -101,14 +101,13 @@ OBJ=ft_putchar.o \
 	ft_isprint.o \
 	ft_tolower.o \
 	ft_toupper.o
+
+################################################################################
+##                                                                            ##
+##                   COMPILATION RULES : DONT TOUCH: IT'S MAGIC               ##
+##                                                                            ##
+################################################################################
 LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
-
-
-################################################
-##                                            ##
-## COMPILATION RULES : DONT TOUCH: IT'S MAGIC ##
-##                                            ##
-################################################
 
 all: $(LIB)
 $(LIB): $(LIB_CONTENT)
@@ -117,24 +116,32 @@ $(LIB): $(LIB_CONTENT)
 	@echo "done, now making lib index..."
 	$(RANLIB) $(LIB)
 	@echo "Done."
+
+#windows dll cross compill rule
+dll:
+	make COMPILER="mingw32-gcc" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
+		LIB="libft.dll"
+
+#linker for libft.so
+$(LIBSO): $(LIB_CONTENT)
+	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
+so:
+	make FLAGS="-fpic $(FLAGS)" $(LIBSO)
+
+#cleaners
+mrproper: fclean
+	find . -name ".*.swp" -print -delete
 clean:
 	rm -f $(LIB_CONTENT)
 fclean: clean
 	rm -f $(LIB) $(LIBSO)
 re: fclean all
-dll:
-	make COMPILER="mingw32-gcc" AR="mingw32-ar" RANLIB="mingw32-ranlib" \
-		LIB="libft.dll"
-lib: $(LIB_CONTENT)
-$(LIBSO): $(LIB_CONTENT)
-	make FLAGS="-fpic $(FLAGS)" lib
-	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
-so: $(LIB_CONTENT) $(LIBSO)
-mrproper: fclean
-	find . -name ".*.swp" -print -delete
 
-### IMPLICIT RULES ###
-
+################################################################################
+##                                                                            ##
+##                               IMPLICIT RULES                               ##
+##                                                                            ##
+################################################################################
 %.o: $(LIST_ROOT)%.c
 	$(GCC) -c $<
 %.o: $(BTREE_ROOT)%.c

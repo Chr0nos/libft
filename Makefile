@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/29 23:36:16 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/30 13:04:59 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,6 +143,11 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(LIBSO)
 re: fclean all
+rendu:
+	mkdir rendu
+	find ./srcs/ -name "*.c" -exec cp {} ./rendu/ \;
+	find ./includes/ -name "*.h" -exec cp {} ./rendu/ \;
+	cp Makefile ./rendu/
 
 ################################################################################
 ##                                                                            ##
@@ -158,4 +163,6 @@ re: fclean all
 %.o: $(PRINTF_ROOT)%.c
 	$(GCC) -c $<
 %.o: ./srcs/%.c
+	$(GCC) -c $<
+%.o: %.c
 	$(GCC) -c $<

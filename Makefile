@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/30 13:22:59 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/30 13:37:19 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -59,7 +59,7 @@ PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
-	ft_putstr.o ft_putstr_align_right.o \
+	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putendl.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o \

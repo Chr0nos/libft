@@ -1,26 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_str_is_printable.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:50:27 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/30 15:39:28 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/30 15:49:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
-void	ft_putnbr(int nb)
+int		ft_str_is_printable(char *str)
 {
-	char	*tmp;
-
-	tmp = ft_itoa(nb);
-	if (tmp)
+	while (*str)
 	{
-		ft_putstr(tmp);
-		ft_strdel(&tmp);
+		if (!ft_is_printable(*(str++)))
+			return (0);
 	}
+	return (1);
 }
+

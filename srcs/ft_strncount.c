@@ -1,26 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr.c                                        :+:      :+:    :+:   */
+/*   ft_strncount.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:50:27 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/30 15:47:56 by snicolet          #+#    #+#             */
+/*   Updated: 2015/11/30 15:48:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include "stdlib.h"
-
-void	ft_putnbr(int nb)
+int		ft_strncount(char *str, char c, unsigned int n)
 {
-	char	*tmp;
+	int             counter;
 
-	tmp = ft_itoa(nb);
-	if (tmp)
+	counter = 0;
+	while ((*str) && (n--))
 	{
-		ft_putstr(tmp);
-		ft_strdel(&tmp);
+		if (*str == c)
+			counter++;
+		str++;
 	}
+	return (counter);
 }
+

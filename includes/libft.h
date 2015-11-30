@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 14:11:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/30 15:53:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	*ft_realloc(void *ptr, unsigned int size, unsigned int new_size);
 int		ft_strany(char c, const char *list);
 int		ft_strany_string(const char *str, const char *list);
 int		ft_str_only(char c, char *list);
-int		ft_str_only_string(char *str, char *list);
+int		ft_stronlystr(char *str, char *list);
 char	*ft_strdup(char *str);
 void	ft_putstr_list(char **list, int size, char c);
 void	ft_free_strtab(char **tab, unsigned int size);
@@ -96,7 +96,6 @@ int		ft_isascii(int c);
 int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
-size_t	ft_quicksort_part(void **tab, size_t start, size_t end, int (*cmp)());
 void	ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)());
 
 #endif

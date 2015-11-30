@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/30 14:13:47 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/30 15:52:27 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strchr.o ft_strrchr.o \
 	ft_strstr.o ft_strrstr.o ft_strnstr.o \
 	ft_str_split.o \
-	ft_strcount.o \
+	ft_strcount.o ft_strncount.o \
 	ft_strcpy.o ft_strncpy.o ft_strlcpy.o \
 	ft_strclr.o \
 	ft_strmap.o ft_strmapi.o \
@@ -85,7 +85,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putnbr.o ft_putnbr_fd.o \
 	ft_swap_ptr.o \
 	ft_strany.o ft_strany_string.o \
-	ft_str_only.o \
+	ft_str_only.o ft_stronlystr.o \
 	ft_strdup.o \
 	ft_putstr_list.o \
 	ft_free_tab.o \
@@ -95,7 +95,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_sort_tab.o \
 	ft_putbits.o \
 	ft_putmem.o \
-	ft_is_printable.o \
+	ft_is_printable.o ft_str_is_printable.o \
 	ft_puthex.o \
 	ft_quicksort.o \
 	ft_is_sorted.o \

@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/30 13:04:59 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/30 13:22:59 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -148,6 +148,7 @@ rendu:
 	find ./srcs/ -name "*.c" -exec cp {} ./rendu/ \;
 	find ./includes/ -name "*.h" -exec cp {} ./rendu/ \;
 	cp Makefile ./rendu/
+	cp auteur ./rendu/
 
 ################################################################################
 ##                                                                            ##

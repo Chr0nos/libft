@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/30 15:52:27 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/11/30 16:16:52 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -149,6 +149,9 @@ rendu:
 	find ./includes/ -name "*.h" -exec cp {} ./rendu/ \;
 	cp Makefile ./rendu/
 	cp auteur ./rendu/
+	rm ./rendu/ft_printf.h
+	rm ./rendu/ft_vprintf.c
+	rm ./rendu/ft_printf.c
 
 ################################################################################
 ##                                                                            ##

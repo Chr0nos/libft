@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:40:22 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 13:42:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:12:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 
 void	ft_putendl_fd(const char *s, int fd)
 {
-	ft_putstr_ft(s, fd);
+	ft_putstr_fd(s, fd);
 	write(fd, "\n", 1);
 }

@@ -6,14 +6,14 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:36:13 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 13:37:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/11/30 14:18:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "unistd.h"
 
-void	ft_putstr_ft(const char *s, int fd)
+void	ft_putstr_fd(const char *s, int fd)
 {
 	write(fd, s, ft_strlen(s));
 }

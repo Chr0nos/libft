@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:53:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 02:38:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
 void	ft_swap(int *a, int *b);
 size_t	ft_strsublen(char *str, char c);
-char	*ft_strcpy(char *dest, char *src);
+char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
-char	*ft_strlcpy(char *dest, char *src);
+char	*ft_strlcpy(char *dest, const char *src);
 char	*ft_strcat(char *dest, const char *src);
 char	*ft_strncat(char *dest, const char *src, size_t n);
 size_t	ft_strlcat(char *dest, const char *src, size_t n);
@@ -38,7 +38,7 @@ char	*ft_strnstr(const char *str, const char *item, size_t n);
 char	*ft_strmap(const char *s, char (*f)(char));
 char	*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char	*ft_strjoin(const char *s1, const char *s2);
-char	**ft_str_split(char *str, char separator);
+char	**ft_strsplit(char *str, char separator);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
 void	ft_strclr(char *s);
@@ -73,7 +73,8 @@ int		ft_strany(char c, const char *list);
 int		ft_strany_string(const char *str, const char *list);
 int		ft_str_only(char c, char *list);
 int		ft_stronlystr(char *str, char *list);
-char	*ft_strdup(char *str);
+char	*ft_strdup(const char *str);
+char	*ft_strndup(const char *s, size_t n);
 void	ft_putstr_list(char **list, int size, char c);
 void	ft_free_strtab(char **tab, unsigned int size);
 void	ft_strtab_foreach(char **tab, int size, void (*f)(char*));

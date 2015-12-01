@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/11/30 16:16:52 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/12/01 02:41:05 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,7 +67,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strlen.o ft_strsublen.o \
 	ft_strchr.o ft_strrchr.o \
 	ft_strstr.o ft_strrstr.o ft_strnstr.o \
-	ft_str_split.o \
+	ft_strsplit.o \
 	ft_strcount.o ft_strncount.o \
 	ft_strcpy.o ft_strncpy.o ft_strlcpy.o \
 	ft_strclr.o \
@@ -86,7 +86,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_swap_ptr.o \
 	ft_strany.o ft_strany_string.o \
 	ft_str_only.o ft_stronlystr.o \
-	ft_strdup.o \
+	ft_strdup.o ft_strndup.o \
 	ft_putstr_list.o \
 	ft_free_tab.o \
 	ft_strtab_foreach.o \

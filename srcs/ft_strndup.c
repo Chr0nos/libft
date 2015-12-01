@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcpy.h                                        :+:      :+:    :+:   */
+/*   ft_strndup.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/17 13:46:14 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 02:37:52 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 02:30:15 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 02:40:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strcpy(char *dest, const char *src)
-{
-	int		p;
+#include <string.h>
+#include <stdlib.h>
 
+char	*ft_strndup(const char *s, size_t n)
+{
+	size_t	p;
+	char	*x;
+
+	if (!(x = malloc(sizeof(char) * (n + 1))))
+		return (NULL);
 	p = 0;
-	while (src[p])
+	while ((s[p]) && (p < n))
 	{
-		dest[p] = src[p];
+		x[p] = s[p];
 		p++;
 	}
-	dest[p] = '\0';
-	return (dest);
+	x[p] = '\0';
+	return (x);
 }

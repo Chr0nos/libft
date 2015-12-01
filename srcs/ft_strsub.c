@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 14:42:17 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 14:46:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 13:19:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ char	*ft_strsub(char const *s, unsigned int start, size_t len)
 {
 	char	*x;
 
-	if (!(x = malloc(sizeof(char) * (len + 1))))
+	if (!(x = ft_strnew(len)))
 		return (0);
-	ft_memcpy(x + start, s, len);
+	ft_memcpy(x, s + start, len);
 	x[len] = '\0';
 	return (x);
 }

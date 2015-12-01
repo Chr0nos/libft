@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 21:48:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 14:00:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,8 @@ static size_t	ft_itoa_len(int nb)
 	size_t	p;
 
 	p = ((nb < 0) ? 1 : 0);
-	while (nb)
-	{
-		nb /= 10;
+	while (nb /= 10)
 		p++;
-	}
 	return (p + 1);
 }
 

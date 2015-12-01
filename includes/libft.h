@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 02:38:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 12:44:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ int		ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t	ft_strlen(const char *str);
 void	ft_swap(int *a, int *b);
 size_t	ft_strsublen(char *str, char c);
+char	*ft_strsub(const char *s, unsigned int start, size_t len);
 char	*ft_strcpy(char *dest, const char *src);
 char	*ft_strncpy(char *dest, char *src, unsigned int n);
 char	*ft_strlcpy(char *dest, const char *src);

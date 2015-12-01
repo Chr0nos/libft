@@ -6,37 +6,30 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 18:30:04 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 19:43:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 12:42:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_strtrim_len(const char *s, const char *list)
+char	*ft_strtrim(char const *s)
 {
-	size_t		p;
+	char	*str;
+	int		len;
+	int		i;
 
-	p = 0;
-	while (*s)
-		if (!ft_strany(*(s++), list))
-			p++;
-	return (p);
-}
-
-char			*ft_strtrim(const char *s)
-{
-	const char		*skiplist = " \n\t";
-	const size_t	len = ft_strtrim_len(s, skiplist);
-	char			*x;
-
-	if (!(x = malloc(sizeof(char) * (len + 1))))
+	i = 0;
+	if (!s)
 		return (NULL);
-	while (*s)
-	{
-		if (!ft_strany(*s, skiplist))
-			*(x++) = *s;
-		s++;
-	}
-	*(++x) = '\0';
-	return (x - len - 1);
+	len = ft_strlen(s) - 1;
+	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
+		len--;
+	len++;
+	while ((i < len) && (s[i] == ' ' || s[i] == '\n' || s[i] == '\t'))
+		i++;
+	len = len - i;
+	if (!(str = ft_strsub((char *)s, i, len)))
+		return (NULL);
+	str[len] = 0;
+	return (str);
 }

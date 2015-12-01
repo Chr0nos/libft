@@ -19,7 +19,7 @@ static size_t	ft_itoa_len(int nb)
 	size_t	p;
 
 	p = ((nb < 0) ? 1 : 0);
-	while (nb /= 10)
+	while ((nb) && (nb /= 10))
 		p++;
 	return (p + 1);
 }

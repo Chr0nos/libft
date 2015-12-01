@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 18:30:04 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 12:42:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 16:24:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,6 @@ char	*ft_strtrim(char const *s)
 	int		i;
 
 	i = 0;
-	if (!s)
-		return (NULL);
 	len = ft_strlen(s) - 1;
 	while (s[len] == ' ' || s[len] == '\n' || s[len] == '\t')
 		len--;

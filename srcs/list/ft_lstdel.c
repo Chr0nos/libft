@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_map.c                                      :+:      :+:    :+:   */
+/*   ft_lstdel.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/24 11:07:08 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 19:23:29 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 17:48:33 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 17:54:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
-#include <stdlib.h>
+#include "libft.h"
 
-t_list	**ft_list_map(t_list *lst)
+void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	**map;
-	int		size;
-	int		p;
+	t_list	*next;
 
-	size = ft_list_size(lst);
-	map = malloc(sizeof(t_list*) * size + 1);
-	p = 0;
-	while ((lst) && (p < size))
+	if (*alst)
 	{
-		map[p] = lst;
-		lst = lst->next;
-		p++;
+		next = (*alst)->next;
+		if (next)
+			ft_lstdel(&next, del);
+		del((*alst)->content, (*alst)->content_size);
+		ft_memdel(alst);
 	}
-	map[p] = 0;
-	return (map);
 }

@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_foreach.c                                  :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/22 20:58:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/19 23:17:12 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 18:50:04 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 19:19:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "libft.h"
+#include <string.h>
 
-void	ft_list_foreach(t_list *lst, void (*f)(void *))
+t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 {
-	while (lst)
+	t_list	*x;
+	t_list	*result;
+
+	if (!lst)
+		ft_crash();
+	result = 0;
+	x = lst;
+	while (x)
 	{
-		f(lst->data);
-		lst = lst->next;
+		ft_lstpush_back(&result, f(x));
+		x = x->next;
 	}
-}
-
-void	ft_list_foreach_suffix(t_list *lst, void (*f)(void *))
-{
-	if (lst->next)
-		ft_list_foreach_suffix(lst->next, f);
-	f(lst->data);
+	return (result);
 }

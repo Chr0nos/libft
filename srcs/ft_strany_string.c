@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 18:41:06 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 18:41:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:05:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ int		ft_strany_string(const char *src, const char *list)
 	}
 	return (0);
 }
-

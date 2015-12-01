@@ -1,41 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_to.c                                       :+:      :+:    :+:   */
+/*   ft_memdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/23 11:56:56 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/10 19:23:50 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 17:16:31 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 18:12:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "list.h"
 #include <stdlib.h>
+#include <string.h>
 
-char	*ft_list_to_char(t_list *lst, char c)
+void	*ft_memdup(const void *src, size_t size)
 {
-	char	*str;
-	int		len;
-	int		pos;
-	int		size;
+	unsigned char	*x;
 
-	size = ft_list_strlen(lst) + ft_list_size(lst);
-	pos = 0;
-	str = malloc(sizeof(char) * (size + 1));
-	while (lst)
-	{
-		if (lst->data)
-		{
-			len = ft_strlen((char*)lst->data);
-			ft_strncpy(str + pos, (char*)lst->data, len);
-			pos += len;
-			if (c != 0)
-				str[pos++] = c;
-		}
-		lst = lst->next;
-	}
-	str[--pos] = '\0';
-	return (str);
+	if (!(x = malloc(size)))
+		return (NULL);
+	return (ft_memcpy(x, src, size));
 }

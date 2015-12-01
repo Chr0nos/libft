@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_push_front.c                               :+:      :+:    :+:   */
+/*   ft_lstlast.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 17:54:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:54:50 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 18:54:42 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 18:55:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_list_push_front(t_list **lst, void *data)
+t_list	*ft_lstlast(t_list *lst)
 {
-	t_list	*x;
-
-	if (!lst)
-		return ;
-	x = ft_list_create_elem(data);
-	if (!x)
-		return ;
-	x->next = *lst;
-	*lst = x;
+	while (lst->next)
+		lst =  lst->next;
+	return (lst);
 }
-

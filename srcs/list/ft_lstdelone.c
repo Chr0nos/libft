@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_sort.c                                     :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/22 19:43:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/07 16:33:49 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 17:22:46 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 18:48:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "libft.h"
+#include <string.h>
 
-void	ft_list_sort(t_list **lst, int (*cmp)())
+void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 {
-	t_list	*x;
-
-	if ((!lst) || (!*lst))
-		return ;
-	x = *lst;
-	while (x->next)
+	if (*alst)
 	{
-		if ((*cmp)(x->data, x->next->data) > 0)
-		{
-			ft_list_swap(x, x->next, lst);
-			x = *lst;
-		}
-		else
-			x = x->next;
+		del((*alst)->content, (*alst)->content_size);
+		ft_memdel(alst);
 	}
 }

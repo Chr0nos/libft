@@ -1,30 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_remove.c                                   :+:      :+:    :+:   */
+/*   ft_lstadd.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/25 23:55:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/09/30 13:24:38 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 17:55:07 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 18:11:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
-#include <stdlib.h>
+#include "libft.h"
 
-t_list	*ft_list_remove(t_list *lst, t_list *item)
+void	ft_lstadd(t_list **alst, t_list *new)
 {
-	t_list	*parent;
-	t_list	*next;
-
-	next = item->next;
-	if (lst != item)
-	{
-		parent = ft_list_parent(lst, item);
-		if (parent)
-			parent->next = next;
-	}
-	free(item);
-	return (next);
+	new->next = *alst;
+	*alst = new;
 }

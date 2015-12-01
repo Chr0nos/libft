@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 17:10:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 12:05:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:05:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	ft_memcpy(x + len1, s2, len2);
 	x[size] = '\0';
 	return (x);
-
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 12:53:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:07:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	ft_indexof(const char *str, char c)
 	return (0);
 }
 
-char	**ft_strsplit(char *str, char separator)
+char			**ft_strsplit(char *str, char separator)
 {
 	size_t	len;
 	size_t	space;

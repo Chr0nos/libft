@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:47:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 17:06:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static size_t	ft_quicksort_part(void **tab, size_t start, size_t end,
 	}
 }
 
-void	ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)())
+void			ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)())
 {
 	size_t		subend;
 

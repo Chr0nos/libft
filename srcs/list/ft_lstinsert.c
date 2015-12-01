@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_list_search.c                                   :+:      :+:    :+:   */
+/*   ft_lstinsert.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/09/14 15:29:45 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/02 15:57:36 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 18:00:04 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 18:11:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "list.h"
+#include "libft.h"
 
-t_list	*ft_list_search(t_list *lst, void *dataref, int (*cmp)())
+void	ft_lstinsert(t_list **parent, t_list *item)
 {
-	while (lst)
+	if (!*parent)
+		*parent = item;
+	else
 	{
-		if ((*cmp)(lst->data, dataref) == 0)
-			return (lst);
-		lst = lst->next;
+		item->next = *parent;
+		(*parent)->next = item;
 	}
-	return (0);
 }

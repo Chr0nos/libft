@@ -19,23 +19,15 @@ AR=ar
 LIBSO=libft.so
 NAME=libft.a
 LIST_ROOT=./srcs/list/
-LIST=ft_list_create_elem.o \
-	 ft_list_parent.o \
-	 ft_list_size.o \
-	 ft_list_last.o \
-	 ft_list_swap.o \
-	 ft_list_sort.o \
-	 ft_list_push_back.o ft_list_push_front.o ft_list_push_sort.o \
-	 ft_list_free.o \
-	 ft_list_foreach.o \
-	 ft_list_to.o \
-	 ft_list_map.o \
-	 ft_list_strlen.o \
-	 ft_list_insert.o \
-	 ft_list_remove.o \
-	 ft_list_search.o \
-	 ft_list_at.o \
-	 ft_list_push_params.o
+LIST=ft_lstnew.o \
+	 ft_lstpush_sort.o ft_lstpush_back.o \
+	 ft_lstdelone.o \
+	 ft_lstdel.o \
+	 ft_lstinsert.o \
+	 ft_lstadd.o \
+	 ft_lstiter.o \
+	 ft_lstlast.o \
+	 ft_lstmap.o
 BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_foreach.o \
 	  ft_btree.o \
@@ -54,7 +46,8 @@ MEMORY=ft_memset.o \
 	   ft_memcmp.o \
 	   ft_bzero.o \
 	   ft_memalloc.o \
-	   ft_memdel.o
+	   ft_memdel.o \
+	   ft_memdup.o
 PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o
@@ -76,6 +69,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strsub.o \
 	ft_strtrim.o \
 	ft_pow.o \
+	ft_crash.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_strjoin.o \

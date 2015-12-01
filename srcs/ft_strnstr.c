@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 00:43:43 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 13:43:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 18:27:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_strnstr(const char *str, const char *item, size_t n)
 	while ((str[p]) && (n))
 	{
 		x = 0;
-		while ((n--) && (str[p + x] == item[x]))
+		while ((n--)  && (str[p + x] == item[x]))
 			x++;
 		if (!item[x])
 			return ((char*)&str[p]);

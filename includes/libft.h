@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 12:44:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 19:14:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memalloc(size_t size);
 void	ft_memdel(void *ap);
+void	*ft_memdup(const void *src, size_t size);
 void	*ft_realloc(void *ptr, unsigned int size, unsigned int new_size);
 int		ft_strany(char c, const char *list);
 int		ft_strany_string(const char *str, const char *list);
@@ -99,5 +100,6 @@ int		ft_isprint(int c);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)());
+void	ft_crash(void);
 
 #endif

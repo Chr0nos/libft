@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 19:39:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 14:00:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 14:28:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
-#include "string.h"
+#include <stdlib.h>
+#include <string.h>
 
 static size_t	ft_itoa_len(int nb)
 {

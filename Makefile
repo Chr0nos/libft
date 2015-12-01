@@ -27,7 +27,10 @@ LIST=ft_lstnew.o \
 	 ft_lstadd.o \
 	 ft_lstiter.o \
 	 ft_lstlast.o \
-	 ft_lstmap.o
+	 ft_lstmap.o \
+	 ft_lstparent.o \
+	 ft_lstswap.o \
+	 ft_lstsort.o
 BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_foreach.o \
 	  ft_btree.o \

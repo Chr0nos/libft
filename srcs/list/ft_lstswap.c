@@ -1,20 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpush_front.c                                 :+:      :+:    :+:   */
+/*   ft_lstswap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 19:24:10 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 19:30:47 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/01 19:38:12 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 19:51:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_lstpush_front(t_list **lst, t_list *item)
+void	ft_lstswap(t_list **lst, t_list *a, t_list *b)
 {
-	item->next = *lst;
-	*lst = item;
-	return (item);
+	t_list	*parent;
+	t_list	*c;
+
+	c = b->next;
+	if (!(parent = ft_lstparent(*lst, a)))
+		*lst = c;
+	else
+		parent->next = b;
+	a->next = c;
+	b->next = a;
 }

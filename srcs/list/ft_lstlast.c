@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:54:42 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 18:55:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 19:53:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 t_list	*ft_lstlast(t_list *lst)
 {
 	while (lst->next)
-		lst =  lst->next;
+		lst = lst->next;
 	return (lst);
 }

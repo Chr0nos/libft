@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 18:50:04 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 19:19:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/01 19:31:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
 	x = lst;
 	while (x)
 	{
-		ft_lstpush_back(&result, f(x));
+		if (!ft_lstpush_back(&result, f(x)))
+			return (NULL);
 		x = x->next;
 	}
 	return (result);

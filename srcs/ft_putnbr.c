@@ -3,24 +3,41 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/18 10:40:58 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:50:27 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/30 13:44:32 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/01 16:50:58 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "stdlib.h"
 
-void	ft_putnbr(int nb)
+static void	ft_putnbr_rec(unsigned int nb, char *buffer)
 {
-	char	*tmp;
-
-	tmp = ft_itoa(nb);
-	if (tmp)
+	if (nb == 0)
+		ft_strncpy(buffer, "0", 2);
+	else
 	{
-		ft_putstr(tmp);
-		ft_strdel(&tmp);
+		*buffer = nb % 10 + '0';
+		nb /= 10;
+		if (nb)
+			ft_putnbr_rec(nb, buffer + 1);
+		else
+			*++buffer = '\0';
 	}
+}
+
+void		ft_putnbr(int n)
+{
+	char	buffer[12];
+
+	if (n < 0)
+	{
+		*buffer = '-';
+		ft_putnbr_rec(n * -1, (char*)buffer + 1);
+	}
+	else
+		ft_putnbr_rec(n, (char*)buffer);
+	ft_strrev(buffer + ((n < 0) ? 1 : 0));
+	ft_putstr(buffer);
 }

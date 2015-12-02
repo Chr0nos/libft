@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 15:56:31 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 15:57:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static size_t	ft_strsplit_count(const char *str, char c)
 {
 	size_t	len;
 
-	len = 0;	
+	len = 0;
 	while ((*str) && (++len))
 	{
 		while (*str == c)

@@ -6,28 +6,24 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 00:43:43 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 19:52:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 18:33:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
 
-char	*ft_strnstr(const char *str, const char *item, size_t n)
+char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 {
-	size_t	p;
-	size_t	x;
+	const size_t	len = ft_strlen(s2);
 
-	if (!*item)
-		return ((char*)str);
-	p = 0;
-	while ((str[p]) && (n))
+	if (!*s2)
+		return ((char*)s1);
+	while ((*s1) & (n-- >= len))
 	{
-		x = 0;
-		while ((n--) && (str[p + x] == item[x]))
-			x++;
-		if (!item[x])
-			return ((char*)&str[p]);
-		p++;
+		if (ft_memcmp(s1, s2, len) == 0)
+			return ((char*)s1);
+		s1++;
 	}
 	return (NULL);
 }

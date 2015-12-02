@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:57:02 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 10:05:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 12:16:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
+#include <string.h>
 
 char	*ft_strstr(const char *str, const char *item)
 {

@@ -144,7 +144,7 @@ fclean: clean
 	rm -f $(NAME) $(LIBSO)
 re: fclean all
 rendu:
-	mkdir rendu
+	git clone vogsphere@vogsphere.42.fr:intra/2015/activities/libft/snicolet rendu
 	find ./srcs/ -name "*.c" -exec cp {} ./rendu/ \;
 	find ./includes/ -name "*.h" -exec cp {} ./rendu/ \;
 	cp Makefile ./rendu/
@@ -152,6 +152,8 @@ rendu:
 	rm ./rendu/ft_printf.h
 	rm ./rendu/ft_vprintf.c
 	rm ./rendu/ft_printf.c
+	cd rendu/
+	git status
 
 ################################################################################
 ##                                                                            ##

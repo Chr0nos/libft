@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 15:54:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 15:56:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,6 @@ char			**ft_strsplit(const char *str, char separator)
 			split[space++] = ft_strndup(str, len);
 			str += len;
 		}
-		else
-			ft_crash();
 	}
 	split[space] = 0;
 	return (split);

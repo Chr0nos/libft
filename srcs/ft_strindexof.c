@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstr.c                                        :+:      :+:    :+:   */
+/*   ft_strindexof.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/25 12:57:02 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 10:05:40 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/02 10:09:59 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/02 10:17:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
+#include <string.h>
 
-char	*ft_strstr(const char *str, const char *item)
+size_t	ft_strindexof(const char *str, char c)
 {
-	size_t		ip;
+	size_t	p;
 
-	if (!*item)
-		return ((char*)str);
-	while (*str)
+	p = 0;
+	while (str[p])
 	{
-		ip = 0;
-		while (str[ip] == item[ip])
-			if (!item[++ip])
-				return ((char*)str);
-		str++;
+		if (str[p] == c)
+			return (p);
+		p++;
 	}
 	return (0);
 }
+

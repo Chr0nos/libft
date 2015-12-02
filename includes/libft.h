@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 20:14:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 10:12:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ char	*ft_strjoin(const char *s1, const char *s2);
 char	**ft_strsplit(char *str, char separator);
 char	*ft_strchr(const char *s, int c);
 char	*ft_strrchr(const char *s, int c);
+size_t	ft_strindexof(const char *str, char c);
 void	ft_strclr(char *s);
 int		ft_strcount(char *str, char c);
 int		ft_strncount(char *str, char c, unsigned int n);

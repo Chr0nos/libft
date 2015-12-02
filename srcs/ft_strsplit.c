@@ -6,59 +6,52 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 13:28:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 15:54:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-static size_t	ft_strsplit_seek_for_that_damn_separator(char **str, char c)
-{
-	size_t	seeks;
-
-	seeks = 0;
-	while ((**str == c) && (seeks++))
-		(*str)++;
-	return (seeks);
-}
-
-static size_t	ft_strsplit_count(char *str, char c)
+static size_t	ft_strsplit_count(const char *str, char c)
 {
 	size_t	len;
 
-	len = ((*str) ? 1 : 0);
-	while (*str)
+	len = 0;	
+	while ((*str) && (++len))
 	{
-		if ((*str == c) && (++len))
-			ft_strsplit_seek_for_that_damn_separator(&str, c);
+		while (*str == c)
+			str++;
+		if (!*str)
+			return (len + 1);
 		else
 			str++;
 	}
 	return (len + 1);
 }
 
-char			**ft_strsplit(char *str, char separator)
+char			**ft_strsplit(const char *str, char separator)
 {
+	char	**split;
 	size_t	len;
 	size_t	space;
-	char	**split;
 
 	if (!(split = malloc(sizeof(char*) * ft_strsplit_count(str, separator))))
 		return (NULL);
 	space = 0;
 	while (*str)
 	{
-		ft_strsplit_seek_for_that_damn_separator(&str, separator);
-		len = ft_strindexof(str, separator);
-		if (len)
+		while (*str == separator)
+			str++;
+		if (*str)
 		{
+			len = ft_strsublen(str, separator);
 			split[space++] = ft_strndup(str, len);
-			str += len + 1;
+			str += len;
 		}
+		else
+			ft_crash();
 	}
-	if (*str)
-		split[space++] = ft_strdup(str);
 	split[space] = 0;
 	return (split);
 }

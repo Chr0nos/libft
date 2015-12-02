@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 13:20:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 22:05:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 16:04:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void				ft_lstswap(t_list **lst, t_list *a, t_list *b);
 t_list				*ft_lstlast(t_list *lst);
 t_list				*ft_lstpush_back(t_list **lst, t_list *item);
 t_list				*ft_lstpush_front(t_list **lst, t_list *item);
+t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstsort(t_list **lst, int (*cmp)(t_list *, t_list *));
 void				ft_lstpush_sort(t_list **lst, void *data, size_t size,
 		int (*cmp)());

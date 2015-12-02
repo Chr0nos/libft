@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 12:25:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 13:28:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static size_t	ft_strsplit_seek_for_that_damn_separator(char **str, char c)
 	size_t	seeks;
 
 	seeks = 0;
-	while ((**str == c)&& (seeks++))
+	while ((**str == c) && (seeks++))
 		(*str)++;
 	return (seeks);
 }

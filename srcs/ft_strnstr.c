@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 00:43:43 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 20:31:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/02 20:45:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@ char	*ft_strnstr(const char *s1, const char *s2, size_t n)
 
 	if (!*s2)
 		return ((char*)s1);
+	if (n < len)
+		return (NULL);
 	while ((*s1) & (n--))
 	{
 		if (ft_strncmp(s1, s2, len) == 0)

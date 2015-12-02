@@ -153,6 +153,8 @@ rendu:
 	rm ./rendu/ft_vprintf.c
 	rm ./rendu/ft_printf.c
 	cd rendu/
+	git add -a
+	git commit -m "rendu de libft"
 	git status
 
 ################################################################################

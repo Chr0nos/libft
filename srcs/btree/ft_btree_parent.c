@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/03 11:28:56 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/03 11:33:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:29:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#include "libft.h"
 
 t_btree		*ft_btree_parent(t_btree *root, t_btree *item)
 {

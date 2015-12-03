@@ -6,11 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:17:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 18:49:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:40:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "string.h"
+#include <string.h>
 
 void	*ft_memset(void *dest, int c, size_t n)
 {

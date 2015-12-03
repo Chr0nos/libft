@@ -6,24 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/02 12:46:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/02 19:47:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:28:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
-
-t_btree		*ft_btree_search_mess(t_btree *root, void *val, int (*f)())
-{
-	if (!root)
-		return (0);
-	if (f(root->data, val) == 0)
-		return (root);
-	if (root->left)
-		return (ft_btree_search_mess(root->left, val, f));
-	if (root->right)
-		return (ft_btree_search_mess(root->right, val, f));
-	return (0);
-}
+#include "libft.h"
 
 t_btree		*ft_btree_search(t_btree *root, void *val, int (*f)())
 {

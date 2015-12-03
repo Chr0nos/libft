@@ -6,12 +6,12 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 22:15:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:53:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "string.h"
+#include <string.h>
 
 char	*ft_strrchr(const char *s, int c)
 {

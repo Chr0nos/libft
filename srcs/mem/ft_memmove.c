@@ -6,12 +6,12 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 13:40:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 18:49:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:40:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "string.h"
+#include <string.h>
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {

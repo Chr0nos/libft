@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/01 15:53:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/02 16:04:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:24:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#include "libft.h"
 
 void	ft_btree_add(t_btree **root, void *data, int (*f)())
 {

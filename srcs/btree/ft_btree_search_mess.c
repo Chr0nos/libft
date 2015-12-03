@@ -1,23 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsublen.c                                     :+:      :+:    :+:   */
+/*   ft_btree_search_mess.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/28 21:33:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/03 16:54:49 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/03 16:25:36 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/03 16:25:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-size_t	ft_strsublen(const char *str, char c)
+t_btree		*ft_btree_search_mess(t_btree *root, void *val, int (*f)())
 {
-	size_t	counter;
-
-	counter = 0;
-	while ((*str) && (*str != c) && (str++))
-		counter++;
-	return (counter);
+	if (!root)
+		return (0);
+	if (f(root->data, val) == 0)
+		return (root);
+	if (root->left)
+		return (ft_btree_search_mess(root->left, val, f));
+	if (root->right)
+		return (ft_btree_search_mess(root->right, val, f));
+	return (0);
 }

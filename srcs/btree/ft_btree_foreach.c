@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/10 19:00:18 by snicolet          #+#    #+#             */
-/*   Updated: 2015/10/03 11:51:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:12:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#include "libft.h"
 
 void	ft_btree_foreach_infix(t_btree *root, void (*f)(void *))
 {

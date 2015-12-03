@@ -6,12 +6,12 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/29 17:27:13 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 17:04:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:47:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
+#include <unistd.h>
 
 void	ft_putstr_align_right(char *str, char fill, size_t len)
 {

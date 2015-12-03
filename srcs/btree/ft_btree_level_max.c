@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/29 12:54:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:51:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:29:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "btree.h"
+#include "libft.h"
 
 static void		ft_btree_level_max_r(t_btree *root, size_t lvl, size_t *m)
 {

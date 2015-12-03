@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_btree_foreach_suffix.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 23:35:01 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/03 16:43:27 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/03 16:20:10 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/03 16:20:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_btree_foreach_suffix(t_btree *root, void (*f)(void *))
 {
-	write(fd, &c, 1);
+	if (!root)
+		return ;
+	if (root->left)
+		ft_btree_foreach_suffix(root->left, f);
+	if (root->right)
+		ft_btree_foreach_suffix(root->right, f);
+	f(root->data);
 }

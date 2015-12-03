@@ -6,12 +6,12 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/08 12:14:01 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/27 12:16:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/03 16:53:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include "unistd.h"
+#include <unistd.h>
 
 char	*ft_strrev(char *str)
 {

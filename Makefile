@@ -34,14 +34,17 @@ LIST=ft_lstnew.o \
 	 ft_lststrlen.o \
 	 ft_lstsize.o
 BTREE_ROOT=./srcs/btree/
-BTREE=ft_btree_foreach.o \
-	  ft_btree.o \
+BTREE=ft_btree_create_node.o \
 	  ft_btree_add.o \
 	  ft_btree_search.o \
+	  ft_btree_search_mess.o \
 	  ft_btree_insert.o \
 	  ft_btree_level.o \
 	  ft_btree_parent.o \
-	  ft_btree_level_max.o
+	  ft_btree_level_max.o \
+	  ft_btree_foreach_infix.o \
+	  ft_btree_foreach_prefix.o \
+	  ft_btree_foreach_suffix.o
 MEMORY_ROOT=./srcs/mem/
 MEMORY=ft_memset.o \
 	   ft_memcpy.o \
@@ -153,9 +156,6 @@ rendu:
 	rm ./rendu/ft_vprintf.c
 	rm ./rendu/ft_printf.c
 	cd rendu/
-	git add -a
-	git commit -m "rendu de libft"
-	git status
 
 ################################################################################
 ##                                                                            ##

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 14:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 19:13:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/04 13:27:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int				ft_atoi(char *str)
 		return (0);
 	if (*str == '+')
 		str++;
-	else if ((*str == '-') && (*str++))
+	else if ((*str == '-') && (*(str++)))
 		negative = 1;
 	while (ft_isdigit(str[p]))
 		nb = (nb * 10) + (str[p++] - '0');

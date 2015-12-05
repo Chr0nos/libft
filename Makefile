@@ -66,7 +66,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strcmp.o ft_strncmp.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \
 	ft_strlen.o ft_strsublen.o \
-	ft_strchr.o ft_strrchr.o \
+	ft_strchr.o ft_strrchr.o ft_strchrpos.o \
 	ft_strstr.o ft_strrstr.o ft_strnstr.o \
 	ft_strsplit.o \
 	ft_strcount.o ft_strncount.o \

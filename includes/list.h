@@ -6,14 +6,14 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/22 13:20:11 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/05 16:20:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/05 17:41:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIST_H
 # define LIST_H
 # include "libft.h"
-# include "string.h"
+# include <string.h>
 
 typedef struct		s_list
 {
@@ -24,6 +24,7 @@ typedef struct		s_list
 
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstnewstr(char *str);
+void				ft_lstremove(t_list **item, t_list *parent);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **ast, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *new);

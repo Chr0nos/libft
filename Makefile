@@ -19,7 +19,7 @@ AR=ar
 LIBSO=libft.so
 NAME=libft.a
 LIST_ROOT=./srcs/list/
-LIST=ft_lstnew.o \
+LIST=ft_lstnew.o ft_lstnewstr.o \
 	 ft_lstpush_sort.o ft_lstpush_back.o ft_lstpush_front.o \
 	 ft_lstdelone.o \
 	 ft_lstdel.o \

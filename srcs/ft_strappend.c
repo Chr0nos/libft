@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 15:03:02 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/05 18:43:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/05 22:11:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,26 +15,18 @@
 
 char		*ft_strappend(char **s1, const char *s2)
 {
-	size_t			size;
+	const size_t	len1 = ((*s1) ? ft_strlen(*s1) : 0);
+	const size_t	len2 = ft_strlen(s2);
 	char			*d;
-	size_t			p;
-	size_t			i;
 
-	p = 0;
-	size = ((*s1) ? ft_strlen(*s1) : 0) + ft_strlen(s2);
-	if ((d = (char*)malloc(sizeof(char) * (size + 1))))
+	if ((d = (char*)malloc(sizeof(char) * (len1 + len2 + 1))))
 	{
-		i = 0;
 		if (*s1)
 		{
-			while ((*s1)[i] != '\0')
-				d[p++] = (*s1)[i++];
+			ft_memcpy(d, *s1, len1);
 			free(*s1);
-			*s1 = 0;
 		}
-		while (*s2)
-			d[p++] = *(s2++);
-		d[p] = '\0';
+		ft_strncpy(d + len1, s2, len2 + 1);
 		*s1 = d;
 	}
 	else

@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strchrpos.c                                     :+:      :+:    :+:   */
+/*   ft_lstnewstr.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-<<<<<<< HEAD
-/*   Created: 2015/12/05 15:44:05 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/05 15:45:57 by snicolet         ###   ########.fr       */
-=======
-/*   Created: 2015/12/05 17:48:52 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/05 17:50:03 by snicolet         ###   ########.fr       */
->>>>>>> dev
+/*   Created: 2015/12/05 16:18:06 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/05 16:19:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "libft.h"
 
-size_t	ft_strchrpos(const char *s, const char c)
+t_list		*ft_lstnewstr(char *str)
 {
-	size_t	p;
-
-	p = 0;
-	while (s[p])
-		if (s[p++] == c)
-			return (p - 1);
-	return (0);
+	return (ft_lstnew(str, ft_strlen(str) + 1));
 }

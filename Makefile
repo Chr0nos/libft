@@ -142,6 +142,7 @@ so:
 #cleaners
 mrproper: fclean
 	find . -name ".*.swp" -print -delete
+	find . -name "\#*\#" -print -delete
 clean:
 	rm -f $(LIB_CONTENT)
 fclean: clean

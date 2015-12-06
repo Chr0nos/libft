@@ -10,15 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-size_t	ft_strchrpos(const char *s, const char c)
+int		ft_strchrpos(const char *s, const char c)
 {
-	size_t	p;
+	int		p;
 
 	p = 0;
 	while (s[p])
 		if (s[p++] == c)
 			return (p - 1);
-	return (0);
+	return (-1);
 }

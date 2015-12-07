@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 EXTRA_FLAGS=
-FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result
+FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result -g3
 COMPILER=gcc
 GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib

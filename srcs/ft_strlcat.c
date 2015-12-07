@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 20:14:55 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 14:26:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/07 17:37:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ size_t			ft_strlcat(char *dest, const char *src, size_t size)
 		return (len + size);
 	dest += dlen;
 	p = 0;
-	while (p < size - dlen - 1)
+	while (p < (size - dlen - 1))
 	{
 		dest[p] = src[p];
 		p++;

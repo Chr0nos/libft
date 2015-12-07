@@ -10,8 +10,8 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=
-FLAGS=-Wall -Werror -Wextra -Ofast -Wno-unused-result -g3
+EXTRA_FLAGS=-g3
+FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 COMPILER=gcc
 GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
 RANLIB=ranlib
@@ -158,6 +158,9 @@ rendu:
 	rm ./rendu/ft_vprintf.c
 	rm ./rendu/ft_printf.c
 	cd rendu/
+norminette:
+	find . -name "*.h" -exec norminette {} \;
+	find . -name "*.c" -exec norminette {} \;
 
 ################################################################################
 ##                                                                            ##

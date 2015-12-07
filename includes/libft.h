@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/06 19:13:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/07 17:59:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map);
 void	ft_putnbr(int nb);
 void	ft_putnbr_fd(int n, int fd);
 int		ft_pow(int nb, int power);
-int		ft_atoi(char *str);
+int		ft_atoi(const char *str);
 void	ft_swap_ptr(void **p1, void **p2);
 void	*ft_memset(void *dest, int c, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);

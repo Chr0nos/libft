@@ -83,7 +83,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_strjoin.o \
 	ft_strappend.o \
-	ft_itoa.o \
+	ft_itoa.o ft_itoa_base.o \
 	ft_itobase.o \
 	ft_atoi.o \
 	ft_putnbr.o ft_putnbr_fd.o \
@@ -111,7 +111,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_isascii.o \
 	ft_isprint.o \
 	ft_tolower.o \
-	ft_toupper.o
+	ft_toupper.o \
+	ft_rotx.o
 
 ################################################################################
 ##                                                                            ##

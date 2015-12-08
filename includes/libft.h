@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/07 17:59:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/08 13:12:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ char	*ft_strrev(char *str);
 char	*ft_strnrev(char *str, size_t n);
 char	*ft_strtrim(const char *s);
 char	*ft_itoa(int nb);
+char	*ft_itoa_base(int value, int base);
 char	*ft_itobase(int nb, char *buffer, unsigned char base, const char *map);
 void	ft_putnbr(int nb);
 void	ft_putnbr_fd(int n, int fd);
@@ -106,5 +107,6 @@ int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)());
 void	ft_crash(void);
+void	ft_rotx(char *s, int x);
 
 #endif

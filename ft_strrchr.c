@@ -1,36 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vprintf.c                                       :+:      :+:    :+:   */
+/*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 19:26:47 by snicolet         ###   ########.fr       */
+/*   Created: 2015/11/25 12:39:07 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/08 14:06:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdarg.h>
+#include <string.h>
 
-void	ft_vprintf(const char *str, va_list *ap)
+char	*ft_strrchr(const char *s, int c)
 {
-	while (*str)
-	{
-		if (*str == '%')
-		{
-			str++;
-			if (*str == '%')
-				ft_putchar('%');
-			else if (*str == 'c')
-				ft_putchar(va_arg(*ap, int));
-			else if (*str == 's')
-				ft_putstr(va_arg(*ap, char*));
-			else if (*str == 'd')
-				ft_putnbr(va_arg(*ap, int));
-		}
-		else
-			ft_putchar(*str);
-		str++;
-	}
+	size_t	n;
+
+	n = ft_strlen((char*)s);
+	if (!c)
+		return (((char*)(s + n)));
+	while (n)
+		if (s[--n] == (unsigned char)c)
+			return ((char*)&s[n]);
+	return (NULL);
 }

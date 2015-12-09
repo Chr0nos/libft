@@ -10,15 +10,14 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-g3
+EXTRA_FLAGS=
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
-COMPILER=gcc
-GCC=$(COMPILER) $(FLAGS) -I./includes $(EXTRA_FLAGS)
+COMPILER=clang
+GCC=$(COMPILER) $(FLAGS) -I. $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
 NAME=libft.a
-LIST_ROOT=./srcs/list/
 LIST=ft_lstnew.o ft_lstnewstr.o \
 	 ft_lstpush_sort.o ft_lstpush_back.o ft_lstpush_front.o \
 	 ft_lstdelone.o \
@@ -33,7 +32,6 @@ LIST=ft_lstnew.o ft_lstnewstr.o \
 	 ft_lstsort.o \
 	 ft_lststrlen.o \
 	 ft_lstsize.o
-BTREE_ROOT=./srcs/btree/
 BTREE=ft_btree_create_node.o \
 	  ft_btree_add.o \
 	  ft_btree_search.o \
@@ -45,7 +43,6 @@ BTREE=ft_btree_create_node.o \
 	  ft_btree_foreach_infix.o \
 	  ft_btree_foreach_prefix.o \
 	  ft_btree_foreach_suffix.o
-MEMORY_ROOT=./srcs/mem/
 MEMORY=ft_memset.o \
 	   ft_memcpy.o \
 	   ft_memccpy.o \
@@ -56,7 +53,6 @@ MEMORY=ft_memset.o \
 	   ft_memalloc.o \
 	   ft_memdel.o \
 	   ft_memdup.o
-PRINTF_ROOT=./srcs/printf/
 PRINTF=ft_printf.o \
 	   ft_vprintf.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
@@ -119,7 +115,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 ##                   COMPILATION RULES : DONT TOUCH: IT'S MAGIC               ##
 ##                                                                            ##
 ################################################################################
-LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
+LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE)
 
 all: $(NAME)
 $(NAME): $(LIB_CONTENT)
@@ -149,34 +145,14 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(LIBSO)
 re: fclean all
-rendu:
-	git clone vogsphere@vogsphere.42.fr:intra/2015/activities/libft/snicolet rendu
-	find ./srcs/ -name "*.c" -exec cp {} ./rendu/ \;
-	find ./includes/ -name "*.h" -exec cp {} ./rendu/ \;
-	cp Makefile ./rendu/
-	cp auteur ./rendu/
-	rm ./rendu/ft_printf.h
-	rm ./rendu/ft_vprintf.c
-	rm ./rendu/ft_printf.c
-	cd rendu/
+
 norminette:
-	find . -name "*.h" -exec norminette {} \;
-	find . -name "*.c" -exec norminette {} \;
+	norminette *.[ch]
 
 ################################################################################
 ##                                                                            ##
 ##                               IMPLICIT RULES                               ##
 ##                                                                            ##
 ################################################################################
-%.o: $(LIST_ROOT)%.c
-	$(GCC) -c $<
-%.o: $(BTREE_ROOT)%.c
-	$(GCC) -c $<
-%.o: $(MEMORY_ROOT)%.c
-	$(GCC) -c $<
-%.o: $(PRINTF_ROOT)%.c
-	$(GCC) -c $<
-%.o: ./srcs/%.c
-	$(GCC) -c $<
 %.o: %.c
 	$(GCC) -c $<

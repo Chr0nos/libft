@@ -42,7 +42,8 @@ BTREE=ft_btree_create_node.o \
 	  ft_btree_level_max.o \
 	  ft_btree_foreach_infix.o \
 	  ft_btree_foreach_prefix.o \
-	  ft_btree_foreach_suffix.o
+	  ft_btree_foreach_suffix.o \
+	  ft_btree_free.o
 MEMORY=ft_memset.o \
 	   ft_memcpy.o \
 	   ft_memccpy.o \

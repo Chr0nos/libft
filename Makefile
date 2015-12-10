@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/12/02 10:10:50 by snicolet         ###   ########.fr       *#
+#*   Updated: 2015/12/10 12:12:24 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_isprint.o \
 	ft_tolower.o \
 	ft_toupper.o \
-	ft_rotx.o
+	ft_rotx.o \
+	ft_brainfuck.o
 
 ################################################################################
 ##                                                                            ##

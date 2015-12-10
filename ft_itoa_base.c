@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:09:13 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/08 13:32:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/10 21:44:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ char		*ft_itoa_base(int val, int base)
 	unsigned int	len;
 	char			sign;
 	const char		*map = "0123456789ABCDEF";
+	unsigned int	nb;
 
 	if ((base < 2) || (base > 16))
 		return (0);
@@ -39,13 +40,14 @@ char		*ft_itoa_base(int val, int base)
 	if (!(buffer = malloc(sizeof(char) * (len + 1))))
 		return (0);
 	sign = (val < 0) ? 1 : 0;
+	nb = ((val < 0) ? (unsigned int)-val : (unsigned int)val);
 	buffer[len--] = '\0';
-	if (!val)
+	if (!nb)
 		buffer[len--] = '0';
-	while (val)
+	while (nb)
 	{
-		buffer[len--] = map[((val < 0) ? (unsigned int)-val : val) % base];
-		val /= base;
+		buffer[len--] = map[nb % base];
+		nb /= base;
 	}
 	if ((sign) && (base == 10))
 		buffer[0] = '-';

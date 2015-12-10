@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/09 18:58:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/10 14:42:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,5 +154,6 @@ void				ft_btree_insert(t_btree **node, void *data, int (*f)());
 int					ft_btree_level(t_btree *root, t_btree *item, int level);
 size_t				ft_btree_level_max(t_btree *root);
 void				ft_btee_free(t_btree **root);
+char				*ft_brainfuck(const char *str, unsigned char *ptr);
 
 #endif

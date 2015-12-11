@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 17:17:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/11 19:29:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/11 20:12:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 void	ft_lstremove(t_list **item, t_list **root, void (*f)())
 {
 	t_list	*parent;
+	t_list	*dent;
 
 	if (*item)
 	{
@@ -25,8 +26,12 @@ void	ft_lstremove(t_list **item, t_list **root, void (*f)())
 		if (f)
 			f((*item)->content);
 		if (*item == *root)
+		{
+			dent = *item;
 			*root = (*item)->next;
-		free(*item);
-		*item = 0;
+		}
+		else
+			dent = *item;
+		free(dent);
 	}
 }

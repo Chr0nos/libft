@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 11:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/10 19:14:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/11 11:48:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,23 @@ static const char	*brloop(const char *str)
 	return (str);
 }
 
+static int			brainfuck_firt_part(const char x, unsigned char **ptr)
+{
+	if (x == '>')
+		(*ptr)++;
+	else if (x == '<')
+		(*ptr)--;
+	else if (x == '+')
+		(**ptr)++;
+	else if (x == '-')
+		(**ptr)--;
+	else if (x == '.')
+		ft_putchar(**ptr);
+	else
+		return (0);
+	return (1);
+}
+
 char				*ft_brainfuck(const char *str, unsigned char *ptr)
 {
 	const char	*start;
@@ -33,16 +50,8 @@ char				*ft_brainfuck(const char *str, unsigned char *ptr)
 	start = str;
 	while (*str)
 	{
-		if (*str == '>')
-			ptr++;
-		else if (*str == '<')
-			ptr--;
-		else if (*str == '+')
-			(*ptr)++;
-		else if (*str == '-')
-			(*ptr)--;
-		else if (*str == '.')
-			ft_putchar(*ptr);
+		if (brainfuck_firt_part(*str, &ptr))
+			(void)str;
 		else if (*str == ',')
 			ft_putendl("warning: ',' instruction are not supported yet");
 		else if ((*str == '[') && (*ptr != 0))

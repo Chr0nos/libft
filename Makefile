@@ -152,6 +152,8 @@ re: fclean all
 norminette:
 	norminette *.[ch]
 
+.PHONY: norminette re clean fclean so dll all mrproper
+
 ################################################################################
 ##                                                                            ##
 ##                               IMPLICIT RULES                               ##

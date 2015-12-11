@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/29 17:00:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:49:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/11 14:44:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_convert_base(int nb, size_t base, char *pattern)
 
 	if (base < 2)
 		return (0);
-	str = malloc((sizeof(char) * 33));
+	str = (char*)malloc((sizeof(char) * 33));
 	if ((!str) || (!pattern))
 		return (0);
 	p = 0;

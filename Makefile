@@ -31,7 +31,8 @@ LIST=ft_lstnew.o ft_lstnewstr.o \
 	 ft_lstswap.o \
 	 ft_lstsort.o \
 	 ft_lststrlen.o \
-	 ft_lstsize.o
+	 ft_lstsize.o \
+	 ft_lstremove.o
 BTREE=ft_btree_create_node.o \
 	  ft_btree_add.o \
 	  ft_btree_search.o \

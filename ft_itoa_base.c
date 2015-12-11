@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:09:13 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/10 21:44:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/11 14:29:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,8 @@ char		*ft_itoa_base(int val, int base)
 	buffer[len--] = '\0';
 	if (!nb)
 		buffer[len--] = '0';
-	while (nb)
-	{
-		buffer[len--] = map[nb % base];
+	while ((nb) && (buffer[len--] = map[nb % base]))
 		nb /= base;
-	}
 	if ((sign) && (base == 10))
 		buffer[0] = '-';
 	return (buffer);

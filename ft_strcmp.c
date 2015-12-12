@@ -6,9 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/11 12:27:50 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/28 23:37:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 20:51:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_strcmp(const char *s1, const char *s2)
 {

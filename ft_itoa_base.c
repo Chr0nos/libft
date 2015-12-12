@@ -6,15 +6,16 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/08 13:09:13 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/11 14:29:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:20:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
-static int	itoa_len(int nb, int base)
+static unsigned int	itoa_len(int nb, int base)
 {
-	int		p;
+	unsigned int	p;
 
 	p = 1;
 	if ((nb < 0) && (base == 10))
@@ -24,7 +25,7 @@ static int	itoa_len(int nb, int base)
 	return (p);
 }
 
-char		*ft_itoa_base(int val, int base)
+char				*ft_itoa_base(int val, int base)
 {
 	char			*buffer;
 	unsigned int	len;
@@ -35,7 +36,7 @@ char		*ft_itoa_base(int val, int base)
 	if ((base < 2) || (base > 16))
 		return (0);
 	if ((val < 0) && (base != 10))
-		val = (unsigned int)-val;
+		val = (int)((unsigned int)-val);
 	len = itoa_len(val, base);
 	if (!(buffer = malloc(sizeof(char) * (len + 1))))
 		return (0);
@@ -44,8 +45,8 @@ char		*ft_itoa_base(int val, int base)
 	buffer[len--] = '\0';
 	if (!nb)
 		buffer[len--] = '0';
-	while ((nb) && (buffer[len--] = map[nb % base]))
-		nb /= base;
+	while ((nb) && (buffer[len--] = map[nb % (unsigned int)base]))
+		nb /= (unsigned int)base;
 	if ((sign) && (base == 10))
 		buffer[0] = '-';
 	return (buffer);

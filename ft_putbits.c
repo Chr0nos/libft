@@ -6,11 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/21 21:23:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:40:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:29:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <string.h>
 
 static void		ft_putobits(unsigned char *x)
 {
@@ -24,10 +25,10 @@ static void		ft_putobits(unsigned char *x)
 	}
 }
 
-void			ft_putbits(void *data, unsigned int size)
+void			ft_putbits(void *data, size_t size)
 {
 	unsigned char	*x;
-	unsigned int	p;
+	size_t			p;
 
 	size /= 8;
 	x = data;

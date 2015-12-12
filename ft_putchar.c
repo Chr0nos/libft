@@ -6,10 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 10:58:28 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:23:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 20:47:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <unistd.h>
 
 void	ft_putchar(int c)

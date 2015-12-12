@@ -6,9 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/20 19:00:27 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/30 15:54:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:26:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_str_only(char c, char *list)
 {

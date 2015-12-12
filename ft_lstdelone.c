@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 17:22:46 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 18:48:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:52:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	ft_lstdelone(t_list **alst, void (*del)(void *, size_t))
 	if (*alst)
 	{
 		del((*alst)->content, (*alst)->content_size);
-		ft_memdel(alst);
+		ft_memdel((void**)alst);
 	}
 }

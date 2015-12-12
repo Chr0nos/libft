@@ -6,10 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 02:30:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/11 14:43:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:26:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
 #include <stdlib.h>
 

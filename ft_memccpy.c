@@ -6,10 +6,11 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:18:16 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/07 19:55:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:46:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
 
 void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
@@ -27,7 +28,7 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 	{
 		d[p] = s[p];
 		if (d[p++] == (unsigned char)c)
-			return (dest + p);
+			return ((void*)((unsigned long)dest + (unsigned long)p));
 	}
 	return (NULL);
 }

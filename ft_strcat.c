@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:22:35 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/24 17:31:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 20:53:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,6 @@ char	*ft_strcat(char *dest, const char *src)
 	x = dest;
 	while (*dest)
 		dest++;
-	ft_strcpy(dest, (char*)src);
+	ft_strcpy(dest, src);
 	return (x);
 }

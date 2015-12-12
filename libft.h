@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/11 19:18:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:54:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,23 +42,22 @@ void				ft_swap(int *a, int *b);
 size_t				ft_strsublen(const char *str, char c);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
 char				*ft_strcpy(char *dest, const char *src);
-char				*ft_strncpy(char *dest, const char *src, unsigned int n);
+char				*ft_strncpy(char *dest, const char *src, size_t n);
 char				*ft_strlcpy(char *dest, const char *src);
 char				*ft_strcat(char *dest, const char *src);
 char				*ft_strncat(char *dest, const char *src, size_t n);
 size_t				ft_strlcat(char *dest, const char *src, size_t n);
-char				*ft_strstr(const char *str, const char *item);
-char				*ft_strrstr(const char *str, const char *iten);
-char				*ft_strnstr(const char *s1, const char *s2, size_t n);
+char				*ft_strstr(char *str, const char *item);
+char				*ft_strrstr(char *str, const char *iten);
+char				*ft_strnstr(char *s1, const char *s2, size_t n);
 char				*ft_strmap(const char *s, char (*f)(char));
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strjoin(const char *s1, const char *s2);
 char				*ft_strappend(char **s1, const char *s2);
 char				**ft_strsplit(const char *str, char separator);
-char				*ft_strchr(const char *s, int c);
+char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);
-char				*ft_strrchr(const char *s, int c);
-size_t				ft_strindexof(const char *str, char c);
+char				*ft_strrchr(char *s, int c);
 void				ft_strclr(char *s);
 int					ft_strcount(char *str, char c);
 int					ft_strncount(char *str, char c, unsigned int n);
@@ -84,10 +83,10 @@ void				*ft_memset(void *dest, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dest, const void *src, size_t n);
-void				*ft_memchr(const void *s, int c, size_t n);
+void				*ft_memchr(void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
-void				ft_memdel(void *ap);
+void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t size);
 void				*ft_realloc(void *ptr, unsigned int size,
 		unsigned int new_size);
@@ -101,15 +100,13 @@ void				ft_putstr_list(char **list, int size, char c);
 void				ft_free_strtab(char **tab, unsigned int size);
 void				ft_strtab_foreach(char **tab, int size, void (*f)(char*));
 void				ft_putstrdata(void *data);
-int					ft_str_numeric(char *str);
 void				ft_sort_integer_table(int *tab, int size);
-void				ft_putbits(void *data, unsigned int size);
+void				ft_putbits(void *data, size_t size);
 void				ft_putmem(void *data, size_t size);
 void				ft_puthex(void *data, size_t size);
 int					ft_is_printable(char c);
 int					ft_str_is_printable(char *str);
 int					ft_is_sorted(void **tab, size_t size, int (*cmp)());
-char				*ft_convert_base(int nb, size_t base, char *pattern);
 int					ft_match(char *s1, char *s2);
 void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
@@ -154,6 +151,7 @@ void				ft_btree_insert(t_btree **node, void *data, int (*f)());
 int					ft_btree_level(t_btree *root, t_btree *item, int level);
 size_t				ft_btree_level_max(t_btree *root);
 void				ft_btee_free(t_btree **root);
-char				*ft_brainfuck(const char *str, unsigned char *ptr);
+void				ft_btree_free(t_btree **root);
+char				*ft_brainfuck(char *str, unsigned char *ptr);
 
 #endif

@@ -6,9 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/10 10:08:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/17 19:30:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:13:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_pow(int nb, int power)
 {

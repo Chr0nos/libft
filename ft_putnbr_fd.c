@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:44:32 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 12:55:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:25:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static void	ft_putnbr_rec(unsigned int nb, char *buffer)
 		if (nb)
 			ft_putnbr_rec(nb, buffer + 1);
 		else
-			*++buffer = '\0';
+			*(++buffer) = '\0';
 	}
 }
 
@@ -34,10 +34,10 @@ void		ft_putnbr_fd(int n, int fd)
 	if (n < 0)
 	{
 		*buffer = '-';
-		ft_putnbr_rec(n * -1, (char*)buffer + 1);
+		ft_putnbr_rec((unsigned int)-n, (char*)buffer + 1);
 	}
 	else
-		ft_putnbr_rec(n, (char*)buffer);
+		ft_putnbr_rec((unsigned int)n, (char*)buffer);
 	ft_strrev(buffer + ((n < 0) ? 1 : 0));
 	ft_putstr_fd(buffer, fd);
 }

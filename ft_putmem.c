@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/23 12:37:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/11/29 17:39:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:31:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	ft_putmem_ascii(void *data, size_t size)
 {
-	unsigned char	*x;
-	size_t			p;
+	char		*x;
+	size_t		p;
 
-	x = data;
+	x = (char*)data;
 	p = 0;
 	while (p < size)
 	{
@@ -28,10 +28,10 @@ static void	ft_putmem_ascii(void *data, size_t size)
 
 void		ft_putmem(void *data, size_t size)
 {
-	size_t		pos_bin;
-	unsigned	*x;
-	size_t		block;
-	size_t		bits_len;
+	size_t			pos_bin;
+	unsigned char	*x;
+	size_t			block;
+	size_t			bits_len;
 
 	block = 4 * 8;
 	pos_bin = 0;

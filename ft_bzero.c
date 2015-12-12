@@ -6,10 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 21:36:44 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/03 16:36:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:50:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <string.h>
 
 void	ft_bzero(void *s, size_t n)

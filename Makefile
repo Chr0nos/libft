@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=
+EXTRA_FLAGS=-Weverything -g3
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 COMPILER=clang
 GCC=$(COMPILER) $(FLAGS) -I. $(EXTRA_FLAGS)
@@ -74,7 +74,6 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strequ.o ft_strnequ.o \
 	ft_strsub.o \
 	ft_strtrim.o \
-	ft_strindexof.o \
 	ft_pow.o \
 	ft_crash.o \
 	ft_strrev.o ft_strnrev.o \
@@ -93,7 +92,6 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_free_tab.o \
 	ft_strtab_foreach.o \
 	ft_putstrdata.o \
-	ft_str_numeric.o \
 	ft_sort_tab.o \
 	ft_putbits.o \
 	ft_putmem.o \
@@ -101,7 +99,6 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_puthex.o \
 	ft_quicksort.o \
 	ft_is_sorted.o \
-	ft_convert_base.o \
 	ft_match.o \
 	ft_isalpha.o \
 	ft_isdigit.o \

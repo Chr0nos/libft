@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 11:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/11 11:48:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:35:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static const char	*brloop(const char *str)
+static char	*brloop(char *str)
 {
 	while ((*str) && (*str != ']'))
 	{
@@ -26,7 +26,7 @@ static const char	*brloop(const char *str)
 	return (str);
 }
 
-static int			brainfuck_firt_part(const char x, unsigned char **ptr)
+static int			brainfuck_firt_part(char x, unsigned char **ptr)
 {
 	if (x == '>')
 		(*ptr)++;
@@ -43,9 +43,9 @@ static int			brainfuck_firt_part(const char x, unsigned char **ptr)
 	return (1);
 }
 
-char				*ft_brainfuck(const char *str, unsigned char *ptr)
+char				*ft_brainfuck(char *str, unsigned char *ptr)
 {
-	const char	*start;
+	char	*start;
 
 	start = str;
 	while (*str)
@@ -64,5 +64,5 @@ char				*ft_brainfuck(const char *str, unsigned char *ptr)
 			str = start - 1;
 		str++;
 	}
-	return ((char*)str);
+	return (str);
 }

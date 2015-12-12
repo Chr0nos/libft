@@ -6,10 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 20:35:31 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/02 16:34:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:13:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
 #include <stdlib.h>
 
 void	ft_strdel(char **as)

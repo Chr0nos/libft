@@ -6,13 +6,16 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 15:44:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 02:38:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 20:55:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strncpy(char *dest, const char *src, unsigned int n)
+#include "libft.h"
+#include <string.h>
+
+char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
-	unsigned int	p;
+	size_t	p;
 
 	p = 0;
 	while ((src[p]) && (p < n))

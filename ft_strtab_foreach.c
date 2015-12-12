@@ -6,9 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/24 19:02:02 by snicolet          #+#    #+#             */
-/*   Updated: 2015/08/24 19:10:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:27:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 void	ft_strtab_foreach(char **tab, int size, void (*f)(char*))
 {

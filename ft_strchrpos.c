@@ -6,9 +6,11 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/07 19:28:50 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/07 19:29:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/12 21:05:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "libft.h"
 
 int		ft_strchrpos(const char *s, const char c)
 {

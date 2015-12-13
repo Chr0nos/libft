@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/13 12:42:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/13 14:47:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,10 @@ int					ft_stronlystr(char *str, char *list);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
 void				ft_putstr_list(char **list, int size, char c);
-void				ft_free_strtab(char **tab, unsigned int size);
+void				ft_free_tab(char **tab, unsigned int size);
 void				ft_strtab_foreach(char **tab, int size, void (*f)(char*));
 void				ft_putstrdata(void *data);
-void				ft_sort_integer_table(int *tab, int size);
+void				ft_sort_tab(int *tab, int size);
 void				ft_putbits(void *data, size_t size);
 void				ft_putmem(void *data, size_t size);
 void				ft_puthex(void *data, size_t size);

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:14:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:50:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/13 13:55:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	x = s1;
 	y = s2;
 	p = 0;
-	while (p < n)
-	{
-		if (x[p] != y[p])
-			return (x[p] - y[p]);
+	while ((p < n) && (x[p] == y[p]))
 		p++;
-	}
-	return (0);
+	return ((p == n) ? 0 : x[p] - y[p]);
 }

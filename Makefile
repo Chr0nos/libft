@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-Weverything -g3
+EXTRA_FLAGS=-Weverything -g3 -pipe
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 COMPILER=clang
 GCC=$(COMPILER) $(FLAGS) -I. $(EXTRA_FLAGS)
@@ -79,7 +79,6 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_strjoin.o \
-	ft_strappend.o \
 	ft_itoa.o ft_itoa_base.o \
 	ft_itobase.o \
 	ft_atoi.o \

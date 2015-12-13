@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 21:36:44 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/13 13:57:31 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/13 16:19:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,5 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	while (n--)
-		((unsigned char *)(s))[n] = '\0';
+	ft_memset(s, '\0', n);
 }

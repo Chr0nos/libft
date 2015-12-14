@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/10 11:46:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:35:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/14 22:14:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static char	*brloop(char *str)
+static char			*brloop(char *str)
 {
 	while ((*str) && (*str != ']'))
 	{

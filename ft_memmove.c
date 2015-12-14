@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 13:40:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:49:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/14 11:01:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	*ft_memmove(void *dest, const void *src, size_t n)
 		return (ft_memcpy(dest, src, n));
 	s = src;
 	d = dest;
-	while (n--)
+	while (n-- != 0)
 		d[n] = s[n];
 	return (dest);
 }

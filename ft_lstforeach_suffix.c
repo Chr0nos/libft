@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstforeach_suffix.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:17:56 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/14 20:06:58 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/14 17:32:31 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/14 19:16:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t size)
+void	ft_lstforeach_suffix(t_list *lst, void (*f)())
 {
-	size_t				p;
-
-	if (dest == src)
-		return (dest);
-	p = 0;
-	while (p < size)
+	if (lst)
 	{
-		((unsigned char *)(dest))[p] = ((const unsigned char *)(src))[p];
-		p++;
+		if (lst->next)
+			ft_lstforeach_suffix(lst->next, f);
+		f(lst->content);
 	}
-	return (dest);
 }

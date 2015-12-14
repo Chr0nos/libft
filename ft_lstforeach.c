@@ -1,29 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_lstforeach.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:17:56 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/14 20:06:58 by snicolet         ###   ########.fr       */
+/*   Created: 2015/12/14 17:16:57 by snicolet          #+#    #+#             */
+/*   Updated: 2015/12/14 17:19:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-void	*ft_memcpy(void *dest, const void *src, size_t size)
+void	ft_lstforeach(t_list *lst, void (*f)())
 {
-	size_t				p;
-
-	if (dest == src)
-		return (dest);
-	p = 0;
-	while (p < size)
+	while (lst)
 	{
-		((unsigned char *)(dest))[p] = ((const unsigned char *)(src))[p];
-		p++;
+		f(lst->content);
+		lst = lst->next;
 	}
-	return (dest);
 }

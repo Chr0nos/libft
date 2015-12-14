@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/09/21 21:23:07 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:29:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/14 15:08:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@ static void		ft_putobits(unsigned char *x)
 
 	p = 0;
 	while (p < 8)
-	{
-		ft_putchar((*x & (1u << (7 - p))) ? '1' : '0');
-		p++;
-	}
+		ft_putchar((*x & (1u << (7 - p++))) ? '1' : '0');
 }
 
 void			ft_putbits(void *data, size_t size)

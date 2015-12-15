@@ -33,8 +33,8 @@ LIST=ft_lstnew.o ft_lstnewstr.o \
 	 ft_lststrlen.o \
 	 ft_lstsize.o \
 	 ft_lstremove.o \
-	 ft_lstforeach.o \
-	 ft_lstforeach_suffix.o \
+	 ft_lstforeach.o ft_lstforeachi.o \
+	 ft_lstforeach_suffix.o ft_lstforeachi_suffix.o \
 	 ft_lstpulverisator.o \
 	 ft_lststrmap.o
 BTREE=ft_btree_create_node.o \

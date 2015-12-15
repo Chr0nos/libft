@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/15 17:57:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/15 19:34:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,10 @@ void				ft_lstsort(t_list **lst, int (*cmp)(t_list *, t_list *));
 void				ft_lstpush_sort(t_list **lst, void *data, size_t size,
 		int (*cmp)());
 void				ft_lstforeach(t_list *lst, void (*f)());
+void				ft_lstforeachi(t_list *lst,
+		void (*f)(size_t, size_t, void *));
+void				ft_lstforeachi_suffix(t_list *lst,
+		void (*f)(size_t, size_t, void *));
 void				ft_lstforeach_suffix(t_list *lst, void (*f)());
 void				ft_lstpulverisator(void *x, size_t size);
 char				**ft_lststrmap(t_list *lst);

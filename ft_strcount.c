@@ -6,15 +6,15 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 14:04:10 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:07:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:55:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_strcount(char *str, char c)
+size_t	ft_strcount(char *str, char c)
 {
-	int		counter;
+	size_t	counter;
 
 	counter = 0;
 	while (*str)

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/15 16:47:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/15 17:57:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int					ft_strchrpos(const char *s, const char c);
 char				*ft_strrchr(char *s, int c);
 void				ft_strclr(char *s);
 char				*ft_strreplace(char *s, char what, char by);
-int					ft_strcount(char *str, char c);
+size_t				ft_strcount(char *str, char c);
 int					ft_strncount(char *str, char c, unsigned int n);
 char				*ft_strnew(size_t size);
 void				ft_striter(char *s, void (*f)(char *));

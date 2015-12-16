@@ -70,7 +70,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strlen.o ft_strsublen.o \
 	ft_strchr.o ft_strrchr.o ft_strchrpos.o \
 	ft_strstr.o ft_strrstr.o ft_strnstr.o \
-	ft_strsplit.o \
+	ft_strsplit.o ft_strunsplit.o \
 	ft_strcount.o ft_strncount.o \
 	ft_strcpy.o ft_strncpy.o ft_strlcpy.o \
 	ft_strclr.o \
@@ -112,7 +112,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_tolower.o \
 	ft_toupper.o \
 	ft_rotx.o \
-	ft_brainfuck.o
+	ft_brainfuck.o \
+	ft_tabstrlen.o
 
 ################################################################################
 ##                                                                            ##

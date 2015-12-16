@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/15 19:34:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/16 20:13:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ char				*ft_strmap(const char *s, char (*f)(char));
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strjoin(const char *s1, const char *s2);
 char				**ft_strsplit(const char *str, char separator);
+char				*ft_strunsplit(char **tab, char separator);
 char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);
 char				*ft_strrchr(char *s, int c);
@@ -83,7 +84,7 @@ void				*ft_memset(void *dest, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);
 void				*ft_memccpy(void *dest, const void *src, int c, size_t n);
 void				*ft_memmove(void *dest, const void *src, size_t n);
-void				*ft_memchr(void *s, int c, size_t n);
+void				*ft_memchr(const void *s, int c, size_t n);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
@@ -96,6 +97,7 @@ int					ft_str_only(char c, char *list);
 int					ft_stronlystr(char *str, char *list);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
+size_t				ft_tabstrlen(char **tab);
 void				ft_putstr_list(char **list, int size, char c);
 void				ft_free_tab(char **tab, unsigned int size);
 void				ft_strtab_foreach(char **tab, int size, void (*f)(char*));

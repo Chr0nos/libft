@@ -90,7 +90,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putnbr.o ft_putnbr_fd.o \
 	ft_swap_ptr.o \
 	ft_strany.o ft_strany_string.o \
-	ft_str_only.o ft_stronlystr.o \
+	ft_str_only.o ft_stronlystr.o ft_strnonly.o \
 	ft_strdup.o ft_strndup.o \
 	ft_putstr_list.o \
 	ft_free_tab.o \

@@ -63,7 +63,7 @@ PRINTF=ft_printf.o \
 	   ft_vprintf.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
-	ft_putendl.o ft_putendl_fd.o \
+	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o \
 	ft_strcat.o ft_strncat.o ft_strlcat.o \

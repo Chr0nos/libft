@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/17 13:38:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/20 15:58:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void				ft_putchar(int c);
 void				ft_putchar_fd(int c, int fd);
 void				ft_putendl(const char *s);
 void				ft_putendl_fd(const char *s, int fd);
+void				ft_putnendl(const char *s, size_t n);
 void				ft_putstr(const char *str);
 void				ft_putstr_fd(const char *s, int fd);
 void				ft_putstr_align_right(char *str, char fill, size_t len);

@@ -113,7 +113,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_toupper.o \
 	ft_rotx.o \
 	ft_brainfuck.o \
-	ft_tabstrlen.o
+	ft_tabstrlen.o \
+	ft_sqrt.o ft_sqrtup.o
 
 ################################################################################
 ##                                                                            ##

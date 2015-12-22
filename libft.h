@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/20 15:58:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/22 15:09:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -165,5 +165,7 @@ size_t				ft_btree_level_max(t_btree *root);
 void				ft_btee_free(t_btree **root);
 void				ft_btree_free(t_btree **root);
 char				*ft_brainfuck(char *str, unsigned char *ptr);
+float				ft_sqrt(float nb);
+int					ft_sqrtup(int nb);
 
 #endif

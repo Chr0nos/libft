@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/26 15:33:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/26 16:11:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 				ft_putnbr(va_arg(*ap, int));
 			else if ((*s == 'p') && (++s))
 				ft_putptr(va_arg(*ap, void *));
+			else if ((*s == '%') && (*s++))
+				ft_putchar('%');
 		}
 		else
 		{

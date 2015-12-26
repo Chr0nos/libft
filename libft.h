@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/22 15:30:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/26 15:41:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void				ft_putnendl(const char *s, size_t n);
 void				ft_putstr(const char *str);
 void				ft_putstr_fd(const char *s, int fd);
 void				ft_putstr_align_right(char *str, char fill, size_t len);
+void				ft_putptr(void *ptr);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 size_t				ft_strlen(const char *str);
@@ -168,5 +169,6 @@ char				*ft_brainfuck(char *str, unsigned char *ptr);
 float				ft_sqrt(float nb);
 int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
+int					ft_printf(const char *s, ...);
 
 #endif

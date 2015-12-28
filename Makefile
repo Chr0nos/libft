@@ -60,6 +60,7 @@ MEMORY=ft_memset.o \
 	   ft_memdel.o \
 	   ft_memdup.o
 PRINTF=ft_printf.o
+GNL=ft_get_next_line.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putptr.o \
@@ -122,7 +123,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 ##                   COMPILATION RULES : DONT TOUCH: IT'S MAGIC               ##
 ##                                                                            ##
 ################################################################################
-LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(PRINTF)
+LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(GNL) $(PRINTF)
 
 all: $(NAME)
 $(NAME): $(LIB_CONTENT)

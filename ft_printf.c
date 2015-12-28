@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/26 16:15:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/28 16:05:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 {
 	size_t	len;
 
+	len = 0;
 	while (*s)
 	{
 		if ((*s == '%') && (++s))
@@ -38,7 +39,7 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 			s += len;
 		}
 	}
-	return (0);
+	return ((int)len);
 }
 
 int			ft_printf(const char *str, ...)

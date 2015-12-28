@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 10:11:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/28 16:15:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2015/12/28 16:17:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ static int		ft_gnl_read(const int fd, t_gnls *x)
 	return (0);
 }
 
-int				get_next_line(int const fd, char **line)
+int				ft_get_next_line(int const fd, char **line)
 {
 	t_gnls			x;
 	int				ret;

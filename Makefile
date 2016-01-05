@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2015/12/10 12:12:24 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/01/04 12:45:38 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -143,7 +143,7 @@ dll:
 $(LIBSO): $(LIB_CONTENT)
 	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
 so:
-	make FLAGS="-fpic $(FLAGS)" $(LIBSO)
+	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
 #cleaners
 mrproper: fclean
@@ -157,6 +157,10 @@ re: fclean all
 
 norminette:
 	norminette *.[ch]
+
+install: so
+	cp libft.h /usr/include/
+	cp libft.so /usr/lib/
 
 .PHONY: norminette re clean fclean so dll all mrproper
 

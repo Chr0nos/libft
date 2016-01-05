@@ -64,6 +64,7 @@ GNL=ft_get_next_line.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putptr.o \
+	ft_putull.o \
 	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o \

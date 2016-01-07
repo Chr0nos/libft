@@ -18,7 +18,7 @@ RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
 NAME=libft.a
-LIST=ft_lstnew.o ft_lstnewstr.o \
+LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
 	 ft_lstpush_sort.o ft_lstpush_back.o ft_lstpush_front.o \
 	 ft_lstdelone.o \
 	 ft_lstdel.o \

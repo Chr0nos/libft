@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/07 16:06:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/07 23:31:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,6 +130,7 @@ void				ft_crash(void);
 void				ft_rotx(char *s, int x);
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstnewstr(char *str);
+t_list				*ft_lstnewlink(void *content, size_t content_size);
 void				ft_lstremove(t_list **item, t_list **root, void (*f)());
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **ast, void (*del)(void *, size_t));

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/05 13:14:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/07 16:06:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ char				*ft_strmap(const char *s, char (*f)(char));
 char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strjoin(const char *s1, const char *s2);
 char				**ft_strsplit(const char *str, char separator);
+size_t				ft_strsplit_count(const char *str, char c);
 char				*ft_strunsplit(char **tab, char separator);
 char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);

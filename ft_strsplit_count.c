@@ -1,38 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsplit.c                                      :+:      :+:    :+:   */
+/*   ft_strsplit_count.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/17 12:27:16 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/07 16:06:24 by snicolet         ###   ########.fr       */
+/*   Created: 2016/01/07 16:05:04 by snicolet          #+#    #+#             */
+/*   Updated: 2016/01/07 16:06:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdlib.h>
 
-char			**ft_strsplit(const char *str, char separator)
+size_t	ft_strsplit_count(const char *str, char c)
 {
-	char	**split;
 	size_t	len;
-	size_t	space;
 
-	if (!(split = malloc(sizeof(char*) * ft_strsplit_count(str, separator))))
-		return (NULL);
-	space = 0;
-	while (*str)
+	len = 0;
+	while ((*str) && (++len))
 	{
-		while (*str == separator)
+		while (*str == c)
 			str++;
-		if (*str)
-		{
-			len = ft_strsublen(str, separator);
-			split[space++] = ft_strndup(str, len);
-			str += len;
-		}
+		if (!*str)
+			return (len + 1);
+		else
+			str++;
 	}
-	split[space] = 0;
-	return (split);
+	return (len + 1);
 }

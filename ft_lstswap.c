@@ -6,22 +6,24 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/01 19:38:12 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 19:51:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/08 15:42:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstswap(t_list **lst, t_list *a, t_list *b)
+t_list	*ft_lstswap(t_list *root, t_list *a, t_list *b)
 {
+	t_list	*bnext;
 	t_list	*parent;
-	t_list	*c;
 
-	c = b->next;
-	if (!(parent = ft_lstparent(*lst, a)))
-		*lst = c;
-	else
+	parent = ft_lstparent(root, a);
+	if (parent)
 		parent->next = b;
-	a->next = c;
+	else
+		root = b;
+	bnext = b->next;
 	b->next = a;
+	a->next = bnext;
+	return (root);
 }

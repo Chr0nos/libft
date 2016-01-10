@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/08 15:42:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/10 12:51:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ char				*ft_strmapi(const char *s, char (*f)(unsigned int, char));
 char				*ft_strjoin(const char *s1, const char *s2);
 char				**ft_strsplit(const char *str, char separator);
 size_t				ft_strsplit_count(const char *str, char c);
-char				*ft_strunsplit(char **tab, char separator);
+char				*ft_strunsplit(const char **tab, char separator);
 char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);
 char				*ft_strrchr(char *s, int c);
@@ -103,7 +103,7 @@ int					ft_strnonly(char *s, size_t n, char c);
 int					ft_stronlystr(char *str, char *list);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
-size_t				ft_tabstrlen(char **tab);
+size_t				ft_tabstrlen(const char **tab);
 void				ft_putstr_list(char **list, int size, char c);
 void				ft_free_tab(char **tab, unsigned int size);
 void				ft_strtab_foreach(char **tab, int size, void (*f)(char*));
@@ -174,5 +174,6 @@ float				ft_sqrt(float nb);
 int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
 int					ft_printf(const char *s, ...);
+void				ft_wsize(unsigned long long size, char *buffer);
 
 #endif

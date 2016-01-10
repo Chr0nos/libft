@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 15:06:23 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/16 20:47:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/09 13:47:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <string.h>
 #include <stdlib.h>
 
-char	*ft_strunsplit(char **tab, char separator)
+char	*ft_strunsplit(const char **tab, char separator)
 {
 	char	*str;
 	size_t	size;

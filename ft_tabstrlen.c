@@ -6,14 +6,14 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:00:15 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/16 19:02:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/09 13:48:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_tabstrlen(char **tab)
+size_t	ft_tabstrlen(const char **tab)
 {
 	size_t	len;
 

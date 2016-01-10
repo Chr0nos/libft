@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/10 12:51:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:15:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void				ft_puthex(void *data, size_t size);
 int					ft_is_printable(char c);
 int					ft_str_is_printable(char *str);
 int					ft_is_sorted(void **tab, size_t size, int (*cmp)());
-int					ft_match(char *s1, char *s2);
+int					ft_match(char *s1, const char *s2);
 void				ft_bzero(void *s, size_t n);
 int					ft_isalpha(int c);
 int					ft_isdigit(int c);

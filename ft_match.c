@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/27 11:07:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 21:32:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/10 13:15:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_match(char *s1, char *s2)
+int		ft_match(char *s1, const char *s2)
 {
 	if (!*s1)
 	{

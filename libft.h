@@ -41,6 +41,7 @@ void				ft_putstr_align_right(char *str, char fill, size_t len);
 void				ft_putptr(void *ptr);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
+int					ft_strcasecmp(const char *s1, const char *s2);
 size_t				ft_strlen(const char *str);
 void				ft_swap(int *a, int *b);
 size_t				ft_strsublen(const char *str, char c);

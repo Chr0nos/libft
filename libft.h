@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/10 13:15:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/11 17:24:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ size_t				ft_strsplit_count(const char *str, char c);
 char				*ft_strunsplit(const char **tab, char separator);
 char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);
+int					ft_strchrrpos(const char *str, const char c);
 char				*ft_strrchr(char *s, int c);
 void				ft_strclr(char *s);
 char				*ft_strreplace(char *s, char what, char by);

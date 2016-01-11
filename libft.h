@@ -80,6 +80,8 @@ char				*ft_itoa(int nb);
 char				*ft_itoa_base(int value, int base);
 char				*ft_itobase(int nb, char *buffer, unsigned char base,
 		const char *map);
+int					ft_itobuff(char *buffer, int nb, unsigned int base,
+		const char *map);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_pow(int nb, int power);

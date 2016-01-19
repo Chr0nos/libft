@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/11 17:24:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/19 09:06:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -150,8 +150,7 @@ t_list				*ft_lstpush_back(t_list **lst, t_list *item);
 t_list				*ft_lstpush_front(t_list **lst, t_list *item);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void				ft_lstsort(t_list **lst, int (*cmp)(t_list *, t_list *));
-void				ft_lstpush_sort(t_list **lst, void *data, size_t size,
-		int (*cmp)());
+void				ft_lstpush_sort(t_list **lst, t_list *item, int (*cmp)());
 void				ft_lstforeach(t_list *lst, void (*f)());
 void				ft_lstforeachi(t_list *lst,
 		void (*f)(size_t, size_t, void *));

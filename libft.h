@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/19 09:06:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/19 14:31:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,5 +178,6 @@ int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
 int					ft_printf(const char *s, ...);
 void				ft_wsize(unsigned long long size, char *buffer);
+int					ft_abs(int x);
 
 #endif

@@ -118,7 +118,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_tabstrlen.o \
 	ft_sqrt.o ft_sqrtup.o \
 	ft_strremove.o \
-	ft_wsize.o
+	ft_wsize.o \
+	ft_abs.o
 
 ################################################################################
 ##                                                                            ##

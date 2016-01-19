@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/19 14:31:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/01/19 22:04:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,6 +158,7 @@ void				ft_lstforeachi_suffix(t_list *lst,
 		void (*f)(size_t, size_t, void *));
 void				ft_lstforeach_suffix(t_list *lst, void (*f)());
 void				ft_lstpulverisator(void *x, size_t size);
+int					ft_lststrcmp(t_list *a, t_list *b);
 char				**ft_lststrmap(t_list *lst);
 void				ft_btree_foreach_infix(t_btree *root, void (*f)(void *));
 void				ft_btree_foreach_prefix(t_btree *root, void (*f)(void *));

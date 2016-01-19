@@ -1,36 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstpush_sort.c                                  :+:      :+:    :+:   */
+/*   ft_lststrcmp.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/29 17:55:02 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/19 22:00:01 by snicolet         ###   ########.fr       */
+/*   Created: 2016/01/19 22:03:07 by snicolet          #+#    #+#             */
+/*   Updated: 2016/01/19 22:04:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstpush_sort(t_list **lst, t_list *item, int (*cmp)())
+int		ft_lststrcmp(t_list *a, t_list *b)
 {
-	t_list	*x;
-	t_list	*last;
-
-	if (!*lst)
-		*lst = item;
-	else
-	{
-		x = *lst;
-		last = 0;
-		while ((x) && ((*cmp)(x, item) < 0))
-		{
-			last = x;
-			x = x->next;
-		}
-		if (!last)
-			ft_lstadd(lst, item);
-		else
-			ft_lstinsert(&last, item);
-	}
+	return (ft_strcmp((char*)a->content, (char*)b->content));
 }

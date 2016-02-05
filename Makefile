@@ -6,7 +6,7 @@
 #    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/01/19 22:05:09 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/02/05 19:29:39 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -120,7 +120,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_sqrt.o ft_sqrtup.o \
 	ft_strremove.o \
 	ft_wsize.o \
-	ft_abs.o
+	ft_abs.o \
+	ft_align_left.o
 
 ################################################################################
 ##                                                                            ##

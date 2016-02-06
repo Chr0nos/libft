@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_align_left.c                                    :+:      :+:    :+:   */
+/*   ft_stralign_right.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-void	ft_align_left(char *buffer, unsigned int len)
+void	ft_stralign_right(char *buffer, unsigned int len)
 {
 	size_t				slen;
 	size_t				diff;

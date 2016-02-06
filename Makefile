@@ -121,7 +121,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strremove.o \
 	ft_wsize.o \
 	ft_abs.o \
-	ft_align_left.o
+	ft_stralign_right.o ft_stralign_left.o
 
 ################################################################################
 ##                                                                            ##

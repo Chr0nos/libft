@@ -180,7 +180,7 @@ char				*ft_strremove(char *s, const char *list);
 int					ft_printf(const char *s, ...);
 void				ft_wsize(unsigned long long size, char *buffer);
 int					ft_abs(int x);
-void				ft_align_left(char *buffer, unsigned int len);
-
+void				ft_stralign_right(char *buffer, unsigned int len);
+void				ft_stralign_left(char *buffer, unsigned int len);
 
 #endif

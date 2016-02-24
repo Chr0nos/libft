@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: snicolet <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/02/05 19:29:39 by snicolet         ###   ########.fr       *#
+#    Updated: 2016/02/24 14:56:03 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -87,7 +87,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strrev.o ft_strnrev.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_strjoin.o \
-	ft_itoa.o ft_itoa_base.o ft_itobuff.o \
+	ft_itoa.o ft_itoa_base.o ft_itobuff.o ft_ftobuff.o \
 	ft_itobase.o \
 	ft_atoi.o \
 	ft_putnbr.o ft_putnbr_fd.o \

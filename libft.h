@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/07 21:10:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/02/24 14:57:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ char				*ft_itoa_base(int value, int base);
 char				*ft_itobase(int nb, char *buffer, unsigned char base,
 		const char *map);
 int					ft_itobuff(char *buffer, int nb, unsigned int base,
+		const char *map);
+int					ft_ftobuff(char *buffer, float nb, unsigned int base,
 		const char *map);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);

@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-static void		add_pending(char *buffer, t_gnls *x)
+inline static void	add_pending(char *buffer, t_gnls *x)
 {
 	char	*tmp;
 
@@ -31,7 +31,8 @@ static void		add_pending(char *buffer, t_gnls *x)
 		x->pb = ft_strdup(buffer);
 }
 
-static void		rotate_pending(char **pending, size_t offset, size_t rest_len)
+inline static void	rotate_pending(char **pending, size_t offset,
+		size_t rest_len)
 {
 	char	*tmp;
 
@@ -48,7 +49,7 @@ static void		rotate_pending(char **pending, size_t offset, size_t rest_len)
 	*pending = tmp;
 }
 
-static int		ft_read_data(char *buffer, t_gnls *x, int buffer_len)
+static int			ft_read_data(char *buffer, t_gnls *x, int buffer_len)
 {
 	int			read_lenght;
 	size_t		rest_lenght;
@@ -74,7 +75,7 @@ static int		ft_read_data(char *buffer, t_gnls *x, int buffer_len)
 	return (0);
 }
 
-static int		ft_gnl_read(const int fd, t_gnls *x)
+inline static int	ft_gnl_read(const int fd, t_gnls *x)
 {
 	char	buffer[GNL_BUFF_SIZE + 1];
 	int		ret;
@@ -101,7 +102,7 @@ static int		ft_gnl_read(const int fd, t_gnls *x)
 	return (0);
 }
 
-int				ft_get_next_line(int const fd, char **line)
+int					ft_get_next_line(int const fd, char **line)
 {
 	t_gnls			x;
 	int				ret;

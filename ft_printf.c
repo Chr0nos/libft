@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/28 16:05:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/02/26 23:05:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 				ft_putptr(va_arg(*ap, void *));
 			else if ((*s == '%') && (++s))
 				ft_putchar('%');
+			else if ((*s == 'f') && (++s))
+				ft_putfloat((float)va_arg(*ap, double));
 		}
 		else
 		{

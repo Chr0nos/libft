@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/03/07 14:31:47 by snicolet         ###   ########.fr        #
+#    Updated: 2016/03/07 14:40:59 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ GNL=ft_get_next_line.o
 OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putptr.o \
-	ft_putull.o \
+	ft_putull.o ft_putfloat.o \
 	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \
 	ft_strcmp.o ft_strncmp.o ft_strcasecmp.o \

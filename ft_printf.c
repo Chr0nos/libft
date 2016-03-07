@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/28 16:05:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/02/26 23:33:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,22 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-static int	ft_vsprintf(const char *s, va_list *ap)
+inline static size_t	ft_printf_core(const char **s, va_list *ap)
+{
+	if ((**s == 's') && (++(*s)))
+		ft_putstr(va_arg(*ap, char *));
+	else if ((**s == 'd') && (++(*s)))
+		ft_putnbr(va_arg(*ap, int));
+	else if ((**s == 'p') && (++(*s)))
+		ft_putptr(va_arg(*ap, void *));
+	else if ((**s == '%') && (++(*s)))
+		ft_putchar('%');
+	else if ((**s == 'f') && (++(*s)))
+		ft_putfloat((float)va_arg(*ap, double));
+	return (0);
+}
+
+static int				ft_vsprintf(const char *s, va_list *ap)
 {
 	size_t	len;
 
@@ -23,14 +38,7 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 	{
 		if ((*s == '%') && (++s))
 		{
-			if ((*s == 's') && (++s))
-				ft_putstr(va_arg(*ap, char *));
-			else if ((*s == 'd') && (++s))
-				ft_putnbr(va_arg(*ap, int));
-			else if ((*s == 'p') && (++s))
-				ft_putptr(va_arg(*ap, void *));
-			else if ((*s == '%') && (++s))
-				ft_putchar('%');
+			len += ft_printf_core(&s, ap);
 		}
 		else
 		{
@@ -42,7 +50,7 @@ static int	ft_vsprintf(const char *s, va_list *ap)
 	return ((int)len);
 }
 
-int			ft_printf(const char *str, ...)
+int						ft_printf(const char *str, ...)
 {
 	va_list	ap;
 	int		ret;

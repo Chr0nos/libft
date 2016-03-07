@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_ftobuff.c                                       :+:      :+:    :+:   */
+/*   ft_putfloat.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/24 14:48:05 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/26 23:22:13 by snicolet         ###   ########.fr       */
+/*   Created: 2016/02/26 23:01:09 by snicolet          #+#    #+#             */
+/*   Updated: 2016/02/26 23:20:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
+#include <string.h>
 
-int		ft_ftobuff(char *buffer, float nb, unsigned int base, const char *map)
+void	ft_putfloat(float nb)
 {
-	int		real;
-	int		real_len;
+	char	buffer[32];
 
-	real = (int)nb;
-	real_len = ft_itobuff(buffer, real, base, map);
-	nb = ((nb) - (float)real) * 1000000;
-	if ((int)nb)
-	{
-		buffer[real_len++] = '.';
-		return (real_len + ft_itobuff(buffer + real_len,
-			(int)((nb < 0) ? -nb : nb), base, map));
-	}
-	return (real_len);
+	write(1, buffer, (size_t)ft_ftobuff(buffer, nb, 10, "0123456789"));
 }

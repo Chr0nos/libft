@@ -6,25 +6,34 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 14:48:05 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/26 23:22:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/03/11 14:51:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_ftobuff(char *buffer, float nb, unsigned int base, const char *map)
+int		ft_ftobuff(char *buffer, double nb, unsigned int base, const char *map)
 {
-	int		real;
-	int		real_len;
+	int				real;
+	int				real_len;
+	unsigned int	digit;
+	unsigned int	x;
 
+	if ((nb < 0.0f) && (nb > -1.0f))
+	{
+		buffer[0] = '-';
+		buffer++;
+	}
 	real = (int)nb;
 	real_len = ft_itobuff(buffer, real, base, map);
-	nb = ((nb) - (float)real) * 1000000;
-	if ((int)nb)
+	buffer[real_len++] = '.';
+	digit = 0;
+	while (digit < 12)
 	{
-		buffer[real_len++] = '.';
-		return (real_len + ft_itobuff(buffer + real_len,
-			(int)((nb < 0) ? -nb : nb), base, map));
+		x = (unsigned int)(((nb < 0) ? -nb : nb) * (double)(base * digit));
+		buffer[real_len++] = map[x % base];
+		digit++;
 	}
+	buffer[real_len++] = '\0';
 	return (real_len);
 }

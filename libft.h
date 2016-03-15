@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/07 14:40:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/03/11 14:49:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ char				*ft_itobase(int nb, char *buffer, unsigned char base,
 		const char *map);
 int					ft_itobuff(char *buffer, int nb, unsigned int base,
 		const char *map);
-int					ft_ftobuff(char *buffer, float nb, unsigned int base,
+int					ft_ftobuff(char *buffer, double nb, unsigned int base,
 		const char *map);
 void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);

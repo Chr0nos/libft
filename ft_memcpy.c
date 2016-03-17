@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:17:56 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/12 00:01:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/03/17 12:31:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t size)
 	{
 		*(unsigned long *)((unsigned long)dest + p) =
 			*(unsigned long *)((unsigned long)src + p);
-		 p += 8;
+		p += 8;
 	}
 	return (dest);
 }

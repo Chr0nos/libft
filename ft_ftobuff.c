@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 14:48:05 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/11 14:51:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/03/24 12:53:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_ftobuff(char *buffer, double nb, unsigned int base, const char *map)
 	unsigned int	digit;
 	unsigned int	x;
 
-	if ((nb < 0.0f) && (nb > -1.0f))
+	if ((nb < 0.0) && (nb > -1.0))
 	{
 		buffer[0] = '-';
 		buffer++;

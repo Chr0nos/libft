@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.c                                    :+:      :+:    :+:   */
+/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 10:11:09 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/28 16:17:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/04/01 16:35:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,11 @@ int					ft_get_next_line(int const fd, char **line)
 	ret = ft_gnl_read(fd, (t_gnls *)(lst->content));
 	if (ret >= 0)
 		*line = ((t_gnls *)(lst->content))->buffer;
+	if (ret == 0)
+	{
+		free(((t_gnls*)lst->content)->pb);
+		free(((t_gnls*)lst->content)->buffer);
+	}
 	if ((ret == 0) && (lst != NULL))
 		ft_lstremove(&lst, &lst_origin, &free);
 	return (ret);

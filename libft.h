@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/11 14:49:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/04/01 15:34:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void				*ft_realloc(void *ptr, unsigned int size,
 		unsigned int new_size);
 int					ft_strany(char c, const char *list);
 int					ft_strany_string(const char *str, const char *list);
-int					ft_str_only(char c, char *list);
+int					ft_str_only(const char c, const char *list);
 int					ft_strnonly(char *s, size_t n, char c);
 int					ft_stronlystr(char *str, char *list);
 char				*ft_strdup(const char *str);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/04/01 15:34:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/04/01 19:00:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,5 +187,6 @@ void				ft_stralign_right(char *buffer, unsigned int len);
 void				ft_stralign_left(char *buffer, unsigned int len);
 const void			**ft_tabtoconst(void **tab, size_t size);
 size_t				ft_tabcount(void **tab);
+int					ft_mfree(unsigned int size, ...);
 
 #endif

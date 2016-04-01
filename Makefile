@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/03/07 14:40:59 by snicolet         ###   ########.fr        #
+#    Updated: 2016/04/01 19:00:42 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -122,7 +122,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_wsize.o \
 	ft_abs.o \
 	ft_stralign_right.o ft_stralign_left.o \
-	ft_tabtoconst.o ft_tabcount.o
+	ft_tabtoconst.o ft_tabcount.o \
+	ft_mfree.o
 
 ################################################################################
 ##                                                                            ##

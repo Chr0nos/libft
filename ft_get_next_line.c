@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/04 10:11:09 by snicolet          #+#    #+#             */
-/*   Updated: 2016/04/01 16:35:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/04/01 19:04:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,31 +107,26 @@ int					ft_get_next_line(int const fd, char **line)
 	t_gnls			x;
 	int				ret;
 	static t_list	*lst_origin;
-	t_list			*lst;
+	t_list			*l;
 
 	if ((fd < 0) || (!line))
 		return (-1);
-	lst = lst_origin;
-	while ((lst) && (((t_gnls *)(lst->content))->fd != fd))
-		lst = lst->next;
-	if ((!lst) && (!(x.pb = NULL)))
+	l = lst_origin;
+	while ((l) && (((t_gnls *)(l->content))->fd != fd))
+		l = l->next;
+	if ((!l) && (!(x.pb = NULL)))
 	{
-		if (!(lst = ft_lstnew((void *)&x, sizeof(x))))
+		if (!(l = ft_lstnew((void *)&x, sizeof(x))))
 			return (-1);
-		((t_gnls*)(lst->content))->fd = fd;
-		ft_lstadd(&lst_origin, lst);
-		lst = lst_origin;
+		((t_gnls*)(l->content))->fd = fd;
+		l = ft_lstadd(&lst_origin, l);
 	}
 	*line = 0;
-	ret = ft_gnl_read(fd, (t_gnls *)(lst->content));
-	if (ret >= 0)
-		*line = ((t_gnls *)(lst->content))->buffer;
+	if ((ret = ft_gnl_read(fd, (t_gnls *)(l->content))) >= 0)
+		*line = ((t_gnls *)(l->content))->buffer;
 	if (ret == 0)
-	{
-		free(((t_gnls*)lst->content)->pb);
-		free(((t_gnls*)lst->content)->buffer);
-	}
-	if ((ret == 0) && (lst != NULL))
-		ft_lstremove(&lst, &lst_origin, &free);
+		ft_mfree(2, ((t_gnls*)l->content)->pb, ((t_gnls*)l->content)->buffer);
+	if ((ret == 0) && (l != NULL))
+		ft_lstremove(&l, &lst_origin, &free);
 	return (ret);
 }

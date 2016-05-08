@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/30 13:44:32 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/08 13:35:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/08 14:02:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ void		ft_putnbr(int n)
 {
 	char	buffer[12];
 
-	write(1, buffer, ft_itobuff(buffer, n, 10, "0123456789"));
+	write(1, buffer, (size_t)ft_itobuff(buffer, n, 10, "0123456789"));
 }

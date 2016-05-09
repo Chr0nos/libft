@@ -62,6 +62,7 @@ char				*ft_strjoin(const char *s1, const char *s2);
 char				**ft_strsplit(const char *str, char separator);
 size_t				ft_strsplit_count(const char *str, char c);
 char				*ft_strunsplit(const char **tab, char separator);
+char				*ft_strmjoin(const size_t n, ...);
 char				*ft_strchr(char *s, int c);
 int					ft_strchrpos(const char *s, const char c);
 int					ft_strchrrpos(const char *str, const char c);

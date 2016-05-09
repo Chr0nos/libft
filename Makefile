@@ -83,6 +83,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strsub.o \
 	ft_strtrim.o \
 	ft_strreplace.o \
+	ft_strmjoin.o \
 	ft_pow.o \
 	ft_crash.o \
 	ft_strrev.o ft_strnrev.o \

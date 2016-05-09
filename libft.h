@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/08 14:36:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/09 18:30:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void				ft_putfloat(float nb);
 void				ft_putstr_fd(const char *s, int fd);
 void				ft_putstr_align_right(char *str, char fill, size_t len);
 void				ft_putptr(void *ptr);
+void				ft_puttab(const char **tab);
 int					ft_strcmp(const char *s1, const char *s2);
 int					ft_strncmp(const char *s1, const char *s2, size_t n);
 int					ft_strcasecmp(const char *s1, const char *s2);
@@ -190,5 +191,9 @@ void				ft_stralign_left(char *buffer, unsigned int len);
 const void			**ft_tabtoconst(void **tab, size_t size);
 size_t				ft_tabcount(void **tab);
 int					ft_mfree(unsigned int size, ...);
+size_t				ft_strsplitstr_count(const char *str,
+		const char *separators);
+size_t				ft_strsublenstr(const char *str, const char *separators);
+char				**ft_strsplitstr(const char *str, const char *separators);
 
 #endif

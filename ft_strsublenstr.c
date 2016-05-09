@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdel.c                                        :+:      :+:    :+:   */
+/*   ft_strsublenstr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/01 17:48:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/08 18:12:44 by snicolet         ###   ########.fr       */
+/*   Created: 2016/05/09 18:19:35 by snicolet          #+#    #+#             */
+/*   Updated: 2016/05/09 18:27:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstdel(t_list **alst, void (*del)(void *, size_t))
+size_t	ft_strsublenstr(const char *str, const char *separators)
 {
-	if (*alst)
+	size_t		p;
+
+	p = 0;
+	while (str[p])
 	{
-		if ((*alst)->next)
-			ft_lstdel(&(*alst)->next, del);
-		if (del)
-			del((*alst)->content, (*alst)->content_size);
-		ft_memdel((void**)alst);
+		if (ft_strany(str[p], separators))
+			return (p);
+		p++;
 	}
+	return (p);
 }

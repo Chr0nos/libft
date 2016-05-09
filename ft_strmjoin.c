@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strmjoin.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/05/09 14:52:53 by snicolet          #+#    #+#             */
+/*   Updated: 2016/05/09 15:06:33 by snicolet         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
 #include <stdarg.h>
 #include <stdlib.h>
@@ -11,7 +23,7 @@ static size_t	ft_strmjoin_count(char **tab, size_t **sizes, size_t n)
 		return (0);
 	while (n--)
 	{
-		(*sizes)[n] = ft_strlen(tab[n]);
+		(*sizes)[n] = (tab[n]) ? ft_strlen(tab[n]) : 0;
 		len += (*sizes)[n];
 	}
 	return (len);
@@ -47,6 +59,7 @@ char		*ft_strmjoin(const size_t n, ...)
 {
 	va_list		ap;
 	size_t		p;
+	size_t		lens;
 	char		**tab;
 	size_t		*sizes;
 
@@ -59,5 +72,6 @@ char		*ft_strmjoin(const size_t n, ...)
 	va_end(ap);
 	tab[p] = NULL;
 	sizes = NULL;
-	return (ft_strmjoin_buff(tab, sizes, ft_strmjoin_count(tab, &sizes, n)));
+	lens = ft_strmjoin_count(tab, &sizes, n);
+	return (ft_strmjoin_buff(tab, sizes, lens));
 }

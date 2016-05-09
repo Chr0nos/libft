@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:15:02 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 18:30:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/09 19:34:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,16 @@ char	**ft_strsplitstr(const char *str, const char *separators)
 	space = 0;
 	while (*str)
 	{
-		while (ft_strany_string(str, separators))
+		while ((*str) && (ft_strany(*str, separators)))
 			str++;
 		if (*str)
 		{
 			len = ft_strsublenstr(str, separators);
-			split[space++] = ft_memdup(str, len + 1);
+			if (!(split[space] = malloc(sizeof(char) * (len + 1))))
+				break ;
+			ft_memcpy(split[space], str, len);
+			split[space][len] = '\0';
+			space++;
 			str += len;
 		}
 	}

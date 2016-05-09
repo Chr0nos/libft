@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 14:52:53 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 15:06:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/09 15:13:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static size_t	ft_strmjoin_count(char **tab, size_t **sizes, size_t n)
 	return (len);
 }
 
-static char	*ft_strmjoin_buff(char **tab, size_t *sizes, size_t total_size)
+static char		*ft_strmjoin_buff(char **tab, size_t *sizes, size_t total_size)
 {
 	size_t	p;
 	char	*buff;
@@ -55,7 +55,7 @@ static char	*ft_strmjoin_buff(char **tab, size_t *sizes, size_t total_size)
 	return (buff);
 }
 
-char		*ft_strmjoin(const size_t n, ...)
+char			*ft_strmjoin(const size_t n, ...)
 {
 	va_list		ap;
 	size_t		p;

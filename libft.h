@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 18:30:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/14 15:35:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,6 +140,7 @@ void				ft_rotx(char *s, int x);
 t_list				*ft_lstnew(const void *content, size_t content_size);
 t_list				*ft_lstnewstr(char *str);
 t_list				*ft_lstnewlink(void *content, size_t content_size);
+char				**ft_lststrtotab(t_list *lst);
 void				ft_lstremove(t_list **item, t_list **root, void (*f)());
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **ast, void (*del)(void *, size_t));

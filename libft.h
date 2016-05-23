@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/23 20:29:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/23 22:37:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,5 +197,6 @@ size_t				ft_strsplitstr_count(const char *str,
 		const char *separators);
 size_t				ft_strsublenstr(const char *str, const char *separators);
 char				**ft_strsplitstr(const char *str, const char *separators);
+char				*ft_dtoa(double nb, unsigned int precision);
 
 #endif

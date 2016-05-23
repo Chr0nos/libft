@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/14 15:35:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/23 20:29:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void				ft_putnbr(int nb);
 void				ft_putnbr_fd(int n, int fd);
 int					ft_pow(int nb, int power);
 int					ft_atoi(const char *str);
+double				ft_atod(const char *s);
 void				ft_swap_ptr(void **p1, void **p2);
 void				*ft_memset(void *dest, int c, size_t n);
 void				*ft_memcpy(void *dest, const void *src, size_t n);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 22:01:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/23 23:32:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/27 18:18:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,9 @@ static void				ft_dtoa_dot(char *buffer, double nb,
 {
 	long	x;
 
-	if (precision)
-		*(buffer++) = '.';
+	if (!precision)
+		return ;
+	*(buffer++) = '.';
 	nb -= (double)((__int128)nb);
 	x = (long)(nb * ft_pow(10, (int)precision));
 	while (precision--)
@@ -55,11 +56,13 @@ char					*ft_dtoa(double nb, unsigned int precision)
 
 	if ((negative = (nb < 0.0 || *((long *)&nb) < 0) ? 1 : 0))
 		nb = -nb;
-	len = ft_dtoa_len(nb, precision) + (unsigned int)negative;
+	len = ft_dtoa_len(nb, precision) + (unsigned int)negative -
+		((!precision) ? 1 : 0);
 	if (!(buffer = malloc(sizeof(char) * len)))
 		return (NULL);
 	buffer[--len] = '\0';
-	len -= precision + 1;
+	if (precision)
+		len -= precision + 1;
 	ft_dtoa_dot(buffer + len, nb, precision, map);
 	if (nb < 1.0)
 		buffer[--len] = '0';

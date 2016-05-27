@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/26 20:17:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/05/27 21:36:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ int					ft_strchrrpos(const char *str, const char c);
 char				*ft_strrchr(char *s, int c);
 void				ft_strclr(char *s);
 char				*ft_strreplace(char *s, char what, char by);
-size_t				ft_strcount(char *str, char c);
+size_t				ft_strcount(const char *str, char c);
 int					ft_strncount(char *str, char c, unsigned int n);
 char				*ft_strnew(size_t size);
 void				ft_striter(char *s, void (*f)(char *));
@@ -115,7 +115,7 @@ char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
 size_t				ft_tabstrlen(const char **tab);
 void				ft_putstr_list(char **list, int size, char c);
-void				ft_free_tab(char **tab, unsigned int size);
+void				ft_free_tab(char **tab, size_t size);
 void				ft_strtab_foreach(char **tab, int size, void (*f)(char*));
 void				ft_putstrdata(void *data);
 void				ft_sort_tab(int *tab, int size);

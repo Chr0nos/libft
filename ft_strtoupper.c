@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/09 00:33:47 by snicolet          #+#    #+#             */
-/*   Updated: 2016/06/09 00:36:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/06/09 00:57:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strtoupper(char *s)
 	while (s[p])
 	{
 		if ((s[p] >= 'a') && (s[p] <= 'z'))
-			s[p] += 32;
+			s[p] = s[p] - 'a' + 'A';
 		p++;
 	}
 	return (s);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/06/08 23:53:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/06/09 00:28:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/06/09 00:50:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 unsigned long	ft_basetoul(const char *str, const char *map)
 {
 	const unsigned long		base = (unsigned long)ft_strlen(map);
-	const unsigned int		len = (unsigned int)ft_strlen(str);
 	unsigned long			nb;
 	unsigned int			p;
 	int						x;
@@ -23,12 +22,11 @@ unsigned long	ft_basetoul(const char *str, const char *map)
 	if (!base)
 		return (0);
 	nb = 0;
-	p = len;
-	while (p--)
+	p = 0;
+	while ((x = ft_strchrpos(map, str[p])) >= 0)
 	{
-		x = ft_strchrpos(map, str[p]);
-		if (x >= 0)
-			nb += (unsigned long)(x * ft_pow((int)base, (int)(len - p - 1)));
+		nb = nb * base + (unsigned long)x;
+		p++;
 	}
 	return (nb);
 }

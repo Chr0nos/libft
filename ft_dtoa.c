@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/23 22:01:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/27 18:18:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/06/09 05:43:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,11 @@ static void				ft_dtoa_dot(char *buffer, double nb,
 char					*ft_dtoa(double nb, unsigned int precision)
 {
 	char			*buffer;
-	char			negative;
+	const char		negative = (nb < 0.0 || *((long *)&nb) < 0) ? 1 : 0;
 	unsigned int	len;
 	const char		*map = "0123456789";
 
-	if ((negative = (nb < 0.0 || *((long *)&nb) < 0) ? 1 : 0))
+	if (negative)
 		nb = -nb;
 	len = ft_dtoa_len(nb, precision) + (unsigned int)negative -
 		((!precision) ? 1 : 0);

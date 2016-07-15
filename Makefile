@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/06/09 00:37:01 by snicolet         ###   ########.fr        #
+#    Updated: 2016/07/15 13:36:19 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_strsublenstr.o \
 	ft_strsplitstr.o \
 	ft_atod.o ft_dtoa.o ft_basetoul.o \
-	ft_strtoupper.o
+	ft_strtoupper.o \
+	ft_ulltobuff.o
 
 ################################################################################
 ##                                                                            ##

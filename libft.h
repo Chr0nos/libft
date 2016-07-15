@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/06/09 00:37:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/07/15 13:39:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,5 +200,7 @@ char				**ft_strsplitstr(const char *str, const char *separators);
 char				*ft_dtoa(double nb, unsigned int precision);
 unsigned long		ft_basetoul(const char *str, const char *map);
 char				*ft_strtoupper(char *s);
+int					ft_ulltobuff(char *buffer, unsigned long long nb,
+	unsigned int base, const char *map);
 
 #endif

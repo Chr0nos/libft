@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tabstrlen.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/16 19:00:15 by snicolet          #+#    #+#             */
-/*   Updated: 2016/01/09 13:48:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 17:02:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,6 @@ size_t	ft_tabstrlen(const char **tab)
 
 	len = 0;
 	while (*tab != NULL)
-	{
-		len += ft_strlen(*tab);
-		tab++;
-	}
+		len += ft_strlen(*(tab++));
 	return (len);
 }

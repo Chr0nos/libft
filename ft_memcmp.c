@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 15:14:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/15 14:18:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 17:16:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,10 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n)
 	{
 		if (*(const unsigned long *)((size_t)s1 + p) !=
 				*(const unsigned long *)((size_t)s2 + p))
+		{
 			return (ft_memcmp((const void*)((size_t)s1 + p),
 						(const void*)((size_t)s2 + p), n - p + 1));
+		}
 		p += 8;
 	}
 	return (0);

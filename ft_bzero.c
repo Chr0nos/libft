@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/23 21:36:44 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/13 16:19:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 18:48:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,14 @@
 
 void	ft_bzero(void *s, size_t n)
 {
-	ft_memset(s, '\0', n);
+	size_t		p;
+
+	p = 0;
+	while ((p < n) && ((n - p) % 8))
+		((unsigned char *)s)[p++] = 0;
+	while (p < n)
+	{
+		*(void**)((unsigned long)s + p) = NULL;
+		p += 8;
+	}
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/28 15:45:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/17 12:32:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 13:19:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,11 @@
 
 size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {
-	size_t		p;
 	size_t		len;
 
-	len = ft_strlen(src);
-	if (len > size)
-		len = size;
-	p = 0;
-	while ((*src) && (p < len))
-		dest[p++] = *(src++);
-	dest[p] = '\0';
-	return (p);
+	if (size > (len = ft_strlen(src)))
+		size = len;
+	ft_memcpy(dest, src, size);
+	dest[size] = '\0';
+	return (len);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:57:02 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/14 14:21:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 13:33:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,17 +15,15 @@
 
 char	*ft_strstr(char *str, const char *item)
 {
-	size_t		ip;
+	const size_t	ilen = ft_strlen(item);
 
-	if (*item == '\0')
+	if (!ilen)
 		return (str);
 	while (*str)
 	{
-		ip = 0;
-		while ((str[ip] != '\0') && (str[ip] == item[ip]))
-			if (!item[++ip])
-				return (str);
+		if (!ft_memcmp(str, item, ilen))
+			return (str);
 		str++;
 	}
-	return (0);
+	return (NULL);
 }

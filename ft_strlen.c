@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 20:56:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 14:40:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 
 size_t	ft_strlen(const char *str)
 {
-	size_t	c;
+	const char	*end = str;
 
-	c = 0;
-	while (str[c])
-		c++;
-	return (c);
+	while (*(end++))
+		;
+	return ((size_t)(end - str - 1));
 }

@@ -6,12 +6,16 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/07/15 13:39:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/15 15:44:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
+# define LOMAGIC 0x1010101010101010
+# define HIMAGIC 0x8080808080808080
+# define LONGCHR_NULL(x) (((x - LOMAGIC) & HIMAGIC) != 0)
+# define IFRET__(x, y) if (x) return (y);
 # include <string.h>
 # include "get_next_line.h"
 

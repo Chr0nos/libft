@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcdup.c                                       :+:      :+:    :+:   */
+/*   ft_freesplit.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/08/25 17:45:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/25 19:50:13 by snicolet         ###   ########.fr       */
+/*   Created: 2016/08/25 20:46:15 by snicolet          #+#    #+#             */
+/*   Updated: 2016/08/25 21:07:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-char	*ft_strcdup(const char *src, char c)
+void	ft_freesplit(char **split)
 {
-	const size_t	size = ft_strsublen(src, c);
-	char			*dest;
+	int		p;
 
-	if ((!size) || (!(dest = ft_memdup(src, size))))
-		return (NULL);
-	dest[size] = '\0';
-	return (dest);
+	p = 0;
+	while (split[p])
+		free(split[p++]);
+}
+
+void	ft_freesplit_multi(char ***split, int size)
+{
+	if (size < 0)
+		return ;
+	while (size--)
+		ft_freesplit(split[size]);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/25 17:57:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/25 21:01:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -223,5 +223,8 @@ char				*ft_strtoupper(char *s);
 int					ft_ulltobuff(char *buffer, unsigned long long nb,
 	unsigned int base, const char *map);
 char				*ft_strcdup(const char *src, char c);
+const char			*ft_strseek(const char *src, char c, const int n);
+void				ft_freesplit(char **split);
+void				ft_freesplit_multi(char ***split, int size);
 
 #endif

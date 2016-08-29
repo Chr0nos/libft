@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/08/25 20:47:59 by snicolet         ###   ########.fr        #
+#    Updated: 2016/08/29 12:35:42 by dboudy           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,7 +65,7 @@ MEMORY=ft_memset.o \
 	   ft_realloc.o
 PRINTF=ft_printf.o
 GNL=ft_get_next_line.o
-OBJ=ft_putchar.o ft_putchar_fd.o \
+OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putptr.o \
 	ft_putull.o ft_putfloat.o \

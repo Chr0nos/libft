@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/25 21:01:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/08/29 12:36:41 by dboudy           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ typedef struct		s_btree
 	void			*data;
 }					t_btree;
 
+void				ft_putnchar(char c, unsigned int n);
+void				ft_debug_pstr(const char *s, unsigned int lvl);
 void				ft_putchar(int c);
 void				ft_putchar_fd(int c, int fd);
 void				ft_putendl(const char *s);

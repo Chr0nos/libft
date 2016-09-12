@@ -1,132 +1,122 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_next_line.c                                 :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
+/*   By: edelangh <edelangh@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/12/04 10:11:09 by snicolet          #+#    #+#             */
-/*   Updated: 2016/04/01 19:04:35 by snicolet         ###   ########.fr       */
+/*   Created: 2014/11/07 14:48:00 by edelangh          #+#    #+#             */
+/*   Updated: 2016/09/12 10:56:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "get_next_line.h"
 #include "libft.h"
-#include <fcntl.h>
-#include <unistd.h>
-#include <stdlib.h>
 
-inline static void	add_pending(char *buffer, t_gnls *x)
+static t_fd_list	*get_buf(int const fd)
 {
-	char	*tmp;
+	static t_fd_list	*lst = NULL;
+	t_fd_list			*tmp;
+	t_fd_list			*tmp2;
 
-	if (*buffer == '\0')
-		return ;
-	else if (x->pb != NULL)
+	tmp = lst;
+	while (tmp)
 	{
-		tmp = x->pb;
-		x->pb = ft_strjoin(x->pb, buffer);
-		ft_strdel(&tmp);
+		if (tmp->fd == fd)
+			return (tmp);
+		tmp = tmp->next;
 	}
-	else
-		x->pb = ft_strdup(buffer);
+	tmp = (t_fd_list*)ft_memalloc(sizeof(t_fd_list));
+	if (!tmp)
+		return (NULL);
+	if (!(tmp->buffer = (char*)ft_memalloc(sizeof(char) * (BUFF_SIZE + 1))))
+		return (NULL);
+	tmp->next = NULL;
+	tmp->fd = fd;
+	if (!lst)
+		return ((lst = tmp));
+	tmp2 = lst;
+	while (tmp2->next)
+		tmp2 = tmp2->next;
+	tmp2->next = tmp;
+	return (tmp);
 }
 
-inline static void	rotate_pending(char **pending, size_t offset,
-		size_t rest_len)
+static void			ft_resize_buff(char **buffer, int n)
 {
-	char	*tmp;
+	int	i;
 
-	tmp = NULL;
-	if (rest_len == 0)
-		ft_strdel(pending);
-	else
+	i = 0;
+	while (i < BUFF_SIZE)
 	{
-		if (!(tmp = ft_strdup(*pending + offset)))
-			return ;
-		if (*pending != NULL)
-			free(*pending);
+		if (i + n < BUFF_SIZE)
+			(*buffer)[i] = (*buffer)[i + n + 1];
+		else
+			(*buffer)[i] = '\0';
+		++i;
 	}
-	*pending = tmp;
 }
 
-static int			ft_read_data(char *buffer, t_gnls *x, int buffer_len)
+static int			ft_addbuffer(char **line, char **buffer, int n, int fd)
 {
-	int			read_lenght;
-	size_t		rest_lenght;
+	int		lline;
+	char	*tmp;
+	int		n_save;
 
-	add_pending(buffer, x);
-	if (x->pb == NULL)
-		return (0);
-	read_lenght = ft_strchrpos(x->pb, '\n');
-	if (read_lenght < 0)
-		read_lenght = (int)ft_strlen(x->pb);
-	if ((buffer_len == GNL_BUFF_SIZE) && (buffer[buffer_len - 1] != '\n'))
-		return (0);
-	if (read_lenght >= 0)
-	{
-		rest_lenght = ft_strlen(x->pb) - (size_t)read_lenght;
-		x->buffer = ft_strndup(x->pb, (size_t)read_lenght);
-		x->buffer[read_lenght] = '\0';
-		rotate_pending(&x->pb, (size_t)read_lenght + 1, rest_lenght);
-		if (read_lenght > 0)
-			return (1);
-		return ((rest_lenght <= 0) ? 0 : 1);
-	}
+	n_save = n;
+	lline = get_buf(fd)->lline;
+	tmp = *line;
+	(*line) = (char*)ft_memalloc(sizeof(char) * (unsigned int)(lline + n + 1));
+	get_buf(fd)->lline = lline + n;
+	if (!*line)
+		return (-1);
+	lline = -1;
+	while (++lline > -1 && tmp && tmp[lline])
+		(*line)[lline] = tmp[lline];
+	free(tmp);
+	while (n--)
+		(*line)[lline + n] = (*buffer)[n];
+	ft_resize_buff(buffer, n_save);
 	return (0);
 }
 
-inline static int	ft_gnl_read(const int fd, t_gnls *x)
+static int			ft_check_error(int fd, char ***buf, char **line, int *f)
 {
-	char	buffer[GNL_BUFF_SIZE + 1];
-	int		ret;
-	int		ret_b;
-
-	x->buffer = NULL;
-	while ((ret = (int)read(fd, buffer, GNL_BUFF_SIZE)))
-	{
-		if (ret < 0)
-			return (ret);
-		buffer[ret] = '\0';
-		ret_b = ft_read_data(buffer, x, ret);
-		if (ret_b == 1)
-			return (1);
-	}
-	buffer[0] = '\0';
-	while ((ret_b = ft_read_data(buffer, x, 0)))
-	{
-		if (ret_b == 0)
-			return (ret_b);
-		else if (ret_b == 1)
-			return (1);
-	}
+	if (fd < 0)
+		return (-1);
+	if (!get_buf(fd))
+		return (-1);
+	if (!(*buf = &(get_buf(fd)->buffer)) || !BUFF_SIZE || !line)
+		return (-1);
+	get_buf(fd)->lline = 0;
+	*line = NULL;
+	*f = 1;
 	return (0);
 }
 
 int					ft_get_next_line(int const fd, char **line)
 {
-	t_gnls			x;
-	int				ret;
-	static t_list	*lst_origin;
-	t_list			*l;
+	char				**buf;
+	int					len;
+	int					f;
 
-	if ((fd < 0) || (!line))
+	if (ft_check_error(fd, &buf, line, &f))
 		return (-1);
-	l = lst_origin;
-	while ((l) && (((t_gnls *)(l->content))->fd != fd))
-		l = l->next;
-	if ((!l) && (!(x.pb = NULL)))
+	while (f != -1)
 	{
-		if (!(l = ft_lstnew((void *)&x, sizeof(x))))
-			return (-1);
-		((t_gnls*)(l->content))->fd = fd;
-		l = ft_lstadd(&lst_origin, l);
+		if (!(*buf)[0] && (len = (int)read(fd, *buf, BUFF_SIZE)) != BUFF_SIZE)
+		{
+			if (len == -1)
+				return (-1);
+			f = (ft_strchr(*buf, '\n') != NULL);
+			len = (int)ft_strsublen(*buf, '\n');
+			f = (ft_addbuffer(line, buf, len, fd) == -1 ? -1 : f);
+			return ((f == -1 ? -1 : f || ft_strlen(*buf) || ft_strlen(*line)));
+		}
+		if ((len = (int)ft_strsublen(*buf, '\n')) != -2 && (*buf)[len] == '\0')
+			f = ft_addbuffer(line, buf, len, fd);
+		else if ((*buf)[len] == '\n')
+			return (1 + (f = ft_addbuffer(line, buf, len, fd)));
 	}
-	*line = 0;
-	if ((ret = ft_gnl_read(fd, (t_gnls *)(l->content))) >= 0)
-		*line = ((t_gnls *)(l->content))->buffer;
-	if (ret == 0)
-		ft_mfree(2, ((t_gnls*)l->content)->pb, ((t_gnls*)l->content)->buffer);
-	if ((ret == 0) && (l != NULL))
-		ft_lstremove(&l, &lst_origin, &free);
-	return (ret);
+	return (-1);
 }

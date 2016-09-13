@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/29 12:36:41 by dboudy           ###   ########.fr       */
+/*   Updated: 2016/09/14 01:12:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,6 +127,7 @@ int					ft_match(char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
 size_t				ft_strlen(const char *str);
+size_t				ft_strlen_fast(const char *str);
 size_t				ft_strsublen(const char *str, char c);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlcat(char *dest, const char *src, size_t n);

@@ -6,23 +6,22 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/14 01:13:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/14 02:36:20 by edelangh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-
 size_t	ft_strlen_fast(const char *str)
 {
 	const unsigned long		*x = (const unsigned long *)(unsigned long)str;
 	const char				*cp;
 
- 	while (42)
- 	{
- 		if (LONGCHR_NULL(*(x++)))
- 		{
+	while (42)
+	{
+		if (LONGCHR_NULL(*(x++)))
+		{
 			cp = (const char *)(x - 1);
 			IFRET__(!cp[0], (size_t)(cp - str));
 			IFRET__(!cp[1], (size_t)(cp - str + 1));
@@ -35,7 +34,6 @@ size_t	ft_strlen_fast(const char *str)
 		}
 	}
 }
-
 
 size_t	ft_strlen(const char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/08/25 20:46:15 by snicolet          #+#    #+#             */
-/*   Updated: 2016/08/25 23:19:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/14 02:16:54 by edelangh         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ void	ft_freesplit(char **split)
 	p = 0;
 	while (split[p])
 		free(split[p++]);
+	free(split);
 }
 
 void	ft_freesplit_multi(char ***split, int size)

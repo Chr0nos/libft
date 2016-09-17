@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/16 06:21:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/16 07:42:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ typedef struct		s_printf
 {
 	va_list			*ap;
 	char			buffer[FT_PRINTF_BSIZE];
-	int				bpos;
+	char			*bpos;
 	unsigned int	flags;
 	unsigned int	precision;
 }					t_printf;

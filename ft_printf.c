@@ -6,57 +6,51 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/17 15:25:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/25 19:07:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include "ft_printf.h"
 #include <stdarg.h>
 #include <unistd.h>
 
-inline static size_t	ft_printf_core(const char **s, va_list *ap)
+static int				ft_printf_engine(const char *s, t_printf *pf)
 {
-	if ((**s == 's') && (++(*s)))
-		ft_putstr(va_arg(*ap, char *));
-	else if ((**s == 'd') && (++(*s)))
-		ft_putnbr(va_arg(*ap, int));
-	else if ((**s == 'p') && (++(*s)))
-		ft_putptr(va_arg(*ap, void *));
-	else if ((**s == '%') && (++(*s)))
-		ft_putchar('%');
-	else if ((**s == 'f') && (++(*s)))
-		ft_putfloat((float)va_arg(*ap, double));
-	return (0);
-}
+	int		len;
+	int		pos;
 
-static int				ft_vsprintf(const char *s, va_list *ap)
-{
-	size_t	len;
-
+	(void)pf;
 	len = 0;
+	pos = 0;
 	while (*s)
 	{
-		if ((*s == '%') && (++s))
-		{
-			len += ft_printf_core(&s, ap);
-		}
-		else
-		{
-			len = ft_strsublen(s, '%');
-			write(1, s, len);
-			s += len;
-		}
+		if ((pos = ft_strchrpos(s, '%')) < 0)
+			break ;
+		s += pos;
+		ft_putendl(s);
 	}
-	return ((int)len);
+	return (len);
+}
+
+static void				ft_printf_init(t_printf *pf, va_list *ap)
+{
+	pf->ap = ap;
+	pf->buffer[0] = '\0';
+	pf->bpos = 0;
+	pf->flags = 0;
+	pf->precision = 0;
 }
 
 int						ft_printf(const char *str, ...)
 {
-	va_list	ap;
-	int		ret;
+	va_list		ap;
+	int			ret;
+	t_printf	pf;
 
+	ft_printf_init(&pf, &ap);
 	va_start(ap, str);
-	ret = ft_vsprintf(str, &ap);
+	ret = ft_printf_engine(str, &pf);
 	va_end(ap);
 	return (ret);
 }

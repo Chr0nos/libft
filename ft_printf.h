@@ -6,13 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/16 07:42:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/25 18:52:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_PRINTF_H
 # define FT_PRINTF_H
 # include <string.h>
+# include <stdarg.h>
 # define FT_PRINTF_BSIZE		2048
 # define FT_PRINTF_CONVERTS		"sSpdDioOuUxXcC"
 
@@ -38,15 +39,16 @@ typedef struct		s_printf
 {
 	va_list			*ap;
 	char			buffer[FT_PRINTF_BSIZE];
-	char			*bpos;
+	int				bpos;
 	unsigned int	flags;
 	unsigned int	precision;
+	unsigned int	padding;
 }					t_printf;
 
 typedef struct		s_printf_convert
 {
 	int				letter;
-	int				convert(void *, t_printf *);
+	int				(*convert)(void *, t_printf *);
 }					t_printf_convert;
 
 typedef struct		s_printf_cfg
@@ -60,8 +62,8 @@ typedef struct		s_printf_cfg
 static const t_printf_cfg	g_printf_cfg[FT_PRINTF_FLAGS] = {
 	(t_printf_cfg){'#', FT_PRINTF_FLAG_DIESE, 0, 0},
 	(t_printf_cfg){'0', FT_PRINTF_FLAG_ZERO, 0, 0},
-	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, 0, 0},
-	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, 0, 0},
+	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, 0, FT_PRINTF_FLAG_MORE},
+	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, 0, FT_PRINTF_FLAG_LESS},
 	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, 0, 0}
 };
 

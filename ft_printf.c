@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/28 21:05:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/29 00:14:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static void				ft_printf_flush(t_printf *pf)
 	if (size > 0)
 		pf->total_len += (size_t)size;
 	pf->buff_start = pf->buffer;
-	pf->buffer[0] = '\0';
 	pf->size = 0;
 	pf->space_left = FT_PRINTF_BSIZE;
 }
@@ -44,9 +43,9 @@ static void				ft_printf_append(t_printf *pf, const char *data,
 	{
 		ft_memcpy(pf->buff_start, data, pf->space_left);
 		len -= pf->space_left;
+		data += pf->space_left;
 		pf->size = FT_PRINTF_BSIZE;
 		ft_printf_flush(pf);
-		data += len;
 	}
 	ft_memcpy(pf->buff_start, data, len);
 	pf->total_len += len;
@@ -69,40 +68,75 @@ void					ft_printf_convert_str(t_printf *pf)
 	ft_printf_append(pf, str, ft_strlen(str));
 }
 
-// test de format %#.8d%
+static int				ft_printf_loadflags(t_printf *pf, const char c)
+{
+	int		p;
+
+	p = FT_PRINTF_FLAGSNUM;
+	while ((p--) && ((char)g_printf_cfg[p].letter != c))
+		;
+	if (p < 0)
+		return (0);
+	pf->flags |= g_printf_cfg[p].flag;
+	pf->flags &= g_printf_cfg[p].mask;
+	return (1);
+}
+
+static int				ft_printf_loadmodifiers(t_printf *pf, const char *str)
+{
+	int						p;
+	const t_printf_modif	*m = (const t_printf_modif*)&g_printf_modifiers;
+
+	p = FT_PRINTF_MODIFIERS;
+	while ((p--) && (!ft_strncmp(m[p].modifier, str, m[p].len)))
+		;
+	if (p < 0)
+		return (0);
+	pf->flags |= g_printf_modifiers[p].flag;
+	pf->flags &= g_printf_modifiers[p].mask;
+	return (1);
+}
+
+/*
+** called on each sub chain delimited by %
+*/
 
 static void				ft_printf_exec(const char *str, int len,
 	t_printf *pf)
 {
+	pf->flags = 0;
+	while (!ft_strany(*str, FT_PRINTF_CONVERTS))
+	{
+		if (!ft_printf_loadflags(pf, *str))
+			ft_printf_loadmodifiers(pf, str);
+		str++;
+	}
 	ft_printf_append(pf, str, (size_t)len);
 }
 
-static int				ft_printf_engine(const char *s, t_printf *pf)
+static void				ft_printf_engine(const char *s, t_printf *pf)
 {
 	int		pos;
 
 	pos = 0;
 	while (*s)
 	{
-		pf->flags = 0;
 		pos = ft_strchrpos(s, '%');
 		if (pos < 0)
 			pos = (int)ft_strlen(s);
 		if (!pos)
 			break ;
-		write(pf->fd, "[", 1);
-		write(pf->fd, s, (size_t)pos);
-		write(pf->fd, "]", 1);
-		ft_printf_exec(s, pos, pf);
+		// write(pf->fd, "[", 1);
+		// write(pf->fd, s, (size_t)pos);
+		// write(pf->fd, "]", 1);
+		ft_printf_exec(s, pos - 1, pf);
 		s += pos + 1;
 	}
-	return (pos);
 }
 
 static void				ft_printf_init(t_printf *pf, va_list *ap)
 {
 	pf->ap = ap;
-	pf->buffer[0] = '\0';
 	pf->flags = 0;
 	pf->precision = 0;
 	pf->buff_start = pf->buffer;
@@ -114,13 +148,13 @@ static void				ft_printf_init(t_printf *pf, va_list *ap)
 int						ft_printf(const char *str, ...)
 {
 	va_list		ap;
-	int			ret;
 	t_printf	pf;
 
 	ft_printf_init(&pf, &ap);
 	va_start(ap, str);
-	ret = ft_printf_engine(str, &pf);
+	ft_printf_engine(str, &pf);
 	va_end(ap);
-	write(1, pf.buffer, pf.size);
-	return (ret);
+	if (pf.size)
+		write(1, pf.buffer, pf.size);
+	return ((int)pf.total_len);
 }

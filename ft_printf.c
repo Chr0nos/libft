@@ -58,15 +58,19 @@ static void				ft_printf_append(t_printf *pf, const char *data,
 void					ft_printf_convert_int(t_printf *pf)
 {
 	char			buff[13];
+	const int		nb = va_arg(*(pf->ap), int);
 
+	if ((nb < 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
+	ft_printf_append(pf, "+", 1);
 	ft_printf_append(pf, buff,
-		(size_t)ft_itobuff(buff, va_arg(*pf->ap, int), 10, "0123456789") + 1);
+		(size_t)ft_itobuff(buff, nb, 10, "0123456789"));
 }
 
 void					ft_printf_convert_str(t_printf *pf)
 {
-	const char	*str = va_arg(*pf->ap, char *);
+	const char	*str;
 
+	str	= va_arg(*(pf->ap), char *);
 	ft_printf_append(pf, str, ft_strlen(str));
 }
 
@@ -84,7 +88,7 @@ static int				ft_printf_loadflags(t_printf *pf, const char c)
 	return (1);
 }
 
-static int				ft_printf_loadmodifiers(t_printf *pf, const char *str)
+static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str)
 {
 	int						p;
 	const t_printf_modif	*m = (const t_printf_modif*)&g_printf_modifiers;
@@ -96,7 +100,22 @@ static int				ft_printf_loadmodifiers(t_printf *pf, const char *str)
 		return (0);
 	pf->flags |= g_printf_modifiers[p].flag;
 	pf->flags &= g_printf_modifiers[p].mask;
-	return (1);
+	return (g_printf_modifiers[p].len);
+}
+
+static void				ft_printf_conv(t_printf *pf, const char c)
+{
+	int		p;
+
+	p = FT_PRINTF_CONVS;
+	while (p--)
+	{
+		if ((char)g_printf_convs[p].letter == c)
+		{
+			g_printf_convs[p].convert(pf);
+			return ;
+		}
+	}
 }
 
 /*
@@ -106,13 +125,19 @@ static int				ft_printf_loadmodifiers(t_printf *pf, const char *str)
 static void				ft_printf_exec(const char *str, int len,
 	t_printf *pf)
 {
+	size_t		seek;
+
 	pf->flags = 0;
 	while (!ft_strany(*str, FT_PRINTF_CONVERTS))
 	{
-		if (!ft_printf_loadflags(pf, *str))
-			ft_printf_loadmodifiers(pf, str);
+		if ((!ft_printf_loadflags(pf, *str)) &&
+			(seek = ft_printf_loadmodifiers(pf, str) > 1))
+			str += seek - 1;
 		str++;
 	}
+	if (!*str)
+		return ;
+	ft_printf_conv(pf, *(str++));
 	ft_printf_append(pf, str, (size_t)len);
 }
 
@@ -128,7 +153,7 @@ static void				ft_printf_engine(const char *s, t_printf *pf)
 		pos = (int)ft_strsublen(s, '%');
 		ft_printf_append(pf, "][", 2);
 		if (pos)
-			ft_printf_exec(s, pos, pf);
+			ft_printf_exec(s, pos - 1, pf);
 		else
 			ft_printf_append(pf, "%", 1);
 		s += pos + 1;
@@ -154,8 +179,8 @@ int						ft_printf(const char *str, ...)
 	va_list		ap;
 	t_printf	pf;
 
-	ft_printf_init(&pf, &ap);
 	va_start(ap, str);
+	ft_printf_init(&pf, &ap);
 	ft_printf_engine(str, &pf);
 	va_end(ap);
 	if (pf.size)

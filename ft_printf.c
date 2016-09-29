@@ -138,9 +138,8 @@ static void				ft_printf_exec(const char *str, int len,
 		str++;
 		len--;
 	}
-	if (!*str)
-		return ;
-	ft_printf_conv(pf, *(str++));
+	if (*str)
+		ft_printf_conv(pf, *(str++));
 }
 
 static void				ft_printf_engine(const char *s, t_printf *pf)

@@ -141,8 +141,6 @@ static void				ft_printf_exec(const char *str, int len,
 	if (!*str)
 		return ;
 	ft_printf_conv(pf, *(str++));
-	if ((*str) && (len > 1))
-		ft_printf_append(pf, str, (size_t)len - 1);
 }
 
 static void				ft_printf_engine(const char *s, t_printf *pf)

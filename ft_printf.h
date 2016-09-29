@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/28 23:55:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/29 17:55:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@
 # define FT_PRINTF_MOD_J		(1u << 9)
 # define FT_PRINTF_MOD_Z		(1u << 10)
 # define FT_PRINTF_PREC			(1u << 11)
-# define FT_PRINTF_CONV_STR		(1u << 12)
-# define FT_PRINTF_CONV_INT		(1u << 13)
-# define FT_PRINTF_CONV_UINT	(1u << 14)
 
 struct s_printf;
 

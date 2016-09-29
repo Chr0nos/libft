@@ -1,32 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strsep.c                                        :+:      :+:    :+:   */
+/*   ft_strforf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/09/17 15:25:55 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/17 23:58:35 by snicolet         ###   ########.fr       */
+/*   Created: 2016/09/29 21:04:47 by snicolet          #+#    #+#             */
+/*   Updated: 2016/09/29 22:59:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strsep(char **str, const char *delim)
+const char		*ft_strforf(const char *str,  const char *sep, int *len)
 {
-	register char	*s;
-	char			*start;
+	const char	*origin = str;
 
-	if (!*str)
+	while ((*str) && (!ft_strany(*str, sep)))
+		str++;
+	*len = (int)((size_t)str - (size_t)origin);
+	if ((!*str) && (*len == 0))
 		return (NULL);
-	start = *str;
-	s = ft_strchrany(*str, delim);
-	if (!s)
-		*str = NULL;
-	else
-	{
-		*(s++) = '\0';
-		*str = s;
-	}
-	return (start);
+	return (str);
 }

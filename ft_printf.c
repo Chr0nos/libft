@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/29 18:40:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/29 23:14:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 {
 	size_t		p;
 
-	ft_putendl("TA MERE");
+	ft_putendl("LOAD PRECISION");
 	if ((*s != '.') || (!s[1]) || (!ft_isdigit(s[1])))
 		return (0);
 	s++;
@@ -149,10 +149,9 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 
 /*
 ** called on each sub chain delimited by %
-** return the next position to start searching the next % char
 */
 
-static const char			*ft_printf_exec(const char *str, int len,
+static void				ft_printf_exec(const char *str, int len,
 	t_printf *pf)
 {
 	size_t			seek;
@@ -172,25 +171,32 @@ static const char			*ft_printf_exec(const char *str, int len,
 		str += seek;
 		len -= (int)seek;
 	}
-	if ((len >= 0) && (*str))
+	if ((len > 0) && (*str))
+	{
 		ft_printf_conv(pf, *str);
-	return (str + 1);
+		ft_printf_append(pf, str + 1, (size_t)(len - 1));
+	}
 }
 
 static void				ft_printf_engine(const char *s, t_printf *pf)
 {
-	int		pos;
+	const char	*tok;
+	const char	*sep = "%";
+	int			len;
 
-	pos = (int)ft_strsublen(s, '%');
-	ft_printf_append(pf, s, (size_t)pos);
-	s += pos + 1;
-	while ((*s) && ((pos = (int)ft_strchrpos(s, '%')) >= 0))
+	tok = s;
+	while ((tok = ft_strforf(tok, sep, &len)) != NULL)
 	{
-		ft_printf_append(pf, "][", 2);
-		s = ft_printf_exec(s, pos - 1, pf);
+		//ft_printf_append(pf, "][", 2);
+		if (!len)
+			ft_printf_append(pf, "%", 1);
+		else if (*s == '%')
+			ft_printf_exec(s + 1, len, pf);
+		else
+			ft_printf_append(pf, s, (size_t)len);
+		s = tok;
+		tok++;
 	}
-	if (*s)
-		ft_printf_append(pf, s, ft_strlen(s));
 }
 
 static void				ft_printf_init(t_printf *pf, va_list *ap)

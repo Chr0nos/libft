@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/29 02:08:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/29 21:45:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,25 +142,21 @@ static void				ft_printf_exec(const char *str, int len,
 		ft_printf_conv(pf, *(str++));
 }
 
+//ft_printf_append(pf, "][", 2);
+
 static void				ft_printf_engine(const char *s, t_printf *pf)
 {
-	int		pos;
+	char		*oldpos;
+	const char	*sep = "%";
+	int			len;
 
-	pos = (int)ft_strsublen(s, '%');
-	ft_printf_append(pf, s, (size_t)pos);
-	s += pos + 1;
-	while (*s)
+	oldpos = s;
+	while ((len = ft_strforf(&s, sep)) >= 0)
 	{
-		pos = (int)ft_strsublen(s, '%');
-		ft_printf_append(pf, "][", 2);
-		if (pos)
-			ft_printf_exec(s, pos - 1, pf);
-		else
-			ft_printf_append(pf, "%", 1);
-		s += pos + 1;
+		if (*s)
+			ft_printf_exec(oldpos, len, pf);
+		oldpos = s;
 	}
-	if (*s)
-		ft_printf_append(pf, s, ft_strlen(s));
 }
 
 static void				ft_printf_init(t_printf *pf, va_list *ap)

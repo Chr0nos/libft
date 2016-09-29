@@ -10,7 +10,7 @@
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-Weverything -pipe
+EXTRA_FLAGS=-Weverything -pipe -g3
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 COMPILER=clang
 GCC=$(COMPILER) $(FLAGS) -I. $(EXTRA_FLAGS)

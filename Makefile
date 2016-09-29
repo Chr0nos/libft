@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/09/17 17:12:13 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/09/29 21:17:57 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -139,7 +139,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_strseek.o \
 	ft_freesplit.o \
 	ft_strsep.o \
-	ft_strchrany.o
+	ft_strchrany.o \
+	ft_strforf.o
 
 ################################################################################
 ##                                                                            ##

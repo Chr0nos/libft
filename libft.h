@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/17 17:11:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/29 21:17:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,7 @@ size_t				ft_strsplit_count(const char *str, char c);
 size_t				ft_strcount(const char *str, char c);
 size_t				ft_tabstrlen(const char **tab);
 double				ft_atod(const char *s);
+int					ft_strforf(char **target, const char *sep);
 
 /*
 ** memory usage functions

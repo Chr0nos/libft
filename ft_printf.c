@@ -68,9 +68,8 @@ void					ft_printf_convert_int(t_printf *pf)
 
 void					ft_printf_convert_str(t_printf *pf)
 {
-	const char	*str;
+	const char	*str = va_arg(*(pf->ap), char *);
 
-	str	= va_arg(*(pf->ap), char *);
 	ft_printf_append(pf, str, ft_strlen(str));
 }
 
@@ -132,13 +131,18 @@ static void				ft_printf_exec(const char *str, int len,
 	{
 		if ((!ft_printf_loadflags(pf, *str)) &&
 			(seek = ft_printf_loadmodifiers(pf, str) > 1))
+		{
 			str += seek - 1;
+			len -= (int)seek;
+		}
 		str++;
+		len--;
 	}
 	if (!*str)
 		return ;
 	ft_printf_conv(pf, *(str++));
-	ft_printf_append(pf, str, (size_t)len);
+	if ((*str) && (len > 1))
+		ft_printf_append(pf, str, (size_t)len - 1);
 }
 
 static void				ft_printf_engine(const char *s, t_printf *pf)

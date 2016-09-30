@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/29 17:55:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 01:59:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define FT_PRINTF_MOD_J		(1u << 9)
 # define FT_PRINTF_MOD_Z		(1u << 10)
 # define FT_PRINTF_PREC			(1u << 11)
+# define FT_PRINTF_MINFIELD		(1u << 12)
 
 struct s_printf;
 
@@ -49,7 +50,7 @@ typedef struct		s_printf
 	unsigned int	flags;
 	int				precision;
 	int				fd;
-	int				padding;
+	int				min_field;
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;
@@ -57,6 +58,7 @@ typedef struct		s_printf
 
 void				ft_printf_convert_int(t_printf *pf);
 void				ft_printf_convert_str(t_printf *pf);
+void				ft_printf_convert_percent(t_printf *pf);
 
 /*
 ** conversions const global
@@ -71,7 +73,8 @@ typedef struct		s_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
 	(t_printf_convert){'d', 0, &ft_printf_convert_int},
-	(t_printf_convert){'s', 0, &ft_printf_convert_str}
+	(t_printf_convert){'s', 0, &ft_printf_convert_str},
+	(t_printf_convert){'%', 0, &ft_printf_convert_percent}
 };
 
 /*

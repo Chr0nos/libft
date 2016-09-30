@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 00:49:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 02:18:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ static void				ft_printf_append(t_printf *pf, const char *data,
 	pf->space_left -= len;
 }
 
+static void				ft_printf_padding(t_printf *pf, const char c, int n)
+{
+	while (n--)
+		ft_printf_append(pf, &c, 1);
+}
+
 /*
 ** Convert functions
 */
@@ -64,17 +70,31 @@ void					ft_printf_convert_int(t_printf *pf)
 	char			buff[13];
 	const int		nb = va_arg(*(pf->ap), int);
 
-	if ((nb < 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
-	ft_printf_append(pf, "+", 1);
+	if ((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
+		ft_printf_append(pf, "+", 1);
 	ft_printf_append(pf, buff,
 		(size_t)ft_itobuff(buff, nb, 10, "0123456789"));
 }
 
 void					ft_printf_convert_str(t_printf *pf)
 {
-	const char	*str = va_arg(*(pf->ap), char *);
+	const char		*str = va_arg(*(pf->ap), char *);
+	size_t			len;
 
-	ft_printf_append(pf, str, ft_strlen(str));
+	if (pf->flags & FT_PRINTF_PREC)
+	{
+		len = 0;
+		while ((*str) && (len < (size_t)pf->precision))
+			len++;
+	}
+	else
+		len = ft_strlen(str);
+	ft_printf_append(pf, str, len);
+}
+
+void					ft_printf_convert_percent(t_printf *pf)
+{
+	ft_printf_append(pf, "%", 1);
 }
 
 /*
@@ -95,35 +115,67 @@ static int				ft_printf_loadflags(t_printf *pf, const char c)
 	return (1);
 }
 
-static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str,
-		int len)
+static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str)
 {
 	int						p;
 	const t_printf_modif	*m = (const t_printf_modif*)&g_printf_modifiers;
 
 	p = FT_PRINTF_MODIFIERS;
-	while ((p--) && (!ft_strncmp(m[p].modifier, str, m[p].len)))
+	while ((p--) && (ft_strncmp(m[p].modifier, str, m[p].len)))
 		;
-	if ((p < 0) || (len < (int)m[p].len))
+	if (p < 0)
 		return (0);
 	pf->flags |= g_printf_modifiers[p].flag;
 	pf->flags &= g_printf_modifiers[p].mask;
-	return (g_printf_modifiers[p].len);
+	return (g_printf_modifiers[p].len + 1);
 }
 
 static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 {
 	size_t		p;
 
-	ft_putendl("LOAD PRECISION");
-	if ((*s != '.') || (!s[1]) || (!ft_isdigit(s[1])))
+	if (*s != '.')
 		return (0);
-	s++;
+	if ((!s[1]) || (!ft_isdigit(s[1])))
+	{
+		pf->precision = 0;
+		pf->flags |= FT_PRINTF_PREC;
+		return (1);
+	}
+	if (*(++s) == '*')
+	{
+		pf->precision = va_arg(*pf->ap, int);
+		pf->flags |= FT_PRINTF_PREC;
+		return (1);
+	}
 	pf->precision = ft_atoi(s);
+	if (pf->precision < 0)
+		pf->precision = 0;
+	else
+		pf->flags |= FT_PRINTF_PREC;
 	p = 1;
 	while (ft_isdigit(s[p]))
 		p++;
-	return (p);
+	return (p + 1);
+}
+
+static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
+{
+	size_t		seek;
+
+	if ((!ft_isdigit(*s)) || (pf->flags & FT_PRINTF_PREC))
+		return (0);
+	pf->flags |= FT_PRINTF_MINFIELD;
+	if (*s == '*')
+	{
+		pf->min_field = va_arg(*pf->ap, int);
+		return (1);
+	}
+	pf->min_field = ft_atoi(s);
+	seek = 0;
+	while (ft_isdigit(s[seek]))
+		seek++;
+	return (seek + 1);
 }
 
 /*
@@ -151,31 +203,32 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 ** called on each sub chain delimited by %
 */
 
-static const char		*ft_printf_exec(const char *str, int len,
-	t_printf *pf)
+static const char		*ft_printf_exec(const char *str, t_printf *pf)
 {
 	size_t			seek;
 
-	pf->flags = 0;
-	seek = 0;
-	while ((len > 0) && (!ft_strany(*str, FT_PRINTF_CONVERTS)))
+	if (*str == '%')
 	{
-		if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
+		ft_printf_convert_percent(pf);
+		return (str + 1);
+	}
+	seek = 0;
+	while ((*str) && (!ft_strany(*str, FT_PRINTF_CONVERTS)))
+	{
+		if ((seek = ft_printf_loadmin_field(pf, str)) > 0)
 			;
-		else if ((seek = ft_printf_loadmodifiers(pf, str, len)) > 0)
+		else if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
+			;
+		else if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
 			;
 		else if ((seek = ft_printf_loadprecision(pf, str)) > 0)
 			;
 		else
 			break ;
 		str += seek;
-		len -= (int)seek;
 	}
-	if ((len > 0) && (*str))
-	{
+	if (*str)
 		ft_printf_conv(pf, *str);
-		ft_printf_append(pf, str + 1, (size_t)(len - 1));
-	}
 	return (str + 1);
 }
 
@@ -185,19 +238,13 @@ static void				ft_printf_engine(const char *fstr, t_printf *pf)
 	const char		*sep = "%";
 	int				len;
 
-
-	c = fstr;
-	while ((c = ft_strforf(c, sep, &len)) != NULL)
+	while ((c = ft_strforf(fstr, sep, &len)) != NULL)
 	{
-		//ft_printf_append(pf, "][", 2);
-		if (!len)
-			ft_printf_append(pf, "%", 1);
-		else if (*fstr == '%')
-			ft_printf_exec(fstr + 1, len, pf);
-		else
-			ft_printf_append(pf, fstr, (size_t)len);
-		fstr = c++;
+		pf->flags = 0;
+		ft_printf_append(pf, fstr, (size_t)len);
+		fstr = ft_printf_exec(c + 1, pf);
 	}
+	ft_printf_append(pf, fstr, (size_t)len);
 }
 
 static void				ft_printf_init(t_printf *pf, va_list *ap)
@@ -209,6 +256,7 @@ static void				ft_printf_init(t_printf *pf, va_list *ap)
 	pf->size = 0;
 	pf->total_len = 0;
 	pf->fd = 1;
+	pf->min_field = 0;
 	pf->space_left = FT_PRINTF_BSIZE;
 }
 
@@ -217,6 +265,7 @@ int						ft_printf(const char *str, ...)
 	va_list		ap;
 	t_printf	pf;
 
+	(void)ft_printf_padding;
 	va_start(ap, str);
 	ft_printf_init(&pf, &ap);
 	ft_printf_engine(str, &pf);

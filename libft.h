@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/29 22:35:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 04:12:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define IFRET__(x, y) if (x) return (y);
 # include <string.h>
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
@@ -209,7 +210,6 @@ char				*ft_brainfuck(char *str, unsigned char *ptr);
 float				ft_sqrt(float nb);
 int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
-int					ft_printf(const char *s, ...);
 void				ft_wsize(unsigned long long size, char *buffer);
 int					ft_abs(int x);
 void				ft_stralign_right(char *buffer, unsigned int len);

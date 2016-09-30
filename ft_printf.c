@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 02:18:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 04:51:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,24 @@ static void				ft_printf_padding(t_printf *pf, const char c, int n)
 void					ft_printf_convert_int(t_printf *pf)
 {
 	char			buff[13];
+	const char		*c;
 	const int		nb = va_arg(*(pf->ap), int);
+	int				len;
 
-	if ((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
+	c = buff;
+	if (pf->flags & FT_PRINTF_PREC)
+	{
+		if (nb < 0)
+			ft_printf_append(pf, "-", 1);
+		else if (pf->flags & FT_PRINTF_FLAG_MORE)
+			ft_printf_append(pf, "+", 1);
+		c++;
+		ft_printf_padding(pf, '0', pf->precision);
+	}
+	else if ((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
 		ft_printf_append(pf, "+", 1);
-	ft_printf_append(pf, buff,
-		(size_t)ft_itobuff(buff, nb, 10, "0123456789"));
+	len	= ft_itobuff(buff, nb, 10, "0123456789");
+	ft_printf_append(pf, c,	(size_t)len);
 }
 
 void					ft_printf_convert_str(t_printf *pf)
@@ -260,12 +272,15 @@ static void				ft_printf_init(t_printf *pf, va_list *ap)
 	pf->space_left = FT_PRINTF_BSIZE;
 }
 
+/*
+** todo: add sprintf / asprintf / dprintf
+*/
+
 int						ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	t_printf	pf;
 
-	(void)ft_printf_padding;
 	va_start(ap, str);
 	ft_printf_init(&pf, &ap);
 	ft_printf_engine(str, &pf);

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/07 14:43:24 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/07 14:43:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 04:40:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,13 @@
 
 void	ft_stralign_left(char *buffer, unsigned int len)
 {
-	size_t	slen;
-	size_t	diff;
-	size_t	p;
+	const size_t	slen = ft_strlen(buffer);
+	size_t			diff;
 
-	slen = ft_strlen(buffer);
 	if (slen >= len)
 		return ;
 	diff = len - slen;
-	p = 0;
 	buffer += slen;
-	while (p < diff)
-		buffer[p++] = ' ';
-	buffer[p] = '\0';
+	ft_memset(buffer, ' ', diff);
+	buffer[diff] = '\0';
 }

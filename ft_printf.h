@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 01:59:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 06:50:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,12 @@
 # define FT_PRINTF_MOD_Z		(1u << 10)
 # define FT_PRINTF_PREC			(1u << 11)
 # define FT_PRINTF_MINFIELD		(1u << 12)
+# define FT_PRINTF_CONV_INT		(1u << 13)
+# define FT_PRINTF_CONV_STR		(1u << 14)
+# define FT_PRINTF_CONV_CHAR	(1u << 15)
+
+int					ft_printf(const char *s,
+		...) __attribute__((format(printf,1,2)));
 
 struct s_printf;
 
@@ -67,14 +73,14 @@ void				ft_printf_convert_percent(t_printf *pf);
 typedef struct		s_printf_convert
 {
 	int				letter;
-	int				padding;
+	unsigned int	bit;
 	void			(*convert)(struct s_printf *);
 }					t_printf_convert;
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
-	(t_printf_convert){'d', 0, &ft_printf_convert_int},
-	(t_printf_convert){'s', 0, &ft_printf_convert_str},
-	(t_printf_convert){'%', 0, &ft_printf_convert_percent}
+	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
+	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str},
+	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent}
 };
 
 /*
@@ -93,8 +99,9 @@ static const t_printf_cfg g_printf_cfg[FT_PRINTF_FLAGSNUM] = {
 	(t_printf_cfg){'#', FT_PRINTF_FLAG_DIESE, ~0u, 0},
 	(t_printf_cfg){'0', FT_PRINTF_FLAG_ZERO, ~0u, 0},
 	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, ~FT_PRINTF_FLAG_MORE, 0},
-	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, ~FT_PRINTF_FLAG_LESS, 0},
-	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~0u, 0}
+	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE,
+		~(FT_PRINTF_FLAG_LESS | FT_PRINTF_FLAG_SPACE), 0},
+	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~FT_PRINTF_FLAG_MORE, 0}
 };
 
 /*

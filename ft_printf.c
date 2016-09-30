@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 04:51:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 07:33:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,13 @@ static void				ft_printf_append(t_printf *pf, const char *data,
 
 static void				ft_printf_padding(t_printf *pf, const char c, int n)
 {
+	if ((size_t)n <= pf->space_left)
+	{
+		ft_memset(pf->buff_start, (int)c, (size_t)n);
+		pf->buff_start += n;
+		pf->size += (size_t)n;
+		return ;
+	}
 	while (n--)
 		ft_printf_append(pf, &c, 1);
 }
@@ -84,8 +91,9 @@ void					ft_printf_convert_int(t_printf *pf)
 	}
 	else if ((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
 		ft_printf_append(pf, "+", 1);
-	len	= ft_itobuff(buff, nb, 10, "0123456789");
-	ft_printf_append(pf, c,	(size_t)len);
+	len = ft_itobuff(buff, nb, 10, "0123456789");
+	ft_printf_append(pf, c, (size_t)len);
+	pf->lastlen = len;
 }
 
 void					ft_printf_convert_str(t_printf *pf)
@@ -102,11 +110,13 @@ void					ft_printf_convert_str(t_printf *pf)
 	else
 		len = ft_strlen(str);
 	ft_printf_append(pf, str, len);
+	pf->lastlen = (int)len;
 }
 
 void					ft_printf_convert_percent(t_printf *pf)
 {
 	ft_printf_append(pf, "%", 1);
+	pf->lastlen = 1;
 }
 
 /*
@@ -187,7 +197,7 @@ static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
 	seek = 0;
 	while (ft_isdigit(s[seek]))
 		seek++;
-	return (seek + 1);
+	return (seek);
 }
 
 /*
@@ -199,16 +209,37 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 {
 	int		p;
 
+	pf->lastlen = 0;
 	p = FT_PRINTF_CONVS;
 	while (p--)
 	{
 		if ((char)g_printf_convs[p].letter == c)
 		{
 			g_printf_convs[p].convert(pf);
+			if ((pf->flags & FT_PRINTF_MINFIELD) &&
+					(!(pf->flags & FT_PRINTF_FLAG_LESS)) &&
+					(pf->lastlen < pf->min_field))
+				ft_printf_padding(pf, ' ', (int)(pf->min_field - pf->lastlen));
 			return ;
 		}
 	}
 	ft_printf_append(pf, &c, 1);
+}
+
+static inline size_t		ft_printf_loadall(t_printf *pf, const char *str)
+{
+	size_t		seek;
+
+	if ((seek = ft_printf_loadmin_field(pf, str)) > 0)
+		return (seek);
+	else if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
+		return (seek);
+	else if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
+		return (seek);
+	else if ((seek = ft_printf_loadprecision(pf, str)) > 0)
+		return (seek);
+	else
+		return (0);
 }
 
 /*
@@ -227,15 +258,7 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 	seek = 0;
 	while ((*str) && (!ft_strany(*str, FT_PRINTF_CONVERTS)))
 	{
-		if ((seek = ft_printf_loadmin_field(pf, str)) > 0)
-			;
-		else if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
-			;
-		else if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
-			;
-		else if ((seek = ft_printf_loadprecision(pf, str)) > 0)
-			;
-		else
+		if (!(seek = ft_printf_loadall(pf, str)))
 			break ;
 		str += seek;
 	}

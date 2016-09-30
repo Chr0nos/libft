@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 07:33:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 07:37:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -232,14 +232,13 @@ static inline size_t		ft_printf_loadall(t_printf *pf, const char *str)
 
 	if ((seek = ft_printf_loadmin_field(pf, str)) > 0)
 		return (seek);
-	else if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
+	if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
 		return (seek);
-	else if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
+	if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
 		return (seek);
-	else if ((seek = ft_printf_loadprecision(pf, str)) > 0)
+	if ((seek = ft_printf_loadprecision(pf, str)) > 0)
 		return (seek);
-	else
-		return (0);
+	return (0);
 }
 
 /*

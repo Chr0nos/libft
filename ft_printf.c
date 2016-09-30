@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 07:37:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/09/30 07:39:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 	ft_printf_append(pf, &c, 1);
 }
 
-static inline size_t		ft_printf_loadall(t_printf *pf, const char *str)
+static inline size_t	ft_printf_loadall(t_printf *pf, const char *str)
 {
 	size_t		seek;
 

@@ -19,7 +19,7 @@ const char		*ft_strforf(const char *str,  const char *sep, int *len)
 	while ((*str) && (!ft_strany(*str, sep)))
 		str++;
 	*len = (int)((size_t)str - (size_t)origin);
-	if ((!*str) && (*len == 0))
+	if (!*str)
 		return (NULL);
 	return (str);
 }

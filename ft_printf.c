@@ -262,8 +262,11 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 		str += seek;
 	}
 	if (*str)
+	{
 		ft_printf_conv(pf, *str);
-	return (str + 1);
+		return (str + 1);
+	}
+	return (str);
 }
 
 static void				ft_printf_engine(const char *fstr, t_printf *pf)

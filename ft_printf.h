@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 00:32:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 01:37:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,7 @@ typedef struct		s_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
 	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
+	(t_printf_convert){'i', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
 	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str},
 	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent}
 };
@@ -107,8 +108,7 @@ static const t_printf_cfg g_printf_cfg[FT_PRINTF_FLAGSNUM] = {
 	(t_printf_cfg){'#', FT_PRINTF_FLAG_DIESE, ~0u, 0},
 	(t_printf_cfg){'0', FT_PRINTF_FLAG_ZERO, ~0u, 0},
 	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, ~FT_PRINTF_FLAG_MORE, 0},
-	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE,
-		~(FT_PRINTF_FLAG_LESS | FT_PRINTF_FLAG_SPACE), 0},
+	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, ~0u, 0},
 	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~FT_PRINTF_FLAG_MORE, 0}
 };
 

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 00:37:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 01:34:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ void					ft_printf_append(t_printf *pf, const char *data,
 
 	if (!len)
 		return ;
+	pf->lastlen += len;
 	if (len > FT_PRINTF_BSIZE)
 	{
 		ft_printf_flush(pf);
@@ -60,6 +61,7 @@ void					ft_printf_padding(t_printf *pf, const char c, int n)
 		ft_memset(pf->buff_start, (int)c, (size_t)n);
 		pf->buff_start += n;
 		pf->size += (size_t)n;
+		pf->lastlen += n;
 		return ;
 	}
 	while (n--)

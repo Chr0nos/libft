@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:24:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/03 16:28:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 01:30:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,5 +27,4 @@ void					ft_printf_convert_str(t_printf *pf)
 	else
 		len = ft_strlen(str);
 	ft_printf_append(pf, str, len);
-	pf->lastlen = (int)len;
 }

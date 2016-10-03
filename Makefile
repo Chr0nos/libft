@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/03 19:04:58 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/03 19:07:54 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -209,8 +209,8 @@ dll:
 		NAME="libft.dll"
 
 #linker for libft.so
-# $(LIBSO): $(ALLOBJ)
-# 	$(GCC) -shared $(ALLOBJ) -o $(LIBSO)
+$(LIBSO): $(ALLDIR) $(ALLOBJ)
+	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
 so:
 	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
 

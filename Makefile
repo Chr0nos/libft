@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/03 19:07:54 by snicolet         ###   ########.fr        #
+#*   Updated: 2016/10/04 00:37:42 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,6 +72,8 @@ MEMORY=ft_memset.o \
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \
+	ft_printf_load.o \
+	ft_printf_buffer.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o

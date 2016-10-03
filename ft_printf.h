@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/03 16:27:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 00:32:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,7 @@ typedef struct		s_printf
 	size_t			space_left;
 }					t_printf;
 
+size_t				ft_printf_loadall(t_printf *pf, const char *str);
 void				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);

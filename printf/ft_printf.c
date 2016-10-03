@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/30 07:39:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/03 16:27:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <stdarg.h>
 #include <unistd.h>
 
-static void				ft_printf_flush(t_printf *pf)
+void					ft_printf_flush(t_printf *pf)
 {
 	const ssize_t	size = write(pf->fd, pf->buffer, pf->size);
 
@@ -26,7 +26,7 @@ static void				ft_printf_flush(t_printf *pf)
 	pf->space_left = FT_PRINTF_BSIZE;
 }
 
-static void				ft_printf_append(t_printf *pf, const char *data,
+void					ft_printf_append(t_printf *pf, const char *data,
 	size_t len)
 {
 	ssize_t		rsize;
@@ -55,7 +55,7 @@ static void				ft_printf_append(t_printf *pf, const char *data,
 	pf->space_left -= len;
 }
 
-static void				ft_printf_padding(t_printf *pf, const char c, int n)
+void					ft_printf_padding(t_printf *pf, const char c, int n)
 {
 	if ((size_t)n <= pf->space_left)
 	{
@@ -66,57 +66,6 @@ static void				ft_printf_padding(t_printf *pf, const char c, int n)
 	}
 	while (n--)
 		ft_printf_append(pf, &c, 1);
-}
-
-/*
-** Convert functions
-*/
-
-void					ft_printf_convert_int(t_printf *pf)
-{
-	char			buff[13];
-	const char		*c;
-	const int		nb = va_arg(*(pf->ap), int);
-	int				len;
-
-	c = buff;
-	if (pf->flags & FT_PRINTF_PREC)
-	{
-		if (nb < 0)
-			ft_printf_append(pf, "-", 1);
-		else if (pf->flags & FT_PRINTF_FLAG_MORE)
-			ft_printf_append(pf, "+", 1);
-		c++;
-		ft_printf_padding(pf, '0', pf->precision);
-	}
-	else if ((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE))
-		ft_printf_append(pf, "+", 1);
-	len = ft_itobuff(buff, nb, 10, "0123456789");
-	ft_printf_append(pf, c, (size_t)len);
-	pf->lastlen = len;
-}
-
-void					ft_printf_convert_str(t_printf *pf)
-{
-	const char		*str = va_arg(*(pf->ap), char *);
-	size_t			len;
-
-	if (pf->flags & FT_PRINTF_PREC)
-	{
-		len = 0;
-		while ((*str) && (len < (size_t)pf->precision))
-			len++;
-	}
-	else
-		len = ft_strlen(str);
-	ft_printf_append(pf, str, len);
-	pf->lastlen = (int)len;
-}
-
-void					ft_printf_convert_percent(t_printf *pf)
-{
-	ft_printf_append(pf, "%", 1);
-	pf->lastlen = 1;
 }
 
 /*

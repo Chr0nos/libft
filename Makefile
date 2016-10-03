@@ -6,18 +6,19 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/09/29 21:17:57 by snicolet         ###   ########.fr       *#
+#    Updated: 2016/10/03 18:32:07 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 EXTRA_FLAGS=-Weverything -pipe -g3
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
-COMPILER=clang
-GCC=$(COMPILER) $(FLAGS) -I. $(EXTRA_FLAGS)
+CC=clang
+COMPILE=$(CC) $(FLAGS) -I. $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
 NAME=libft.a
+LIST_DIR=list
 LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
 	 ft_lstpush_sort.o ft_lstpush_back.o ft_lstpush_front.o \
 	 ft_lstdelone.o \
@@ -40,6 +41,7 @@ LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
 	 ft_lststrcmp.o \
 	 ft_lstdup.o \
 	 ft_lststrtotab.o
+BTREE_DIR=btree
 BTREE=ft_btree_create_node.o \
 	  ft_btree_add.o \
 	  ft_btree_search.o \
@@ -52,6 +54,7 @@ BTREE=ft_btree_create_node.o \
 	  ft_btree_foreach_prefix.o \
 	  ft_btree_foreach_suffix.o \
 	  ft_btree_free.o
+MEMORY_DIR=memory
 MEMORY=ft_memset.o \
 	   ft_memcpy.o \
 	   ft_memccpy.o \
@@ -63,8 +66,12 @@ MEMORY=ft_memset.o \
 	   ft_memdel.o \
 	   ft_memdup.o \
 	   ft_realloc.o
-PRINTF=ft_printf.o
-GNL=ft_get_next_line.o
+PRINTF_DIR=./printf/
+PRINTF=ft_printf.o \
+	conv/ft_printf_conv_int.o \
+	conv/ft_printf_conv_str.o \
+	conv/ft_printf_conv_percent.o
+
 OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_putptr.o \
@@ -140,22 +147,51 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_freesplit.o \
 	ft_strsep.o \
 	ft_strchrany.o \
-	ft_strforf.o
+	ft_strforf.o \
+	ft_get_next_line.o
 
 ################################################################################
 ##                                                                            ##
 ##                   COMPILATION RULES : DONT TOUCH: IT'S MAGIC               ##
 ##                                                                            ##
 ################################################################################
-LIB_CONTENT=$(OBJ) $(MEMORY) $(LIST) $(BTREE) $(GNL) $(PRINTF)
+OBJBUILDDIR=./build
+ALLDIR=$(OBJBUILDDIR) \
+	$(OBJBUILDDIR)/$(OBJ_DIR) \
+	$(OBJBUILDDIR)/$(MEMORY_DIR) \
+	$(OBJBUILDDIR)/$(LIST_DIR) \
+	$(OBJBUILDDIR)/$(BTREE_DIR) \
+	$(OBJBUILDDIR)/$(PRINTF_DIR) \
+	$(OBJBUILDDIR)/$(PRINTF_DIR)/conv
+
+# all .obj listed with directories
+ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
+	$(MEMORY:%.o=$(OBJBUILDDIR)/$(MEMORY_DIR)/%.o) \
+	$(LIST:%.o=$(OBJBUILDDIR)/$(LIST_DIR)/%.o) \
+	$(BTREE:%.o=$(OBJBUILDDIR)/$(BTREE_DIR)/%.o) \
+	$(PRINTF:%.o=$(OBJBUILDDIR)/$(PRINTF_DIR)/%.o)
+
+# all .c files listes with directories
+ALLSRC=$(OBJ:%.o=%.c) \
+	$(MEMORY:%.o=$(MEMORY_DIR)/%.c) \
+	$(LIST:%.o=$(LIST_DIR)/%.c) \
+	$(BTREE:%.o=$(BTREE_DIR)/%.c) \
+	$(PRINTF:%.o=$(PRINTF_DIR)/%.c)
 
 all: $(NAME)
-$(NAME): $(LIB_CONTENT)
+
+$(ALLDIR):
+	mkdir -p $@
+
+$(NAME): $(ALLDIR) $(ALLOBJ)
 	@echo "Linking libft"
-	$(AR) rc $(NAME) $(LIB_CONTENT)
+	$(AR) rc $(NAME) $(ALLOBJ)
 	@echo "done, now making lib index..."
 	$(RANLIB) $(NAME)
 	@echo "Done."
+
+$(OBJBUILDDIR)/%.o: %.c
+	$(COMPILE) -c $< -o $@
 
 #windows dll cross compill rule
 dll:
@@ -163,8 +199,8 @@ dll:
 		NAME="libft.dll"
 
 #linker for libft.so
-$(LIBSO): $(LIB_CONTENT)
-	$(GCC) -shared $(LIB_CONTENT) -o $(LIBSO)
+# $(LIBSO): $(ALLOBJ)
+# 	$(GCC) -shared $(ALLOBJ) -o $(LIBSO)
 so:
 	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
@@ -172,25 +208,20 @@ so:
 mrproper: fclean
 	find . -name ".*.swp" -print -delete
 	find . -name "\#*\#" -print -delete
+
 clean:
-	rm -f $(LIB_CONTENT)
+	rm -rf $(OBJBUILDDIR)
+
 fclean: clean
 	rm -f $(NAME) $(LIBSO)
+
 re: fclean all
 
 norminette:
-	norminette *.[ch]
+	norminette $(ALLSRC)
 
 install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
 
 .PHONY: norminette re clean fclean so dll all mrproper
-
-################################################################################
-##                                                                            ##
-##                               IMPLICIT RULES                               ##
-##                                                                            ##
-################################################################################
-%.o: %.c
-	$(GCC) -c $<

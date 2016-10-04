@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:10:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:23:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 23:22:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,25 +28,25 @@ int				ft_buffwchar(const wchar_t c, char *buff)
 	const unsigned int	ch = (unsigned int)c;
 	const int			n = ft_numbits(ch);
 
-	len = 1;
-	if ((n > 7) && (len++))
+	len = 0;
+	if ((n > 7) && (++len))
 	{
-		if ((n > 11) && (len++))
+		if ((n > 11) && (++len))
 		{
 			if ((n > 16) && (len += 2))
 			{
 				*(buff++) = (char)(((ch >> 18) & 7) | 240);
 				*(buff++) = (char)(((ch >> 12) & 63) | 128);
 			}
-			else if (len++)
+			else if (++len)
 				*(buff++) = (char)(((ch >> 12) & 15) | 224);
 			*(buff++) = (char)(((ch >> 6) & 63) | 128);
 		}
-		else if (len++)
+		else if (++len)
 			*(buff++) = (char)(((ch >> 6) & 31) | 192);
 		*(buff++) = (char)((ch & 63) | 128);
 	}
-	else if (len++)
+	else if (++len)
 		*(buff++) = (char)ch;
 	return (len);
 }

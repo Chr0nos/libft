@@ -1,34 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_conv_octal.c                             :+:      :+:    :+:   */
+/*   ft_printf_conv_hex.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/04 22:48:41 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 23:10:02 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/04 22:58:53 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/04 23:03:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
 #include "libft.h"
+#include "ft_printf.h"
 
-void			ft_printf_convert_octal(t_printf *pf)
+void			ft_printf_convert_hex(t_printf *pf)
 {
 	char	buff[24];
 	int		len;
 
-	len = ft_ulltobuff(buff, (unsigned long long)(unsigned int)pf->raw_value, 8,
-		"012345678");
+	len = ft_ulltobuff(buff,
+		(unsigned long long)(unsigned int)pf->raw_value,
+		16, "0123456789abcdef");
 	ft_printf_append(pf, buff, (size_t)len);
 }
 
-void			ft_printf_convert_uloctal(t_printf *pf)
+void			ft_printf_convert_uphex(t_printf *pf)
 {
 	char	buff[24];
 	int		len;
 
-	len = ft_ulltobuff(buff, (unsigned long long)(long int)pf->raw_value, 8,
-		"012345678");
+	len = ft_ulltobuff(buff,
+		(unsigned long long)(unsigned int)pf->raw_value,
+		16, "0123456789ABCDEF");
 	ft_printf_append(pf, buff, (size_t)len);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:51:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 23:10:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 */
 
 # define FT_PRINTF_FLAGSNUM		5
-# define FT_PRINTF_CONVS		9
+# define FT_PRINTF_CONVS		12
 
 # define FT_PRINTF_FLAG_DIESE	(1u << 0)
 # define FT_PRINTF_FLAG_ZERO	(1u << 1)
@@ -83,6 +83,9 @@ void				ft_printf_convert_ptr(t_printf *pf);
 void				ft_printf_convert_wchar(t_printf *pf);
 void				ft_printf_convert_wstr(t_printf *pf);
 void				ft_printf_convert_octal(t_printf *pf);
+void				ft_printf_convert_uloctal(t_printf *pf);
+void				ft_printf_convert_hex(t_printf *pf);
+void				ft_printf_convert_uphex(t_printf *pf);
 
 /*
 ** conversions const global
@@ -110,7 +113,10 @@ static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
 	(t_printf_convert){'C', FT_PRINTF_CONV_WCHAR, &ft_printf_convert_wchar,
 		sizeof(wchar_t)},
 	(t_printf_convert){'S', 0, &ft_printf_convert_wstr, sizeof(wchar_t *)},
-	(t_printf_convert){'o', 0, &ft_printf_convert_octal, sizeof(int)}
+	(t_printf_convert){'o', 0, &ft_printf_convert_octal, sizeof(int)},
+	(t_printf_convert){'O', 0, &ft_printf_convert_uloctal, sizeof(long int)},
+	(t_printf_convert){'x', 0, &ft_printf_convert_hex, sizeof(int)},
+	(t_printf_convert){'X', 0, &ft_printf_convert_uphex, sizeof(int)}
 };
 
 /*

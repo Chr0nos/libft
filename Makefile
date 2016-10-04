@@ -6,13 +6,16 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/10/04 00:37:42 by snicolet         ###   ########.fr       *#
+#    Updated: 2016/10/04 16:05:00 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-Weverything -pipe -g3
+EXTRA_FLAGS=-pipe -g3
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 CC=clang
+ifeq ($(CC),clang)
+	EXTRA_FLAGS+=-Weverything
+endif
 COMPILE=$(CC) $(FLAGS) -I. $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:26:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 22:39:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void			ft_printf_convert_wstr(t_printf *pf)
 {
 	char				buff[4];
 	const unsigned int	*str = (unsigned int *)pf->raw_value;
+	int					len;
 
-	while (*str)
-		ft_printf_append(pf, buff,
-			(size_t)ft_buffwchar(*(const wchar_t*)(str++), buff));
+	while ((len = ft_buffwchar(*(const wchar_t*)(str++), buff)) != 1)
+		ft_printf_append(pf, buff, (size_t)len);
 }

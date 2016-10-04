@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_conv_percent.c                           :+:      :+:    :+:   */
+/*   ft_printf_conv_octal.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/03 16:25:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:55:56 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/04 22:48:41 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/04 22:50:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
-void					ft_printf_convert_percent(t_printf *pf)
+void			ft_printf_convert_octal(t_printf *pf)
 {
-	ft_printf_append(pf, "%", 1);
+	char	buff[24];
+	int		len;
+
+	len = ft_ulltobuff(buff, (unsigned long long)(unsigned int)pf->raw_value, 8,
+		"012345678");
+	ft_printf_append(pf, buff, (size_t)len);
 }

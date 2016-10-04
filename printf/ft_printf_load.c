@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf_load.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 00:38:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 16:13:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
-	if ((!ft_isdigit(*s)) || (pf->flags & FT_PRINTF_PREC))
+	if ((!ft_strany(*s, "0123456789*")) || (pf->flags & FT_PRINTF_PREC))
 		return (0);
 	pf->flags |= FT_PRINTF_MINFIELD;
 	if (*s == '*')

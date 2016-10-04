@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 02:01:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 17:14:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # define FT_PRINTF_BSIZE		2048
 # define FT_PRINTF_CONVERTS		"sSpdDioOuUxXcC"
-# define FT_PRINTF_FLAGS		"#0-+ "
+# define FT_PRINTF_FLAGS		"#0-+ *"
 # define FT_PRINTF_MODIFIERS	6
 
 /*
@@ -73,6 +73,7 @@ void				ft_printf_padding(t_printf *pf, const char c, int n);
 void				ft_printf_convert_int(t_printf *pf);
 void				ft_printf_convert_str(t_printf *pf);
 void				ft_printf_convert_percent(t_printf *pf);
+void				ft_printf_convert_char(t_printf *pf);
 
 /*
 ** conversions const global
@@ -89,7 +90,8 @@ static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
 	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
 	(t_printf_convert){'i', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
 	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str},
-	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent}
+	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent},
+	(t_printf_convert){'c', FT_PRINTF_CONV_CHAR, &ft_printf_convert_char}
 };
 
 /*

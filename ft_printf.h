@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 23:10:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 00:39:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,6 @@
 # define FT_PRINTF_MOD_Z		(1u << 10)
 # define FT_PRINTF_PREC			(1u << 11)
 # define FT_PRINTF_MINFIELD		(1u << 12)
-# define FT_PRINTF_CONV_INT		(1u << 13)
-# define FT_PRINTF_CONV_STR		(1u << 14)
-# define FT_PRINTF_CONV_CHAR	(1u << 15)
-# define FT_PRINTF_CONV_PTR		(1u << 16)
-# define FT_PRINTF_CONV_WCHAR	(1u << 17)
 
 int					ft_printf(const char *s,
 		...) __attribute__((format(printf,1,2)));
@@ -94,24 +89,19 @@ void				ft_printf_convert_uphex(t_printf *pf);
 typedef struct		s_printf_convert
 {
 	int				letter;
-	unsigned int	bit;
+	unsigned int	padding;
 	void			(*convert)(struct s_printf *);
 	size_t			size;
 }					t_printf_convert;
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
-	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int,
-		sizeof(int)},
-	(t_printf_convert){'i', FT_PRINTF_CONV_INT, &ft_printf_convert_int,
-		sizeof(int)},
-	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str,
-		sizeof(char*)},
-	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent, 1},
-	(t_printf_convert){'c', FT_PRINTF_CONV_CHAR, &ft_printf_convert_char, 1},
-	(t_printf_convert){'p', FT_PRINTF_CONV_PTR, &ft_printf_convert_ptr,
-		sizeof(void*)},
-	(t_printf_convert){'C', FT_PRINTF_CONV_WCHAR, &ft_printf_convert_wchar,
-		sizeof(wchar_t)},
+	(t_printf_convert){'d', 0, &ft_printf_convert_int, sizeof(int)},
+	(t_printf_convert){'i', 0, &ft_printf_convert_int, sizeof(int)},
+	(t_printf_convert){'s', 0, &ft_printf_convert_str, sizeof(char*)},
+	(t_printf_convert){'%', 0, &ft_printf_convert_percent, sizeof(char)},
+	(t_printf_convert){'c', 0, &ft_printf_convert_char, sizeof(char)},
+	(t_printf_convert){'p', 0, &ft_printf_convert_ptr, sizeof(void*)},
+	(t_printf_convert){'C', 0, &ft_printf_convert_wchar, sizeof(wchar_t)},
 	(t_printf_convert){'S', 0, &ft_printf_convert_wstr, sizeof(wchar_t *)},
 	(t_printf_convert){'o', 0, &ft_printf_convert_octal, sizeof(int)},
 	(t_printf_convert){'O', 0, &ft_printf_convert_uloctal, sizeof(long int)},

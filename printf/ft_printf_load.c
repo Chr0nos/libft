@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 21:59:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 00:45:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str)
 		return (0);
 	pf->flags |= g_printf_modifiers[p].flag;
 	pf->flags &= g_printf_modifiers[p].mask;
-	return (g_printf_modifiers[p].len + 1);
+	return (g_printf_modifiers[p].len);
 }
 
 static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)

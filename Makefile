@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/04 22:59:12 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/04 23:48:35 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -167,7 +167,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_ulltobuff.o \
 	ft_freesplit.o \
 	ft_get_next_line.o \
-	ft_putptr.o
+	ft_putptr.o \
+	ft_imaxtobuff.o
 
 UNICODE_DIR=unicode
 UNICODE=ft_buffwchar.o

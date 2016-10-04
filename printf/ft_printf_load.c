@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 17:23:31 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 21:59:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,15 +52,15 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 
 	if (*s != '.')
 		return (0);
-	if ((!s[1]) || (!ft_strany(s[1], "01234567898*")))
+	if (*(s++) == '*')
 	{
-		pf->precision = 0;
+		pf->precision = va_arg(*pf->ap, int);
 		pf->flags |= FT_PRINTF_PREC;
 		return (1);
 	}
-	if (*(++s) == '*')
+	if ((!*s) || (!ft_isdigit(*s)))
 	{
-		pf->precision = va_arg(*pf->ap, int);
+		pf->precision = 0;
 		pf->flags |= FT_PRINTF_PREC;
 		return (1);
 	}

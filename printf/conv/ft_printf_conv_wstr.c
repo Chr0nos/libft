@@ -1,25 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_conv_wchar.c                             :+:      :+:    :+:   */
+/*   ft_printf_conv_wstr.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:11:12 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/04 22:26:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void			ft_printf_convert_wchar(t_printf *pf)
+void			ft_printf_convert_wstr(t_printf *pf)
 {
-	char			buff[4];
-	const wchar_t	nb = (wchar_t)pf->raw_value;
+	char				buff[4];
+	const unsigned int	*str = (unsigned int *)pf->raw_value;
 
-	if (nb <= 127)
-		ft_printf_convert_char(pf);
-	else
-		ft_printf_append(pf, buff, (size_t)ft_buffwchar(nb, buff));
+	while (*str)
+		ft_printf_append(pf, buff,
+			(size_t)ft_buffwchar(*(const wchar_t*)(str++), buff));
 }

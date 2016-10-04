@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 17:14:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 20:01:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define FT_PRINTF_H
 # include <string.h>
 # include <stdarg.h>
+# include <inttypes.h>
 # define FT_PRINTF_BSIZE		2048
 # define FT_PRINTF_CONVERTS		"sSpdDioOuUxXcC"
 # define FT_PRINTF_FLAGS		"#0-+ *"
@@ -42,6 +43,8 @@
 # define FT_PRINTF_CONV_INT		(1u << 13)
 # define FT_PRINTF_CONV_STR		(1u << 14)
 # define FT_PRINTF_CONV_CHAR	(1u << 15)
+# define FT_PRINTF_CONV_PTR		(1u << 16)
+# define FT_PRINTF_CONV_WCHAR	(1u << 17)
 
 int					ft_printf(const char *s,
 		...) __attribute__((format(printf,1,2)));
@@ -62,8 +65,10 @@ typedef struct		s_printf
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;
+	intmax_t		raw_value;
 }					t_printf;
 
+void				ft_printf_arg(t_printf *pf, size_t size);
 size_t				ft_printf_loadall(t_printf *pf, const char *str);
 void				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
@@ -74,6 +79,8 @@ void				ft_printf_convert_int(t_printf *pf);
 void				ft_printf_convert_str(t_printf *pf);
 void				ft_printf_convert_percent(t_printf *pf);
 void				ft_printf_convert_char(t_printf *pf);
+void				ft_printf_convert_ptr(t_printf *pf);
+void				ft_printf_convert_wchar(t_printf *pf);
 
 /*
 ** conversions const global
@@ -84,14 +91,22 @@ typedef struct		s_printf_convert
 	int				letter;
 	unsigned int	bit;
 	void			(*convert)(struct s_printf *);
+	size_t			size;
 }					t_printf_convert;
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
-	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
-	(t_printf_convert){'i', FT_PRINTF_CONV_INT, &ft_printf_convert_int},
-	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str},
-	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent},
-	(t_printf_convert){'c', FT_PRINTF_CONV_CHAR, &ft_printf_convert_char}
+	(t_printf_convert){'d', FT_PRINTF_CONV_INT, &ft_printf_convert_int,
+		sizeof(int)},
+	(t_printf_convert){'i', FT_PRINTF_CONV_INT, &ft_printf_convert_int,
+		sizeof(int)},
+	(t_printf_convert){'s', FT_PRINTF_CONV_STR, &ft_printf_convert_str,
+		sizeof(char*)},
+	(t_printf_convert){'%', FT_PRINTF_CONV_CHAR, &ft_printf_convert_percent, 1},
+	(t_printf_convert){'c', FT_PRINTF_CONV_CHAR, &ft_printf_convert_char, 1},
+	(t_printf_convert){'p', FT_PRINTF_CONV_PTR, &ft_printf_convert_ptr,
+		sizeof(void*)},
+	(t_printf_convert){'C', FT_PRINTF_CONV_WCHAR, &ft_printf_convert_wchar,
+		sizeof(wchar_t)}
 };
 
 /*

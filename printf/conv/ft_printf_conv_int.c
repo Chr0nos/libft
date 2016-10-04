@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 02:11:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 18:12:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void					ft_printf_convert_int(t_printf *pf)
 {
 	char			buff[13];
 	const char		*c;
-	const int		nb = va_arg(*(pf->ap), int);
+	const int		nb = (int)pf->raw_value;
 	int				len;
 
 	c = buff;

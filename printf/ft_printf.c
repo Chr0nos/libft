@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 00:37:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 18:13:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 	{
 		if ((char)g_printf_convs[p].letter == c)
 		{
+			ft_printf_arg(pf, g_printf_convs[p].size);
 			g_printf_convs[p].convert(pf);
 			if ((pf->flags & FT_PRINTF_MINFIELD) &&
 					(!(pf->flags & FT_PRINTF_FLAG_LESS)) &&

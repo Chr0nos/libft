@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 18:22:22 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 16:58:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 18:26:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,6 @@ void				ft_printf_convert_ptr(t_printf *pf)
 	}
 	len = ft_ulltobuff(buff, (unsigned long long)ptr, 16,
 		"0123456789abcdef");
-	if (pf->flags & FT_PRINTF_PREC)
-		ft_printf_padding(pf, ' ', len - pf->precision);
 	if (ft_printf_isaligned_left(pf))
 		ft_printf_padding(pf, ' ', pf->min_field - len - 2);
 	ft_printf_append(pf, "0x", 2);

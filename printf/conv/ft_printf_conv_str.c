@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:24:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 03:12:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 18:20:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,5 +53,8 @@ void					ft_printf_convert_str(t_printf *pf)
 	}
 	else
 		len = ft_strlen(str);
+	if (ft_printf_isaligned_left(pf))
+		ft_printf_padding(pf, (pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ',
+		pf->min_field - (int)len);
 	ft_printf_append(pf, str, len);
 }

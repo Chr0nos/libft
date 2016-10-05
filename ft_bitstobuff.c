@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_conv_char.c                              :+:      :+:    :+:   */
+/*   ft_bitstobuff.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/04 17:05:16 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 18:16:42 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/05 17:54:55 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/05 18:01:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void				ft_printf_convert_char(t_printf *pf)
+int		ft_bitstobuff(char *buff, unsigned long long x, const int n)
 {
-	const char		c = (char)pf->raw_value;
+	int		p;
 
-	if (ft_printf_isaligned_left(pf))
-		ft_printf_padding(pf, (pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ',
-		pf->min_field - 1);
-	if (pf->flags & FT_PRINTF_MOD_L)
-		ft_printf_convert_wchar(pf);
-	else
-		ft_printf_append(pf, (const char*)&c, 1);
+	p = 0;
+	while (p < n)
+		*(buff++) = (x & (1u >> (n - p++))) ? '1' : 0;
+	return (n);
 }

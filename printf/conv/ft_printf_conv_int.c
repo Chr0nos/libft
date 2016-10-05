@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 02:33:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 11:08:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void					ft_printf_convert_int(t_printf *pf)
 		if (miss > 0)
 			ft_printf_padding(pf, '0', miss);
 	}
-	if (pf->flags & FT_PRINTF_FLAG_LESS)
+	if (!(pf->flags & FT_PRINTF_FLAG_LESS))
 		ft_printf_conv_int_minfield(pf, len +
 			(((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE)) ? 1 : 0));
 	if ((pf->flags & FT_PRINTF_FLAG_MORE) && (nb >= 0))

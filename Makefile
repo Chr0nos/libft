@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/05 02:10:50 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/05 11:34:06 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -78,6 +78,7 @@ PRINTF=ft_printf.o \
 	ft_printf_load.o \
 	ft_printf_buffer.o \
 	ft_printf_arg.o \
+	ft_printf_align.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o \

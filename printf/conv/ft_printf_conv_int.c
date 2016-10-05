@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 12:49:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:31:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,8 @@
 
 static void				ft_printf_conv_int_minfield(t_printf *pf, int len)
 {
-	const int		missing = pf->min_field - len;
-
 	ft_printf_padding(pf,
-		(pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ', missing);
+		(pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ', pf->min_field - len);
 }
 
 intmax_t				ft_printf_conv_int_getnb(t_printf *pf)
@@ -45,15 +43,15 @@ void					ft_printf_convert_int(t_printf *pf)
 	int					len;
 
 	len = ft_imaxtobuff(buff, nb, 10, "0123456789");
+	if (ft_printf_isaligned_left(pf))
+		ft_printf_conv_int_minfield(pf, len +
+			(((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE)) ? 1 : 0));
 	if (pf->flags & FT_PRINTF_PREC)
 	{
 		if (nb < 0)
 			ft_printf_append(pf, "-", 1);
 		ft_printf_padding(pf, '0', pf->precision - len);
 	}
-	if (!(pf->flags & FT_PRINTF_FLAG_LESS))
-		ft_printf_conv_int_minfield(pf, len +
-			(((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE)) ? 1 : 0));
 	if ((pf->flags & FT_PRINTF_FLAG_MORE) && (nb >= 0))
 		ft_printf_append(pf, "+", 1);
 	if ((pf->flags & FT_PRINTF_FLAG_SPACE) && (nb >= 0))

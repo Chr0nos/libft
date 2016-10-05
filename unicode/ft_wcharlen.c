@@ -1,25 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_conv_char.c                              :+:      :+:    :+:   */
+/*   ft_wcharlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/04 17:05:16 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 15:29:19 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/05 14:09:47 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/05 14:18:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void				ft_printf_convert_char(t_printf *pf)
+static inline int	ft_numbits(unsigned int nb)
 {
-	const char		c = (char)pf->raw_value;
+	int		len;
 
-	if (ft_printf_isaligned_left(pf))
-		ft_printf_padding(pf, ' ', pf->min_field - 1);
-	if (pf->flags & FT_PRINTF_MOD_L)
-		ft_printf_convert_wchar(pf);
-	else
-		ft_printf_append(pf, (const char*)&c, 1);
+	len = 1;
+	while ((nb = nb >> 1))
+		len++;
+	return (len);
+}
+
+/*
+** return the lenght (in char) of a wchar
+** range can be 1 to 4
+*/
+
+int					ft_wcharlen(const wchar_t c)
+{
+	const register int		n = ft_numbits((unsigned int)c);
+
+	if (n > 16)
+		return (4);
+	if (n > 11)
+		return (3);
+	if (n > 7)
+		return (2);
+	return (1);
 }

@@ -6,28 +6,39 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 23:23:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 16:23:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void			ft_printf_convert_wstr(t_printf *pf)
+static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
+{
+	size_t		slen;
+
+	if (!ft_printf_isaligned_left(pf))
+		return ;
+	slen = ft_wstrlen(str);
+	ft_printf_padding(pf, ' ', pf->min_field - (int)slen);
+}
+
+void					ft_printf_convert_wstr(t_printf *pf)
 {
 	char				buff[4];
-	const wchar_t		*str = (wchar_t*)pf->raw_value;
+	wchar_t				*str;
 	int					len;
 
+	str = (wchar_t*)pf->raw_value;
 	if (!str)
 	{
 		ft_printf_append(pf, "(null)", 6);
 		return ;
 	}
+	ft_printf_conv_wstr_align(pf, str);
 	while (*str)
 	{
-		len = ft_buffwchar(*str, buff);
+		len = ft_buffwchar(*(str++), buff);
 		ft_printf_append(pf, buff, (size_t)len);
-		str++;
 	}
 }

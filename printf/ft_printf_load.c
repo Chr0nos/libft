@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 00:45:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 15:51:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,12 +79,17 @@ static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
-	if ((!ft_strany(*s, "0123456789*")) || (pf->flags & FT_PRINTF_PREC))
+	if ((!ft_strany(*s, "123456789*")) || (pf->flags & FT_PRINTF_PREC))
 		return (0);
 	pf->flags |= FT_PRINTF_MINFIELD;
 	if (*s == '*')
 	{
 		pf->min_field = va_arg(*pf->ap, int);
+		if (pf->min_field < 0)
+		{
+			pf->flags |= FT_PRINTF_FLAG_LESS;
+			pf->min_field *= -1;
+		}
 		return (1);
 	}
 	pf->min_field = ft_atoi(s);

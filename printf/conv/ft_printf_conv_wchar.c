@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:11:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 03:00:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,17 @@ void			ft_printf_convert_wchar(t_printf *pf)
 {
 	char			buff[4];
 	const wchar_t	nb = (wchar_t)pf->raw_value;
+	int				len;
 
-	if (nb <= 127)
+	if (!nb)
+		ft_printf_append(pf, "\0", 1);
+	else if (nb <= 127)
 		ft_printf_convert_char(pf);
 	else
-		ft_printf_append(pf, buff, (size_t)ft_buffwchar(nb, buff));
+	{
+		len = ft_buffwchar(nb, buff);
+		if ((pf->flags & FT_PRINTF_PREC) && (len > pf->precision))
+			len = pf->precision;
+		ft_printf_append(pf, buff, (size_t)len);
+	}
 }

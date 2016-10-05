@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 02:26:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 03:36:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static void				ft_printf_conv_uint_minfield(t_printf *pf, int len)
 		ft_printf_padding(pf, ' ', missing);
 }
 
-static uintmax_t		ft_printf_conv_uint_getnb(t_printf *pf)
+uintmax_t				ft_printf_conv_uint_getnb(t_printf *pf)
 {
 	if (pf->flags & FT_PRINTF_MOD_J)
 		return ((uintmax_t)pf->raw_value);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:24:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 18:12:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 03:12:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,11 @@ void					ft_printf_convert_str(t_printf *pf)
 	const char		*str = (char*)pf->raw_value;
 	size_t			len;
 
+	if (pf->flags & FT_PRINTF_MOD_L)
+	{
+		ft_printf_convert_wstr(pf);
+		return ;
+	}
 	if (!str)
 	{
 		ft_printf_conv_str_null(pf);

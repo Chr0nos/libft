@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 02:10:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 03:11:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct		s_printf
 	intmax_t		raw_value;
 }					t_printf;
 
+uintmax_t			ft_printf_conv_uint_getnb(t_printf *pf);
+intmax_t			ft_printf_conv_int_getnb(t_printf *pf);
 void				ft_printf_arg(t_printf *pf, size_t size);
 size_t				ft_printf_loadall(t_printf *pf, const char *str);
 void				ft_printf_append(t_printf *pf, const char *data,

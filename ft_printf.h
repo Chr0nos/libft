@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 11:38:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 12:55:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct		s_printf
 	intmax_t		raw_value;
 }					t_printf;
 
+int					ft_printf_fd(int fd, const char *str, ...);
+void				ft_printf_init(t_printf *pf, va_list *ap);
 int					ft_printf_isaligned_right(t_printf *pf);
 int					ft_printf_isaligned_left(t_printf *pf);
 uintmax_t			ft_printf_conv_uint_getnb(t_printf *pf);
@@ -73,6 +75,7 @@ void				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);
 void				ft_printf_padding(t_printf *pf, const char c, int n);
+void				ft_printf_convert_unknow(t_printf *pf, char c);
 
 void				ft_printf_convert_int(t_printf *pf);
 void				ft_printf_convert_str(t_printf *pf);
@@ -96,27 +99,27 @@ void				ft_printf_convert_upud(t_printf *pf);
 typedef struct		s_printf_convert
 {
 	int				letter;
-	unsigned int	padding;
+	unsigned int	isnumeric;
 	void			(*convert)(struct s_printf *);
 	size_t			size;
 }					t_printf_convert;
 
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
-	(t_printf_convert){'d', 0, &ft_printf_convert_int, sizeof(int)},
-	(t_printf_convert){'i', 0, &ft_printf_convert_int, sizeof(int)},
+	(t_printf_convert){'d', 1, &ft_printf_convert_int, sizeof(int)},
+	(t_printf_convert){'i', 1, &ft_printf_convert_int, sizeof(int)},
 	(t_printf_convert){'s', 0, &ft_printf_convert_str, sizeof(char*)},
 	(t_printf_convert){'%', 0, &ft_printf_convert_percent, sizeof(char)},
 	(t_printf_convert){'c', 0, &ft_printf_convert_char, sizeof(char)},
-	(t_printf_convert){'p', 0, &ft_printf_convert_ptr, sizeof(void*)},
+	(t_printf_convert){'p', 1, &ft_printf_convert_ptr, sizeof(void*)},
 	(t_printf_convert){'C', 0, &ft_printf_convert_wchar, sizeof(wchar_t)},
 	(t_printf_convert){'S', 0, &ft_printf_convert_wstr, sizeof(wchar_t *)},
-	(t_printf_convert){'o', 0, &ft_printf_convert_octal, sizeof(int)},
-	(t_printf_convert){'O', 0, &ft_printf_convert_uloctal, sizeof(long int)},
-	(t_printf_convert){'x', 0, &ft_printf_convert_hex, sizeof(int)},
-	(t_printf_convert){'X', 0, &ft_printf_convert_uphex, sizeof(int)},
-	(t_printf_convert){'D', 0, &ft_printf_convert_upd, sizeof(long int)},
-	(t_printf_convert){'u', 0, &ft_printf_convert_uint, sizeof(unsigned int)},
-	(t_printf_convert){'U', 0, &ft_printf_convert_upud, sizeof(long int)}
+	(t_printf_convert){'o', 1, &ft_printf_convert_octal, sizeof(int)},
+	(t_printf_convert){'O', 1, &ft_printf_convert_uloctal, sizeof(long int)},
+	(t_printf_convert){'x', 1, &ft_printf_convert_hex, sizeof(int)},
+	(t_printf_convert){'X', 1, &ft_printf_convert_uphex, sizeof(int)},
+	(t_printf_convert){'D', 1, &ft_printf_convert_upd, sizeof(long int)},
+	(t_printf_convert){'u', 1, &ft_printf_convert_uint, sizeof(unsigned int)},
+	(t_printf_convert){'U', 1, &ft_printf_convert_upud, sizeof(long int)}
 };
 
 /*

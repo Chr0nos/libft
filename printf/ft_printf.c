@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 11:41:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 12:54:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,14 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 			g_printf_convs[p].convert(pf);
 			if ((ft_printf_isaligned_right(pf)) &&
 					(pf->lastlen < pf->min_field))
-				ft_printf_padding(pf, ' ', (int)(pf->min_field - pf->lastlen));
+				ft_printf_padding(pf,
+					((g_printf_convs[p].isnumeric) &&
+						(pf->flags & FT_PRINTF_FLAG_ZERO)) ? '0' : ' ',
+					(int)(pf->min_field - pf->lastlen));
 			return ;
 		}
 	}
-	ft_printf_append(pf, &c, 1);
+	ft_printf_convert_unknow(pf, c);
 }
 
 /*
@@ -84,17 +87,22 @@ static void				ft_printf_engine(const char *fstr, t_printf *pf)
 	ft_printf_append(pf, fstr, (size_t)len);
 }
 
-static void				ft_printf_init(t_printf *pf, va_list *ap)
+int						ft_printf_fd(int fd, const char *str, ...)
 {
-	pf->ap = ap;
-	pf->flags = 0;
-	pf->precision = 0;
-	pf->buff_start = pf->buffer;
-	pf->size = 0;
-	pf->total_len = 0;
-	pf->fd = 1;
-	pf->min_field = 0;
-	pf->space_left = FT_PRINTF_BSIZE;
+	va_list		ap;
+	t_printf	pf;
+
+	va_start(ap, str);
+	ft_printf_init(&pf, &ap);
+	pf.fd = fd;
+	ft_printf_engine(str, &pf);
+	va_end(ap);
+	if (pf.size)
+	{
+		write(pf.fd, pf.buffer, pf.size);
+		pf.total_len += pf.size;
+	}
+	return ((int)pf.total_len);
 }
 
 /*

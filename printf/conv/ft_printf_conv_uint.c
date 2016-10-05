@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 11:08:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 12:38:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,5 @@ void					ft_printf_convert_uint(t_printf *pf)
 			((pf->flags & FT_PRINTF_FLAG_MORE) ? 1 : 0));
 	if (pf->flags & FT_PRINTF_FLAG_MORE)
 		ft_printf_append(pf, "+", 1);
-	if (pf->flags & FT_PRINTF_FLAG_SPACE)
-		ft_printf_append(pf, " ", 1);
 	ft_printf_append(pf, buff, (size_t)len);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 03:36:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 05:21:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ static void				ft_printf_conv_uint_minfield(t_printf *pf, int len)
 	const int		missing = pf->min_field - len;
 
 	if (missing > 0)
-		ft_printf_padding(pf, ' ', missing);
+		ft_printf_padding(pf,
+			(pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ', missing);
 }
 
 uintmax_t				ft_printf_conv_uint_getnb(t_printf *pf)

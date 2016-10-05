@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 03:36:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 05:13:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 			ft_printf_arg(pf, g_printf_convs[p].size);
 			g_printf_convs[p].convert(pf);
 			if ((pf->flags & FT_PRINTF_MINFIELD) &&
-					(!(pf->flags & FT_PRINTF_FLAG_LESS)) &&
+					((pf->flags & FT_PRINTF_FLAG_LESS)) &&
 					(pf->lastlen < pf->min_field))
 				ft_printf_padding(pf, ' ', (int)(pf->min_field - pf->lastlen));
 			return ;

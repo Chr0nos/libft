@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:48:41 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 03:19:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 05:34:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ void			ft_printf_convert_octal(t_printf *pf)
 		nb = (intmax_t)(unsigned char)pf->raw_value;
 	else
 		nb = (intmax_t)(int)pf->raw_value;
+	if ((pf->flags & FT_PRINTF_FLAG_DIESE) && (nb != 0))
+		ft_printf_append(pf, "0", 1);
 	len = ft_ulltobuff(buff, (unsigned long long)nb, 8, "012345678");
 	ft_printf_append(pf, buff, (size_t)len);
 }
@@ -39,6 +41,8 @@ void			ft_printf_convert_uloctal(t_printf *pf)
 		nb = (unsigned long long)pf->raw_value;
 	else
 		nb = (unsigned long)pf->raw_value;
+	if ((pf->flags & FT_PRINTF_FLAG_DIESE) && (nb != 0))
+		ft_printf_append(pf, "0", 1);
 	len = ft_ulltobuff(buff, (unsigned long long)nb, 8, "012345678");
 	ft_printf_append(pf, buff, (size_t)len);
 }

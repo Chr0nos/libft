@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 17:52:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 22:51:58 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void					ft_printf_convert_int(t_printf *pf)
 		ft_printf_conv_int_minfield(pf, len +
 			(((nb >= 0) && (pf->flags & FT_PRINTF_FLAG_MORE)) ? 1 : 0) +
 			((neg) ? 1 : 0));
-	if (pf->flags & FT_PRINTF_PREC)
-		ft_printf_padding(pf, '0', pf->precision - len);
 	if ((pf->flags & FT_PRINTF_FLAG_MORE) && (!neg))
-		ft_printf_append(pf, "+", 1);
-	if ((pf->flags & FT_PRINTF_FLAG_SPACE) && (!neg))
-		ft_printf_append(pf, " ", 1);
+			ft_printf_append(pf, "+", 1);
 	if ((neg) && (!(pf->flags & FT_PRINTF_FLAG_ZERO)))
 		ft_printf_append(pf, "-", 1);
+	if (pf->flags & FT_PRINTF_PREC)
+		ft_printf_padding(pf, '0', pf->precision - len);
+	if ((pf->flags & FT_PRINTF_FLAG_SPACE) && (!neg))
+		ft_printf_append(pf, " ", 1);
 	ft_printf_append(pf, buff, (size_t)len);
 }

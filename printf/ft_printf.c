@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 22:44:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 00:12:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,12 @@ static void				ft_printf_flags_override(t_printf *pf,
 {
 	if (conv->isptr)
 		pf->flags |= FT_PRINTF_PTR;
-	if ((conv->isnumeric) && (pf->flags & FT_PRINTF_PREC))
-		pf->flags &= ~FT_PRINTF_FLAG_ZERO;
+	if (conv->isnumeric)
+	{
+		pf->flags |= FT_PRINTF_NUMERIC;
+		if (pf->flags & FT_PRINTF_PREC)
+			pf->flags &= ~FT_PRINTF_FLAG_ZERO;
+	}
 }
 
 /*

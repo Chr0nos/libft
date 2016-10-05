@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 18:22:22 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 19:41:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 00:20:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,10 @@ static int			ft_printf_convert_ptr_padding(t_printf *pf, void *ptr)
 			len = 2;
 		if ((ft_printf_isaligned_left(pf)) &&
 				(!(pf->flags & FT_PRINTF_FLAG_ZERO)))
-			ft_printf_padding(pf, ' ', pf->min_field - len);
+			ft_printf_padding_len(pf, len);
 		ft_printf_append(pf, "0x0", (unsigned)len);
-		if ((pf->flags & FT_PRINTF_MINFIELD) &&
-				(pf->flags & FT_PRINTF_FLAG_ZERO))
-			ft_printf_padding(pf, '0', pf->min_field - len);
 		if (pf->flags & FT_PRINTF_PREC)
-			ft_printf_padding(pf, '0', pf->precision - len);
+			ft_printf_padding(pf, '0', pf->precision - 1);
 		return (1);
 	}
 	return (0);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 12:38:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 23:26:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,19 +44,18 @@ void					ft_printf_convert_uint(t_printf *pf)
 	char				buff[64];
 	const uintmax_t		nb = ft_printf_conv_uint_getnb(pf);
 	int					len;
-	int					miss;
 
 	len = ft_ulltobuff(buff, (unsigned long long)nb, 10, "0123456789");
 	if (pf->flags & FT_PRINTF_PREC)
 	{
-		miss = pf->precision - len;
-		if (miss > 0)
-			ft_printf_padding(pf, '0', miss);
+		if (pf->flags & FT_PRINTF_FLAG_MORE)
+			ft_printf_append(pf, "+", 1);
+		ft_printf_padding(pf, '0', pf->precision - len);
 	}
 	if (!(pf->flags & FT_PRINTF_FLAG_LESS))
 		ft_printf_conv_uint_minfield(pf, len +
 			((pf->flags & FT_PRINTF_FLAG_MORE) ? 1 : 0));
-	if (pf->flags & FT_PRINTF_FLAG_MORE)
-		ft_printf_append(pf, "+", 1);
+	//if (pf->flags & FT_PRINTF_FLAG_MORE)
+	//	ft_printf_append(pf, "+", 1);
 	ft_printf_append(pf, buff, (size_t)len);
 }

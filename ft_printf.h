@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 19:56:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 23:59:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@
 # define FT_PRINTF_PREC			(1u << 11)
 # define FT_PRINTF_MINFIELD		(1u << 12)
 # define FT_PRINTF_PTR			(1u << 13)
+# define FT_PRINTF_NUMERIC		(1u << 14)
 
 int					ft_printf(const char *s,
 		...) __attribute__((format(printf,1,2)));
@@ -76,6 +77,7 @@ void				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);
 void				ft_printf_padding(t_printf *pf, const char c, int n);
+void				ft_printf_padding_len(t_printf *pf, int len);
 void				ft_printf_convert_unknow(t_printf *pf, char c);
 
 void				ft_printf_convert_int(t_printf *pf);

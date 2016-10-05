@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/04 23:48:35 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/05 02:10:50 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,10 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_wchar.o \
 	conv/ft_printf_conv_wstr.o \
 	conv/ft_printf_conv_octal.o \
-	conv/ft_printf_conv_hex.o
+	conv/ft_printf_conv_hex.o \
+	conv/ft_printf_conv_upd.o \
+	conv/ft_printf_conv_uint.o \
+	conv/ft_printf_conv_upud.o
 
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \

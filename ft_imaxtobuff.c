@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 23:47:24 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 00:01:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 01:49:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int			ft_imaxtobuff(char *buffer, intmax_t nb,
 		buffer[p] = map[0];
 	while (nb)
 	{
-		buffer[p--] = map[((nb < 0) ? -nb : nb) % base];
+		buffer[p--] = map[(uintmax_t)((nb < 0) ? -nb : nb) % (unsigned)base];
 		nb /= base;
 	}
 	return (len);

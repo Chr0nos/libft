@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 00:39:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 02:10:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 */
 
 # define FT_PRINTF_FLAGSNUM		5
-# define FT_PRINTF_CONVS		12
+# define FT_PRINTF_CONVS		15
 
 # define FT_PRINTF_FLAG_DIESE	(1u << 0)
 # define FT_PRINTF_FLAG_ZERO	(1u << 1)
@@ -81,6 +81,9 @@ void				ft_printf_convert_octal(t_printf *pf);
 void				ft_printf_convert_uloctal(t_printf *pf);
 void				ft_printf_convert_hex(t_printf *pf);
 void				ft_printf_convert_uphex(t_printf *pf);
+void				ft_printf_convert_upd(t_printf *pf);
+void				ft_printf_convert_uint(t_printf *pf);
+void				ft_printf_convert_upud(t_printf *pf);
 
 /*
 ** conversions const global
@@ -106,7 +109,10 @@ static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
 	(t_printf_convert){'o', 0, &ft_printf_convert_octal, sizeof(int)},
 	(t_printf_convert){'O', 0, &ft_printf_convert_uloctal, sizeof(long int)},
 	(t_printf_convert){'x', 0, &ft_printf_convert_hex, sizeof(int)},
-	(t_printf_convert){'X', 0, &ft_printf_convert_uphex, sizeof(int)}
+	(t_printf_convert){'X', 0, &ft_printf_convert_uphex, sizeof(int)},
+	(t_printf_convert){'D', 0, &ft_printf_convert_upd, sizeof(long int)},
+	(t_printf_convert){'u', 0, &ft_printf_convert_uint, sizeof(unsigned int)},
+	(t_printf_convert){'U', 0, &ft_printf_convert_upud, sizeof(long int)}
 };
 
 /*
@@ -125,7 +131,7 @@ static const t_printf_cfg g_printf_cfg[FT_PRINTF_FLAGSNUM] = {
 	(t_printf_cfg){'#', FT_PRINTF_FLAG_DIESE, ~0u, 0},
 	(t_printf_cfg){'0', FT_PRINTF_FLAG_ZERO, ~0u, 0},
 	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, ~(FT_PRINTF_FLAG_ZERO), 0},
-	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, ~0u, 0},
+	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, ~(FT_PRINTF_FLAG_SPACE), 0},
 	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~FT_PRINTF_FLAG_MORE, 0}
 };
 
@@ -142,7 +148,8 @@ typedef struct		s_printf_modif
 }					t_printf_modif;
 
 static const t_printf_modif g_printf_modifiers[FT_PRINTF_MODIFIERS] = {
-	(t_printf_modif){"h", FT_PRINTF_MOD_H, ~0u, 1},
+	(t_printf_modif){"h", FT_PRINTF_MOD_H,
+		~(FT_PRINTF_MOD_L | FT_PRINTF_MOD_LL), 1},
 	(t_printf_modif){"hh", FT_PRINTF_MOD_HH, ~0u, 2},
 	(t_printf_modif){"l", FT_PRINTF_MOD_L, ~0u, 1},
 	(t_printf_modif){"ll", FT_PRINTF_MOD_LL, ~0u, 2},

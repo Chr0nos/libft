@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 16:00:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 19:56:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,7 +133,7 @@ typedef struct		s_printf_cfg
 	int				letter;
 	unsigned int	flag;
 	unsigned int	mask;
-	int				padding;
+	unsigned int	refuse;
 }					t_printf_cfg;
 
 static const t_printf_cfg g_printf_cfg[FT_PRINTF_FLAGSNUM] = {
@@ -141,7 +141,7 @@ static const t_printf_cfg g_printf_cfg[FT_PRINTF_FLAGSNUM] = {
 	(t_printf_cfg){'0', FT_PRINTF_FLAG_ZERO, ~0u, 0},
 	(t_printf_cfg){'-', FT_PRINTF_FLAG_LESS, ~(FT_PRINTF_FLAG_ZERO), 0},
 	(t_printf_cfg){'+', FT_PRINTF_FLAG_MORE, ~(FT_PRINTF_FLAG_SPACE), 0},
-	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~FT_PRINTF_FLAG_MORE, 0}
+	(t_printf_cfg){' ', FT_PRINTF_FLAG_SPACE, ~0u, FT_PRINTF_FLAG_MORE}
 };
 
 /*

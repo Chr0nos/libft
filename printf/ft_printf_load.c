@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 15:51:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 19:58:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static int				ft_printf_loadflags(t_printf *pf, const char c)
 		;
 	if (p < 0)
 		return (0);
+	if (pf->flags & g_printf_cfg[p].refuse)
+		return (1);
 	pf->flags |= g_printf_cfg[p].flag;
 	pf->flags &= g_printf_cfg[p].mask;
 	return (1);
@@ -52,6 +54,7 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 
 	if (*s != '.')
 		return (0);
+	//pf->flags &= ~FT_PRINTF_FLAG_ZERO;
 	if (*(s++) == '*')
 	{
 		pf->precision = va_arg(*pf->ap, int);

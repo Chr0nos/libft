@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 02:07:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 02:26:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ static uintmax_t		ft_printf_conv_uint_getnb(t_printf *pf)
 	else if (pf->flags & FT_PRINTF_MOD_H)
 		return (uintmax_t)(unsigned short)pf->raw_value;
 	else if (pf->flags & FT_PRINTF_MOD_LL)
-		return ((uintmax_t)(unsigned long long int)pf->raw_value);
+		return ((uintmax_t)(unsigned long long)pf->raw_value);
 	else if (pf->flags & FT_PRINTF_MOD_L)
-		return ((uintmax_t)(unsigned long int)pf->raw_value);
+		return ((uintmax_t)(unsigned long)pf->raw_value);
 	return ((unsigned int)pf->raw_value);
 }
 

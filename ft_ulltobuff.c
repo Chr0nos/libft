@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/07/15 13:34:14 by snicolet          #+#    #+#             */
-/*   Updated: 2016/07/15 13:38:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 02:29:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int			ft_ulltobuff(char *buffer, unsigned long long nb, unsigned int base,
 		buffer[p] = map[0];
 	while (nb)
 	{
-		buffer[p--] = map[(unsigned)nb % base];
+		buffer[p--] = map[(unsigned long long)nb % base];
 		nb /= (unsigned long long)base;
 	}
 	return (len);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 17:41:50 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 01:41:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/05 02:26:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@ void		ft_printf_arg(t_printf *pf, size_t size)
 	if (pf->flags & FT_PRINTF_MOD_HH)
 		size = sizeof(char);
 	if (pf->flags & FT_PRINTF_MOD_L)
-		size += sizeof(long int);
+		size += sizeof(long);
 	if (pf->flags & FT_PRINTF_MOD_LL)
-		size += sizeof(long long int);
+		size += sizeof(long long);
 	if (pf->flags & FT_PRINTF_MOD_J)
 		size = sizeof(intmax_t);
 	if (pf->flags & FT_PRINTF_MOD_Z)
@@ -29,5 +29,5 @@ void		ft_printf_arg(t_printf *pf, size_t size)
 	if (size <= 4)
 		pf->raw_value = va_arg(*pf->ap, int);
 	else
-		pf->raw_value = va_arg(*pf->ap, long int);
+		pf->raw_value = va_arg(*pf->ap, long);
 }

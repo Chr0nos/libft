@@ -6,14 +6,23 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:53:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 19:42:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void			ft_pf_conv_wchar(t_printf *pf)
+static void	inline	ft_pf_conv_wchar_forcechar(t_printf *pf)
+{
+	const char		c = (char)pf->raw_value;
+
+	if (pf->flags & FT_PF_FLAG_ZERO)
+		ft_printf_padding(pf, '0', pf->slen - 1);
+	ft_printf_append(pf, (const char *)&c, 1);
+}
+
+void				ft_pf_conv_wchar(t_printf *pf)
 {
 	char			buff[4];
 	wchar_t			nb;
@@ -26,7 +35,7 @@ void			ft_pf_conv_wchar(t_printf *pf)
 	if (!nb)
 		ft_printf_append(pf, "\0", 1);
 	else if (nb <= 127)
-		ft_pf_conv_char(pf);
+		ft_pf_conv_wchar_forcechar(pf);
 	else
 	{
 		len = ft_buffwchar(nb, buff);

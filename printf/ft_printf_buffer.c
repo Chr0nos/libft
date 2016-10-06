@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:42:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 18:19:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,32 @@ void					ft_printf_flush(t_printf *pf)
 	pf->space_left = FT_PF_BSIZE;
 }
 
-void					ft_printf_append(t_printf *pf, const char *data,
+static inline size_t	ft_printf_append_big(t_printf *pf, const char *data,
 	size_t len)
 {
-	ssize_t		rsize;
+	ssize_t				rsize;
+
+	ft_printf_flush(pf);
+	rsize = write(pf->fd, data, len);
+	if (rsize > 0)
+		pf->total_len += (size_t)rsize;
+	return (len);
+}
+
+/*
+** return the lenght added the buffer (basicly len)
+*/
+
+size_t					ft_printf_append(t_printf *pf, const char *data,
+	size_t len)
+{
+	const size_t		size = len;
 
 	if (!len)
-		return ;
+		return (0);
 	pf->lastlen += len;
 	if (len > FT_PF_BSIZE)
-	{
-		ft_printf_flush(pf);
-		rsize = write(pf->fd, data, len);
-		if (rsize > 0)
-			pf->total_len += (size_t)rsize;
-		return ;
-	}
+		return (ft_printf_append_big(pf, data, len));
 	else if (len > pf->space_left)
 	{
 		ft_memcpy(pf->buff_start, data, pf->space_left);
@@ -52,6 +62,7 @@ void					ft_printf_append(t_printf *pf, const char *data,
 	pf->size += len;
 	pf->buff_start += len;
 	pf->space_left -= len;
+	return (size);
 }
 
 int					ft_printf_padding(t_printf *pf, const char c, int n)

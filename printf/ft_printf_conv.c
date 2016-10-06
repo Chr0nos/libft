@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 17:52:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 20:02:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 			(int)(pf->min_width - pf->lastlen));
 }
 
+static inline void		ft_printf_conv_init(t_printf *pf)
+{
+	pf->lastlen = 0;
+	pf->slen = 0;
+	pf->raw_len = 0;
+}
+
 /*
 ** this function apply the convert to the current convert mode,
 ** if the convert mode is unknow then the char is printed
@@ -50,9 +57,7 @@ void					ft_printf_conv(t_printf *pf, const char c)
 	int						p;
 	const t_printf_convert	*conv;
 
-	pf->lastlen = 0;
-	pf->slen = 0;
-	pf->raw_len = 0;
+	ft_printf_conv_init(pf);
 	p = FT_PF_CONVS;
 	while (p--)
 	{
@@ -60,9 +65,16 @@ void					ft_printf_conv(t_printf *pf, const char c)
 		if ((char)conv->letter == c)
 		{
 			ft_printf_flags_override(pf, conv);
-			ft_printf_arg(pf, conv->size);
+			if (conv->get_arg)
+				conv->get_arg(pf);
+			//todo: delete this
+			else
+				ft_printf_arg(pf, conv->size);
 			if (conv->set_len)
+			{
 				conv->set_len(pf);
+				ft_printf_padding(pf, ' ', pf->min_width - pf->slen);
+			}
 			conv->convert(pf);
 			ft_printf_conv_postalign(pf, conv);
 			return ;

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 00:12:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:37:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 			return ;
 		}
 	}
-	ft_printf_convert_unknow(pf, c);
+	ft_pf_conv_nknow(pf, c);
 }
 
 /*
@@ -75,7 +75,7 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 
 	if (*str == '%')
 	{
-		ft_printf_convert_percent(pf);
+		ft_pf_conv_percent(pf);
 		return (str + 1);
 	}
 	seek = 0;

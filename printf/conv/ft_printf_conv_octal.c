@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:48:41 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 18:11:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:35:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void			ft_printf_convert_octal(t_printf *pf)
+void			ft_pf_conv_octal(t_printf *pf)
 {
 	char				buff[64];
 	int					len;
@@ -31,7 +31,7 @@ void			ft_printf_convert_octal(t_printf *pf)
 	ft_printf_append(pf, buff, (size_t)len);
 }
 
-void			ft_printf_convert_uloctal(t_printf *pf)
+void			ft_pf_conv_uloctal(t_printf *pf)
 {
 	char			buff[64];
 	int				len;

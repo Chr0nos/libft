@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 05:19:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:23:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,19 @@ void					ft_printf_append(t_printf *pf, const char *data,
 	pf->space_left -= len;
 }
 
-void					ft_printf_padding(t_printf *pf, const char c, int n)
+int					ft_printf_padding(t_printf *pf, const char c, int n)
 {
 	if (n <= 0)
-		return ;
+		return (0);
 	if ((size_t)n <= pf->space_left)
 	{
 		ft_memset(pf->buff_start, (int)c, (size_t)n);
 		pf->buff_start += n;
 		pf->size += (size_t)n;
 		pf->lastlen += n;
-		return ;
+		return (n);
 	}
 	while (n--)
 		ft_printf_append(pf, &c, 1);
+	return (n);
 }

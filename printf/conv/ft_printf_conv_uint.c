@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 23:26:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:36:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ uintmax_t				ft_printf_conv_uint_getnb(t_printf *pf)
 	return ((unsigned int)pf->raw_value);
 }
 
-void					ft_printf_convert_uint(t_printf *pf)
+void					ft_pf_conv_uint(t_printf *pf)
 {
 	char				buff[64];
 	const uintmax_t		nb = ft_printf_conv_uint_getnb(pf);

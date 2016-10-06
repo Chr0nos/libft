@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 18:22:22 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 00:20:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:35:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-static int			ft_printf_convert_ptr_padding(t_printf *pf, void *ptr)
+static int			ft_pf_conv_ptr_padding(t_printf *pf, void *ptr)
 {
 	int		len;
 
@@ -33,13 +33,13 @@ static int			ft_printf_convert_ptr_padding(t_printf *pf, void *ptr)
 	return (0);
 }
 
-void				ft_printf_convert_ptr(t_printf *pf)
+void				ft_pf_conv_ptr(t_printf *pf)
 {
 	void	*ptr;
 
 	ptr = (void*)pf->raw_value;
-	if (ft_printf_convert_ptr_padding(pf, ptr))
+	if (ft_pf_conv_ptr_padding(pf, ptr))
 		return ;
 	pf->flags |= FT_PRINTF_MOD_L | FT_PRINTF_FLAG_DIESE;
-	ft_printf_convert_hex(pf);
+	ft_pf_conv_hex(pf);
 }

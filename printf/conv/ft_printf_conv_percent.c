@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:25:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/04 22:55:56 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:35:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void					ft_printf_convert_percent(t_printf *pf)
+void					ft_pf_conv_percent(t_printf *pf)
 {
 	ft_printf_append(pf, "%", 1);
 }

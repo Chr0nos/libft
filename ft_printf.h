@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 23:59:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:37:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,24 +76,24 @@ size_t				ft_printf_loadall(t_printf *pf, const char *str);
 void				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);
-void				ft_printf_padding(t_printf *pf, const char c, int n);
+int					ft_printf_padding(t_printf *pf, const char c, int n);
 void				ft_printf_padding_len(t_printf *pf, int len);
-void				ft_printf_convert_unknow(t_printf *pf, char c);
+void				ft_pf_conv_unknow(t_printf *pf, char c);
 
-void				ft_printf_convert_int(t_printf *pf);
-void				ft_printf_convert_str(t_printf *pf);
-void				ft_printf_convert_percent(t_printf *pf);
-void				ft_printf_convert_char(t_printf *pf);
-void				ft_printf_convert_ptr(t_printf *pf);
-void				ft_printf_convert_wchar(t_printf *pf);
-void				ft_printf_convert_wstr(t_printf *pf);
-void				ft_printf_convert_octal(t_printf *pf);
-void				ft_printf_convert_uloctal(t_printf *pf);
-void				ft_printf_convert_hex(t_printf *pf);
-void				ft_printf_convert_uphex(t_printf *pf);
-void				ft_printf_convert_upd(t_printf *pf);
-void				ft_printf_convert_uint(t_printf *pf);
-void				ft_printf_convert_upud(t_printf *pf);
+void				ft_pf_conv_int(t_printf *pf);
+void				ft_pf_conv_str(t_printf *pf);
+void				ft_pf_conv_percent(t_printf *pf);
+void				ft_pf_conv_char(t_printf *pf);
+void				ft_pf_conv_ptr(t_printf *pf);
+void				ft_pf_conv_wchar(t_printf *pf);
+void				ft_pf_conv_wstr(t_printf *pf);
+void				ft_pf_conv_octal(t_printf *pf);
+void				ft_pf_conv_uloctal(t_printf *pf);
+void				ft_pf_conv_hex(t_printf *pf);
+void				ft_pf_conv_uphex(t_printf *pf);
+void				ft_pf_conv_upd(t_printf *pf);
+void				ft_pf_conv_uint(t_printf *pf);
+void				ft_pf_conv_upud(t_printf *pf);
 
 /*
 ** conversions const global
@@ -108,22 +108,24 @@ typedef struct		s_printf_convert
 	size_t			size;
 }					t_printf_convert;
 
+# define TCO t_printf_convert
+
 static const t_printf_convert g_printf_convs[FT_PRINTF_CONVS] = {
-	(t_printf_convert){'d', 1, 0, &ft_printf_convert_int, sizeof(int)},
-	(t_printf_convert){'i', 1, 0, &ft_printf_convert_int, sizeof(int)},
-	(t_printf_convert){'s', 0, 1, &ft_printf_convert_str, sizeof(char*)},
-	(t_printf_convert){'%', 0, 0, &ft_printf_convert_percent, sizeof(char)},
-	(t_printf_convert){'c', 0, 0, &ft_printf_convert_char, sizeof(char)},
-	(t_printf_convert){'p', 1, 1, &ft_printf_convert_ptr, sizeof(void*)},
-	(t_printf_convert){'C', 0, 0, &ft_printf_convert_wchar, sizeof(wchar_t)},
-	(t_printf_convert){'S', 0, 1, &ft_printf_convert_wstr, sizeof(wchar_t *)},
-	(t_printf_convert){'o', 1, 0, &ft_printf_convert_octal, sizeof(int)},
-	(t_printf_convert){'O', 1, 0, &ft_printf_convert_uloctal, sizeof(long int)},
-	(t_printf_convert){'x', 1, 0, &ft_printf_convert_hex, sizeof(int)},
-	(t_printf_convert){'X', 1, 0, &ft_printf_convert_uphex, sizeof(int)},
-	(t_printf_convert){'D', 1, 0, &ft_printf_convert_upd, sizeof(long int)},
-	(t_printf_convert){'u', 1, 0, &ft_printf_convert_uint, sizeof(int)},
-	(t_printf_convert){'U', 1, 0, &ft_printf_convert_upud, sizeof(long int)}
+	(TCO){'d', 1, 0, &ft_pf_conv_int, sizeof(int)},
+	(TCO){'i', 1, 0, &ft_pf_conv_int, sizeof(int)},
+	(TCO){'s', 0, 1, &ft_pf_conv_str, sizeof(char*)},
+	(TCO){'%', 0, 0, &ft_pf_conv_percent, sizeof(char)},
+	(TCO){'c', 0, 0, &ft_pf_conv_char, sizeof(char)},
+	(TCO){'p', 1, 1, &ft_pf_conv_ptr, sizeof(void*)},
+	(TCO){'C', 0, 0, &ft_pf_conv_wchar, sizeof(wchar_t)},
+	(TCO){'S', 0, 1, &ft_pf_conv_wstr, sizeof(wchar_t *)},
+	(TCO){'o', 1, 0, &ft_pf_conv_octal, sizeof(int)},
+	(TCO){'O', 1, 0, &ft_pf_conv_uloctal, sizeof(long int)},
+	(TCO){'x', 1, 0, &ft_pf_conv_hex, sizeof(int)},
+	(TCO){'X', 1, 0, &ft_pf_conv_uphex, sizeof(int)},
+	(TCO){'D', 1, 0, &ft_pf_conv_upd, sizeof(long int)},
+	(TCO){'u', 1, 0, &ft_pf_conv_uint, sizeof(int)},
+	(TCO){'U', 1, 0, &ft_pf_conv_upud, sizeof(long int)}
 };
 
 /*

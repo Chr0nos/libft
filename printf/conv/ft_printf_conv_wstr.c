@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 18:22:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:36:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
 		pf->min_field - (int)slen);
 }
 
-void					ft_printf_convert_wstr(t_printf *pf)
+void					ft_pf_conv_wstr(t_printf *pf)
 {
 	char				buff[4];
 	wchar_t				*str;

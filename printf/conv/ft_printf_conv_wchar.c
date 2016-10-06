@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 04:55:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:37:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-void			ft_printf_convert_wchar(t_printf *pf)
+void			ft_pf_conv_char(t_printf *pf)
 {
 	char			buff[4];
 	wchar_t			nb;
@@ -26,7 +26,7 @@ void			ft_printf_convert_wchar(t_printf *pf)
 	if (!nb)
 		ft_printf_append(pf, "\0", 1);
 	else if (nb <= 127)
-		ft_printf_convert_char(pf);
+		ft_pf_conv_char(pf);
 	else
 	{
 		len = ft_buffwchar(nb, buff);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 00:13:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:35:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static void				ft_printf_conv_int_sign(t_printf *pf, const int neg)
 		ft_printf_append(pf, "-", 1);
 }
 
-void					ft_printf_convert_int(t_printf *pf)
+void					ft_pf_conv_int(t_printf *pf)
 {
 	char				buff[64];
 	const intmax_t		nb = ft_printf_conv_int_getnb(pf);

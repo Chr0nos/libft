@@ -1,30 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_stralign_left.c                                 :+:      :+:    :+:   */
+/*   ft_strrev.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/02/07 14:43:24 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/07 14:43:27 by snicolet         ###   ########.fr       */
+/*   Created: 2015/08/08 12:14:01 by snicolet          #+#    #+#             */
+/*   Updated: 2016/09/28 16:06:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <unistd.h>
 
-void	ft_stralign_left(char *buffer, unsigned int len)
+char	*ft_strrev(char *str)
 {
-	size_t	slen;
-	size_t	diff;
-	size_t	p;
+	size_t			pos_reverse;
+	size_t			pos_normal;
+	register char	tmp;
 
-	slen = ft_strlen(buffer);
-	if (slen >= len)
-		return ;
-	diff = len - slen;
-	p = 0;
-	buffer += slen;
-	while (p < diff)
-		buffer[p++] = ' ';
-	buffer[p] = '\0';
+	pos_reverse = ft_strlen(str) - 1;
+	pos_normal = 0;
+	while (pos_normal < pos_reverse)
+	{
+		tmp = str[pos_normal];
+		str[pos_normal++] = str[pos_reverse];
+		str[pos_reverse--] = tmp;
+	}
+	return (str);
 }

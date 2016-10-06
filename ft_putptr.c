@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:34:00 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/26 15:59:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/04 17:30:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ void	ft_putptr(void *ptr)
 		return ;
 	}
 	p = 1;
-	ft_putstr("0x");
+	ft_memcpy(buffer, "0x", 2);
 	buffer[0] = '\0';
-	wbuffer = (char*)buffer;
+	wbuffer = (char*)&buffer[2];
 	while (p < sizeof(ptr) / sizeof(unsigned short))
 	{
 		part = (unsigned short)((unsigned long)ptr >> ((15 - p) * 16));

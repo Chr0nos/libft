@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/14 01:12:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 22:54:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@
 # define IFRET__(x, y) if (x) return (y);
 # include <string.h>
 # include "get_next_line.h"
+# include "ft_printf.h"
 
 typedef struct		s_list
 {
@@ -135,6 +136,7 @@ size_t				ft_strsplit_count(const char *str, char c);
 size_t				ft_strcount(const char *str, char c);
 size_t				ft_tabstrlen(const char **tab);
 double				ft_atod(const char *s);
+const char			*ft_strforf(const char *str, const char *sep, int *len);
 
 /*
 ** memory usage functions
@@ -208,7 +210,6 @@ char				*ft_brainfuck(char *str, unsigned char *ptr);
 float				ft_sqrt(float nb);
 int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
-int					ft_printf(const char *s, ...);
 void				ft_wsize(unsigned long long size, char *buffer);
 int					ft_abs(int x);
 void				ft_stralign_right(char *buffer, unsigned int len);
@@ -229,5 +230,17 @@ char				*ft_strcdup(const char *src, char c);
 const char			*ft_strseek(const char *src, char c, const int n);
 void				ft_freesplit(char **split);
 void				ft_freesplit_multi(char ***split, int size);
+char				*ft_strchrany(char *str, const char *list);
+char				*ft_strsep(char **str, const char *delim);
+int					ft_buffwchar(const wchar_t c, char *buff);
+int					ft_wcharlen(const wchar_t c);
+size_t				ft_wstrlen(const wchar_t *s);
+int					ft_imaxtobuff(char *buffer, intmax_t nb,
+	int base, const char *map);
+int					ft_bitstobuff(char *buff, unsigned long long x,
+	const int n);
+int					ft_udigit_len(uintmax_t nb, unsigned int base);
+int					ft_digit_len(intmax_t nb, unsigned int base);
+int					ft_atonum(const char *str, int *nb);
 
 #endif

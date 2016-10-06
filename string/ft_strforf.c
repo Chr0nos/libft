@@ -1,31 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strrev.c                                        :+:      :+:    :+:   */
+/*   ft_strforf.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/08/08 12:14:01 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/03 16:53:26 by snicolet         ###   ########.fr       */
+/*   Created: 2016/09/29 21:04:47 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/03 18:27:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <unistd.h>
 
-char	*ft_strrev(char *str)
+const char		*ft_strforf(const char *str, const char *sep, int *len)
 {
-	size_t	pos_reverse;
-	size_t	pos_normal;
-	char	tmp;
+	const char	*origin = str;
 
-	pos_reverse = ft_strlen(str) - 1;
-	pos_normal = 0;
-	while (pos_normal < pos_reverse)
-	{
-		tmp = str[pos_normal];
-		str[pos_normal++] = str[pos_reverse];
-		str[pos_reverse--] = tmp;
-	}
+	while ((*str) && (!ft_strany(*str, sep)))
+		str++;
+	*len = (int)((size_t)str - (size_t)origin);
+	if (!*str)
+		return (NULL);
 	return (str);
 }

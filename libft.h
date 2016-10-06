@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 17:46:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 22:54:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,12 +234,13 @@ char				*ft_strchrany(char *str, const char *list);
 char				*ft_strsep(char **str, const char *delim);
 int					ft_buffwchar(const wchar_t c, char *buff);
 int					ft_wcharlen(const wchar_t c);
-size_t				ft_wstrlen(wchar_t *s);
+size_t				ft_wstrlen(const wchar_t *s);
 int					ft_imaxtobuff(char *buffer, intmax_t nb,
 	int base, const char *map);
 int					ft_bitstobuff(char *buff, unsigned long long x,
 	const int n);
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
+int					ft_atonum(const char *str, int *nb);
 
 #endif

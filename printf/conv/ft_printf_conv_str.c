@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:24:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 19:58:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 22:36:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,16 @@ void					ft_pf_len_str(t_printf *pf)
 	else if (pf->flags & FT_PF_PREC)
 	{
 		len = 0;
-		while ((*str) && (len < pf->precision))
+		while ((*(str++)) && (len < pf->precision))
 			len++;
 		pf->raw_len = len;
 	}
 	else
 		pf->raw_len = (int)ft_strlen(str);
+	if ((pf->flags & FT_PF_FLAG_ZERO) && (pf->min_width > pf->raw_len))
+		pf->slen = pf->min_width;
+	else
+		pf->slen = pf->raw_len;
 }
 
 static void				ft_printf_conv_str_null(t_printf *pf)
@@ -65,8 +69,7 @@ void					ft_pf_conv_str(t_printf *pf)
 		ft_printf_conv_str_null(pf);
 		return ;
 	}
-	if (ft_printf_isaligned_left(pf))
-		ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',
-		pf->min_width - pf->raw_len);
+	if (pf->flags & FT_PF_FLAG_ZERO)
+		ft_printf_padding(pf, '0', pf->slen - pf->raw_len);
 	ft_printf_append(pf, str, (unsigned)pf->raw_len);
 }

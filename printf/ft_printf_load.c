@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 17:32:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 21:45:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,31 +50,21 @@ static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str)
 
 static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 {
-	size_t		p;
-
 	if (*s != '.')
 		return (0);
 	if (*(++s) == '*')
 	{
 		pf->precision = va_arg(*pf->ap, int);
-		pf->flags |= FT_PF_PREC;
+		if (pf->precision < 0)
+			pf->precision = 0;
+		else
+			pf->flags |= FT_PF_PREC;
 		return (1);
 	}
-	if ((!*s) || (!ft_isdigit(*s)))
-	{
-		pf->precision = 0;
-		pf->flags |= FT_PF_PREC;
-		return (1);
-	}
-	pf->precision = ft_atoi(s);
-	if (pf->precision < 0)
-		pf->precision = 0;
-	else
-		pf->flags |= FT_PF_PREC;
-	p = 1;
-	while (ft_isdigit(s[p]))
-		p++;
-	return (p + 1);
+	pf->flags |= FT_PF_PREC;
+	if (ft_isdigit(*s))
+		return ((size_t)ft_atonum(s, &pf->precision) + 1);
+	return (1);
 }
 
 static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)

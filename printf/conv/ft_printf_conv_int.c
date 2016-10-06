@@ -6,24 +6,33 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 19:11:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 23:04:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
+void					ft_pf_fixprecision_null(t_printf *pf, int *len)
+{
+	if ((pf->flags & FT_PF_PREC) && (!(pf->precision | pf->raw_value)))
+		*len = 0;
+}
+
 void					ft_pf_len_int(t_printf *pf)
 {
 	int				len;
 
 	len = ft_digit_len(pf->raw_value, 10u);
+	ft_pf_fixprecision_null(pf, &len);
 	pf->raw_len = len;
 	if ((pf->flags & FT_PF_PREC) && (len < pf->precision))
 		len = pf->precision;
 	if ((pf->flags & (FT_PF_FLAG_SPACE | FT_PF_FLAG_MORE)) ||
 			(pf->raw_value < 0))
 		len++;
+	if ((pf->flags & FT_PF_FLAG_ZERO) && (pf->min_width > len))
+		len = pf->min_width;
 	pf->slen = len;
 }
 

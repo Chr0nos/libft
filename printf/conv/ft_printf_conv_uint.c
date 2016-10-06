@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 19:14:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 22:03:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,12 @@ void					ft_pf_len_uint(t_printf *pf)
 	int				len;
 
 	len = ft_udigit_len((uintmax_t)pf->raw_value, 10u);
+	ft_pf_fixprecision_null(pf, &len);
 	pf->raw_len = len;
 	if ((pf->flags & FT_PF_PREC) && (len < pf->precision))
 		len = pf->precision;
+	if ((pf->flags & FT_PF_FLAG_ZERO) && (pf->min_width > len))
+		len = pf->min_width;
 	pf->slen = len;
 }
 

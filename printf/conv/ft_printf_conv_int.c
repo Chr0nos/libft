@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 23:04:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 01:37:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void					ft_pf_conv_int(t_printf *pf)
 	else if (pf->flags & (FT_PF_FLAG_SPACE | FT_PF_FLAG_MORE))
 		len -= (int)ft_printf_append(pf,
 			(pf->flags & FT_PF_FLAG_MORE) ? "+" : " ", 1);
-	ft_printf_padding(pf, '0', len - pf->raw_len);
+	if (!(pf->flags & FT_PF_FLAG_LESS))
+		ft_printf_padding(pf, '0', len - pf->raw_len);
 	ft_printf_append(pf, buff, (size_t)pf->raw_len);
 }

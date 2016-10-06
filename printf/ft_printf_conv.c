@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 23:42:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 01:56:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 	if ((ft_printf_isaligned_right(pf)) &&
 			(pf->lastlen < pf->min_width))
 		ft_printf_padding(pf,
-			((conv->isnumeric) &&
+			((conv->isptr) &&
 				(pf->flags & FT_PF_FLAG_ZERO)) ? '0' : ' ',
 			(int)(pf->min_width - pf->lastlen));
 }

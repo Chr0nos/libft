@@ -6,11 +6,11 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/06 21:39:48 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/07 01:52:00 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-pipe -g3
+EXTRA_FLAGS=-pipe
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 CC=clang
 ifeq ($(CC),clang)

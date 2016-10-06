@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:23:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:42:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void					ft_printf_flush(t_printf *pf)
 		pf->total_len += (size_t)size;
 	pf->buff_start = pf->buffer;
 	pf->size = 0;
-	pf->space_left = FT_PRINTF_BSIZE;
+	pf->space_left = FT_PF_BSIZE;
 }
 
 void					ft_printf_append(t_printf *pf, const char *data,
@@ -32,7 +32,7 @@ void					ft_printf_append(t_printf *pf, const char *data,
 	if (!len)
 		return ;
 	pf->lastlen += len;
-	if (len > FT_PRINTF_BSIZE)
+	if (len > FT_PF_BSIZE)
 	{
 		ft_printf_flush(pf);
 		rsize = write(pf->fd, data, len);
@@ -45,7 +45,7 @@ void					ft_printf_append(t_printf *pf, const char *data,
 		ft_memcpy(pf->buff_start, data, pf->space_left);
 		len -= pf->space_left;
 		data += pf->space_left;
-		pf->size = FT_PRINTF_BSIZE;
+		pf->size = FT_PF_BSIZE;
 		ft_printf_flush(pf);
 	}
 	ft_memcpy(pf->buff_start, data, len);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:37:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,12 @@ static void				ft_printf_flags_override(t_printf *pf,
 	const t_printf_convert *conv)
 {
 	if (conv->isptr)
-		pf->flags |= FT_PRINTF_PTR;
+		pf->flags |= FT_PF_PTR;
 	if (conv->isnumeric)
 	{
-		pf->flags |= FT_PRINTF_NUMERIC;
-		if (pf->flags & FT_PRINTF_PREC)
-			pf->flags &= ~FT_PRINTF_FLAG_ZERO;
+		pf->flags |= FT_PF_NUMERIC;
+		if (pf->flags & FT_PF_PREC)
+			pf->flags &= ~FT_PF_FLAG_ZERO;
 	}
 }
 
@@ -44,7 +44,7 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 	const t_printf_convert	*conv;
 
 	pf->lastlen = 0;
-	p = FT_PRINTF_CONVS;
+	p = FT_PF_CONVS;
 	while (p--)
 	{
 		conv = &g_printf_convs[p];
@@ -57,12 +57,12 @@ static void				ft_printf_conv(t_printf *pf, const char c)
 					(pf->lastlen < pf->min_field))
 				ft_printf_padding(pf,
 					((conv->isnumeric) &&
-						(pf->flags & FT_PRINTF_FLAG_ZERO)) ? '0' : ' ',
+						(pf->flags & FT_PF_FLAG_ZERO)) ? '0' : ' ',
 					(int)(pf->min_field - pf->lastlen));
 			return ;
 		}
 	}
-	ft_pf_conv_nknow(pf, c);
+	ft_pf_conv_unknow(pf, c);
 }
 
 /*
@@ -79,7 +79,7 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 		return (str + 1);
 	}
 	seek = 0;
-	while ((*str) && (!ft_strany(*str, FT_PRINTF_CONVERTS)))
+	while ((*str) && (!ft_strany(*str, FT_PF_CONVERTS)))
 	{
 		if (!(seek = ft_printf_loadall(pf, str)))
 			break ;

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 12:54:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 12:54:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:42:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,5 +22,5 @@ void					ft_printf_init(t_printf *pf, va_list *ap)
 	pf->total_len = 0;
 	pf->fd = 1;
 	pf->min_field = 0;
-	pf->space_left = FT_PRINTF_BSIZE;
+	pf->space_left = FT_PF_BSIZE;
 }

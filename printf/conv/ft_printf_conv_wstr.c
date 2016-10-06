@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:36:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
 	if (!ft_printf_isaligned_left(pf))
 		return ;
 	slen = ft_wstrlen(str);
-	ft_printf_padding(pf, (pf->flags & FT_PRINTF_FLAG_ZERO) ? '0' : ' ',
+	ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',
 		pf->min_field - (int)slen);
 }
 

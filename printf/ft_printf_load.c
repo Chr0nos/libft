@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 22:48:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int				ft_printf_loadflags(t_printf *pf, const char c)
 {
 	int		p;
 
-	p = FT_PRINTF_FLAGSNUM;
+	p = FT_PF_FLAGSNUM;
 	while ((p--) && ((char)g_printf_cfg[p].letter != c))
 		;
 	if (p < 0)
@@ -38,7 +38,7 @@ static size_t			ft_printf_loadmodifiers(t_printf *pf, const char *str)
 	int						p;
 	const t_printf_modif	*m = (const t_printf_modif*)&g_printf_modifiers;
 
-	p = FT_PRINTF_MODIFIERS;
+	p = FT_PF_MODIFIERS;
 	while ((p--) && (ft_strncmp(m[p].modifier, str, m[p].len)))
 		;
 	if (p < 0)
@@ -57,20 +57,20 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 	if (*(++s) == '*')
 	{
 		pf->precision = va_arg(*pf->ap, int);
-		pf->flags |= FT_PRINTF_PREC;
+		pf->flags |= FT_PF_PREC;
 		return (1);
 	}
 	if ((!*s) || (!ft_isdigit(*s)))
 	{
 		pf->precision = 0;
-		pf->flags |= FT_PRINTF_PREC;
+		pf->flags |= FT_PF_PREC;
 		return (1);
 	}
 	pf->precision = ft_atoi(s);
 	if (pf->precision < 0)
 		pf->precision = 0;
 	else
-		pf->flags |= FT_PRINTF_PREC;
+		pf->flags |= FT_PF_PREC;
 	p = 1;
 	while (ft_isdigit(s[p]))
 		p++;
@@ -81,15 +81,15 @@ static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
-	if ((!ft_strany(*s, "123456789*")) || (pf->flags & FT_PRINTF_PREC))
+	if ((!ft_strany(*s, "123456789*")) || (pf->flags & FT_PF_PREC))
 		return (0);
-	pf->flags |= FT_PRINTF_MINFIELD;
+	pf->flags |= FT_PF_MINFIELD;
 	if (*s == '*')
 	{
 		pf->min_field = va_arg(*pf->ap, int);
 		if (pf->min_field < 0)
 		{
-			pf->flags |= FT_PRINTF_FLAG_LESS;
+			pf->flags |= FT_PF_FLAG_LESS;
 			pf->min_field *= -1;
 		}
 		return (1);

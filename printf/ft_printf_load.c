@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:32:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,24 +77,24 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 	return (p + 1);
 }
 
-static size_t			ft_printf_loadmin_field(t_printf *pf, const char *s)
+static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
 	if ((!ft_strany(*s, "123456789*")) || (pf->flags & FT_PF_PREC))
 		return (0);
-	pf->flags |= FT_PF_MINFIELD;
+	pf->flags |= FT_PF_MINWIDTH;
 	if (*s == '*')
 	{
-		pf->min_field = va_arg(*pf->ap, int);
-		if (pf->min_field < 0)
+		pf->min_width = va_arg(*pf->ap, int);
+		if (pf->min_width < 0)
 		{
 			pf->flags |= FT_PF_FLAG_LESS;
-			pf->min_field *= -1;
+			pf->min_width *= -1;
 		}
 		return (1);
 	}
-	pf->min_field = ft_atoi(s);
+	pf->min_width = ft_atoi(s);
 	seek = 0;
 	while (ft_isdigit(s[seek]))
 		seek++;
@@ -105,7 +105,7 @@ size_t					ft_printf_loadall(t_printf *pf, const char *str)
 {
 	size_t		seek;
 
-	if ((seek = ft_printf_loadmin_field(pf, str)) > 0)
+	if ((seek = ft_printf_loadmin_width(pf, str)) > 0)
 		return (seek);
 	if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
 		return (seek);

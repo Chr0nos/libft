@@ -6,12 +6,20 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:57:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
+
+void					ft_pf_len_int(t_printf *pf)
+{
+	int				len;
+
+	len = ft_digit_len(pf->raw_value, 10u);
+	pf->raw_len = len;
+}
 
 intmax_t				ft_printf_conv_int_getnb(t_printf *pf)
 {

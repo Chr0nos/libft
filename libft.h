@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 17:58:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:46:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,5 +239,7 @@ int					ft_imaxtobuff(char *buffer, intmax_t nb,
 	int base, const char *map);
 int					ft_bitstobuff(char *buff, unsigned long long x,
 	const int n);
+int					ft_udigit_len(uintmax_t nb, unsigned int base);
+int					ft_digit_len(intmax_t nb, unsigned int base);
 
 #endif

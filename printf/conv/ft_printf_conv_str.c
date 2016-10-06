@@ -6,33 +6,32 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:24:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:35:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:55:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_printf.h"
 
-int						ft_pf_len_str(t_printf *pf)
+void					ft_pf_len_str(t_printf *pf)
 {
 	const char	*str = (const char*)pf->raw_value;
 	int			len;
 
 	if (!str)
-	{
-		return (((pf->flags & FT_PF_PREC) && (pf->precision < 6)) ?
-			pf->precision : 6);
-	}
-	if (pf->flags & FT_PF_MOD_L)
-		return (ft_pf_len_wstr(pf));
-	if (pf->flags & FT_PF_PREC)
+		pf->raw_len = ((pf->flags & FT_PF_PREC) && (pf->precision < 6)) ?
+			pf->precision : 6;
+	else if (pf->flags & FT_PF_MOD_L)
+		ft_pf_len_wstr(pf);
+	else if (pf->flags & FT_PF_PREC)
 	{
 		len = 0;
 		while ((*str) && (len < pf->precision))
 			len++;
-		return (len);
+		pf->raw_len = len;
 	}
-	return ((int)ft_strlen(str));
+	else
+		pf->raw_len = (int)ft_strlen(str);
 }
 
 static void				ft_printf_conv_str_null(t_printf *pf)
@@ -68,6 +67,6 @@ void					ft_pf_conv_str(t_printf *pf)
 	}
 	if (ft_printf_isaligned_left(pf))
 		ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',
-		pf->min_field - pf->raw_len);
+		pf->min_width - pf->raw_len);
 	ft_printf_append(pf, str, (unsigned)pf->raw_len);
 }

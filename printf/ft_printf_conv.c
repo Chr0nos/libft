@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:40:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:52:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,11 @@ static void				ft_printf_flags_override(t_printf *pf,
 static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 {
 	if ((ft_printf_isaligned_right(pf)) &&
-			(pf->lastlen < pf->min_field))
+			(pf->lastlen < pf->min_width))
 		ft_printf_padding(pf,
 			((conv->isnumeric) &&
 				(pf->flags & FT_PF_FLAG_ZERO)) ? '0' : ' ',
-			(int)(pf->min_field - pf->lastlen));
+			(int)(pf->min_width - pf->lastlen));
 }
 
 /*
@@ -51,6 +51,8 @@ void					ft_printf_conv(t_printf *pf, const char c)
 	const t_printf_convert	*conv;
 
 	pf->lastlen = 0;
+	pf->slen = 0;
+	pf->raw_len = 0;
 	p = FT_PF_CONVS;
 	while (p--)
 	{
@@ -59,7 +61,8 @@ void					ft_printf_conv(t_printf *pf, const char c)
 		{
 			ft_printf_flags_override(pf, conv);
 			ft_printf_arg(pf, conv->size);
-			pf->raw_len = (conv->get_len != NULL) ? conv->get_len(pf) : 0;
+			if (conv->set_len)
+				conv->set_len(pf);
 			conv->convert(pf);
 			ft_printf_conv_postalign(pf, conv);
 			return ;

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:58:53 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:48:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:32:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void inline	ft_printf_conv_hex(t_printf *pf, const uintmax_t nb,
 	len = ft_ulltobuff(buff, (unsigned long long)nb, 16, map);
 	if (ft_printf_isaligned_left(pf))
 		ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',
-		pf->min_field - len);
+		pf->min_width - len);
 	if ((pf->flags & FT_PF_PREC) && (len > pf->precision))
 		len = pf->precision;
 	if (pf->flags & FT_PF_PREC)

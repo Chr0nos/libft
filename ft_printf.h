@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:38:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:56:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,15 @@
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcC"
 # define FT_PF_FLAGS		"#0-+ *"
 # define FT_PF_MODIFIERS	6
+
+/*
+**         [-+sign]
+**         [    0x]
+** [space] [prefix] [zero] [digit/str] [rspace]
+**                         [---------]				(pf->raw_len)
+**         [-------------------------]				(pf->slen)
+** [------------------------------------------]		(>= pf->min_width)
+*/
 
 /*
 ** ft_printf flags
@@ -39,7 +48,7 @@
 # define FT_PF_MOD_J		(1u << 9)
 # define FT_PF_MOD_Z		(1u << 10)
 # define FT_PF_PREC			(1u << 11)
-# define FT_PF_MINFIELD		(1u << 12)
+# define FT_PF_MINWIDTH		(1u << 12)
 # define FT_PF_PTR			(1u << 13)
 # define FT_PF_NUMERIC		(1u << 14)
 
@@ -56,9 +65,11 @@ typedef struct		s_printf
 	unsigned int	flags;
 	int				precision;
 	int				fd;
-	int				min_field;
+	int				min_width;
 	int				lastlen;
 	int				raw_len;
+	int				slen;
+	int				padding;
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;
@@ -99,8 +110,9 @@ void				ft_pf_conv_upd(t_printf *pf);
 void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
 
-int					ft_pf_len_str(t_printf *pf);
-int					ft_pf_len_wstr(t_printf *pf);
+void				ft_pf_len_int(t_printf *pf);
+void				ft_pf_len_str(t_printf *pf);
+void				ft_pf_len_wstr(t_printf *pf);
 
 /*
 ** conversions const global
@@ -113,14 +125,14 @@ typedef struct		s_printf_convert
 	unsigned short	isptr;
 	void			(*convert)(struct s_printf *);
 	size_t			size;
-	int				(*get_len)(t_printf *pf);
+	void			(*set_len)(t_printf *pf);
 }					t_printf_convert;
 
 # define TCO t_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
-	(TCO){'d', 1, 0, &ft_pf_conv_int, sizeof(int), NULL},
-	(TCO){'i', 1, 0, &ft_pf_conv_int, sizeof(int), NULL},
+	(TCO){'d', 1, 0, &ft_pf_conv_int, sizeof(int), &ft_pf_len_int},
+	(TCO){'i', 1, 0, &ft_pf_conv_int, sizeof(int), &ft_pf_len_int},
 	(TCO){'s', 0, 1, &ft_pf_conv_str, sizeof(char*), &ft_pf_len_str},
 	(TCO){'%', 0, 0, &ft_pf_conv_percent, sizeof(char), NULL},
 	(TCO){'c', 0, 0, &ft_pf_conv_char, sizeof(char), NULL},

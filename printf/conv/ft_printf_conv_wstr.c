@@ -6,27 +6,31 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:22:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:58:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
 
-int						ft_pf_len_wstr(t_printf *pf)
+void					ft_pf_len_wstr(t_printf *pf)
 {
 	const wchar_t	*str = (const wchar_t*)pf->raw_value;
 	int				len;
 
 	if (!str)
-		return (0);
+	{
+		pf->raw_len = ((pf->flags & FT_PF_PREC) && (pf->precision < 6)) ?
+			pf->precision : 6;
+		return ;
+	}
 	len = 0;
 	while (*str)
 	{
 		len++;
 		str++;
 	}
-	return (len);
+	pf->raw_len = len;
 }
 
 static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
@@ -37,7 +41,7 @@ static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
 		return ;
 	slen = ft_wstrlen(str);
 	ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',
-		pf->min_field - (int)slen);
+		pf->min_width - (int)slen);
 }
 
 void					ft_pf_conv_wstr(t_printf *pf)

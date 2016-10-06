@@ -1,26 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_init.c                                   :+:      :+:    :+:   */
+/*   ft_digitlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 12:54:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 17:32:32 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/06 17:42:33 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/06 17:46:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
-void					ft_printf_init(t_printf *pf, va_list *ap)
+int		ft_udigit_len(uintmax_t nb, unsigned int base)
 {
-	pf->ap = ap;
-	pf->flags = 0;
-	pf->precision = 0;
-	pf->buff_start = pf->buffer;
-	pf->size = 0;
-	pf->total_len = 0;
-	pf->fd = 1;
-	pf->min_width = 0;
-	pf->space_left = FT_PF_BSIZE;
+	int			len;
+
+	len = 1;
+	while ((nb) && (nb /= base))
+		len++;
+	return (len);
+}
+
+int		ft_digit_len(intmax_t nb, unsigned int base)
+{
+	return (ft_udigit_len((unsigned)((nb < 0) ? -nb : nb), base));
 }

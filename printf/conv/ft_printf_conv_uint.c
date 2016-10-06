@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 02:03:36 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:24:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 17:32:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 static void				ft_printf_conv_uint_minfield(t_printf *pf, int len)
 {
-	const int		missing = pf->min_field - len;
+	const int		missing = pf->min_width - len;
 
 	ft_printf_padding(pf,
 		(pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ', missing);

@@ -6,12 +6,28 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:14:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 15:42:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 16:22:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+int						ft_pf_len_wstr(t_printf *pf)
+{
+	const wchar_t	*str = (const wchar_t*)pf->raw_value;
+	int				len;
+
+	if (!str)
+		return (0);
+	len = 0;
+	while (*str)
+	{
+		len++;
+		str++;
+	}
+	return (len);
+}
 
 static inline void		ft_printf_conv_wstr_align(t_printf *pf, wchar_t *str)
 {

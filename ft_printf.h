@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:00:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 16:38:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ typedef struct		s_printf
 	int				fd;
 	int				min_field;
 	int				lastlen;
-	int				padding;
+	int				raw_len;
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;
@@ -81,6 +81,7 @@ int					ft_printf_padding(t_printf *pf, const char c, int n);
 void				ft_printf_padding_len(t_printf *pf, int len);
 void				ft_printf_align_left(t_printf *pf, int len);
 void				ft_printf_zeroes(t_printf *pf);
+void				ft_printf_conv(t_printf *pf, const char c);
 
 void				ft_pf_conv_unknow(t_printf *pf, char c);
 void				ft_pf_conv_int(t_printf *pf);
@@ -98,6 +99,9 @@ void				ft_pf_conv_upd(t_printf *pf);
 void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
 
+int					ft_pf_len_str(t_printf *pf);
+int					ft_pf_len_wstr(t_printf *pf);
+
 /*
 ** conversions const global
 */
@@ -109,26 +113,27 @@ typedef struct		s_printf_convert
 	unsigned short	isptr;
 	void			(*convert)(struct s_printf *);
 	size_t			size;
+	int				(*get_len)(t_printf *pf);
 }					t_printf_convert;
 
 # define TCO t_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
-	(TCO){'d', 1, 0, &ft_pf_conv_int, sizeof(int)},
-	(TCO){'i', 1, 0, &ft_pf_conv_int, sizeof(int)},
-	(TCO){'s', 0, 1, &ft_pf_conv_str, sizeof(char*)},
-	(TCO){'%', 0, 0, &ft_pf_conv_percent, sizeof(char)},
-	(TCO){'c', 0, 0, &ft_pf_conv_char, sizeof(char)},
-	(TCO){'p', 1, 1, &ft_pf_conv_ptr, sizeof(void*)},
-	(TCO){'C', 0, 0, &ft_pf_conv_wchar, sizeof(wchar_t)},
-	(TCO){'S', 0, 1, &ft_pf_conv_wstr, sizeof(wchar_t *)},
-	(TCO){'o', 1, 0, &ft_pf_conv_octal, sizeof(int)},
-	(TCO){'O', 1, 0, &ft_pf_conv_uloctal, sizeof(long int)},
-	(TCO){'x', 1, 0, &ft_pf_conv_hex, sizeof(int)},
-	(TCO){'X', 1, 0, &ft_pf_conv_uphex, sizeof(int)},
-	(TCO){'D', 1, 0, &ft_pf_conv_upd, sizeof(long int)},
-	(TCO){'u', 1, 0, &ft_pf_conv_uint, sizeof(int)},
-	(TCO){'U', 1, 0, &ft_pf_conv_upud, sizeof(long int)}
+	(TCO){'d', 1, 0, &ft_pf_conv_int, sizeof(int), NULL},
+	(TCO){'i', 1, 0, &ft_pf_conv_int, sizeof(int), NULL},
+	(TCO){'s', 0, 1, &ft_pf_conv_str, sizeof(char*), &ft_pf_len_str},
+	(TCO){'%', 0, 0, &ft_pf_conv_percent, sizeof(char), NULL},
+	(TCO){'c', 0, 0, &ft_pf_conv_char, sizeof(char), NULL},
+	(TCO){'p', 1, 1, &ft_pf_conv_ptr, sizeof(void*), NULL},
+	(TCO){'C', 0, 0, &ft_pf_conv_wchar, sizeof(wchar_t), NULL},
+	(TCO){'S', 0, 1, &ft_pf_conv_wstr, sizeof(wchar_t *), &ft_pf_len_wstr},
+	(TCO){'o', 1, 0, &ft_pf_conv_octal, sizeof(int), NULL},
+	(TCO){'O', 1, 0, &ft_pf_conv_uloctal, sizeof(long int), NULL},
+	(TCO){'x', 1, 0, &ft_pf_conv_hex, sizeof(int), NULL},
+	(TCO){'X', 1, 0, &ft_pf_conv_uphex, sizeof(int), NULL},
+	(TCO){'D', 1, 0, &ft_pf_conv_upd, sizeof(long int), NULL},
+	(TCO){'u', 1, 0, &ft_pf_conv_uint, sizeof(int), NULL},
+	(TCO){'U', 1, 0, &ft_pf_conv_upud, sizeof(long int), NULL}
 };
 
 /*

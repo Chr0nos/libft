@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 18:19:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 23:47:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ size_t					ft_printf_append(t_printf *pf, const char *data,
 	return (size);
 }
 
-int					ft_printf_padding(t_printf *pf, const char c, int n)
+int						ft_printf_padding(t_printf *pf, const char c, int n)
 {
 	if (n <= 0)
 		return (0);

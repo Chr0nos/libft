@@ -6,12 +6,17 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 19:42:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 23:40:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+void				ft_pf_arg_wchar(t_printf *pf)
+{
+	pf->raw_value = va_arg(*pf->ap, wchar_t);
+}
 
 static void	inline	ft_pf_conv_wchar_forcechar(t_printf *pf)
 {

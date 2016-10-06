@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 17:05:16 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 19:50:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/06 23:47:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void				ft_pf_arg_char(t_printf *pf)
 {
 	if (pf->flags & FT_PF_MOD_L)
-		pf->raw_value = (intmax_t)(wchar_t)va_arg(*pf->ap, wchar_t);
+		pf->raw_value = (intmax_t)(wchar_t)(va_arg(*pf->ap, wchar_t));
 	else
 		pf->raw_value = (char)va_arg(*pf->ap, int);
 }

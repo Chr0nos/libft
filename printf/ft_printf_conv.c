@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 02:07:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 02:44:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** if the type is numeric the precison override flag 0
 */
 
-static void				ft_printf_flags_override(t_printf *pf,
+static inline void		ft_printf_flags_override(t_printf *pf,
 	const t_printf_convert *conv)
 {
 	if (conv->isptr)

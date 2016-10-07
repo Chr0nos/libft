@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 02:20:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 02:51:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <string.h>
 # include <stdarg.h>
 # include <inttypes.h>
-# define FT_PF_BSIZE		8192
+# define FT_PF_BSIZE		8192 * 8
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcC"
 # define FT_PF_FLAGS		"#0-+ *"
 # define FT_PF_MODIFIERS	6

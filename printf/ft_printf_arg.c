@@ -35,7 +35,7 @@ void	ft_pf_arg_unbr(t_printf *pf)
 	if (pf->flags & FT_PF_MOD_J)
 		pf->raw_value = (intmax_t)va_arg(*pf->ap, uintmax_t);
 	else if (pf->flags & FT_PF_MOD_Z)
-		pf->raw_value = (intmax_t)va_arg(*pf->ap, ssize_t);
+		pf->raw_value = (intmax_t)va_arg(*pf->ap, long);
 	else if (pf->flags & FT_PF_MOD_LL)
 		pf->raw_value = (intmax_t)va_arg(*pf->ap, unsigned long long);
 	else if (pf->flags & FT_PF_MOD_L)

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 02:44:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 14:55:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,16 +35,15 @@ static inline void		ft_printf_flags_override(t_printf *pf,
 static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 {
 	if ((ft_printf_isaligned_right(pf)) &&
-			(pf->lastlen < pf->min_width))
+			(pf->slen < pf->min_width))
 		ft_printf_padding(pf,
 			((conv->isptr) &&
 				(pf->flags & FT_PF_FLAG_ZERO)) ? '0' : ' ',
-			(int)(pf->min_width - pf->lastlen));
+			(int)(pf->min_width - pf->slen));
 }
 
 static inline void		ft_printf_conv_init(t_printf *pf)
 {
-	pf->lastlen = 0;
 	pf->slen = 0;
 	pf->raw_len = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 02:51:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 14:54:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,10 +66,8 @@ typedef struct		s_printf
 	int				precision;
 	int				fd;
 	int				min_width;
-	int				lastlen;
 	int				raw_len;
 	int				slen;
-	int				padding;
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;

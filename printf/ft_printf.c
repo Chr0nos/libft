@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 16:39:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 15:13:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static void				ft_printf_engine(const char *fstr, t_printf *pf)
 	ft_printf_append(pf, fstr, (size_t)len);
 }
 
-int						ft_printf_fd(int fd, const char *str, ...)
+int						ft_dprintf(int fd, const char *str, ...)
 {
 	va_list		ap;
 	t_printf	pf;

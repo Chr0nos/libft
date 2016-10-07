@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 15:13:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 15:51:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include <stdarg.h>
 # include <inttypes.h>
 # define FT_PF_BSIZE		8192 * 8
-# define FT_PF_CONVERTS		"sSpdDioOuUxXcC"
+# define FT_PF_CONVERTS		"sSpdDioOuUxXcCb"
 # define FT_PF_FLAGS		"#0-+ *"
 # define FT_PF_MODIFIERS	6
 
@@ -34,7 +34,7 @@
 */
 
 # define FT_PF_FLAGSNUM		5
-# define FT_PF_CONVS		15
+# define FT_PF_CONVS		16
 
 # define FT_PF_FLAG_DIESE	(1u << 0)
 # define FT_PF_FLAG_ZERO	(1u << 1)
@@ -111,6 +111,7 @@ void				ft_pf_conv_hex(t_printf *pf);
 void				ft_pf_conv_uphex(t_printf *pf);
 void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
+void				ft_pf_conv_bits(t_printf *pf);
 
 void				ft_pf_len_char(t_printf *pf);
 void				ft_pf_len_int(t_printf *pf);
@@ -120,6 +121,7 @@ void				ft_pf_len_wstr(t_printf *pf);
 void				ft_pf_len_upd(t_printf *pf);
 void				ft_pf_len_hex(t_printf *pf);
 void				ft_pf_len_octal(t_printf *pf);
+void				ft_pf_len_bits(t_printf *pf);
 
 /*
 ** conversions const global
@@ -152,7 +154,8 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'X', 1, 0, &ft_pf_conv_uphex, &ft_pf_len_hex, &ft_pf_arg_unbr},
 	(TCO){'D', 1, 0, &ft_pf_conv_int, &ft_pf_len_upd, &ft_pf_arg_upd},
 	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
-	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd}
+	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd},
+	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr}
 };
 
 /*

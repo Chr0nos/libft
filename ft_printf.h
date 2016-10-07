@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 15:51:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 00:26:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdarg.h>
 # include <inttypes.h>
 # define FT_PF_BSIZE		8192 * 8
+# define FT_PF_PRE_BSIZE	64
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCb"
 # define FT_PF_FLAGS		"#0-+ *"
 # define FT_PF_MODIFIERS	6
@@ -62,6 +63,7 @@ typedef struct		s_printf
 	va_list			*ap;
 	char			buffer[FT_PF_BSIZE];
 	char			*buff_start;
+	char			pre_buffer[FT_PF_PRE_BSIZE];
 	unsigned int	flags;
 	int				precision;
 	int				fd;

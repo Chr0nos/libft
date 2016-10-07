@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:17:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 15:45:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 17:58:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void		ft_pf_len_bits(t_printf *pf)
 	pf->slen = pf->raw_len;
 	if ((pf->flags & FT_PF_PREC) && (len < pf->precision))
 		pf->slen = pf->precision;
+	else if (pf->flags & FT_PF_FLAG_DIESE)
+		pf->slen++;
 	if ((pf->flags & FT_PF_FLAG_ZERO) && (pf->min_width > len))
 		pf->slen = pf->min_width;
-	if (pf->flags & FT_PF_FLAG_DIESE)
-		pf->slen++;
 }
 
 void		ft_pf_conv_bits(t_printf *pf)
@@ -55,6 +55,5 @@ void		ft_pf_conv_bits(t_printf *pf)
 	}
 	if (pf->flags & FT_PF_FLAG_DIESE)
 		ft_printf_append(pf, "b", 1);
-	ft_printf_padding(pf, '0', pf->slen - pf->raw_len);
 	ft_printf_append(pf, buff, (size_t)pf->slen);
 }

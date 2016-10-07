@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/03 16:23:30 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 01:37:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 00:28:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,12 +38,11 @@ void					ft_pf_len_int(t_printf *pf)
 
 void					ft_pf_conv_int(t_printf *pf)
 {
-	char				buff[64];
 	const intmax_t		nb = pf->raw_value;
 	int					len;
 	const int			neg = (nb < 0) ? 1 : 0;
 
-	ft_ulltobuff(buff, (unsigned long long)(nb < 0) ?
+	ft_ulltobuff(pf->pre_buffer, (unsigned long long)(nb < 0) ?
 		(unsigned long long)-nb : (unsigned long long)nb, 10, "0123456789");
 	len = pf->slen;
 	if (neg)
@@ -53,5 +52,5 @@ void					ft_pf_conv_int(t_printf *pf)
 			(pf->flags & FT_PF_FLAG_MORE) ? "+" : " ", 1);
 	if (!(pf->flags & FT_PF_FLAG_LESS))
 		ft_printf_padding(pf, '0', len - pf->raw_len);
-	ft_printf_append(pf, buff, (size_t)pf->raw_len);
+	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->raw_len);
 }

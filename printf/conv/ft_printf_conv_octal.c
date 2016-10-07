@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:48:41 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 22:33:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 02:13:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,9 @@ void			ft_pf_conv_octal(t_printf *pf)
 
 	ft_ulltobuff(buff, (unsigned long long)nb, 8, "012345678");
 	len = pf->slen;
-	ft_printf_padding(pf, '0', len - pf->raw_len);
+	if (!(pf->flags & FT_PF_FLAG_LESS))
+		ft_printf_padding(pf, '0', len - pf->raw_len);
+	else if ((pf->flags & FT_PF_FLAG_DIESE) && (pf->raw_value))
+		ft_printf_append(pf, "0", 1);
 	ft_printf_append(pf, buff, (size_t)pf->raw_len);
 }

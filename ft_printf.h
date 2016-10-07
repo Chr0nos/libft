@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 01:51:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 02:20:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ typedef struct		s_printf_cfg
 static const t_printf_cfg g_printf_cfg[FT_PF_FLAGSNUM] = {
 	(t_printf_cfg){'#', FT_PF_FLAG_DIESE, ~0u, 0},
 	(t_printf_cfg){'0', FT_PF_FLAG_ZERO, ~0u, 0},
-	(t_printf_cfg){'-', FT_PF_FLAG_LESS, ~(FT_PF_FLAG_ZERO), 0},
+	(t_printf_cfg){'-', FT_PF_FLAG_LESS, ~0u, 0},
 	(t_printf_cfg){'+', FT_PF_FLAG_MORE, ~(FT_PF_FLAG_SPACE), 0},
 	(t_printf_cfg){' ', FT_PF_FLAG_SPACE, ~0u, FT_PF_FLAG_MORE}
 };

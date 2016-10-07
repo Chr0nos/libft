@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 01:56:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 02:07:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static void				ft_printf_flags_override(t_printf *pf,
 		if (pf->flags & FT_PF_PREC)
 			pf->flags &= ~FT_PF_FLAG_ZERO;
 	}
+	if (pf->flags & FT_PF_FLAG_LESS)
+		pf->flags &= ~FT_PF_FLAG_ZERO;
 }
 
 static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)

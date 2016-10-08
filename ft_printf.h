@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 00:26:31 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 17:44:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@
 **                         [---------]				(pf->raw_len)
 **         [-------------------------]				(pf->slen)
 ** [------------------------------------------]		(>= pf->min_width)
+** note:
+** space are filled automaticly in ft_printd_conv_real (ft_printf_conv.c)
+** rspace are filled automaticly in ft_printf_conv_postalign (ft_printf_conv.c)
 */
 
 /*
@@ -76,21 +79,42 @@ typedef struct		s_printf
 	intmax_t		raw_value;
 }					t_printf;
 
+/*
+** printf external main functions
+*/
+
 int					ft_dprintf(int fd, const char *str, ...);
 int					ft_printf(const char *str, ...);
+
+/*
+** internal functions for printf, should not be executed manualy
+*/
+
 void				ft_printf_init(t_printf *pf, va_list *ap);
 int					ft_printf_isaligned_right(t_printf *pf);
 int					ft_printf_isaligned_left(t_printf *pf);
 uintmax_t			ft_printf_conv_uint_getnb(t_printf *pf);
 intmax_t			ft_printf_conv_int_getnb(t_printf *pf);
 size_t				ft_printf_loadall(t_printf *pf, const char *str);
+
+void				ft_printf_align_left(t_printf *pf, int len);
+void				ft_printf_conv(t_printf *pf, const char c);
+void				ft_pf_fixprecision_null(t_printf *pf, int *len);
+
+/*
+** buffer controll functions
+*/
+
 size_t				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);
 int					ft_printf_padding(t_printf *pf, const char c, int n);
-void				ft_printf_align_left(t_printf *pf, int len);
-void				ft_printf_conv(t_printf *pf, const char c);
-void				ft_pf_fixprecision_null(t_printf *pf, int *len);
+
+/*
+** argument retrive functions
+** thoses functions retive the va_arg value and apply the good cast
+** the value will be stored into pf->raw_value (type: intmax_t)
+*/
 
 void				ft_pf_arg_nbr(t_printf *pf);
 void				ft_pf_arg_unbr(t_printf *pf);
@@ -99,6 +123,10 @@ void				ft_pf_arg_char(t_printf *pf);
 void				ft_pf_arg_upd(t_printf *pf);
 void				ft_pt_arg_pc(t_printf *pf);
 void				ft_pf_arg_wchar(t_printf *pf);
+
+/*
+** convert functions
+*/
 
 void				ft_pf_conv_unknow(t_printf *pf, char c);
 void				ft_pf_conv_int(t_printf *pf);
@@ -114,6 +142,13 @@ void				ft_pf_conv_uphex(t_printf *pf);
 void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
 void				ft_pf_conv_bits(t_printf *pf);
+
+/*
+** len calculation functions
+** for numeric types len do the convert and put the result in pf->pre_buffer
+** the pre-buffer is not forced to use a \0 termisaison
+** the pf->raw_len is mandatory
+*/
 
 void				ft_pf_len_char(t_printf *pf);
 void				ft_pf_len_int(t_printf *pf);

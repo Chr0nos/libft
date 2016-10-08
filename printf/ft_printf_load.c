@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 23:29:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:21:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ static size_t			ft_printf_loadprecision(t_printf *pf, const char *s)
 	pf->flags |= FT_PF_PREC;
 	if (ft_isdigit(*s))
 		return ((size_t)ft_atonum(s, &pf->precision) + 1);
+	else
+		pf->precision = 0;
 	return (1);
 }
 

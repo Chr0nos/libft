@@ -6,11 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:17:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 17:58:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:44:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+#include "libft.h"
 
 void		ft_pf_len_bits(t_printf *pf)
 {
@@ -42,18 +43,18 @@ void		ft_pf_len_bits(t_printf *pf)
 
 void		ft_pf_conv_bits(t_printf *pf)
 {
-	char				buff[64];
-	const uintmax_t		nb = (uintmax_t)pf->raw_value;
-	const int			bits = pf->raw_len;
+	uintmax_t			nb;
+	int					bit;
 	int					p;
 
+	bit = pf->raw_len - 1;
+	nb = (uintmax_t)pf->raw_value;
 	p = 0;
-	while (p < bits)
-	{
-		buff[p] = (nb & (1u << (bits - p))) ? '1' : '0';
-		p++;
-	}
+	while ((nb >>= 1))
+		pf->pre_buffer[bit--] = "01"[nb & 1u];
+	if (bit > 0)
+		ft_memset(pf->pre_buffer, '0', (unsigned)bit);
 	if (pf->flags & FT_PF_FLAG_DIESE)
 		ft_printf_append(pf, "b", 1);
-	ft_printf_append(pf, buff, (size_t)pf->slen);
+	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->slen);
 }

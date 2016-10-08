@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 17:44:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 18:55:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # include <inttypes.h>
 # define FT_PF_BSIZE		8192 * 8
 # define FT_PF_PRE_BSIZE	64
-# define FT_PF_CONVERTS		"sSpdDioOuUxXcCb"
+# define FT_PF_CONVERTS		"sSpdDioOuUxXcCbn"
 # define FT_PF_FLAGS		"#0-+ *"
 # define FT_PF_MODIFIERS	6
 
@@ -38,7 +38,7 @@
 */
 
 # define FT_PF_FLAGSNUM		5
-# define FT_PF_CONVS		16
+# define FT_PF_CONVS		17
 
 # define FT_PF_FLAG_DIESE	(1u << 0)
 # define FT_PF_FLAG_ZERO	(1u << 1)
@@ -142,6 +142,7 @@ void				ft_pf_conv_uphex(t_printf *pf);
 void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
 void				ft_pf_conv_bits(t_printf *pf);
+void				ft_pf_conv_n(t_printf *pf);
 
 /*
 ** len calculation functions
@@ -159,6 +160,7 @@ void				ft_pf_len_upd(t_printf *pf);
 void				ft_pf_len_hex(t_printf *pf);
 void				ft_pf_len_octal(t_printf *pf);
 void				ft_pf_len_bits(t_printf *pf);
+void				ft_pf_len_n(t_printf *pf);
 
 /*
 ** conversions const global
@@ -192,7 +194,8 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'D', 1, 0, &ft_pf_conv_int, &ft_pf_len_upd, &ft_pf_arg_upd},
 	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
 	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd},
-	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr}
+	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
+	(TCO){'n', 0, 1, &ft_pf_conv_n, &ft_pf_len_n, &ft_pf_arg_ptr}
 };
 
 /*

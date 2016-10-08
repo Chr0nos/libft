@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 03:37:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 02:54:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,6 +137,7 @@ size_t				ft_strcount(const char *str, char c);
 size_t				ft_tabstrlen(const char **tab);
 double				ft_atod(const char *s);
 const char			*ft_strforf(const char *str, const char *sep, int *len);
+size_t				ft_strplen(const char *str, const char *maxptr);
 
 /*
 ** memory usage functions

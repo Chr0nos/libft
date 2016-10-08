@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 03:36:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 03:04:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,13 @@ size_t	ft_strlen(const char *str)
 			IFRET__(!cp[7], (size_t)(cp - str + 7));
 		}
 	}
+}
+
+size_t	ft_strplen(const char *str, const char *maxptr)
+{
+	const char	*origin = str;
+
+	while ((*str) && (str < maxptr))
+		str++;
+	return ((size_t)str - (size_t)origin);
 }

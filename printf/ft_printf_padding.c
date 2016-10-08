@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 22:07:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 23:10:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/09 00:59:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ int						ft_printf_padding(t_printf *pf, const char c, int n)
 		ft_memset(pf->buff_start, (int)c, (size_t)n);
 		pf->buff_start += n;
 		pf->size += (size_t)n;
+		pf->space_left -= (size_t)n;
 		return (n);
 	}
 	ft_printf_padding_partial(pf, c, n);

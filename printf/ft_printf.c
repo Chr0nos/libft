@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 20:30:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 23:52:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,11 @@
 
 /*
 ** called on each sub chain delimited by %
+** while the current character is not a conversion: we try to load a "config"
+** config = (precision / min_width / modifier / flags)
+** if a character is not a conversion and not a config: it's considerated as a
+** conversion %c (and will be displayed with all already set config)
+** see ft_printf_engine for details
 */
 
 static const char		*ft_printf_exec(const char *str, t_printf *pf)
@@ -43,6 +48,13 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 	return (str);
 }
 
+/*
+** this function jump on each '%' char
+** and send the position of the '%' + 1 pointer to ft_printf_exec
+** if '%' is not in the format string anymore: the whole left string is append
+** to the buffer
+*/
+
 static void				ft_printf_engine(const char *fstr, t_printf *pf)
 {
 	const char		*c;
@@ -57,6 +69,11 @@ static void				ft_printf_engine(const char *fstr, t_printf *pf)
 	}
 	ft_printf_append(pf, fstr, (size_t)len);
 }
+
+/*
+** the same a ft_printf but take a file descriptor in parameter
+** ex: ft_dprintf(2, "%s\n", "some error string");
+*/
 
 int						ft_dprintf(int fd, const char *str, ...)
 {

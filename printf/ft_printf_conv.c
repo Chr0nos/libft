@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 14:55:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 17:50:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 /*
 ** if the type is a pointer the address read will be forced to void*
 ** if the type is numeric the precison override flag 0
+** the flag - allways override the zero flag
 */
 
 static inline void		ft_printf_flags_override(t_printf *pf,
@@ -42,11 +43,13 @@ static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 			(int)(pf->min_width - pf->slen));
 }
 
-static inline void		ft_printf_conv_init(t_printf *pf)
-{
-	pf->slen = 0;
-	pf->raw_len = 0;
-}
+/*
+** all conversions will be executed in this function
+** conv contain 3 functions pointers
+** first it override incompatibles flags then retrive the va_arg argument,
+** calculate the len with set_len, apply an eventual padding widh spaces (left)
+** then do the convet and apply any needed right spaces padding
+*/
 
 static inline void		ft_printd_conv_real(t_printf *pf, const TCO *conv)
 {
@@ -69,7 +72,8 @@ void					ft_printf_conv(t_printf *pf, const char c)
 	int						p;
 	const t_printf_convert	*conv;
 
-	ft_printf_conv_init(pf);
+	pf->slen = 0;
+	pf->raw_len = 0;
 	p = FT_PF_CONVS;
 	while (p--)
 	{

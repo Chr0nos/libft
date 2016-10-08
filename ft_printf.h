@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 21:42:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 23:45:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,17 @@
 # include <stdarg.h>
 # include <inttypes.h>
 
-//# define FT_PF_BSIZE		8192 * 8
-# define FT_PF_BSIZE		8
+/*
+** about buffer sizes: they MUST be a multiple of 8 for memory padding purposes
+** any other size will result with a padding warning due to flaf -Weverything
+** the code should works with a buffer size equal to 0 but will be slow as hell
+*/
+
+# define FT_PF_BSIZE		8192 * 8
+//# define FT_PF_BSIZE		8
 # define FT_PF_PRE_BSIZE	64
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbn"
 # define FT_PF_FLAGS		"#0-+ *"
-# define FT_PF_MODIFIERS	6
 
 /*
 **         [-+sign]
@@ -36,9 +41,6 @@
 ** ---
 ** this printf do not use any memory allocation, it's fully in the stack
 */
-
-# define FT_PF_FLAGSNUM		5
-# define FT_PF_CONVS		17
 
 /*
 ** ft_printf flags
@@ -59,6 +61,7 @@
 # define FT_PF_MINWIDTH		(1u << 12)
 # define FT_PF_PTR			(1u << 13)
 # define FT_PF_NUMERIC		(1u << 14)
+# define FT_PF_NOWRITE		(1u << 15)
 
 struct s_printf;
 
@@ -91,7 +94,9 @@ typedef struct		s_printf
 
 /*
 ** printf external main functions
+** __attribute__((format(printf,1,2)));
 */
+
 int					ft_printf(const char *s,
 		...) __attribute__((format(printf,1,2)));
 int					ft_dprintf(int fd, const char *str, ...);
@@ -176,6 +181,8 @@ void				ft_pf_len_n(t_printf *pf);
 ** conversions const global
 */
 
+# define FT_PF_CONVS		17
+
 typedef struct		s_printf_convert
 {
 	int				letter;
@@ -210,7 +217,13 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 
 /*
 ** flags const global
+** about the structure:
+** flag: the flag letter
+** mask: wich bit allow in other flags (by default all bits exept for +)
+** refuse: if any of thoses bits are already here: don't set this flag
 */
+
+# define FT_PF_FLAGSNUM		5
 
 typedef struct		s_printf_cfg
 {
@@ -231,6 +244,8 @@ static const t_printf_cfg g_printf_cfg[FT_PF_FLAGSNUM] = {
 /*
 ** modifiers const global
 */
+
+# define FT_PF_MODIFIERS	6
 
 typedef struct		s_printf_modif
 {

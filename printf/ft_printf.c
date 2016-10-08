@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 15:59:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 20:30:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int						ft_dprintf(int fd, const char *str, ...)
 	if (pf.size)
 	{
 		write(pf.fd, pf.buffer, pf.size);
-		pf.total_len += pf.size;
+		return (int)((pf.total_len + pf.size));
 	}
 	return ((int)pf.total_len);
 }
@@ -92,7 +92,7 @@ int						ft_printf(const char *str, ...)
 	if (pf.size)
 	{
 		write(pf.fd, pf.buffer, pf.size);
-		pf.total_len += pf.size;
+		return ((int)(pf.total_len + pf.size));
 	}
 	return ((int)pf.total_len);
 }

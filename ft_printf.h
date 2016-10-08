@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 18:55:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 21:42:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 # include <string.h>
 # include <stdarg.h>
 # include <inttypes.h>
-# define FT_PF_BSIZE		8192 * 8
+
+//# define FT_PF_BSIZE		8192 * 8
+# define FT_PF_BSIZE		8
 # define FT_PF_PRE_BSIZE	64
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbn"
 # define FT_PF_FLAGS		"#0-+ *"
@@ -31,14 +33,16 @@
 ** note:
 ** space are filled automaticly in ft_printd_conv_real (ft_printf_conv.c)
 ** rspace are filled automaticly in ft_printf_conv_postalign (ft_printf_conv.c)
-*/
-
-/*
-** ft_printf flags
+** ---
+** this printf do not use any memory allocation, it's fully in the stack
 */
 
 # define FT_PF_FLAGSNUM		5
 # define FT_PF_CONVS		17
+
+/*
+** ft_printf flags
+*/
 
 # define FT_PF_FLAG_DIESE	(1u << 0)
 # define FT_PF_FLAG_ZERO	(1u << 1)
@@ -56,10 +60,16 @@
 # define FT_PF_PTR			(1u << 13)
 # define FT_PF_NUMERIC		(1u << 14)
 
-int					ft_printf(const char *s,
-		...) __attribute__((format(printf,1,2)));
-
 struct s_printf;
+
+/*
+** about the structure bellow:
+** buff_start = a pointer to the current position in buffer
+** total_len = the total lenght that the buffer ever seen (the return value)
+** size = the current size of buffer, cannot be supperior to FT_PF_BSIZE
+** space_left = the remaining left space in buffer
+** raw_value = the current value after the arg retrive function
+*/
 
 typedef struct		s_printf
 {
@@ -82,9 +92,9 @@ typedef struct		s_printf
 /*
 ** printf external main functions
 */
-
+int					ft_printf(const char *s,
+		...) __attribute__((format(printf,1,2)));
 int					ft_dprintf(int fd, const char *str, ...);
-int					ft_printf(const char *str, ...);
 
 /*
 ** internal functions for printf, should not be executed manualy

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:17:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 18:44:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 20:15:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,13 @@ void		ft_pf_conv_bits(t_printf *pf)
 	bit = pf->raw_len - 1;
 	nb = (uintmax_t)pf->raw_value;
 	p = 0;
+	pf->pre_buffer[bit--] = "01"[nb & 1u];
 	while ((nb >>= 1))
 		pf->pre_buffer[bit--] = "01"[nb & 1u];
-	if (bit > 0)
-		ft_memset(pf->pre_buffer, '0', (unsigned)bit);
+	if (bit >= 0)
+		ft_memset(pf->pre_buffer, '0', (unsigned)bit + 1);
 	if (pf->flags & FT_PF_FLAG_DIESE)
-		ft_printf_append(pf, "b", 1);
-	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->slen);
+		pf->slen -= ft_printf_append(pf, "b", 1);
+	ft_printf_padding(pf, '0', pf->slen - pf->raw_len);
+	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->raw_len);
 }

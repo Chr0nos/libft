@@ -6,12 +6,18 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/07 15:49:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 22:08:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+/*
+** flush the current buffer to the pf->fd file descriptor
+** then reset the pf->buff_start pointer to the start, size to 0 and
+** reset space_left to the total buffer size
+*/
 
 void					ft_printf_flush(t_printf *pf)
 {
@@ -62,20 +68,4 @@ size_t					ft_printf_append(t_printf *pf, const char *data,
 	pf->buff_start += len;
 	pf->space_left -= len;
 	return (size);
-}
-
-int						ft_printf_padding(t_printf *pf, const char c, int n)
-{
-	if (n <= 0)
-		return (0);
-	if ((size_t)n <= pf->space_left)
-	{
-		ft_memset(pf->buff_start, (int)c, (size_t)n);
-		pf->buff_start += n;
-		pf->size += (size_t)n;
-		return (n);
-	}
-	while (n--)
-		ft_printf_append(pf, &c, 1);
-	return (n);
 }

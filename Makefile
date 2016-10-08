@@ -6,11 +6,11 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/08 18:54:42 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/08 22:08:35 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-pipe -O2
+EXTRA_FLAGS=-pipe -Ofast
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 CC=clang
 ifeq ($(CC),clang)
@@ -81,6 +81,7 @@ PRINTF=ft_printf.o \
 	ft_printf_arg.o \
 	ft_printf_align.o \
 	ft_printf_conv.o \
+	ft_printf_padding.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o \

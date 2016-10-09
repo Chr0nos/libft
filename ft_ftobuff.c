@@ -6,12 +6,42 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 14:48:05 by snicolet          #+#    #+#             */
-/*   Updated: 2016/03/24 12:53:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/09 03:57:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#define FT_F_SIGN(x, bits) (bits & (1u << 31))
+#define FT_F_EXP(x, bits) ((bits & 0x7F800000) >> 22)
+#define FT_F_FRACTION(x, bits) (bits & 0x7FFFFF)
 
+/*
+** float binary representation:
+** [sign] [exposant] [fraction]
+** 1bit	   8bits     23bits
+** -
+** the exposant has 1 bit of sign [sign][value]
+** full representation
+**          [0    000000000   00000000000000000000000]
+**          [s    s00000000   00000000000000000000000]
+** masks:       [0x7f800000]  [      0x7fffff        ]
+** -
+** examples: [S]   [E]         [F]
+** 42.0 =    [0]   [10000100]  [01010000000000000000000]
+**                 (4)
+*/
+
+int		ft_ftobuff(char *buffer, float nb, unsigned int precision)
+{
+	char					*c;
+	const unsigned int		bits = *(unsigned int*)&nb;
+
+	c = buffer;
+
+	return (0);
+}
+
+/*
 int		ft_ftobuff(char *buffer, double nb, unsigned int base, const char *map)
 {
 	int				real;
@@ -37,3 +67,4 @@ int		ft_ftobuff(char *buffer, double nb, unsigned int base, const char *map)
 	buffer[real_len++] = '\0';
 	return (real_len);
 }
+*/

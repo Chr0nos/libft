@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/09 01:00:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/09 18:08:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,8 +96,7 @@ typedef struct		s_printf
 ** __attribute__((format(printf,1,2)));
 */
 
-int					ft_printf(const char *s,
-		...) __attribute__((format(printf,1,2)));
+int					ft_printf(const char *s, ...);
 int					ft_dprintf(int fd, const char *str, ...);
 
 /*

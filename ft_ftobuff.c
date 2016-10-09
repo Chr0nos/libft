@@ -6,12 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/02/24 14:48:05 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/09 03:57:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/09 17:19:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#define FT_F_SIGN(x, bits) (bits & (1u << 31))
+#define FT_F_SIGN(x, bits) (bits & 0x80000000)
 #define FT_F_EXP(x, bits) ((bits & 0x7F800000) >> 22)
 #define FT_F_FRACTION(x, bits) (bits & 0x7FFFFF)
 
@@ -37,7 +37,11 @@ int		ft_ftobuff(char *buffer, float nb, unsigned int precision)
 	const unsigned int		bits = *(unsigned int*)&nb;
 
 	c = buffer;
-
+	(void)c;
+	(void)FT_F_SIGN(1, bits);
+	(void)FT_F_EXP(1, bits);
+	(void)FT_F_FRACTION(1, bits);
+	(void)precision;
 	return (0);
 }
 

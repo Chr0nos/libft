@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 19:59:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 01:27:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,9 @@
 # define FT_PF_PTR			(1u << 13)
 # define FT_PF_NUMERIC		(1u << 14)
 # define FT_PF_NOWRITE		(1u << 15)
+# define FT_PF_QUIT			(1u << 16)
+
+# define FT_PF_ALLOW (FT_PF_QUIT | FT_PF_NOWRITE)
 
 struct s_printf;
 
@@ -88,6 +91,7 @@ typedef struct		s_printf
 	size_t			total_len;
 	size_t			size;
 	size_t			space_left;
+	size_t			buffer_maxsize;
 	intmax_t		raw_value;
 }					t_printf;
 
@@ -98,11 +102,13 @@ typedef struct		s_printf
 
 int					ft_printf(const char *s, ...);
 int					ft_dprintf(int fd, const char *str, ...);
+int					ft_snprintf(char *buffer, size_t n, char *str, ...);
 
 /*
 ** internal functions for printf, should not be executed manualy
 */
 
+void				ft_printf_engine(const char *fstr, t_printf *pf);
 void				ft_printf_init(t_printf *pf, va_list *ap);
 int					ft_printf_isaligned_right(t_printf *pf);
 int					ft_printf_isaligned_left(t_printf *pf);
@@ -200,7 +206,6 @@ typedef struct		s_printf_convert
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
 	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},
-	(TCO){'d', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
 	(TCO){'%', 0, 0, &ft_pf_conv_percent, &ft_pf_len_char, &ft_pt_arg_pc},
 	(TCO){'c', 0, 0, &ft_pf_conv_char, &ft_pf_len_char, &ft_pf_arg_char},
 	(TCO){'p', 1, 1, &ft_pf_conv_ptr, &ft_pf_len_hex, &ft_pf_arg_ptr},
@@ -213,8 +218,9 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'D', 1, 0, &ft_pf_conv_int, &ft_pf_len_upd, &ft_pf_arg_upd},
 	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd},
 	(TCO){'n', 0, 1, &ft_pf_conv_n, &ft_pf_len_n, &ft_pf_arg_ptr},
-	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
 	(TCO){'i', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
+	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
+	(TCO){'d', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
 	(TCO){'s', 0, 1, &ft_pf_conv_str, &ft_pf_len_str, &ft_pf_arg_ptr},
 };
 

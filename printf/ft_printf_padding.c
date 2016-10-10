@@ -6,12 +6,27 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 22:07:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/09 00:59:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 01:28:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+/*
+** only in case of no buffer
+*/
+
+static inline int		ft_printf_padding_nobuff(t_printf *pf, const char c,
+	int n)
+{
+	const int		size = n;
+	ssize_t			ret;
+
+	while ((n--) && ((ret = write(pf->fd, &c, 1)) > 0))
+		pf->total_len += (size_t)ret;
+	return (size);
+}
 
 /*
 ** this function is called if the padding requested is bigger than the buffer
@@ -22,12 +37,15 @@
 static inline int		ft_printf_padding_big(t_printf *pf, const char c, int n)
 {
 	const int		size = n;
-	ssize_t			ret;
 
-	if (pf->size)
+	if ((!pf->space_left) && (!pf->buffer_maxsize))
+		return (ft_printf_padding_nobuff(pf, c, n));
+	while ((n > 0) && (!(pf->flags & FT_PF_QUIT)))
+	{
+		n -= ft_printf_padding(pf, c, (n > (int)pf->space_left) ? n :
+			(int)pf->space_left);
 		ft_printf_flush(pf);
-	while ((n--) && ((ret = write(pf->fd, &c, 1)) > 0))
-		pf->total_len += (size_t)ret;
+	}
 	return (size);
 }
 
@@ -41,7 +59,8 @@ static inline void		ft_printf_padding_partial(t_printf *pf, const char c,
 {
 	n -= ft_printf_padding(pf, c, (int)pf->space_left);
 	ft_printf_flush(pf);
-	ft_printf_padding(pf, c, n);
+	if (!(pf->flags & FT_PF_QUIT))
+		ft_printf_padding(pf, c, n);
 }
 
 /*

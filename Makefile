@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/10 20:16:50 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/11 00:35:08 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -75,6 +75,7 @@ MEMORY=ft_memset.o \
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \
+	ft_snprintf.o \
 	ft_printf_init.o \
 	ft_printf_load.o \
 	ft_printf_buffer.o \
@@ -139,12 +140,12 @@ STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_strtoupper.o \
 
 OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
-	ft_putull.o ft_putfloat.o \
+	ft_putull.o \
 	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \
 	ft_pow.o \
 	ft_crash.o \
-	ft_itoa.o ft_itoa_base.o ft_itobuff.o ft_ftobuff.o \
+	ft_itoa.o ft_itoa_base.o ft_itobuff.o \
 	ft_itobase.o \
 	ft_atoi.o \
 	ft_putnbr.o ft_putnbr_fd.o \
@@ -181,7 +182,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_imaxtobuff.o \
 	ft_bitstobuff.o \
 	ft_digitlen.o \
-	ft_atonum.o
+	ft_atonum.o \
+	ft_dtobuff.o
 
 UNICODE_DIR=unicode
 UNICODE=ft_buffwchar.o \

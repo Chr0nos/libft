@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/09 04:53:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 22:02:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,6 @@ int					ft_strequ(const char *s1, const char *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_itobuff(char *buffer, int nb, unsigned int base,
 	const char *map);
-int					ft_ftobuff(char *buffer, float nb, unsigned int precision);
 int					ft_pow(int nb, int power);
 int					ft_atoi(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -242,5 +241,6 @@ int					ft_bitstobuff(char *buff, unsigned long long x,
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
+int					ft_dtobuff(char *buff, double nb, unsigned int precision);
 
 #endif

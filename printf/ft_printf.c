@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 20:15:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 01:06:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,21 +53,24 @@ static inline const char	*ft_printf_exec(const char *str, t_printf *pf)
 ** and send the position of the '%' + 1 pointer to ft_printf_exec
 ** if '%' is not in the format string anymore: the whole left string is append
 ** to the buffer
+** all flags expet NOWRITE and FT_PF_QUIT are removed at each loop call
 */
 
-static void					ft_printf_engine(const char *fstr, t_printf *pf)
+void						ft_printf_engine(const char *fstr, t_printf *pf)
 {
 	const char		*c;
 	const char		*sep = "%";
 	int				len;
 
-	while ((c = ft_strforf(fstr, sep, &len)) != NULL)
+	while (((c = ft_strforf(fstr, sep, &len)) != NULL) &&
+		(!(pf->flags & FT_PF_QUIT)))
 	{
-		pf->flags = 0;
+		pf->flags &= FT_PF_ALLOW;
 		ft_printf_append(pf, fstr, (size_t)len);
 		fstr = ft_printf_exec(c + 1, pf);
 	}
-	ft_printf_append(pf, fstr, (size_t)len);
+	if (!(pf->flags & FT_PF_QUIT))
+		ft_printf_append(pf, fstr, (size_t)len);
 }
 
 /*

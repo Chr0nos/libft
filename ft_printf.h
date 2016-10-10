@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 16:15:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:51:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,7 +174,7 @@ void				ft_pf_len_hex(t_printf *pf);
 void				ft_pf_len_octal(t_printf *pf);
 void				ft_pf_len_bits(t_printf *pf);
 void				ft_pf_len_n(t_printf *pf);
-void				ft_pf_len_kernel(t_printf *pf);
+void				ft_pf_len_callback(t_printf *pf);
 
 /*
 ** conversions const global
@@ -213,7 +213,7 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd},
 	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
 	(TCO){'n', 0, 1, &ft_pf_conv_n, &ft_pf_len_n, &ft_pf_arg_ptr},
-	(TCO){'k', 0, 1, NULL, &ft_pf_len_kernel, NULL},
+	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},
 	(TCO){'i', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
 	(TCO){'s', 0, 1, &ft_pf_conv_str, &ft_pf_len_str, &ft_pf_arg_ptr},
 };

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 15:47:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 16:15:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** the code should works with a buffer size equal to 0 but will be slow as hell
 */
 
-# define FT_PF_BSIZE		8192 * 8
+# define FT_PF_BSIZE		8192 * 4
 # define FT_PF_PRE_BSIZE	64
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnk"
 # define FT_PF_FLAGS		"#0-+ *"
@@ -199,8 +199,6 @@ typedef struct		s_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'d', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
-	(TCO){'i', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
-	(TCO){'s', 0, 1, &ft_pf_conv_str, &ft_pf_len_str, &ft_pf_arg_ptr},
 	(TCO){'%', 0, 0, &ft_pf_conv_percent, &ft_pf_len_char, &ft_pt_arg_pc},
 	(TCO){'c', 0, 0, &ft_pf_conv_char, &ft_pf_len_char, &ft_pf_arg_char},
 	(TCO){'p', 1, 1, &ft_pf_conv_ptr, &ft_pf_len_hex, &ft_pf_arg_ptr},
@@ -216,6 +214,8 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
 	(TCO){'n', 0, 1, &ft_pf_conv_n, &ft_pf_len_n, &ft_pf_arg_ptr},
 	(TCO){'k', 0, 1, NULL, &ft_pf_len_kernel, NULL},
+	(TCO){'i', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
+	(TCO){'s', 0, 1, &ft_pf_conv_str, &ft_pf_len_str, &ft_pf_arg_ptr},
 };
 
 /*

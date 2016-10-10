@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:32:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 01:34:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ typedef struct		s_printf
 int					ft_printf(const char *s, ...);
 int					ft_dprintf(int fd, const char *str, ...);
 int					ft_snprintf(char *buffer, size_t n, char *str, ...);
+int					ft_sprintf(char *buffer, char *str, ...);
 
 /*
 ** internal functions for printf, should not be executed manualy

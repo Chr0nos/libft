@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:27:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 01:32:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 
 /*
 ** ft_printf flags
+** the FT_PF_ALLOW flags are the only ones who are keep after a conversion,
+** all other will be deleted by a mask like & FT_PF_ALLOW
 */
 
 # define FT_PF_FLAG_DIESE	(1u << 0)

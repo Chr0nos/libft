@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 19:51:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 19:59:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,6 +198,8 @@ typedef struct		s_printf_convert
 # define TCO t_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
+	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
+	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},
 	(TCO){'d', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
 	(TCO){'%', 0, 0, &ft_pf_conv_percent, &ft_pf_len_char, &ft_pt_arg_pc},
 	(TCO){'c', 0, 0, &ft_pf_conv_char, &ft_pf_len_char, &ft_pf_arg_char},
@@ -209,11 +211,9 @@ static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'x', 1, 0, &ft_pf_conv_hex, &ft_pf_len_hex, &ft_pf_arg_unbr},
 	(TCO){'X', 1, 0, &ft_pf_conv_uphex, &ft_pf_len_hex, &ft_pf_arg_unbr},
 	(TCO){'D', 1, 0, &ft_pf_conv_int, &ft_pf_len_upd, &ft_pf_arg_upd},
-	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
 	(TCO){'U', 1, 0, &ft_pf_conv_upud, &ft_pf_len_uint, &ft_pf_arg_upd},
-	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
 	(TCO){'n', 0, 1, &ft_pf_conv_n, &ft_pf_len_n, &ft_pf_arg_ptr},
-	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},
+	(TCO){'u', 1, 0, &ft_pf_conv_uint, &ft_pf_len_uint, &ft_pf_arg_unbr},
 	(TCO){'i', 1, 0, &ft_pf_conv_int, &ft_pf_len_int, &ft_pf_arg_nbr},
 	(TCO){'s', 0, 1, &ft_pf_conv_str, &ft_pf_len_str, &ft_pf_arg_ptr},
 };

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 15:46:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 20:12:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static inline void		ft_printf_flags_override(t_printf *pf,
 
 static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 {
-	if ((ft_printf_isaligned_right(pf)) &&
+	if ((pf->flags & FT_PF_MINWIDTH) &&
+		(pf->flags & FT_PF_FLAG_LESS) &&
 			(pf->slen < pf->min_width))
 		ft_printf_padding(pf,
 			((conv->isptr) &&
@@ -71,8 +72,8 @@ static inline void		ft_printd_conv_real(t_printf *pf, const TCO *conv)
 
 void					ft_printf_conv(t_printf *pf, const char c)
 {
-	int						p;
-	const t_printf_convert	*conv;
+	int							p;
+	const t_printf_convert		*conv;
 
 	pf->slen = 0;
 	pf->raw_len = 0;

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 23:52:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 20:15:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 ** see ft_printf_engine for details
 */
 
-static const char		*ft_printf_exec(const char *str, t_printf *pf)
+static inline const char	*ft_printf_exec(const char *str, t_printf *pf)
 {
 	size_t			seek;
 
@@ -55,7 +55,7 @@ static const char		*ft_printf_exec(const char *str, t_printf *pf)
 ** to the buffer
 */
 
-static void				ft_printf_engine(const char *fstr, t_printf *pf)
+static void					ft_printf_engine(const char *fstr, t_printf *pf)
 {
 	const char		*c;
 	const char		*sep = "%";
@@ -75,7 +75,7 @@ static void				ft_printf_engine(const char *fstr, t_printf *pf)
 ** ex: ft_dprintf(2, "%s\n", "some error string");
 */
 
-int						ft_dprintf(int fd, const char *str, ...)
+int							ft_dprintf(int fd, const char *str, ...)
 {
 	va_list		ap;
 	t_printf	pf;
@@ -97,7 +97,7 @@ int						ft_dprintf(int fd, const char *str, ...)
 ** todo: add sprintf / asprintf / dprintf
 */
 
-int						ft_printf(const char *str, ...)
+int							ft_printf(const char *str, ...)
 {
 	va_list		ap;
 	t_printf	pf;

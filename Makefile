@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/08 22:08:35 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/10 15:46:46 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -96,7 +96,8 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_upud.o \
 	conv/ft_printf_conv_unknow.o \
 	conv/ft_printf_conv_bits.o \
-	conv/ft_printf_conv_n.o
+	conv/ft_printf_conv_n.o \
+	conv/ft_printf_conv_kernel.o
 
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \

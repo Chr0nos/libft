@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 17:50:37 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/10 15:46:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,13 @@ static inline void		ft_printf_conv_postalign(t_printf *pf, const TCO *conv)
 static inline void		ft_printd_conv_real(t_printf *pf, const TCO *conv)
 {
 	ft_printf_flags_override(pf, conv);
-	conv->get_arg(pf);
+	if (conv->get_arg)
+		conv->get_arg(pf);
 	conv->set_len(pf);
 	if (!(pf->flags & FT_PF_FLAG_LESS))
 		ft_printf_padding(pf, ' ', pf->min_width - pf->slen);
-	conv->convert(pf);
+	if (conv->convert)
+		conv->convert(pf);
 	ft_printf_conv_postalign(pf, conv);
 }
 

@@ -213,7 +213,6 @@ void				ft_wsize(unsigned long long size, char *buffer);
 int					ft_abs(int x);
 void				ft_stralign_right(char *buffer, unsigned int len);
 void				ft_stralign_left(char *buffer, unsigned int len);
-const void			**ft_tabtoconst(void **tab, size_t size);
 size_t				ft_tabcount(void **tab);
 int					ft_mfree(unsigned int size, ...);
 size_t				ft_strsplitstr_count(const char *str,

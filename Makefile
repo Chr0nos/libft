@@ -171,7 +171,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_sqrt.o ft_sqrtup.o \
 	ft_wsize.o \
 	ft_abs.o \
-	ft_tabtoconst.o ft_tabcount.o \
+	ft_tabcount.o \
 	ft_mfree.o \
 	ft_puttab.o \
 	ft_atod.o ft_dtoa.o ft_basetoul.o \
@@ -224,6 +224,8 @@ ALLSRC=$(OBJ:%.o=%.c) \
 	$(UNICODE:%.o=$(UNICODE_DIR)/%.c)
 
 all: $(NAME)
+
+alldir: $(ALLDIR)
 
 $(ALLDIR):
 	mkdir -p $@

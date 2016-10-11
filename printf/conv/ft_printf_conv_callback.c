@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 15:37:27 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 19:50:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 17:56:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,21 @@ void		ft_pf_len_callback(t_printf *pf)
 	pf->slen = 0;
 	pf->raw_len = 0;
 	ft_pf_arg_unbr(pf);
+	callback(pf);
+}
+
+/*
+** the same as previous BUT this one will not provide any value in pf->raw_value
+** so the value of pf->raw_value will be the same as "before" this conversion
+*/
+
+void		ft_pf_len_upcallback(t_printf *pf)
+{
+	void	(*callback)(t_printf *);
+
+	if (!(callback = (void(*)(t_printf *pf))va_arg(*pf->ap, void*)))
+		return ;
+	pf->slen = 0;
+	pf->raw_len = 0;
 	callback(pf);
 }

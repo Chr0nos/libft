@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:34:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 18:28:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define FT_PF_BSIZE		8192 * 4
 # define FT_PF_PRE_BSIZE	64
-# define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnk"
+# define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkK"
 # define FT_PF_FLAGS		"#0-+ *"
 
 /*
@@ -184,6 +184,7 @@ void				ft_pf_len_octal(t_printf *pf);
 void				ft_pf_len_bits(t_printf *pf);
 void				ft_pf_len_n(t_printf *pf);
 void				ft_pf_len_callback(t_printf *pf);
+void				ft_pf_len_upcallback(t_printf *pf);
 
 /*
 ** conversions const global
@@ -192,7 +193,7 @@ void				ft_pf_len_callback(t_printf *pf);
 ** others can be set at NULL withous any error
 */
 
-# define FT_PF_CONVS		18
+# define FT_PF_CONVS		19
 
 typedef struct		s_printf_convert
 {
@@ -208,6 +209,7 @@ typedef struct		s_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
 	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
+	(TCO){'K', 0, 1, NULL, &ft_pf_len_upcallback, NULL},
 	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},
 	(TCO){'%', 0, 0, &ft_pf_conv_percent, &ft_pf_len_char, &ft_pt_arg_pc},
 	(TCO){'c', 0, 0, &ft_pf_conv_char, &ft_pf_len_char, &ft_pf_arg_char},

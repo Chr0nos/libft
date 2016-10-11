@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 22:07:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:28:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/11 03:11:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static inline int		ft_printf_padding_big(t_printf *pf, const char c, int n)
 		return (ft_printf_padding_nobuff(pf, c, n));
 	while ((n > 0) && (!(pf->flags & FT_PF_QUIT)))
 	{
-		n -= ft_printf_padding(pf, c, (n > (int)pf->space_left) ? n :
+		n -= ft_printf_padding(pf, c, (n < (int)pf->space_left) ? n :
 			(int)pf->space_left);
 		ft_printf_flush(pf);
 	}

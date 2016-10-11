@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/11 18:48:42 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/11 20:14:29 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -261,7 +261,7 @@ clean:
 	rm -rf $(OBJBUILDDIR)
 
 fclean: clean
-	rm -f $(NAME) $(LIBSO)
+	$(RM) $(NAME) $(LIBSO)
 
 re: fclean
 	$(MAKE)
@@ -273,4 +273,9 @@ install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
 
-.PHONY: norminette re clean fclean so dll all mrproper
+# normal rule
+#.PHONY: norminette so dll re all clean install
+
+# 42file f***ing checker rule
+
+.PHONY: all clean

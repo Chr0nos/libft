@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/11 00:35:08 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/11 18:48:42 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -230,7 +230,8 @@ alldir: $(ALLDIR)
 $(ALLDIR):
 	mkdir -p $@
 
-$(NAME): $(ALLDIR) $(ALLOBJ)
+$(NAME): $(ALLDIR)
+	$(MAKE) $(ALLOBJ)
 	@echo "Linking libft"
 	$(AR) rc $(NAME) $(ALLOBJ)
 	@echo "done, now making lib index..."
@@ -262,7 +263,8 @@ clean:
 fclean: clean
 	rm -f $(NAME) $(LIBSO)
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 norminette:
 	norminette $(ALLSRC)

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:06:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 15:48:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ void						ft_printf_engine(const char *fstr, t_printf *pf)
 ** ex: ft_dprintf(2, "%s\n", "some error string");
 */
 
-int							ft_dprintf(int fd, const char *str, ...)
+int							ft_dprintf(int fd, const char *format, ...)
 {
 	va_list		ap;
 	t_printf	pf;
 
-	va_start(ap, str);
+	va_start(ap, format);
 	ft_printf_init(&pf, &ap);
 	pf.fd = fd;
-	ft_printf_engine(str, &pf);
+	ft_printf_engine(format, &pf);
 	va_end(ap);
 	if (pf.size)
 	{
@@ -100,14 +100,14 @@ int							ft_dprintf(int fd, const char *str, ...)
 ** todo: add sprintf / asprintf / dprintf
 */
 
-int							ft_printf(const char *str, ...)
+int							ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_printf	pf;
 
-	va_start(ap, str);
+	va_start(ap, format);
 	ft_printf_init(&pf, &ap);
-	ft_printf_engine(str, &pf);
+	ft_printf_engine(format, &pf);
 	va_end(ap);
 	if (pf.size)
 	{

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 23:59:11 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:39:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 15:53:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,20 +22,15 @@
 ** (this will result with a similar result of ft_printf in 512 chars limit)
 */
 
-int			ft_snprintf(char *buffer, size_t n, char *str, ...)
+int			ft_snprintf(char *buffer, size_t n, char *format, ...)
 {
 	va_list		ap;
-	t_printf	pf;
+	int			ret;
 
-	va_start(ap, str);
-	ft_printf_init(&pf, &ap);
-	pf.flags |= FT_PF_NOWRITE;
-	pf.buff_start = buffer;
-	pf.space_left = n;
-	pf.buffer_maxsize = n;
-	ft_printf_engine(str, &pf);
+	va_start(ap, format);
+	ret = ft_vsnprintf(buffer, n, format, ap);
 	va_end(ap);
-	return ((int)pf.size);
+	return (ret);
 }
 
 /*
@@ -43,19 +38,13 @@ int			ft_snprintf(char *buffer, size_t n, char *str, ...)
 ** use ft_snprintf instead
 */
 
-int			ft_sprintf(char *buffer, char *str, ...)
+int			ft_sprintf(char *buffer, char *format, ...)
 {
 	va_list				ap;
 	t_printf			pf;
-	const size_t		n = (unsigned int)-1;
 
-	va_start(ap, str);
-	ft_printf_init(&pf, &ap);
-	pf.flags |= FT_PF_NOWRITE;
-	pf.buff_start = buffer;
-	pf.space_left = n;
-	pf.buffer_maxsize = n;
-	ft_printf_engine(str, &pf);
+	va_start(ap, format);
+	ft_vsnprintf(buffer, (unsigned int)-1, format, ap);
 	va_end(ap);
 	return ((int)pf.size);
 }

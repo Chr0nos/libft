@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 15:53:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 16:02:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,6 +106,7 @@ int					ft_printf(const char *format, ...);
 int					ft_dprintf(int fd, const char *format, ...);
 int					ft_snprintf(char *buffer, size_t n, char *format, ...);
 int					ft_sprintf(char *buffer, char *format, ...);
+int					ft_vdprintf(int fd, const char *format, va_list ap);
 int					ft_vprintf(char *buffer, const char *format, va_list ap);
 int					ft_vsnprintf(char *buffer, size_t n, const char *format,
 	va_list ap);

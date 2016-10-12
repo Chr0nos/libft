@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 15:48:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 22:53:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static inline const char	*ft_printf_exec(const char *str, t_printf *pf)
 ** and send the position of the '%' + 1 pointer to ft_printf_exec
 ** if '%' is not in the format string anymore: the whole left string is append
 ** to the buffer
-** all flags expet NOWRITE and FT_PF_QUIT are removed at each loop call
+** all flags except PF_FT_NOWRITE and FT_PF_QUIT are removed at each loop call
 */
 
 void						ft_printf_engine(const char *fstr, t_printf *pf)

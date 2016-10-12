@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 16:02:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 17:56:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # define FT_PF_BSIZE		8192 * 4
 # define FT_PF_PRE_BSIZE	64
+# define FT_PF_ASIZE		1024
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkK"
 # define FT_PF_FLAGS		"#0-+ *"
 
@@ -39,6 +40,7 @@
 ** rspace are filled automaticly in ft_printf_conv_postalign (ft_printf_conv.c)
 ** ---
 ** this printf do not use any memory allocation, it's fully in the stack
+** (exept for ft_asprintf of course)
 */
 
 /*
@@ -64,8 +66,10 @@
 # define FT_PF_NUMERIC		(1u << 14)
 # define FT_PF_NOWRITE		(1u << 15)
 # define FT_PF_QUIT			(1u << 16)
+# define FT_PF_ALLOC		(1u << 17)
+# define FT_PF_ERROR		(1u << 18)
 
-# define FT_PF_ALLOW (FT_PF_QUIT | FT_PF_NOWRITE)
+# define FT_PF_ALLOW (FT_PF_QUIT | FT_PF_NOWRITE | FT_PF_ALLOC)
 
 struct s_printf;
 
@@ -76,6 +80,8 @@ struct s_printf;
 ** size = the current size of buffer, cannot be supperior to FT_PF_BSIZE
 ** space_left = the remaining left space in buffer
 ** raw_value = the current value after the arg retrive function
+** buff_asprintf = the origin of a asprintf buffer, in non asprintf functions,
+**  this value will NOT be set
 */
 
 typedef struct		s_printf
@@ -83,6 +89,7 @@ typedef struct		s_printf
 	va_list			*ap;
 	char			buffer[FT_PF_BSIZE];
 	char			*buff_start;
+	char			*buff_asprintf;
 	char			pre_buffer[FT_PF_PRE_BSIZE];
 	unsigned int	flags;
 	int				precision;
@@ -110,6 +117,8 @@ int					ft_vdprintf(int fd, const char *format, va_list ap);
 int					ft_vprintf(char *buffer, const char *format, va_list ap);
 int					ft_vsnprintf(char *buffer, size_t n, const char *format,
 	va_list ap);
+int					ft_asprintf(char **ret, const char *format, ...);
+
 
 /*
 ** internal functions for printf, should not be executed manualy
@@ -134,6 +143,7 @@ void				ft_pf_fixprecision_null(t_printf *pf, int *len);
 size_t				ft_printf_append(t_printf *pf, const char *data,
 	size_t len);
 void				ft_printf_flush(t_printf *pf);
+void				ft_printf_flush_asprintf(t_printf *pf);
 int					ft_printf_padding(t_printf *pf, const char c, int n);
 
 /*

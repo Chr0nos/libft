@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/12 15:55:46 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/12 17:39:41 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,6 +77,7 @@ PRINTF_DIR=printf
 PRINTF=ft_printf.o \
 	ft_snprintf.o \
 	ft_vprintf.o \
+	ft_aprintf.o \
 	ft_printf_init.o \
 	ft_printf_load.o \
 	ft_printf_buffer.o \
@@ -233,8 +234,8 @@ $(ALLDIR):
 
 %.c:
 
-$(NAME): $(ALLDIR) $(ALLSRC)
-	@$(MAKE) $(ALLOBJ) | grep "$(COMPILE)"
+$(NAME): $(ALLDIR) $(ALLOBJ)
+	#@$(MAKE) $(ALLOBJ) | grep "$(COMPILE)"
 	@echo "Linking libft"
 	$(AR) rc $(NAME) $(ALLOBJ)
 	@echo "done, now making lib index..."

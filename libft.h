@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 22:02:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 17:37:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -149,8 +149,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t size);
-void				*ft_realloc(void *ptr, unsigned int size,
-	unsigned int new_size);
+void				*ft_realloc(void *ptr, size_t size, size_t new_size);
 
 /*
 ** function for chained lists

@@ -6,12 +6,35 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 01:12:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 18:02:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+
+/*
+** this function is called in case of a full buffer BUT asprintf is runing
+** in this case we realloc the memory area to be FT_PF_ASIZE higher
+** space_left is also incremented to FT_PF_ASIZE to allow others appends
+** total_len is incremented to pf->size
+** if the realloc fail: we quit all the printf and set a error flag
+** to be called this functions need flags FT_PF_NOWRITE and FT_PF_ALLOC
+*/
+
+void					ft_printf_flush_asprintf(t_printf *pf)
+{
+	pf->buff_asprintf = ft_realloc(pf->buff_asprintf,
+		pf->size, pf->size + FT_PF_ASIZE);
+	if (!pf->buff_asprintf)
+	{
+		pf->flags |= FT_PF_QUIT | FT_PF_ERROR;
+		return ;
+	}
+	pf->buff_start = &pf->buff_asprintf[pf->size];
+	pf->space_left += FT_PF_ASIZE;
+	pf->total_len = pf->size;
+}
 
 /*
 ** flush the current buffer to the pf->fd file descriptor
@@ -26,6 +49,11 @@ void					ft_printf_flush(t_printf *pf)
 
 	if (pf->flags & FT_PF_NOWRITE)
 	{
+		if (pf->flags & FT_PF_ALLOC)
+		{
+			ft_printf_flush_asprintf(pf);
+			return ;
+		}
 		pf->flags |= FT_PF_QUIT;
 		pf->total_len = pf->size;
 		return ;

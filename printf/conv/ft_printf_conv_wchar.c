@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 23:40:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 00:43:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ static void	inline	ft_pf_conv_wchar_forcechar(t_printf *pf)
 
 void				ft_pf_conv_wchar(t_printf *pf)
 {
-	char			buff[4];
 	wchar_t			nb;
 	int				len;
 
@@ -43,9 +42,9 @@ void				ft_pf_conv_wchar(t_printf *pf)
 		ft_pf_conv_wchar_forcechar(pf);
 	else
 	{
-		len = ft_buffwchar(nb, buff);
+		len = ft_buffwchar(nb, pf->pre_buffer);
 		if ((pf->flags & FT_PF_PREC) && (len > pf->precision))
 			len = pf->precision;
-		ft_printf_append(pf, buff, (size_t)len);
+		ft_printf_append(pf, pf->pre_buffer, (size_t)len);
 	}
 }

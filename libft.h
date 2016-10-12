@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 22:54:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 17:37:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # define HIMAGIC 0x8080808080808080
 # define LONGCHR_NULL(x) (((x - LOMAGIC) & HIMAGIC) != 0)
 # define IFRET__(x, y) if (x) return (y);
+# define _
 # include <string.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
@@ -104,8 +105,6 @@ int					ft_strequ(const char *s1, const char *s2);
 int					ft_strnequ(char const *s1, char const *s2, size_t n);
 int					ft_itobuff(char *buffer, int nb, unsigned int base,
 	const char *map);
-int					ft_ftobuff(char *buffer, double nb, unsigned int base,
-	const char *map);
 int					ft_pow(int nb, int power);
 int					ft_atoi(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
@@ -128,7 +127,6 @@ int					ft_match(char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
 size_t				ft_strlen(const char *str);
-size_t				ft_strlen_fast(const char *str);
 size_t				ft_strsublen(const char *str, char c);
 size_t				ft_strlcpy(char *dest, const char *src, size_t size);
 size_t				ft_strlcat(char *dest, const char *src, size_t n);
@@ -137,6 +135,7 @@ size_t				ft_strcount(const char *str, char c);
 size_t				ft_tabstrlen(const char **tab);
 double				ft_atod(const char *s);
 const char			*ft_strforf(const char *str, const char *sep, int *len);
+size_t				ft_strplen(const char *str, const char *maxptr);
 
 /*
 ** memory usage functions
@@ -150,8 +149,7 @@ void				*ft_memchr(const void *s, int c, size_t n);
 void				*ft_memalloc(size_t size);
 void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t size);
-void				*ft_realloc(void *ptr, unsigned int size,
-	unsigned int new_size);
+void				*ft_realloc(void *ptr, size_t size, size_t new_size);
 
 /*
 ** function for chained lists
@@ -214,7 +212,6 @@ void				ft_wsize(unsigned long long size, char *buffer);
 int					ft_abs(int x);
 void				ft_stralign_right(char *buffer, unsigned int len);
 void				ft_stralign_left(char *buffer, unsigned int len);
-const void			**ft_tabtoconst(void **tab, size_t size);
 size_t				ft_tabcount(void **tab);
 int					ft_mfree(unsigned int size, ...);
 size_t				ft_strsplitstr_count(const char *str,
@@ -242,5 +239,6 @@ int					ft_bitstobuff(char *buff, unsigned long long x,
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
+int					ft_dtobuff(char *buff, double nb, unsigned int precision);
 
 #endif

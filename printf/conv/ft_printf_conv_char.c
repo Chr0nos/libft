@@ -15,7 +15,7 @@
 void				ft_pf_arg_char(t_printf *pf)
 {
 	if (pf->flags & FT_PF_MOD_L)
-		pf->raw_value = (intmax_t)(wchar_t)(va_arg(*pf->ap, wchar_t));
+		pf->raw_value = (intmax_t)(unsigned int)(va_arg(*pf->ap, unsigned int));
 	else
 		pf->raw_value = (char)va_arg(*pf->ap, int);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_stralign_right.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/01/21 15:48:50 by snicolet          #+#    #+#             */
-/*   Updated: 2016/02/05 19:28:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/07 03:11:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,5 @@ void	ft_stralign_right(char *buffer, unsigned int len)
 		return ;
 	diff = len - slen;
 	ft_memmove(buffer + diff, buffer, slen);
-	while (diff--)
-		buffer[diff] = ' ';
+	ft_memset(buffer, ' ', diff);
 }

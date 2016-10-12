@@ -1,32 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_align.c                                  :+:      :+:    :+:   */
+/*   ft_printf_conv_n.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/05 11:31:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 20:03:34 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/08 18:47:23 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/08 18:54:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_printf_isaligned_left(t_printf *pf)
+void	ft_pf_len_n(t_printf *pf)
 {
-	return ((!(pf->flags & FT_PF_FLAG_LESS)) &&
-		(pf->flags & FT_PF_MINWIDTH));
+	pf->min_width = 0;
+	pf->precision = 0;
 }
 
-int		ft_printf_isaligned_right(t_printf *pf)
+void	ft_pf_conv_n(t_printf *pf)
 {
-	return ((pf->flags & FT_PF_MINWIDTH) &&
-		(pf->flags & FT_PF_FLAG_LESS));
-}
+	int		*ptr;
 
-void	ft_printf_align_left(t_printf *pf, int len)
-{
-	if (!ft_printf_isaligned_left(pf))
+	if (!(ptr = (int*)pf->raw_value))
 		return ;
-	ft_printf_padding(pf, ' ', pf->min_width - len);
+	*ptr = (int)(pf->total_len + pf->size);
 }

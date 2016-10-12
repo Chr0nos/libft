@@ -6,18 +6,25 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/12 11:04:03 by snicolet          #+#    #+#             */
-/*   Updated: 2016/09/14 02:36:20 by edelangh         ###   ########.fr       */
+/*   Updated: 2016/10/08 03:04:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <string.h>
 
-size_t	ft_strlen_fast(const char *str)
+size_t	ft_strlen(const char *str)
 {
-	const unsigned long		*x = (const unsigned long *)(unsigned long)str;
-	const char				*cp;
+	const unsigned long		*x;
+	const char				*cp = str;
 
+	while ((unsigned long int)cp & (sizeof(long) - 1))
+	{
+		if (!*cp)
+			return ((size_t)cp - (size_t)str);
+		cp++;
+	}
+	x = (const unsigned long*)(unsigned long)cp;
 	while (42)
 	{
 		if (LONGCHR_NULL(*(x++)))
@@ -35,12 +42,11 @@ size_t	ft_strlen_fast(const char *str)
 	}
 }
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strplen(const char *str, const char *maxptr)
 {
-	const char	*end;
+	const char	*origin = str;
 
-	end = str;
-	while (*(end++))
-		;
-	return ((size_t)(end - str - 1));
+	while ((*str) && (str < maxptr))
+		str++;
+	return ((size_t)str - (size_t)origin);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 22:58:53 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 22:15:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/08 00:55:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,28 +33,27 @@ void				ft_pf_len_hex(t_printf *pf)
 
 void				ft_pf_conv_hex(t_printf *pf)
 {
-	char				buff[64];
-	const uintmax_t		nb = (uintmax_t)pf->raw_value;
 	int					len;
 
-	ft_ulltobuff(buff, (unsigned long long)nb, 16, "0123456789abcdef");
+	ft_ulltobuff(pf->pre_buffer, (unsigned long long)pf->raw_value, 16,
+		"0123456789abcdef");
 	len = pf->slen;
-	if ((pf->flags & FT_PF_FLAG_DIESE) && ((nb) || (pf->flags & FT_PF_PTR)))
+	if ((pf->flags & FT_PF_FLAG_DIESE) &&
+			((pf->raw_value) || (pf->flags & FT_PF_PTR)))
 		len -= ft_printf_append(pf, "0x", 2);
 	ft_printf_padding(pf, '0', len - pf->raw_len);
-	ft_printf_append(pf, buff, (size_t)pf->raw_len);
+	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->raw_len);
 }
 
 void				ft_pf_conv_uphex(t_printf *pf)
 {
-	char				buff[64];
-	const uintmax_t		nb = (uintmax_t)pf->raw_value;
 	int					len;
 
-	ft_ulltobuff(buff, (unsigned long long)nb, 16, "0123456789ABCDEF");
+	ft_ulltobuff(pf->pre_buffer, (unsigned long long)pf->raw_value, 16,
+		"0123456789ABCDEF");
 	len = pf->slen;
-	if ((pf->flags & FT_PF_FLAG_DIESE) && (nb))
+	if ((pf->flags & FT_PF_FLAG_DIESE) && (pf->raw_value))
 		len -= ft_printf_append(pf, "0X", 2);
 	ft_printf_padding(pf, '0', len - pf->raw_len);
-	ft_printf_append(pf, buff, (size_t)pf->raw_len);
+	ft_printf_append(pf, pf->pre_buffer, (size_t)pf->raw_len);
 }

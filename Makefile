@@ -6,11 +6,11 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/06 21:39:48 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/12 17:39:41 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-EXTRA_FLAGS=-pipe -g3
+EXTRA_FLAGS=-pipe -Ofast
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 CC=clang
 ifeq ($(CC),clang)
@@ -75,12 +75,15 @@ MEMORY=ft_memset.o \
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \
+	ft_snprintf.o \
+	ft_vprintf.o \
+	ft_aprintf.o \
 	ft_printf_init.o \
 	ft_printf_load.o \
 	ft_printf_buffer.o \
 	ft_printf_arg.o \
-	ft_printf_align.o \
 	ft_printf_conv.o \
+	ft_printf_padding.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o \
@@ -93,7 +96,10 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_upd.o \
 	conv/ft_printf_conv_uint.o \
 	conv/ft_printf_conv_upud.o \
-	conv/ft_printf_conv_unknow.o
+	conv/ft_printf_conv_unknow.o \
+	conv/ft_printf_conv_bits.o \
+	conv/ft_printf_conv_n.o \
+	conv/ft_printf_conv_callback.o
 
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
@@ -136,12 +142,12 @@ STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_strtoupper.o \
 
 OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
-	ft_putull.o ft_putfloat.o \
+	ft_putull.o \
 	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \
 	ft_pow.o \
 	ft_crash.o \
-	ft_itoa.o ft_itoa_base.o ft_itobuff.o ft_ftobuff.o \
+	ft_itoa.o ft_itoa_base.o ft_itobuff.o \
 	ft_itobase.o \
 	ft_atoi.o \
 	ft_putnbr.o ft_putnbr_fd.o \
@@ -167,7 +173,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_sqrt.o ft_sqrtup.o \
 	ft_wsize.o \
 	ft_abs.o \
-	ft_tabtoconst.o ft_tabcount.o \
+	ft_tabcount.o \
 	ft_mfree.o \
 	ft_puttab.o \
 	ft_atod.o ft_dtoa.o ft_basetoul.o \
@@ -178,7 +184,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_imaxtobuff.o \
 	ft_bitstobuff.o \
 	ft_digitlen.o \
-	ft_atonum.o
+	ft_atonum.o \
+	ft_dtobuff.o
 
 UNICODE_DIR=unicode
 UNICODE=ft_buffwchar.o \
@@ -220,10 +227,15 @@ ALLSRC=$(OBJ:%.o=%.c) \
 
 all: $(NAME)
 
+alldir: $(ALLDIR)
+
 $(ALLDIR):
 	mkdir -p $@
 
+%.c:
+
 $(NAME): $(ALLDIR) $(ALLOBJ)
+	#@$(MAKE) $(ALLOBJ) | grep "$(COMPILE)"
 	@echo "Linking libft"
 	$(AR) rc $(NAME) $(ALLOBJ)
 	@echo "done, now making lib index..."
@@ -253,9 +265,10 @@ clean:
 	rm -rf $(OBJBUILDDIR)
 
 fclean: clean
-	rm -f $(NAME) $(LIBSO)
+	$(RM) $(NAME) $(LIBSO)
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 norminette:
 	norminette $(ALLSRC)
@@ -264,4 +277,9 @@ install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
 
-.PHONY: norminette re clean fclean so dll all mrproper
+# normal rule
+#.PHONY: norminette so dll re all clean install
+
+# 42file f***ing checker rule
+
+.PHONY: all clean

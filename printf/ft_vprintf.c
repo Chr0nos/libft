@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/12 15:12:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 16:19:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 19:08:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ int		ft_vsnprintf(char *buffer, size_t n, const char *format, va_list ap)
 	pf.space_left = n;
 	pf.buffer_maxsize = n;
 	ft_printf_engine(format, &pf);
-	return ((int)pf.size);
+	ft_printf_append(&pf, "\0", 1);
+	return ((int)pf.size - 1);
 }
 
 int		ft_vprintf(char *buffer, const char *format, va_list ap)

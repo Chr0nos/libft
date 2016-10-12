@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 18:02:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 18:13:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,12 @@ static size_t			ft_printf_append_partialnowrite(t_printf *pf,
 {
 	const size_t	copied = pf->space_left;
 
+	if (pf->flags & FT_PF_ALLOC)
+	{
+		ft_printf_flush_asprintf(pf);
+		ft_printf_append(pf, data, len);
+		return (len);
+	}
 	if (!copied)
 		return (0);
 	ft_memcpy(pf->buff_start, data, pf->space_left);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 17:56:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/12 18:13:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 
 # define FT_PF_BSIZE		8192 * 4
 # define FT_PF_PRE_BSIZE	64
-# define FT_PF_ASIZE		1024
+# define FT_PF_ASIZE		4
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkK"
 # define FT_PF_FLAGS		"#0-+ *"
 

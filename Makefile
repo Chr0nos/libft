@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/12 17:39:41 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/13 03:50:45 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,9 @@ LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
 	 ft_lststrmap.o \
 	 ft_lststrcmp.o \
 	 ft_lstdup.o \
-	 ft_lststrtotab.o
+	 ft_lststrtotab.o \
+	 ft_lstissort.o \
+	 ft_lstunlink.o
 
 BTREE_DIR=btree
 BTREE=ft_btree_create_node.o \

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/13 03:44:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/13 03:47:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/13 03:51:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,4 +38,5 @@ int		ft_lstunlink(t_list **lst, t_list *item)
 		}
 		x = x->next;
 	}
+	return (0);
 }

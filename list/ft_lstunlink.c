@@ -1,26 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstissort.c                                     :+:      :+:    :+:   */
+/*   ft_lstunlink.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/10/13 00:08:15 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/13 00:23:00 by snicolet         ###   ########.fr       */
+/*   Created: 2016/10/13 03:44:42 by snicolet          #+#    #+#             */
+/*   Updated: 2016/10/13 03:47:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_lstissort(t_list *lst, int (*cmp)(t_list *, t_list *))
+/*
+** this function just unlink item from lst, return 1 if the item was found
+** otherwise 0
+*/
+
+int		ft_lstunlink(t_list **lst, t_list *item)
 {
-	if (!lst)
-		return (1);
-	while (lst->next)
+	t_list	*x;
+
+	x = *lst;
+	if (!x)
+		return (0);
+	if (x == item)
 	{
-		if (cmp(lst, lst->next) > 0)
-			return (0);
-		lst = lst->next;
+		*lst = (*lst)->next;
+		return (1);
 	}
-	return (1);
+	while (x->next)
+	{
+		if (x->next == item)
+		{
+			x->next = x->next->next;
+			return (1);
+		}
+		x = x->next;
+	}
 }

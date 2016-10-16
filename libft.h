@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/13 03:48:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/16 14:51:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ int					ft_itobuff(char *buffer, int nb, unsigned int base,
 	const char *map);
 int					ft_pow(int nb, int power);
 int					ft_atoi(const char *str);
+long				ft_atol(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strany(char c, const char *list);
 int					ft_strany_string(const char *str, const char *list);

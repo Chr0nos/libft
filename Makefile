@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/13 03:50:45 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/16 14:51:36 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -152,6 +152,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_itoa.o ft_itoa_base.o ft_itobuff.o \
 	ft_itobase.o \
 	ft_atoi.o \
+	ft_atol.o \
 	ft_putnbr.o ft_putnbr_fd.o \
 	ft_swap_ptr.o \
 	ft_free_tab.o \

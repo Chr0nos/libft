@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/16 14:51:36 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/17 14:11:02 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COMPILE=$(CC) $(FLAGS) -I. $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
-NAME=libft.a
+NAME=libftprintf.a
 
 LIST_DIR=list
 LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
@@ -273,7 +273,7 @@ re: fclean
 	$(MAKE)
 
 norminette:
-	norminette $(ALLSRC)
+	norminette $(ALLSRC) libft.h ft_printf.h
 
 install: so
 	cp libft.h /usr/include/
@@ -284,4 +284,4 @@ install: so
 
 # 42file f***ing checker rule
 
-.PHONY: all clean
+.PHONY: re all clean fclean

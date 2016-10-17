@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2016/10/17 14:11:02 by snicolet         ###   ########.fr        #
+#    Updated: 2016/10/17 15:51:01 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ COMPILE=$(CC) $(FLAGS) -I. $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
-NAME=libftprintf.a
+NAME=libft.a
 
 LIST_DIR=list
 LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \

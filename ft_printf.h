@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 18:14:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/19 09:34:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,6 @@ int					ft_vprintf(char *buffer, const char *format, va_list ap);
 int					ft_vsnprintf(char *buffer, size_t n, const char *format,
 	va_list ap);
 int					ft_asprintf(char **ret, const char *format, ...);
-
 
 /*
 ** internal functions for printf, should not be executed manualy

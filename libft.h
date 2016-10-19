@@ -243,6 +243,5 @@ int					ft_bitstobuff(char *buff, unsigned long long x,
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
-int					ft_dtobuff(char *buff, double nb, unsigned int precision);
 
 #endif

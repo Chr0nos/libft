@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/19 09:34:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/20 15:25:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define FT_PF_BSIZE		8192 * 4
 # define FT_PF_PRE_BSIZE	64
 # define FT_PF_ASIZE		1024
-# define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkK"
+# define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkKf"
 # define FT_PF_FLAGS		"#0-+ *"
 
 /*
@@ -158,6 +158,7 @@ void				ft_pf_arg_char(t_printf *pf);
 void				ft_pf_arg_upd(t_printf *pf);
 void				ft_pt_arg_pc(t_printf *pf);
 void				ft_pf_arg_wchar(t_printf *pf);
+void				ft_pf_arg_double(t_printf *pf);
 
 /*
 ** convert functions
@@ -178,6 +179,7 @@ void				ft_pf_conv_uint(t_printf *pf);
 void				ft_pf_conv_upud(t_printf *pf);
 void				ft_pf_conv_bits(t_printf *pf);
 void				ft_pf_conv_n(t_printf *pf);
+void				ft_pf_conv_double(t_printf *pf);
 
 /*
 ** len calculation functions
@@ -198,6 +200,7 @@ void				ft_pf_len_bits(t_printf *pf);
 void				ft_pf_len_n(t_printf *pf);
 void				ft_pf_len_callback(t_printf *pf);
 void				ft_pf_len_upcallback(t_printf *pf);
+void				ft_pf_len_double(t_printf *pf);
 
 /*
 ** conversions const global
@@ -206,7 +209,7 @@ void				ft_pf_len_upcallback(t_printf *pf);
 ** others can be set at NULL withous any error
 */
 
-# define FT_PF_CONVS		19
+# define FT_PF_CONVS		20
 
 typedef struct		s_printf_convert
 {
@@ -221,6 +224,7 @@ typedef struct		s_printf_convert
 # define TCO t_printf_convert
 
 static const t_printf_convert g_printf_convs[FT_PF_CONVS] = {
+	(TCO){'f', 1, 0, &ft_pf_conv_double, &ft_pf_len_double, &ft_pf_arg_double},
 	(TCO){'b', 1, 0, &ft_pf_conv_bits, &ft_pf_len_bits, &ft_pf_arg_unbr},
 	(TCO){'K', 0, 1, NULL, &ft_pf_len_upcallback, NULL},
 	(TCO){'k', 0, 1, NULL, &ft_pf_len_callback, NULL},

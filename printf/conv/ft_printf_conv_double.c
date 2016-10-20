@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 15:07:35 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/20 15:28:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/21 01:35:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void				ft_pf_arg_double(t_printf *pf)
 {
 	const double	x = va_arg(*pf->ap, double);
 
-	pf->raw_value = (intmax_t)*(const unsigned long*)&x;
+	pf->raw_value = (intmax_t)(*(const unsigned long *)&x);
 }
 
 void				ft_pf_len_double(t_printf *pf)
@@ -27,7 +27,7 @@ void				ft_pf_len_double(t_printf *pf)
 
 	str = ft_dtoa(*(double*)(unsigned long)&pf->raw_value,
 		(unsigned int)((pf->flags & FT_PF_PREC) ? pf->precision : 6));
-	if  (!str)
+	if (!str)
 	{
 		pf->flags |= FT_PF_ERROR | FT_PF_QUIT;
 		return ;

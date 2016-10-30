@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 15:48:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/30 19:17:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,10 +95,6 @@ int							ft_dprintf(int fd, const char *format, ...)
 	}
 	return ((int)pf.total_len);
 }
-
-/*
-** todo: add sprintf / asprintf / dprintf
-*/
 
 int							ft_printf(const char *format, ...)
 {

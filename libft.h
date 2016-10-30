@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 20:29:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/30 20:33:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <string.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_scanf.h"
 
 typedef struct		s_list
 {

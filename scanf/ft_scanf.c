@@ -6,38 +6,72 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 19:44:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/30 20:21:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_scanf.h"
 
-static inline const char	*ft_scanf_exec(const char *s, t_scanf *sf)
+int							ft_scanf_set_int(t_scanf *sf)
 {
+	int			len;
+
+	len = 0;
+	while (ft_isdigit(sf->str[len]))
+		len++;
+	*(int *)va_arg(*sf->ap, int *) = ft_atoi(sf->str);
+	sf->str += len;
+	return (len);
+}
+
+int							ft_scanf_set_str(t_scanf *sf)
+{
+	int		len;
+
+	len = (int)ft_strlen(sf->str);
+	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len);
+	return (len);
+}
+
+static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
+{
+	int			p;
+
+	p = FT_SF_CONVERTS;
 	(void)sf;
-	return (s + 1);
+	ft_printf("dbg2: %s\n", format);
+	if (format[0] == '%')
+		format++;
+	while (p--)
+		if (*format == g_scanf_set[p].letter)
+			return (format + g_scanf_set[p].set(sf) + 1);
+	return (format + 1);
 }
 
 /*
 ** this function jump between each % checking for validity of format
 */
 
-static int					ft_scanf_engine(const char *s, const char *format,
+static int					ft_scanf_engine(const char *format,
 	t_scanf *sf)
 {
 	const char		*c;
 	const char		*sep = "%";
 	int				len;
 
-	while (((c = ft_strforf(s, sep, &len)) != NULL) &&
+	ft_putendl("dbg0");
+	while (((c = ft_strforf(format, sep, &len)) != NULL) &&
 		(!(sf->flags & (FT_SF_QUIT | FT_SF_ERROR))))
 	{
-		if (ft_strncmp(s, format, (size_t)len))
+		ft_printf("dbg1: [%d] %s\n", len, c);
+		if (ft_strncmp(sf->str, format, (size_t)len))
 			return (FT_SF_QUIT | FT_SF_ERROR);
-		format += len;
-		s = ft_scanf_exec(c + 1, sf);
+		format = ft_scanf_exec(format, sf);
+		if (!*sf->str)
+			sf->flags |= FT_SF_QUIT;
 	}
+	ft_printf("rest: %s --- %s\n", sf->str, format);
 	return (0);
 }
 
@@ -49,8 +83,9 @@ int							ft_sscanf(const char *s, const char *format, ...)
 	sf.total_len = 0;
 	sf.flags = 0;
 	sf.ap = &ap;
+	sf.str = s;
 	va_start(ap, format);
-	ft_scanf_engine(s, format, &sf);
+	ft_printf("return state: %b\n", ft_scanf_engine(format, &sf));
 	va_end(ap);
 	return (0);
 }

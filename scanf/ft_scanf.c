@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 20:21:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/30 20:51:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int							ft_scanf_set_int(t_scanf *sf)
 		len++;
 	*(int *)va_arg(*sf->ap, int *) = ft_atoi(sf->str);
 	sf->str += len;
-	return (len);
+	return (1);
 }
 
 int							ft_scanf_set_str(t_scanf *sf)
@@ -31,7 +31,8 @@ int							ft_scanf_set_str(t_scanf *sf)
 
 	len = (int)ft_strlen(sf->str);
 	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len);
-	return (len);
+	sf->str = NULL;
+	return (1);
 }
 
 static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
@@ -45,8 +46,8 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 		format++;
 	while (p--)
 		if (*format == g_scanf_set[p].letter)
-			return (format + g_scanf_set[p].set(sf) + 1);
-	return (format + 1);
+			return (format + g_scanf_set[p].set(sf));
+	return (format);
 }
 
 /*
@@ -65,11 +66,12 @@ static int					ft_scanf_engine(const char *format,
 		(!(sf->flags & (FT_SF_QUIT | FT_SF_ERROR))))
 	{
 		ft_printf("dbg1: [%d] %s\n", len, c);
-		if (ft_strncmp(sf->str, format, (size_t)len))
+		if ((len) && (ft_strncmp(sf->str, format, (size_t)len)))
 			return (FT_SF_QUIT | FT_SF_ERROR);
-		format = ft_scanf_exec(format, sf);
+		format = ft_scanf_exec(c, sf);
 		if (!*sf->str)
 			sf->flags |= FT_SF_QUIT;
+		ft_printf("dbg3: %hhd\n", *format);
 	}
 	ft_printf("rest: %s --- %s\n", sf->str, format);
 	return (0);

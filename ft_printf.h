@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/20 15:25:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/23 13:32:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -180,6 +180,8 @@ void				ft_pf_conv_upud(t_printf *pf);
 void				ft_pf_conv_bits(t_printf *pf);
 void				ft_pf_conv_n(t_printf *pf);
 void				ft_pf_conv_double(t_printf *pf);
+void				ft_printf_conv_fd(t_printf *pf);
+void				ft_printf_conv_file(t_printf *pf);
 
 /*
 ** len calculation functions

@@ -18,6 +18,8 @@ int							ft_scanf_set_int(t_scanf *sf)
 	int			len;
 
 	len = 0;
+	while (ft_strany( sf->str[len], "\t\n\v\f\r+-"))
+		len++;
 	while (ft_isdigit(sf->str[len]))
 		len++;
 	*(int *)va_arg(*sf->ap, int *) = ft_atoi(sf->str);
@@ -40,7 +42,6 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	int			p;
 
 	p = FT_SF_CONVERTS;
-	(void)sf;
 	ft_printf("dbg2: %s\n", format);
 	if (format[0] == '%')
 		format++;

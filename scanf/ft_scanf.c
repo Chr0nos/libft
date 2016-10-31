@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 20:51:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/10/31 22:22:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@ int							ft_scanf_set_str(t_scanf *sf)
 	int		len;
 
 	len = (int)ft_strlen(sf->str);
-	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len);
-	sf->str = NULL;
+	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len + 1);
+	sf->str += len;
 	return (1);
 }
 
@@ -45,6 +45,8 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	ft_printf("dbg2: %s\n", format);
 	if (format[0] == '%')
 		format++;
+	if (!*format)
+		return (format);
 	while (p--)
 		if (*format == g_scanf_set[p].letter)
 			return (format + g_scanf_set[p].set(sf));
@@ -74,7 +76,11 @@ static int					ft_scanf_engine(const char *format,
 			sf->flags |= FT_SF_QUIT;
 		ft_printf("dbg3: %hhd\n", *format);
 	}
-	ft_printf("rest: %s --- %s\n", sf->str, format);
+	if (*format)
+	{
+		ft_printf("rest: %s --- %s\n", sf->str, format);
+		return (FT_SF_ERROR);
+	}
 	return (0);
 }
 

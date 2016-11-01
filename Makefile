@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/11/01 15:00:36 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/11/01 15:14:22 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -109,7 +109,9 @@ PRINTF=ft_printf.o \
 
 SCANF_DIR=scanf
 SCANF=ft_scanf.o \
-	  ft_scanf_load.o
+	  ft_scanf_load.o \
+	  conv/ft_scanf_set_int.o \
+	  conv/ft_scanf_set_str.o
 
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
@@ -216,7 +218,8 @@ ALLDIR=$(OBJBUILDDIR) \
 	$(OBJBUILDDIR)/$(PRINTF_DIR)/conv \
 	$(OBJBUILDDIR)/$(STRING_DIR) \
 	$(OBJBUILDDIR)/$(UNICODE_DIR) \
-	$(OBJBUILDDIR)/$(SCANF_DIR)
+	$(OBJBUILDDIR)/$(SCANF_DIR) \
+	$(OBJBUILDDIR)/$(SCANF_DIR)/conv
 
 # all .obj listed with directories
 ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \

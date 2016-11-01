@@ -6,42 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:00:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 15:12:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_scanf.h"
-
-int							ft_scanf_set_int(t_scanf *sf)
-{
-	int			*result;
-	int			len;
-
-	len = 0;
-	while (ft_strany(sf->str[len], "\t\n\v\f\r+-"))
-		len++;
-	while (ft_isdigit(sf->str[len]))
-		len++;
-	result = (int *)va_arg(*sf->ap, int *);
-	*result = ft_atoi(sf->str);
-	if (sf->flags & FT_SF_MOD_HH)
-		*result = (int)(char)*result;
-	else if (sf->flags & FT_SF_MOD_H)
-		*result = (int)(short)*result;
-	sf->str += len;
-	return (1);
-}
-
-int							ft_scanf_set_str(t_scanf *sf)
-{
-	int		len;
-
-	len = (int)ft_strlen(sf->str);
-	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len + 1);
-	sf->str += len;
-	return (1);
-}
 
 /*
 ** this function load modifiers then choose wich convertions to use

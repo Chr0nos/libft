@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:39:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 17:02:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 
 # define FT_SF_CONVERTS	"dsf"
 
-# define FT_SF_QUIT		(1u << 0)
-# define FT_SF_ERROR	(1u << 1)
-# define FT_SF_MOD_HH	(1u << 2)
-# define FT_SF_MOD_H	(1u << 3)
-# define FT_SF_MOD_L	(1u << 4)
-# define FT_SF_MOD_LL	(1u << 5)
+# define FT_SF_QUIT			(1u << 0)
+# define FT_SF_ERROR		(1u << 1)
+# define FT_SF_MOD_HH		(1u << 2)
+# define FT_SF_MOD_H		(1u << 3)
+# define FT_SF_MOD_L		(1u << 4)
+# define FT_SF_MOD_LL		(1u << 5)
+# define FT_SF_FLAG_SKIP	(1u << 6)
 
 typedef struct		s_scanf
 {
@@ -71,13 +72,14 @@ typedef struct		s_scanf_mod
 	const char		*str;
 }					t_scanf_mod;
 
-# define FT_SF_MODS_COUNT 4
+# define FT_SF_MODS_COUNT 5
 
 static const t_scanf_mod g_scanf_mods[FT_SF_MODS_COUNT] = {
 	(t_scanf_mod){FT_SF_MOD_HH, 2, "hh"},
 	(t_scanf_mod){FT_SF_MOD_H, 1, "h"},
 	(t_scanf_mod){FT_SF_MOD_L, 1, "l"},
-	(t_scanf_mod){FT_SF_MOD_LL, 2, "ll"}
+	(t_scanf_mod){FT_SF_MOD_LL, 2, "ll"},
+	(t_scanf_mod){FT_SF_FLAG_SKIP, 1, "^"}
 };
 
 #endif

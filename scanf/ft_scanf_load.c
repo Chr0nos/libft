@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scanf_load.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:59:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:01:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 17:04:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ const char			*ft_scanf_loadmods(const char *format, t_scanf *sf)
 	while (p--)
 	{
 		mod = &g_scanf_mods[p];
-		if (!ft_memcmp(format, mod->str, mod->len))
+		if (!ft_strncmp(format, mod->str, mod->len))
 		{
 			sf->flags |= mod->flag;
 			format += mod->len;

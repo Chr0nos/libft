@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scanf_set_float.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:32:28 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 16:21:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 16:59:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,11 @@ int				ft_scanf_set_float(t_scanf *sf)
 {
 	float	*value;
 
-	value = va_arg(*sf->ap, float *);
-	*value = (float)ft_atod(sf->str);
+	if (!(sf->flags & FT_SF_FLAG_SKIP))
+	{
+		value = va_arg(*sf->ap, float *);
+		*value = (float)ft_atod(sf->str);
+	}
 	sf->str += ft_scanf_set_float_len(sf->str);
 	return (1);
 }

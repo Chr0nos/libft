@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scanf_set_int.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:09:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 16:57:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int		ft_scanf_set_int(t_scanf *sf)
+static int	ft_scanf_set_int_len(t_scanf *sf)
 {
-	int			*result;
 	int			len;
 
 	len = 0;
@@ -22,6 +21,19 @@ int		ft_scanf_set_int(t_scanf *sf)
 		len++;
 	while (ft_isdigit(sf->str[len]))
 		len++;
+	return (len);
+}
+
+int		ft_scanf_set_int(t_scanf *sf)
+{
+	int			*result;
+	const int	len = ft_scanf_set_int_len(sf);
+
+	if (sf->flags & FT_SF_FLAG_SKIP)
+	{
+		sf->str += len;
+		return (1);
+	}
 	result = (int *)va_arg(*sf->ap, int *);
 	*result = ft_atoi(sf->str);
 	if (sf->flags & FT_SF_MOD_HH)

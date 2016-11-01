@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 17:05:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 22:17:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,13 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	return (format);
 }
 
+static const char			*ft_scanf_skipword(const char *format, t_scanf *sf)
+{
+	while ((*sf->str) && (*sf->str != ' '))
+		sf->str++;
+	return (format);
+}
+
 static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 {
 	while ((*format) && (!((sf->flags & FT_SF_QUIT))))
@@ -46,6 +53,8 @@ static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 			while (*sf->str == ' ')
 				sf->str++;
 		}
+		else if (!ft_strncmp(format, "\\w", 2))
+			format = ft_scanf_skipword(format, sf);
 		else if (*format == *sf->str)
 		{
 			format++;

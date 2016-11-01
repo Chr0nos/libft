@@ -15,14 +15,20 @@
 
 int							ft_scanf_set_int(t_scanf *sf)
 {
+	int			*result;
 	int			len;
 
 	len = 0;
-	while (ft_strany( sf->str[len], "\t\n\v\f\r+-"))
+	while (ft_strany(sf->str[len], "\t\n\v\f\r+-"))
 		len++;
 	while (ft_isdigit(sf->str[len]))
 		len++;
-	*(int *)va_arg(*sf->ap, int *) = ft_atoi(sf->str);
+	result = (int *)va_arg(*sf->ap, int *); 
+	*result = ft_atoi(sf->str);
+	if (sf->flags & FT_SF_MOD_HH)
+		*result = (int)(char)*result;
+	else if (sf->flags & FT_SF_MOD_H)
+		*result = (int)(short)*result;
 	sf->str += len;
 	return (1);
 }
@@ -37,49 +43,72 @@ int							ft_scanf_set_str(t_scanf *sf)
 	return (1);
 }
 
+/*
+** loads all modifiers into sf->flags then return the address in format
+** where the function has stop his job
+*/
+
+static const char			*ft_scanf_loadmods(const char *format, t_scanf *sf)
+{
+	const t_scanf_mod	*mod;
+	int					p;
+
+	p = FT_SF_MODS_COUNT;
+	while (p--)
+	{
+		mod = &g_scanf_mods[p];
+		if (!ft_memcmp(format, mod->str, mod->len))
+		{
+			sf->flags |= mod->flag;
+			format += mod->len;
+			if (!*format)
+				return (format);
+		}
+	}
+	return (format);
+}
+
+/*
+** this function load modifiers then choose wich convertions to use
+*/
+
 static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 {
 	int			p;
 
-	p = FT_SF_CONVERTS;
+	p = FT_SF_CONVCOUNT;
 	ft_printf("dbg2: %s\n", format);
 	if (format[0] == '%')
 		format++;
 	if (!*format)
 		return (format);
+	ft_scanf_loadmods(format, sf);
 	while (p--)
 		if (*format == g_scanf_set[p].letter)
 			return (format + g_scanf_set[p].set(sf));
 	return (format);
 }
 
-/*
-** this function jump between each % checking for validity of format
-*/
-
-static int					ft_scanf_engine(const char *format,
-	t_scanf *sf)
+static int					ft_scanf_engine(const char *format, t_scanf *sf)
 {
-	const char		*c;
-	const char		*sep = "%";
-	int				len;
-
-	ft_putendl("dbg0");
-	while (((c = ft_strforf(format, sep, &len)) != NULL) &&
-		(!(sf->flags & (FT_SF_QUIT | FT_SF_ERROR))))
+	while ((*format) && (!((sf->flags & FT_SF_QUIT))))
 	{
-		ft_printf("dbg1: [%d] %s\n", len, c);
-		if ((len) && (ft_strncmp(sf->str, format, (size_t)len)))
-			return (FT_SF_QUIT | FT_SF_ERROR);
-		format = ft_scanf_exec(c, sf);
-		if (!*sf->str)
-			sf->flags |= FT_SF_QUIT;
-		ft_printf("dbg3: %hhd\n", *format);
-	}
-	if (*format)
-	{
-		ft_printf("rest: %s --- %s\n", sf->str, format);
-		return (FT_SF_ERROR);
+		sf->flags = 0;
+		if (*format == '%')
+			format = ft_scanf_exec(format, sf);
+		else if (!ft_strncmp(format, "\\s", 2))
+		{
+			format += 2;
+			while (*sf->str == ' ')
+				sf->str++;
+		}
+		else if (*format == *sf->str)
+		{
+			format++;
+			sf->str++;
+		}
+		else
+			return (FT_SF_ERROR);
 	}
 	return (0);
 }

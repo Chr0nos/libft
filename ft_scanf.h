@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 20:20:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 14:38:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,31 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVERTS 2
+# define FT_SF_CONVCOUNT 2
 
-static const t_scanf_set g_scanf_set[FT_SF_CONVERTS] = {
+static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'d', 0, ft_scanf_set_int},
 	(t_scanf_set){'s', 0, ft_scanf_set_str}
+};
+
+/*
+** modifiers
+*/
+
+typedef struct		s_scanf_mod
+{
+	unsigned int	flag;
+	unsigned int	len;
+	const char		*str;
+}					t_scanf_mod;
+
+# define FT_SF_MODS_COUNT 4
+
+static const t_scanf_mod g_scanf_mods[FT_SF_MODS_COUNT] = {
+	(t_scanf_mod){FT_SF_MOD_HH, 2, "hh"},
+	(t_scanf_mod){FT_SF_MOD_H, 1, "h"},
+	(t_scanf_mod){FT_SF_MOD_L, 1, "l"},
+	(t_scanf_mod){FT_SF_MOD_LL, 2, "ll"}
 };
 
 #endif

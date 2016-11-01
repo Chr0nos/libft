@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 14:38:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 15:01:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef struct		s_scanf
 
 
 int					ft_sscanf(const char *s, const char *format, ...);
+const char			*ft_scanf_loadmods(const char *format, t_scanf *sf);
 
 /*
 ** setters functions, they are all used as functions pointer

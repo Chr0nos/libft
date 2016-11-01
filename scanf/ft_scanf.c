@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/31 22:22:12 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 15:00:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int							ft_scanf_set_int(t_scanf *sf)
 		len++;
 	while (ft_isdigit(sf->str[len]))
 		len++;
-	result = (int *)va_arg(*sf->ap, int *); 
+	result = (int *)va_arg(*sf->ap, int *);
 	*result = ft_atoi(sf->str);
 	if (sf->flags & FT_SF_MOD_HH)
 		*result = (int)(char)*result;
@@ -41,31 +41,6 @@ int							ft_scanf_set_str(t_scanf *sf)
 	*va_arg(*sf->ap, char **) = ft_memdup(sf->str, (size_t)len + 1);
 	sf->str += len;
 	return (1);
-}
-
-/*
-** loads all modifiers into sf->flags then return the address in format
-** where the function has stop his job
-*/
-
-static const char			*ft_scanf_loadmods(const char *format, t_scanf *sf)
-{
-	const t_scanf_mod	*mod;
-	int					p;
-
-	p = FT_SF_MODS_COUNT;
-	while (p--)
-	{
-		mod = &g_scanf_mods[p];
-		if (!ft_memcmp(format, mod->str, mod->len))
-		{
-			sf->flags |= mod->flag;
-			format += mod->len;
-			if (!*format)
-				return (format);
-		}
-	}
-	return (format);
 }
 
 /*

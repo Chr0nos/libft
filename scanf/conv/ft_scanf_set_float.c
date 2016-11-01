@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:32:28 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:38:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 16:21:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ static int		ft_scanf_set_float_len(const char *str)
 	int		len;
 
 	len = 0;
+	if (*str == '-')
+		len++;
 	while (ft_isdigit(str[len]))
 		len++;
 	if (str[len] == '.')

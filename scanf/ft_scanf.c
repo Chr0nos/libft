@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:12:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 16:01:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	int			p;
 
 	p = FT_SF_CONVCOUNT;
-	ft_printf("dbg2: %s\n", format);
 	if (format[0] == '%')
 		format++;
 	if (!*format)
@@ -34,7 +33,7 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	return (format);
 }
 
-static int					ft_scanf_engine(const char *format, t_scanf *sf)
+static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 {
 	while ((*format) && (!((sf->flags & FT_SF_QUIT))))
 	{
@@ -55,20 +54,24 @@ static int					ft_scanf_engine(const char *format, t_scanf *sf)
 		else
 			return (FT_SF_ERROR);
 	}
+	if (*format)
+		return (FT_SF_ERROR);
 	return (0);
 }
 
 int							ft_sscanf(const char *s, const char *format, ...)
 {
-	va_list		ap;
-	t_scanf		sf;
+	va_list			ap;
+	t_scanf			sf;
 
 	sf.total_len = 0;
 	sf.flags = 0;
 	sf.ap = &ap;
 	sf.str = s;
+	sf.precision = 6;
+	sf.min_width = 0;
 	va_start(ap, format);
-	ft_printf("return state: %b\n", ft_scanf_engine(format, &sf));
+	sf.flags |= ft_scanf_engine(format, &sf);
 	va_end(ap);
-	return (0);
+	return ((sf.flags & FT_SF_ERROR) ? -1 : 0);
 }

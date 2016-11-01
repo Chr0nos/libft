@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 15:11:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 15:39:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SCANF
 # define FT_SCANF
 
-# define FT_SF_CONVERTS	"ds"
+# define FT_SF_CONVERTS	"dsf"
 
 # define FT_SF_QUIT		(1u << 0)
 # define FT_SF_ERROR	(1u << 1)
@@ -28,13 +28,13 @@ typedef struct		s_scanf
 	const char		*str;
 	int				total_len;
 	unsigned int	flags;
+	unsigned int	precision;
+	unsigned int	min_width;
 }					t_scanf;
 
 
 int					ft_sscanf(const char *s, const char *format, ...);
 const char			*ft_scanf_loadmods(const char *format, t_scanf *sf);
-
-int					ft_scanf_set_int(t_scanf *sf);
 
 /*
 ** setters functions, they are all used as functions pointer
@@ -43,6 +43,7 @@ int					ft_scanf_set_int(t_scanf *sf);
 
 int					ft_scanf_set_int(t_scanf *sf);
 int					ft_scanf_set_str(t_scanf *sf);
+int					ft_scanf_set_float(t_scanf *sf);
 
 typedef struct		s_scanf_set
 {
@@ -51,11 +52,12 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 2
+# define FT_SF_CONVCOUNT 3
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'d', 0, ft_scanf_set_int},
-	(t_scanf_set){'s', 0, ft_scanf_set_str}
+	(t_scanf_set){'s', 0, ft_scanf_set_str},
+	(t_scanf_set){'f', 0, ft_scanf_set_float}
 };
 
 /*

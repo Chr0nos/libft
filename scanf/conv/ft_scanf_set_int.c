@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 16:57:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 19:39:32 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static int	ft_scanf_set_int_len(t_scanf *sf)
 	return (len);
 }
 
-int		ft_scanf_set_int(t_scanf *sf)
+int			ft_scanf_set_int(t_scanf *sf)
 {
 	int			*result;
 	const int	len = ft_scanf_set_int_len(sf);

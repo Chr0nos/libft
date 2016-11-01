@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 22:17:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/01 22:40:07 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 				sf->str++;
 		}
 		else if (!ft_strncmp(format, "\\w", 2))
-			format = ft_scanf_skipword(format, sf);
+			format = ft_scanf_skipword(format + 2, sf);
 		else if (*format == *sf->str)
 		{
 			format++;

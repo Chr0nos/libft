@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 22:40:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/02 00:31:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,34 @@ static const char			*ft_scanf_skipword(const char *format, t_scanf *sf)
 	return (format);
 }
 
+/*
+** this function skip some patterns if found in format:
+** \\s : will sky any spaces at this place
+** \\w : skip the next word in format
+** \\S : skip the next \t\v\r\n or spaces at this place
+*/
+
+static const char			*ft_scanf_skiper(const char *format, t_scanf *sf)
+{
+	if (!format[1])
+		return (format);
+	if (!ft_strncmp(format, "\\s", 2))
+	{
+		format += 2;
+		while (*sf->str == ' ')
+			sf->str++;
+	}
+	else if (!ft_strncmp(format, "\\w", 2))
+		format = ft_scanf_skipword(format + 2, sf);
+	else if (!ft_strncmp(format, "\\S", 2))
+	{
+		format += 2;
+		while (ft_strany(*sf->str, " \t\v\n\r"))
+			sf->str++;
+	}
+	return (format);
+}
+
 static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 {
 	while ((*format) && (!((sf->flags & FT_SF_QUIT))))
@@ -47,14 +75,8 @@ static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 		sf->flags = 0;
 		if (*format == '%')
 			format = ft_scanf_exec(format, sf);
-		else if (!ft_strncmp(format, "\\s", 2))
-		{
-			format += 2;
-			while (*sf->str == ' ')
-				sf->str++;
-		}
-		else if (!ft_strncmp(format, "\\w", 2))
-			format = ft_scanf_skipword(format + 2, sf);
+		else if (*format == '\\')
+			format = ft_scanf_skiper(format, sf);
 		else if (*format == *sf->str)
 		{
 			format++;

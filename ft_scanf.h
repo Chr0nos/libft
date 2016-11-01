@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 17:02:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/02 00:22:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define FT_SF_MOD_L		(1u << 4)
 # define FT_SF_MOD_LL		(1u << 5)
 # define FT_SF_FLAG_SKIP	(1u << 6)
+# define FT_SF_FLAG_PREC	(1u << 7)
 
 typedef struct		s_scanf
 {
@@ -29,7 +30,7 @@ typedef struct		s_scanf
 	const char		*str;
 	int				total_len;
 	unsigned int	flags;
-	unsigned int	precision;
+	int				precision;
 	unsigned int	min_width;
 }					t_scanf;
 

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 16:32:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:38:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,36 @@
 # define FT_SF_MOD_LL		(1u << 5)
 # define FT_SF_FLAG_SKIP	(1u << 6)
 # define FT_SF_FLAG_PREC	(1u << 7)
+
+/*
+** ft_sscanf documentation:
+** flags:
+** ^  : pretends to do the conversion but does nothing, it allow to skip things
+** h  : read as short size
+** hh : read a char size
+** ll : read as long long
+** l  : read as long
+** -----------------------------------------------------------------------------
+** %s : retrive all the left text in the parsed string
+** modifiers: precision
+** -----------------------------------------------------------------------------
+** %d : retrive int data
+** modifiers: H HH L ll
+** -----------------------------------------------------------------------------
+** %x : retrive hexadecimal text into a unsigned long
+** modifiers: H HH L ll
+** -----------------------------------------------------------------------------
+** %f : read a float into passed variable pointer
+** modifiers: L / LL
+** -----------------------------------------------------------------------------
+** %w : retrive the current word in the parsed string
+** modifiers: precision
+** -----------------------------------------------------------------------------
+** %k : execute a custom function (provided by user)
+** modifiers: none ! not even ^
+** -----------------------------------------------------------------------------
+** of course all converions have ^ supported
+*/
 
 typedef struct		s_scanf
 {

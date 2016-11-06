@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/11/06 15:55:51 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/11/06 18:40:41 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -291,7 +291,7 @@ re: fclean
 	$(MAKE)
 
 norminette:
-	norminette $(ALLSRC) libft.h ft_printf.h
+	norminette $(ALLSRC) libft.h ft_printf.h ft_scanf.h
 
 install: so
 	cp libft.h /usr/include/

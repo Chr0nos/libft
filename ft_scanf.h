@@ -6,12 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 15:58:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/06 16:32:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_SCANF
-# define FT_SCANF
+#ifndef FT_SCANF_H
+# define FT_SCANF_H
 
 # define FT_SF_CONVERTS	"dswfx"
 
@@ -35,7 +35,6 @@ typedef struct		s_scanf
 	unsigned int	arg_done;
 	int				padding;
 }					t_scanf;
-
 
 int					ft_sscanf(const char *s, const char *format, ...);
 const char			*ft_scanf_loadmods(const char *format, t_scanf *sf);

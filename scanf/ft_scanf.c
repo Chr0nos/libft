@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/02 00:31:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/06 14:05:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,11 @@ static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
 	{
 		sf->flags = 0;
 		if (*format == '%')
+		{
 			format = ft_scanf_exec(format, sf);
+			if (!(sf->flags & FT_SF_ERROR))
+				sf->arg_done++;
+		}
 		else if (*format == '\\')
 			format = ft_scanf_skiper(format, sf);
 		else if (*format == *sf->str)
@@ -101,6 +105,7 @@ int							ft_sscanf(const char *s, const char *format, ...)
 	sf.str = s;
 	sf.precision = 6;
 	sf.min_width = 0;
+	sf.arg_done = 0;
 	va_start(ap, format);
 	sf.flags |= ft_scanf_engine(format, &sf);
 	va_end(ap);

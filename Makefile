@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/11/06 13:38:16 by snicolet         ###   ########.fr       *#
+#*   Updated: 2016/11/06 13:59:44 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,8 @@ SCANF=ft_scanf.o \
 	  conv/ft_scanf_set_int.o \
 	  conv/ft_scanf_set_str.o \
 	  conv/ft_scanf_set_float.o \
-	  conv/ft_scanf_set_word.o
+	  conv/ft_scanf_set_word.o \
+	  conv/ft_scanf_set_kernel.o
 
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \

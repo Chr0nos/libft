@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 13:37:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/06 14:03:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ typedef struct		s_scanf
 	unsigned int	flags;
 	int				precision;
 	unsigned int	min_width;
+	unsigned int	arg_done;
+	int				padding;
 }					t_scanf;
 
 
@@ -47,6 +49,7 @@ int					ft_scanf_set_int(t_scanf *sf);
 int					ft_scanf_set_str(t_scanf *sf);
 int					ft_scanf_set_word(t_scanf *sf);
 int					ft_scanf_set_float(t_scanf *sf);
+int					ft_scanf_set_kernel(t_scanf *sf);
 
 typedef struct		s_scanf_set
 {

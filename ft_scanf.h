@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 18:38:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/06 18:47:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,16 @@
 ** %k : execute a custom function (provided by user)
 ** modifiers: none ! not even ^
 ** -----------------------------------------------------------------------------
+** skipers:
+** \w : skip the next word
+** \s : skip all next consecutives spaces
+** \S : skip all next consecutives spaces/tab/new lines/and \v
+** note: if the "skip" element is not there. no error will be retuned because
+** skipers are optionals, that the main difference between them and a %^
+** -----------------------------------------------------------------------------
 ** of course all converions have ^ supported
+** if no conversion are requiered, considers ft_sscanf will just check if
+** the parsed string == the format
 */
 
 typedef struct		s_scanf

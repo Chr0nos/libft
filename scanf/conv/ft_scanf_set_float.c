@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:32:28 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/01 16:59:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/07 02:36:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,15 @@ static int		ft_scanf_set_float_len(const char *str)
 
 int				ft_scanf_set_float(t_scanf *sf)
 {
-	float	*value;
-
 	if (!(sf->flags & FT_SF_FLAG_SKIP))
 	{
-		value = va_arg(*sf->ap, float *);
-		*value = (float)ft_atod(sf->str);
+		if (sf->flags & FT_SF_MOD_LL)
+			*(long double *)va_arg(*sf->ap, long double *) =
+				(long double)ft_atod(sf->str);
+		else if (sf->flags & FT_SF_MOD_L)
+			*(double*)va_arg(*sf->ap, double *) = ft_atod(sf->str);
+		else
+			*(float *)va_arg(*sf->ap, float*) = (float)ft_atod(sf->str);
 	}
 	sf->str += ft_scanf_set_float_len(sf->str);
 	return (1);

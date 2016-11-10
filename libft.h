@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/31 22:22:32 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/10 17:22:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,5 +245,6 @@ int					ft_bitstobuff(char *buff, unsigned long long x,
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
+char				*ft_readfile(const char *filepath);
 
 #endif

@@ -201,7 +201,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_imaxtobuff.o \
 	ft_bitstobuff.o \
 	ft_digitlen.o \
-	ft_atonum.o
+	ft_atonum.o \
+	ft_readfile.o
 
 UNICODE_DIR=unicode
 UNICODE=ft_buffwchar.o \

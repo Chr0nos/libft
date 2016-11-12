@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 18:47:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/12 16:09:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SCANF_H
 # define FT_SCANF_H
 
-# define FT_SF_CONVERTS	"dswfx"
+# define FT_SF_CONVERTS	"dswfxo"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -40,7 +40,10 @@
 ** modifiers: H HH L ll
 ** -----------------------------------------------------------------------------
 ** %x : retrive hexadecimal text into a unsigned long
-** modifiers: H HH L ll
+** modifiers: H HH
+** -----------------------------------------------------------------------------
+** %o : retrive octal value from text into unsigned long
+** modifiers: H HH
 ** -----------------------------------------------------------------------------
 ** %f : read a float into passed variable pointer
 ** modifiers: L / LL
@@ -89,6 +92,7 @@ int					ft_scanf_set_word(t_scanf *sf);
 int					ft_scanf_set_float(t_scanf *sf);
 int					ft_scanf_set_kernel(t_scanf *sf);
 int					ft_scanf_set_hex(t_scanf *sf);
+int					ft_scanf_set_octal(t_scanf *sf);
 
 typedef struct		s_scanf_set
 {
@@ -97,14 +101,15 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 5
+# define FT_SF_CONVCOUNT 6
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'d', 0, ft_scanf_set_int},
 	(t_scanf_set){'s', 0, ft_scanf_set_str},
 	(t_scanf_set){'w', 0, ft_scanf_set_word},
 	(t_scanf_set){'f', 0, ft_scanf_set_float},
-	(t_scanf_set){'x', 0, ft_scanf_set_hex}
+	(t_scanf_set){'x', 0, ft_scanf_set_hex},
+	(t_scanf_set){'o', 0, ft_scanf_set_octal}
 };
 
 /*

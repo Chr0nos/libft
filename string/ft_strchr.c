@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/25 12:23:04 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/13 16:04:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/13 21:54:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static inline char		*ft_strchr_test(const char *s, int c)
 char					*ft_strchr(char *str, int c)
 {
 	const char		*s = str;
-	const size_t	*lptr = (const unsigned long *)(size_t)s;
+	const size_t	*lptr;
 	const size_t	pattern = LONGIFY(INTIFY(SHORTIFY(c)));
 
 	IFRET__(!c, str + ft_strlen(str));
@@ -44,6 +44,7 @@ char					*ft_strchr(char *str, int c)
 		IFRET__(*s == c, (char *)(size_t)s);
 		IFRET__(!*(s++), NULL);
 	}
+	lptr = (const unsigned long *)(size_t)s;
 	while (42)
 	{
 		s = (const char *)lptr;

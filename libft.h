@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/12 23:40:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/13 01:12:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,9 @@
 # define IFRET__(x, y) if (x) return (y)
 # define EIFRET__(x, y)	else if (x) return (y)
 # define ERET__(y) else return (y)
+# define SHORTIFY(x) ((unsigned short)x | (unsigned short)x << 8)
+# define INTIFY(x) ((unsigned int)x | (unsigned int)x << 16)
+# define LONGIFY(x) ((unsigned long)x | (unsigned long)x << 32)
 # define _
 # include <string.h>
 # include "get_next_line.h"

@@ -6,16 +6,19 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/10 17:22:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/12 23:40:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define LOMAGIC 0x1010101010101010
-# define HIMAGIC 0x8080808080808080
+# define LOMAGIC 0x1010101010101010lu
+# define HIMAGIC 0x8080808080808080lu
 # define LONGCHR_NULL(x) (((x - LOMAGIC) & HIMAGIC) != 0)
-# define IFRET__(x, y) if (x) return (y);
+# define LONGCHR(l, b) (((((l ^ b) - LOMAGIC) & ~(l ^ b)) & (LOMAGIC << 7)) !=0)
+# define IFRET__(x, y) if (x) return (y)
+# define EIFRET__(x, y)	else if (x) return (y)
+# define ERET__(y) else return (y)
 # define _
 # include <string.h>
 # include "get_next_line.h"
@@ -86,6 +89,7 @@ char				**ft_strsplit(const char *str, char separator);
 char				*ft_strunsplit(const char **tab, char separator);
 char				*ft_strmjoin(const size_t n, ...);
 char				*ft_strchr(char *s, int c);
+char				*ft_strchr_old(char *s, int c);
 char				*ft_strrchr(char *s, int c);
 char				*ft_strreplace(char *s, char what, char by);
 char				*ft_strrev(char *str);

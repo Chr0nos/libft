@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/17 23:09:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/17 23:14:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@
 /*
 ** ft_sscanf documentation:
 ** flags:
-** ^  : pretends to do the conversion but does nothing, it allow to skip things
+** *  : pretends to do the conversion but does nothing, it allow to skip things
 ** h  : read as short size
 ** hh : read a char size
 ** ll : read as long long
@@ -39,7 +39,7 @@
 ** modifiers: precision
 ** -----------------------------------------------------------------------------
 ** %d : retrive int data
-** modifiers: H HH L ll
+** modifiers: H HH L ll j z
 ** -----------------------------------------------------------------------------
 ** %x : retrive hexadecimal text into a unsigned long
 ** modifiers: H HH

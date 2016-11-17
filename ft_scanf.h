@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/12 16:23:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/17 01:04:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,7 @@ static const t_scanf_mod g_scanf_mods[FT_SF_MODS_COUNT] = {
 	(t_scanf_mod){FT_SF_MOD_HH, 2, "hh"},
 	(t_scanf_mod){FT_SF_MOD_L, 1, "l"},
 	(t_scanf_mod){FT_SF_MOD_LL, 2, "ll"},
-	(t_scanf_mod){FT_SF_FLAG_SKIP, 1, "^"}
+	(t_scanf_mod){FT_SF_FLAG_SKIP, 1, "*"}
 };
 
 #endif

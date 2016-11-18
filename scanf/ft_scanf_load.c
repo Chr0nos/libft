@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:59:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/02 00:41:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/18 21:08:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,19 @@ static const char		*ft_scanf_loadprecision(const char *format, t_scanf *sf)
 	return (format);
 }
 
+static const char		*ft_scanf_loadmaxlen(const char *format, t_scanf *sf)
+{
+	int		len;
+
+	len = ft_atonum(format, &sf->precision);
+	if ((len) && (sf->precision >= 0))
+	{
+		format += len;
+		sf->flags |= FT_SF_FLAG_MAXLEN;
+	}
+    return (format);
+}
+
 /*
 ** loads all modifiers into sf->flags then return the address in format
 ** where the function has stop his job
@@ -41,6 +54,7 @@ const char				*ft_scanf_loadmods(const char *format, t_scanf *sf)
 	const t_scanf_mod	*mod;
 	int					p;
 
+    format = ft_scanf_loadmaxlen(format, sf);
 	format = ft_scanf_loadprecision(format, sf);
 	p = FT_SF_MODS_COUNT;
 	while (p--)

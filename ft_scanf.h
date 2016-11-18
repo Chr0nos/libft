@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/17 23:14:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/18 20:56:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 # define FT_SF_MOD_Z		(1u << 7)
 # define FT_SF_FLAG_SKIP	(1u << 8)
 # define FT_SF_FLAG_PREC	(1u << 9)
+# define FT_SF_FLAG_MAXLEN  (1u << 10)
 
 /*
 ** ft_sscanf documentation:
@@ -77,7 +78,7 @@ typedef struct		s_scanf
 	int				precision;
 	unsigned int	min_width;
 	unsigned int	arg_done;
-	int				padding;
+	int				maxlen;
 }					t_scanf;
 
 int					ft_sscanf(const char *s, const char *format, ...);

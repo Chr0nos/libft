@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scanf_set_hex.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:38:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 16:23:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/19 00:27:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ int					ft_scanf_set_hex(t_scanf *sf)
 	{
 		val = ft_basetoul(sf->str, "0123456789abcdef");
 		if (sf->flags & FT_SF_MOD_H)
-			*(unsigned int*)va_arg(*sf->ap, unsigned int *) = (unsigned int)val;
+			*(unsigned short*)va_arg(*sf->ap, unsigned short *) =
+				(unsigned short)val;
 		else if (sf->flags & FT_SF_MOD_HH)
 			*(unsigned char *)va_arg(*sf->ap, unsigned char *) =
 				(unsigned char)val;
-		else
+		else if (sf->flags & (FT_SF_MOD_L | FT_SF_MOD_LL))
 			*(unsigned long *)va_arg(*sf->ap, unsigned long*) = val;
+		else
+			*(unsigned int *)va_arg(*sf->ap, unsigned int*) = (unsigned int)val;
 	}
 	sf->str += len;
 	return (1);

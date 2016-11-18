@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/18 20:56:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/19 00:26:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@
 ** %d : retrive int data
 ** modifiers: H HH L ll j z
 ** -----------------------------------------------------------------------------
-** %x : retrive hexadecimal text into a unsigned long
-** modifiers: H HH
+** %x : retrive hexadecimal text into a unsigned int
+** modifiers: H HH L LL
 ** -----------------------------------------------------------------------------
 ** %o : retrive octal value from text into unsigned long
 ** modifiers: H HH
@@ -62,11 +62,9 @@
 ** \s : skip all next consecutives spaces
 ** \S : skip all next consecutives spaces/tab/new lines/and \v
 ** note: if the "skip" element is not there. no error will be retuned because
-** skipers are optionals, that the main difference between them and a %^
+** skipers are optionals, that the main difference between them and a %*
 ** -----------------------------------------------------------------------------
-** of course all converions have ^ supported
-** if no conversion are requiered, considers ft_sscanf will just check if
-** the parsed string == the format
+** of course all converions have flag * supported
 */
 
 typedef struct		s_scanf

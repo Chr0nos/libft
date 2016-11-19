@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 13:46:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/19 16:32:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SCANF_H
 # define FT_SCANF_H
 
-# define FT_SF_CONVERTS	"dswfxo%"
+# define FT_SF_CONVERTS	"dswfxo%N"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -96,6 +96,7 @@ int					ft_scanf_set_kernel(t_scanf *sf);
 int					ft_scanf_set_hex(t_scanf *sf);
 int					ft_scanf_set_octal(t_scanf *sf);
 int					ft_scanf_set_percent(t_scanf *sf);
+int					ft_scanf_set_upn(t_scanf *sf);
 
 typedef struct		s_scanf_set
 {
@@ -104,10 +105,11 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 7
+# define FT_SF_CONVCOUNT 8
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'%', 0, ft_scanf_set_percent},
+	(t_scanf_set){'N', 0, ft_scanf_set_upn},
 	(t_scanf_set){'w', 0, ft_scanf_set_word},
 	(t_scanf_set){'f', 0, ft_scanf_set_float},
 	(t_scanf_set){'x', 0, ft_scanf_set_hex},

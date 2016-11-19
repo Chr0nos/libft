@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 14:10:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 00:55:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ static const char			*ft_scanf_skipword(const char *format, t_scanf *sf)
 ** \\s : will sky any spaces at this place
 ** \\w : skip the next word in format
 ** \\S : skip the next \t\v\r\n or spaces at this place
+** \\n : skip until the next new line
 */
 
 static const char			*ft_scanf_skiper(const char *format, t_scanf *sf)
@@ -64,6 +65,14 @@ static const char			*ft_scanf_skiper(const char *format, t_scanf *sf)
 		format += 2;
 		while (ft_strany(*sf->str, " \t\v\n\r"))
 			sf->str++;
+	}
+	else if (!ft_strncmp(format, "\\n", 2))
+	{
+		format += 2;
+		if ((sf->str = (const char *)ft_strchr((char *)(size_t)sf->str, '\n')))
+			sf->str++;
+		else
+			sf->flags |= FT_SF_QUIT;
 	}
 	return (format);
 }
@@ -103,6 +112,8 @@ int							ft_sscanf(const char *s, const char *format, ...)
         .total_len = 0,
         .flags = 0,
         .str = s,
+		.str_origin = s,
+		.padding = NULL,
         .precision = 0,
         .min_width = 0,
         .arg_done = 0,

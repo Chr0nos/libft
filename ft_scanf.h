@@ -6,14 +6,16 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 16:32:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 00:57:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_SCANF_H
 # define FT_SCANF_H
+# include <stdarg.h>
+# include <string.h>
 
-# define FT_SF_CONVERTS	"dswfxo%N"
+# define FT_SF_CONVERTS	"dswfxo%Nn"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -56,12 +58,25 @@
 ** modifiers: precision
 ** -----------------------------------------------------------------------------
 ** %k : execute a custom function (provided by user)
-** modifiers: none ! not even ^
+** modifiers: none ! not even '*'
+** but they are given to the kernel into sf->flags, do what you wan with them
+** -----------------------------------------------------------------------------
+** %n : set the current validated lenght in given string into a size_t
+** modifiers:
+**     h : target is a int
+** all other modifiers will be ignored
+** -----------------------------------------------------------------------------
+** %N : set the current position pointer (char **) into the given string
+** -----------------------------------------------------------------------------
+** %$ : check for the end of given string
+** modifiers: none
+** set nothing, just incrase by one the number of items done (don't take arg)
 ** -----------------------------------------------------------------------------
 ** skipers:
 ** \w : skip the next word
 ** \s : skip all next consecutives spaces
 ** \S : skip all next consecutives spaces/tab/new lines/and \v
+** \n : skip unti the next new line
 ** note: if the "skip" element is not there. no error will be retuned because
 ** skipers are optionals, that the main difference between them and a %*
 ** -----------------------------------------------------------------------------
@@ -72,6 +87,8 @@ typedef struct		s_scanf
 {
 	va_list			*ap;
 	const char		*str;
+	const char		*str_origin;
+	const void*		padding;
 	int				total_len;
 	unsigned int	flags;
 	int				precision;
@@ -97,6 +114,8 @@ int					ft_scanf_set_hex(t_scanf *sf);
 int					ft_scanf_set_octal(t_scanf *sf);
 int					ft_scanf_set_percent(t_scanf *sf);
 int					ft_scanf_set_upn(t_scanf *sf);
+int					ft_scanf_set_n(t_scanf *sf);
+int					ft_scanf_set_end(t_scanf *sf);
 
 typedef struct		s_scanf_set
 {
@@ -105,11 +124,13 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 8
+# define FT_SF_CONVCOUNT 10
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'%', 0, ft_scanf_set_percent},
+	(t_scanf_set){'$', 0, ft_scanf_set_end},
 	(t_scanf_set){'N', 0, ft_scanf_set_upn},
+	(t_scanf_set){'n', 0, ft_scanf_set_n},
 	(t_scanf_set){'w', 0, ft_scanf_set_word},
 	(t_scanf_set){'f', 0, ft_scanf_set_float},
 	(t_scanf_set){'x', 0, ft_scanf_set_hex},

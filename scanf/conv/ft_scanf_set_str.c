@@ -6,18 +6,35 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:11:48 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 13:37:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/19 13:55:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** this function is here to ensure the case of given precision AND maxlen
+** in this particular case: the precision will be the only used, but if
+** no precision is given but a maxlen is, the maxlen will be set as precision
+** and the flag FT_SF_FLAG_PREC will be set
+*/
+
+static inline void          ft_scanf_fixmaxlen_prec(t_scanf *sf)
+{
+    if ((sf->flags & FT_SF_FLAG_MAXLEN) && (!(sf->flags & FT_SF_FLAG_PREC)))
+    {
+        sf->flags |= FT_SF_FLAG_PREC;
+        sf->precision = sf->maxlen;
+    }
+}
 
 int							ft_scanf_set_str(t_scanf *sf)
 {
 	size_t		len;
 	char		*str;
 
-	len = (sf->flags & FT_SF_FLAG_PREC) ?
+    ft_scanf_fixmaxlen_prec(sf);
+	len = (sf->flags & (FT_SF_FLAG_PREC)) ?
 		ft_strplen(sf->str, &sf->str[sf->precision]) :
 		ft_strlen(sf->str);
 	if (!(sf->flags & FT_SF_FLAG_SKIP))

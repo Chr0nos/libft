@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 00:26:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/19 13:46:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,8 @@
 ** l  : read as long
 ** -----------------------------------------------------------------------------
 ** %s : retrive all the left text in the parsed string
-** modifiers: precision
+** modifiers: precision / maxlen
+** if maxlen AND precision are given, precision will be used, other is ignored
 ** -----------------------------------------------------------------------------
 ** %d : retrive int data
 ** modifiers: H HH L ll j z

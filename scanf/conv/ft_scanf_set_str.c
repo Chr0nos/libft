@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:11:48 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 13:55:54 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 01:07:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,13 @@
 ** and the flag FT_SF_FLAG_PREC will be set
 */
 
-static inline void          ft_scanf_fixmaxlen_prec(t_scanf *sf)
+static inline void			ft_scanf_fixmaxlen_prec(t_scanf *sf)
 {
-    if ((sf->flags & FT_SF_FLAG_MAXLEN) && (!(sf->flags & FT_SF_FLAG_PREC)))
-    {
-        sf->flags |= FT_SF_FLAG_PREC;
-        sf->precision = sf->maxlen;
-    }
+	if ((sf->flags & FT_SF_FLAG_MAXLEN) && (!(sf->flags & FT_SF_FLAG_PREC)))
+	{
+		sf->flags |= FT_SF_FLAG_PREC;
+		sf->precision = sf->maxlen;
+	}
 }
 
 int							ft_scanf_set_str(t_scanf *sf)
@@ -33,7 +33,7 @@ int							ft_scanf_set_str(t_scanf *sf)
 	size_t		len;
 	char		*str;
 
-    ft_scanf_fixmaxlen_prec(sf);
+	ft_scanf_fixmaxlen_prec(sf);
 	len = (sf->flags & (FT_SF_FLAG_PREC)) ?
 		ft_strplen(sf->str, &sf->str[sf->precision]) :
 		ft_strlen(sf->str);

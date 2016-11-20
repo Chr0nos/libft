@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:59:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/18 21:08:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 01:05:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static const char		*ft_scanf_loadmaxlen(const char *format, t_scanf *sf)
 		format += len;
 		sf->flags |= FT_SF_FLAG_MAXLEN;
 	}
-    return (format);
+	return (format);
 }
 
 /*
@@ -54,7 +54,7 @@ const char				*ft_scanf_loadmods(const char *format, t_scanf *sf)
 	const t_scanf_mod	*mod;
 	int					p;
 
-    format = ft_scanf_loadmaxlen(format, sf);
+	format = ft_scanf_loadmaxlen(format, sf);
 	format = ft_scanf_loadprecision(format, sf);
 	p = FT_SF_MODS_COUNT;
 	while (p--)

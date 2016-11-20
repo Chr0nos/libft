@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/20 00:57:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 01:08:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@
 ** \w : skip the next word
 ** \s : skip all next consecutives spaces
 ** \S : skip all next consecutives spaces/tab/new lines/and \v
-** \n : skip unti the next new line
+** \n : skip unti the next new line (if no new line, this will stop the parsing)
 ** note: if the "skip" element is not there. no error will be retuned because
 ** skipers are optionals, that the main difference between them and a %*
 ** -----------------------------------------------------------------------------
@@ -88,7 +88,7 @@ typedef struct		s_scanf
 	va_list			*ap;
 	const char		*str;
 	const char		*str_origin;
-	const void*		padding;
+	const void		*padding;
 	int				total_len;
 	unsigned int	flags;
 	int				precision;

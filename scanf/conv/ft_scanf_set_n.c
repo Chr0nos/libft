@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/19 23:47:54 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/20 00:57:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/20 01:11:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		ft_scanf_set_n(t_scanf *sf)
 {
+	if (sf->flags & FT_SF_FLAG_SKIP)
+		return (1);
 	if (sf->flags & FT_SF_MOD_H)
 		*(int*)va_arg(*sf->ap, int*) =
 			(int)((size_t)sf->str - (size_t)sf->str_origin);

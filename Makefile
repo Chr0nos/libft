@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2016/10/23 13:33:13 by snicolet         ###   ########.fr       *#
+#    Updated: 2016/11/20 00:54:22 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -107,6 +107,21 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_double.o \
 	conv/ft_printf_conv_file.o
 
+SCANF_DIR=scanf
+SCANF=ft_scanf.o \
+	  ft_scanf_load.o \
+	  conv/ft_scanf_set_int.o \
+	  conv/ft_scanf_set_str.o \
+	  conv/ft_scanf_set_float.o \
+	  conv/ft_scanf_set_word.o \
+	  conv/ft_scanf_set_kernel.o \
+	  conv/ft_scanf_set_hex.o \
+	  conv/ft_scanf_set_octal.o \
+	  conv/ft_scanf_set_percent.o \
+	  conv/ft_scanf_set_upn.o \
+	  conv/ft_scanf_set_n.o \
+	  conv/ft_scanf_set_end.o
+
 STRING_DIR=string
 STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_strcmp.o ft_strncmp.o ft_strcasecmp.o \
@@ -191,7 +206,8 @@ OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
 	ft_imaxtobuff.o \
 	ft_bitstobuff.o \
 	ft_digitlen.o \
-	ft_atonum.o
+	ft_atonum.o \
+	ft_readfile.o
 
 UNICODE_DIR=unicode
 UNICODE=ft_buffwchar.o \
@@ -211,7 +227,9 @@ ALLDIR=$(OBJBUILDDIR) \
 	$(OBJBUILDDIR)/$(PRINTF_DIR) \
 	$(OBJBUILDDIR)/$(PRINTF_DIR)/conv \
 	$(OBJBUILDDIR)/$(STRING_DIR) \
-	$(OBJBUILDDIR)/$(UNICODE_DIR)
+	$(OBJBUILDDIR)/$(UNICODE_DIR) \
+	$(OBJBUILDDIR)/$(SCANF_DIR) \
+	$(OBJBUILDDIR)/$(SCANF_DIR)/conv
 
 # all .obj listed with directories
 ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
@@ -220,7 +238,8 @@ ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
 	$(BTREE:%.o=$(OBJBUILDDIR)/$(BTREE_DIR)/%.o) \
 	$(PRINTF:%.o=$(OBJBUILDDIR)/$(PRINTF_DIR)/%.o) \
 	$(STRING:%.o=$(OBJBUILDDIR)/$(STRING_DIR)/%.o) \
-	$(UNICODE:%.o=$(OBJBUILDDIR)/$(UNICODE_DIR)/%.o)
+	$(UNICODE:%.o=$(OBJBUILDDIR)/$(UNICODE_DIR)/%.o) \
+	$(SCANF:%.o=$(OBJBUILDDIR)/$(SCANF_DIR)/%.o)
 
 # all .c files listes with directories
 ALLSRC=$(OBJ:%.o=%.c) \
@@ -229,7 +248,8 @@ ALLSRC=$(OBJ:%.o=%.c) \
 	$(BTREE:%.o=$(BTREE_DIR)/%.c) \
 	$(PRINTF:%.o=$(PRINTF_DIR)/%.c) \
 	$(STRING:%.o=$(STRING_DIR)/%.c) \
-	$(UNICODE:%.o=$(UNICODE_DIR)/%.c)
+	$(UNICODE:%.o=$(UNICODE_DIR)/%.c) \
+	$(SCANF:%.o=$(SCANF_DIR)/%.c)
 
 all: $(NAME)
 
@@ -277,7 +297,7 @@ re: fclean
 	$(MAKE)
 
 norminette:
-	norminette $(ALLSRC) libft.h ft_printf.h
+	norminette $(ALLSRC) libft.h ft_printf.h ft_scanf.h
 
 install: so
 	cp libft.h /usr/include/

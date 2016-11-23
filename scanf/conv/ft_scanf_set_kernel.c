@@ -1,30 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memset.c                                        :+:      :+:    :+:   */
+/*   ft_scanf_set_kernel.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2015/11/24 12:17:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/13 21:55:51 by snicolet         ###   ########.fr       */
+/*   Created: 2016/11/06 13:57:25 by snicolet          #+#    #+#             */
+/*   Updated: 2016/11/06 16:24:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <string.h>
 
-void	*ft_memset(void *dest, int c, size_t n)
+int		ft_scanf_set_kernel(t_scanf *sf)
 {
-	size_t			p;
-	const size_t	blk = LONGIFY(INTIFY(SHORTIFY(c)));
+	void		(*kernel)(t_scanf *);
 
-	p = 0;
-	while ((p < n) && ((n - p) % 8))
-		((unsigned char *)(dest))[p++] = (unsigned char)c;
-	while (p < n)
-	{
-		*(unsigned long*)((unsigned long)dest + p) = blk;
-		p += 8;
-	}
-	return (dest);
+	kernel = (void(*)(t_scanf*))va_arg(*sf->ap, void *);
+	kernel(sf);
+	return (1);
 }

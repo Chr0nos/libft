@@ -5,5 +5,7 @@ Partie 2            |         |          | x
 Bonus               |         |          | x
 Fonctions perso     |         |     x    |
 Optimisation        |         |     x    |
-Passage moulinette  |         |     x    |
-Corrections         |         |     x    |
+Passage moulinette  |         |          | x
+Corrections         |         |          | x
+Printf              |         |          | x
+Sscanf              |         |     x    |

@@ -6,20 +6,27 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/30 20:29:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/11/13 01:12:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
-# define LOMAGIC 0x1010101010101010
-# define HIMAGIC 0x8080808080808080
+# define LOMAGIC 0x1010101010101010lu
+# define HIMAGIC 0x8080808080808080lu
 # define LONGCHR_NULL(x) (((x - LOMAGIC) & HIMAGIC) != 0)
-# define IFRET__(x, y) if (x) return (y);
+# define LONGCHR(l, b) (((((l ^ b) - LOMAGIC) & ~(l ^ b)) & (LOMAGIC << 7)) !=0)
+# define IFRET__(x, y) if (x) return (y)
+# define EIFRET__(x, y)	else if (x) return (y)
+# define ERET__(y) else return (y)
+# define SHORTIFY(x) ((unsigned short)x | (unsigned short)x << 8)
+# define INTIFY(x) ((unsigned int)x | (unsigned int)x << 16)
+# define LONGIFY(x) ((unsigned long)x | (unsigned long)x << 32)
 # define _
 # include <string.h>
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_scanf.h"
 
 typedef struct		s_list
 {
@@ -85,6 +92,7 @@ char				**ft_strsplit(const char *str, char separator);
 char				*ft_strunsplit(const char **tab, char separator);
 char				*ft_strmjoin(const size_t n, ...);
 char				*ft_strchr(char *s, int c);
+char				*ft_strchr_old(char *s, int c);
 char				*ft_strrchr(char *s, int c);
 char				*ft_strreplace(char *s, char what, char by);
 char				*ft_strrev(char *str);
@@ -244,5 +252,6 @@ int					ft_bitstobuff(char *buff, unsigned long long x,
 int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
+char				*ft_readfile(const char *filepath);
 
 #endif

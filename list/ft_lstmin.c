@@ -6,11 +6,18 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 16:29:12 by snicolet          #+#    #+#             */
-/*   Updated: 2016/12/10 16:32:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/12/10 16:37:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** return the lowest value item of a chained list
+** to get the max value use a revert cmp function
+** in case of 1 element list: the element is the lowest of the list so it will
+** be returned
+*/
 
 t_list	*ft_lstmin(t_list *lst, int (*cmp)(t_list *, t_list *))
 {

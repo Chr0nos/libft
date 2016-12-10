@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/12/10 16:29:12 by snicolet          #+#    #+#             */
-/*   Updated: 2016/12/10 16:37:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/12/10 17:36:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_list	*ft_lstmin(t_list *lst, int (*cmp)(t_list *, t_list *))
 	lst = lst->next;
 	while (lst)
 	{
-		if (cmp(min, lst) < 0)
+		if (cmp(min, lst) > 0)
 			min = lst;
 		lst = lst->next;
 	}

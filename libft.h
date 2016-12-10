@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/12/10 16:33:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2016/12/10 16:42:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,6 +192,7 @@ t_list				*ft_lstpush_back(t_list **lst, t_list *item);
 t_list				*ft_lstpush_front(t_list **lst, t_list *item);
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 t_list				*ft_lstdup(t_list *lst, void *(*f)(void *));
+t_list				*ft_lstndup(t_list *lst, size_t n, void *(*f)(void *));
 t_list				*ft_lstat(t_list *lst, int p);
 t_list				*ft_lstdupsort(t_list *lst, int (*cmp)(t_list *, t_list *));
 t_list				*ft_lstmin(t_list *lst, int (*cmp)(t_list *, t_list *));

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/11/24 12:17:00 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/13 21:55:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/01/04 11:39:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 void	*ft_memset(void *dest, int c, size_t n)
 {
 	size_t			p;
-	const size_t	blk = LONGIFY(INTIFY(SHORTIFY(c)));
+	const size_t	blk = LONGIFY(INTIFY(SHORTIFY((unsigned char)c)));
 
 	p = 0;
 	while ((p < n) && ((n - p) % 8))

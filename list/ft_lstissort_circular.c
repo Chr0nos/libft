@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/01/08 20:15:26 by snicolet          #+#    #+#             */
-/*   Updated: 2017/01/10 05:00:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/01/10 15:32:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,8 @@
 
 int		ft_lstissort_circular(t_list *lst, int (*cmp)(t_list *, t_list *))
 {
-	t_list	*first;
+	t_list		*first;
+	t_list		*last;
 
 	if (!lst)
 		return (1);
@@ -29,12 +30,14 @@ int		ft_lstissort_circular(t_list *lst, int (*cmp)(t_list *, t_list *))
 	lst = lst->next;
 	if (!lst)
 		return (1);
-	while ((lst->next) && ((cmp(lst, lst->next) == 0) ||
-			(cmp(lst->next, first) == 0)))
+	lst = lst->next;
+	last = lst;
+	while ((lst) && (lst->next))
+	{
+		if (cmp(lst, lst->next) > 0)
+			return (0);
+		last = lst;
 		lst = lst->next;
-	if (lst->next)
-		return (0);
-	if (cmp(first, lst) < 0)
-		return (0);
-	return (1);
+	}
+	return ((cmp(last, first) > 0) ? 0 : 1);
 }

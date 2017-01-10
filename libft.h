@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/01/09 10:48:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/01/10 12:13:16 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -201,6 +201,7 @@ size_t				ft_lstsize(t_list *lst);
 int					ft_lstissort(t_list *lst, int (*cmp)(t_list *, t_list *));
 int					ft_lstunlink(t_list **lst, t_list *item);
 void				ft_lstprintf(t_printf *pf);
+void				ft_lstprintf_numeric(t_printf *pf);
 int					ft_lstissort_circular(t_list *lst,
 		int (*cmp)(t_list *, t_list *));
 

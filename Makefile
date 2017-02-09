@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/01/09 10:48:38 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/02/09 19:56:05 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -108,7 +108,8 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_n.o \
 	conv/ft_printf_conv_callback.o \
 	conv/ft_printf_conv_double.o \
-	conv/ft_printf_conv_file.o
+	conv/ft_printf_conv_file.o \
+	conv/ft_printf_conv_puttab.o
 
 SCANF_DIR=scanf
 SCANF=ft_scanf.o \

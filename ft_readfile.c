@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 17:16:27 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/10 17:23:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/01 13:33:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t	ft_filesize(const char *filepath)
 	return ((size_t)st.st_size);
 }
 
-char			*ft_readfile(const char *filepath)
+char			*ft_readfile(const char *filepath, size_t *usize)
 {
 	const size_t	size = ft_filesize(filepath);
 	ssize_t			ret;
@@ -34,9 +34,15 @@ char			*ft_readfile(const char *filepath)
 
 	if ((!size) || (!(data = malloc(sizeof(char) * size))) ||
 			(!(fd = open(filepath, O_RDONLY))))
+	{
+		if (usize)
+			*usize = 0;
 		return (NULL);
+	}
 	ret = read(fd, data, size);
 	data[ret] = '\0';
 	close(fd);
+	if (usize)
+		*usize = size;
 	return (data);
 }

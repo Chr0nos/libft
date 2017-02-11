@@ -6,12 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 15:07:35 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/21 01:35:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:24:26 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+#include <stdlib.h>
 
 void				ft_pf_arg_double(t_printf *pf)
 {

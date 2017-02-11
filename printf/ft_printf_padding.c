@@ -6,12 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/08 22:07:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/11 03:11:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:23:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+#include <unistd.h>
 
 /*
 ** only in case of no buffer

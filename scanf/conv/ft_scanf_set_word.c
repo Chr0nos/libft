@@ -6,11 +6,12 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 13:37:34 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/06 13:53:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:26:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 static size_t				ft_strwordlen(const char *str)
 {

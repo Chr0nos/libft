@@ -6,11 +6,12 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:11:48 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/20 01:07:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:25:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
 /*
 ** this function is here to ensure the case of given precision AND maxlen

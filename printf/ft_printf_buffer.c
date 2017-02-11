@@ -6,12 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 18:13:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/11 10:23:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 #include "libft.h"
+#include <unistd.h>
 
 /*
 ** this function is called in case of a full buffer BUT asprintf is runing

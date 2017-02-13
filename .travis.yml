@@ -3,3 +3,5 @@ install: make
 compiler:
 - clang
 - gcc
+script:
+- make

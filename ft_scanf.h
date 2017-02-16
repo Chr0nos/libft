@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/20 01:08:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/16 12:48:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ typedef struct		s_scanf
 	va_list			*ap;
 	const char		*str;
 	const char		*str_origin;
-	const void		*padding;
+	const char		*format;
 	int				total_len;
 	unsigned int	flags;
 	int				precision;

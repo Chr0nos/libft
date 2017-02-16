@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/20 00:49:13 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/20 00:54:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/02/16 12:49:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 
 int		ft_scanf_set_end(t_scanf *sf)
 {
-	if (*sf->str)
+	if (sf->format[1])
 		sf->flags |= FT_SF_ERROR;
 	return (1);
 }

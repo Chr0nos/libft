@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/05 14:09:47 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/05 14:18:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/04 11:15:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static inline int	ft_numbits(unsigned int nb)
 
 int					ft_wcharlen(const wchar_t c)
 {
-	const register int		n = ft_numbits((unsigned int)c);
+	register const int		n = ft_numbits((unsigned int)c);
 
 	if (n > 16)
 		return (4);

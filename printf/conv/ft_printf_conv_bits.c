@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/07 15:17:59 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 20:15:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/04 11:15:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,11 +45,9 @@ void		ft_pf_conv_bits(t_printf *pf)
 {
 	uintmax_t			nb;
 	int					bit;
-	int					p;
 
 	bit = pf->raw_len - 1;
 	nb = (uintmax_t)pf->raw_value;
-	p = 0;
 	pf->pre_buffer[bit--] = "01"[nb & 1u];
 	while ((nb >>= 1))
 		pf->pre_buffer[bit--] = "01"[nb & 1u];

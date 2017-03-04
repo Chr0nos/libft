@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstprintf.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/22 22:51:22 by snicolet          #+#    #+#             */
-/*   Updated: 2017/01/10 12:12:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/04 11:14:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	ft_lstprintf_numeric(t_printf *pf)
 	pf->slen = 0;
 	while (lst)
 	{
-		len = ft_itobuff(buffer, (int)lst->content, 10, "0123456789");
+		len = ft_itobuff(buffer, (int)(size_t)lst->content, 10, "0123456789");
 		pf->slen += (int)ft_printf_append(pf, buffer, (size_t)len);
 		lst = lst->next;
 		if (lst)

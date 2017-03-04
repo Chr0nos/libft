@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/22 13:58:38 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/13 23:22:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/04 11:08:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ float	ft_sqrt(float nb)
 	float	xhalf;
 	int		i;
 
-	i = *(int*)(size_t)&nb;
+	i = *(int*)(void*)(size_t)&nb;
 	xhalf = 0.5f * nb;
 	i = 0x5f3759df - (i >> 1);
 	nb = *(float*)(size_t)&i;

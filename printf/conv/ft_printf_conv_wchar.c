@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 19:59:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/08 00:43:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/04 11:14:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void				ft_pf_arg_wchar(t_printf *pf)
 	pf->raw_value = va_arg(*pf->ap, wchar_t);
 }
 
-static void	inline	ft_pf_conv_wchar_forcechar(t_printf *pf)
+static inline void	ft_pf_conv_wchar_forcechar(t_printf *pf)
 {
 	const char		c = (char)pf->raw_value;
 

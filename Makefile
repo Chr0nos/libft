@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2017/03/04 11:12:42 by snicolet         ###   ########.fr        #
+#*   Updated: 2017/03/06 23:44:16 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -168,7 +168,7 @@ STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_strforf.o \
 	ft_strtoupper.o \
 
-OBJ=ft_putchar.o ft_putchar_fd.o ft_debug.o \
+OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_putull.o \
 	ft_putendl.o ft_putendl_fd.o ft_putnendl.o \
 	ft_swap.o \

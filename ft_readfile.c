@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 17:16:27 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/01 13:33:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/03/06 23:26:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,11 +32,14 @@ char			*ft_readfile(const char *filepath, size_t *usize)
 	int				fd;
 	char			*data;
 
+	data = NULL;
 	if ((!size) || (!(data = malloc(sizeof(char) * size))) ||
 			(!(fd = open(filepath, O_RDONLY))))
 	{
 		if (usize)
 			*usize = 0;
+		if (data)
+			free(data);
 		return (NULL);
 	}
 	ret = read(fd, data, size);

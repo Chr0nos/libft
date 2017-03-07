@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/Chr0nos/libft.svg?branch=master)](https://travis-ci.org/Chr0nos/libft)
+
 Tache               | A faire | En cours | Fait
 --------------------|:-------:|:--------:|-----
 Partie 1            |         |          | x

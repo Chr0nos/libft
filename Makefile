@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/03/06 23:44:16 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/04/16 11:47:21 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -220,6 +220,13 @@ UNICODE=ft_buffwchar.o \
 	ft_wcharlen.o \
 	ft_wstrlen.o
 
+OPENGL_DIR=opengl
+OPENGL_ENABLED=no
+OPENGL=
+ifeq ($(OPENGL_ENABLED), yes)
+	OPENGL=ft_shader_compile.o
+endif
+
 ################################################################################
 ##                                                                            ##
 ##                   COMPILATION RULES : DONT TOUCH: IT'S MAGIC               ##
@@ -235,7 +242,8 @@ ALLDIR=$(OBJBUILDDIR) \
 	$(OBJBUILDDIR)/$(STRING_DIR) \
 	$(OBJBUILDDIR)/$(UNICODE_DIR) \
 	$(OBJBUILDDIR)/$(SCANF_DIR) \
-	$(OBJBUILDDIR)/$(SCANF_DIR)/conv
+	$(OBJBUILDDIR)/$(SCANF_DIR)/conv \
+	$(OBJBUILDDIR)/$(OPENGL_DIR)
 
 # all .obj listed with directories
 ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
@@ -245,7 +253,8 @@ ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
 	$(PRINTF:%.o=$(OBJBUILDDIR)/$(PRINTF_DIR)/%.o) \
 	$(STRING:%.o=$(OBJBUILDDIR)/$(STRING_DIR)/%.o) \
 	$(UNICODE:%.o=$(OBJBUILDDIR)/$(UNICODE_DIR)/%.o) \
-	$(SCANF:%.o=$(OBJBUILDDIR)/$(SCANF_DIR)/%.o)
+	$(SCANF:%.o=$(OBJBUILDDIR)/$(SCANF_DIR)/%.o) \
+	$(OPENGL:%.o=$(OBJBUILDDIR)/$(OPENGL_DIR)/%.o)
 
 # all .c files listes with directories
 ALLSRC=$(OBJ:%.o=%.c) \
@@ -255,7 +264,8 @@ ALLSRC=$(OBJ:%.o=%.c) \
 	$(PRINTF:%.o=$(PRINTF_DIR)/%.c) \
 	$(STRING:%.o=$(STRING_DIR)/%.c) \
 	$(UNICODE:%.o=$(UNICODE_DIR)/%.c) \
-	$(SCANF:%.o=$(SCANF_DIR)/%.c)
+	$(SCANF:%.o=$(SCANF_DIR)/%.c) \
+	$(OPENGL:%.o=$(OPENGL_DIR)/%.c)
 
 all: $(NAME)
 

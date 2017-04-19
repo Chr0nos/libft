@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/01 17:06:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/04/19 20:19:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
 static size_t	ft_quicksort_part(void **tab, size_t start, size_t end,
-		int (*cmp)())
+		int (*cmp)(void *, void *))
 {
 	void	*pivot;
 
@@ -31,7 +31,8 @@ static size_t	ft_quicksort_part(void **tab, size_t start, size_t end,
 	}
 }
 
-void			ft_quicksort(void **tab, size_t start, size_t end, int (*cmp)())
+void			ft_quicksort(void **tab, size_t start, size_t end,
+	int (*cmp)(void *, void *))
 {
 	size_t		subend;
 

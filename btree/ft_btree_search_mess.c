@@ -3,16 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_btree_search_mess.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/03 16:25:36 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/03 16:25:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/04/19 20:27:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_btree		*ft_btree_search_mess(t_btree *root, void *val, int (*f)())
+t_btree		*ft_btree_search_mess(t_btree *root, void *val,
+	int (*f)(void *, void *))
 {
 	if (!root)
 		return (0);

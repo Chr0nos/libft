@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/03/06 23:44:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/04/19 20:28:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void				ft_putmem(void *data, size_t size);
 void				ft_puthex(void *data, size_t size);
 void				ft_bzero(void *s, size_t n);
 void				ft_quicksort(void **tab, size_t start, size_t end,
-	int (*cmp)());
+	int (*cmp)(void *, void *));
 void				ft_crash(void);
 void				ft_rotx(char *s, int x);
 char				*ft_strsub(const char *s, unsigned int start, size_t len);
@@ -129,7 +129,8 @@ int					ft_tolower(int c);
 int					ft_toupper(int c);
 int					ft_is_printable(char c);
 int					ft_str_is_printable(char *str);
-int					ft_is_sorted(void **tab, size_t size, int (*cmp)());
+int					ft_is_sorted(void **tab, size_t size,
+	int (*cmp)(void *, void *));
 int					ft_match(char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
@@ -164,19 +165,21 @@ void				*ft_realloc(void *ptr, size_t size, size_t new_size);
 
 char				**ft_lststrmap(t_list *lst);
 char				**ft_lststrtotab(t_list *lst);
-void				ft_lstremove(t_list **item, t_list **root, void (*f)());
+void				ft_lstremove(t_list **item, t_list **root,
+	void (*f)(void *));
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstdel(t_list **ast, void (*del)(void *, size_t));
 void				ft_lstinsert(t_list **parent, t_list *item);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 void				ft_lstsort(t_list **lst, int (*cmp)(t_list *, t_list *));
-void				ft_lstpush_sort(t_list **lst, t_list *item, int (*cmp)());
-void				ft_lstforeach(t_list *lst, void (*f)());
+void				ft_lstpush_sort(t_list **lst, t_list *item,
+	int (*cmp)(t_list *, t_list *));
+void				ft_lstforeach(t_list *lst, void (*f)(void *));
 void				ft_lstforeachi(t_list *lst,
 	void (*f)(size_t, size_t, void *));
 void				ft_lstforeachi_suffix(t_list *lst,
 	void (*f)(size_t, size_t, void *));
-void				ft_lstforeach_suffix(t_list *lst, void (*f)());
+void				ft_lstforeach_suffix(t_list *lst, void (*f)(void *));
 void				ft_lstpulverisator(void *x, size_t size);
 int					ft_lststrcmp(t_list *a, t_list *b);
 t_list				*ft_lstnew(const void *content, size_t content_size);
@@ -212,13 +215,17 @@ void				ft_btree_foreach_prefix(t_btree *root, void (*f)(void *));
 void				ft_btree_foreach_suffix(t_btree *root, void (*f)(void *));
 void				ft_btee_free(t_btree **root);
 void				ft_btree_free(t_btree **root);
-void				ft_btree_add(t_btree **root, void *data, int (*f)());
-void				ft_btree_insert(t_btree **node, void *data, int (*f)());
+void				ft_btree_add(t_btree **root, void *data,
+	int (*f)(void *, void *));
+void				ft_btree_insert(t_btree **node, void *data,
+	int (*f)(void *, void *));
 int					ft_btree_level(t_btree *root, t_btree *item, int level);
 size_t				ft_btree_level_max(t_btree *root);
 t_btree				*ft_btree_create_node(void *data);
-t_btree				*ft_btree_search_mess(t_btree *root, void *val, int (*f)());
-t_btree				*ft_btree_search(t_btree *root, void *data, int (*f)());
+t_btree				*ft_btree_search_mess(t_btree *root, void *val,
+	int (*f)(void *, void *));
+t_btree				*ft_btree_search(t_btree *root, void *data,
+	int (*f)(void *, void *));
 t_btree				*ft_btree_parent(t_btree *root, t_btree *item);
 
 char				*ft_brainfuck(char *str, unsigned char *ptr);

@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_lstremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/05 17:17:33 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/12 14:24:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/04/19 20:22:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <stdlib.h>
 
-void	ft_lstremove(t_list **item, t_list **root, void (*f)())
+void	ft_lstremove(t_list **item, t_list **root, void (*f)(void *))
 {
 	t_list	*parent;
 	t_list	*dent;

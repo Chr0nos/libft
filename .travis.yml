@@ -8,5 +8,5 @@ script:
 env:
     global:
     matrix:
-        - ENABLE_OPENGL=yes
-        - ENABLE_OPENGL=no
+        - OPENGL_ENABLED=yes
+        - OPENGL_ENABLED=no

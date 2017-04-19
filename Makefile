@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/04/16 11:47:21 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/04/19 20:56:00 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -220,11 +220,13 @@ UNICODE=ft_buffwchar.o \
 	ft_wcharlen.o \
 	ft_wstrlen.o
 
-OPENGL_DIR=opengl
 OPENGL_ENABLED=no
-OPENGL=
 ifeq ($(OPENGL_ENABLED), yes)
+	OPENGL_DIR=opengl
 	OPENGL=ft_shader_compile.o
+else
+	OPENGL=
+	OPENGL_DIR=
 endif
 
 ################################################################################

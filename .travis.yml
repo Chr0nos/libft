@@ -5,3 +5,8 @@ compiler:
 - gcc
 script:
 - make
+env:
+    global:
+    matrix:
+        - ENABLE_OPENGL=yes
+        - ENABLE_OPENGL=no

@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/04/19 20:56:00 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/04/21 20:30:51 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,6 +23,7 @@ RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
 NAME=libft.a
+INC=
 
 LIST_DIR=list
 LIST=ft_lstnew.o ft_lstnewstr.o ft_lstnewlink.o \
@@ -224,6 +225,7 @@ OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL_DIR=opengl
 	OPENGL=ft_shader_compile.o
+	INC += -I/usr/local/include
 else
 	OPENGL=
 	OPENGL_DIR=
@@ -287,7 +289,7 @@ $(NAME): $(ALLDIR) $(ALLOBJ)
 	@echo "Done."
 
 $(OBJBUILDDIR)/%.o: %.c
-	$(COMPILE) -c $< -o $@
+	$(COMPILE) -c $< -o $@ $(INC)
 
 #windows dll cross compill rule
 dll:

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readfile.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/10 17:16:27 by snicolet          #+#    #+#             */
-/*   Updated: 2017/03/06 23:26:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/04/22 14:12:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ static size_t	ft_filesize(const char *filepath)
 
 char			*ft_readfile(const char *filepath, size_t *usize)
 {
-	const size_t	size = ft_filesize(filepath);
+	const size_t	size = ft_filesize(filepath) + 1;
 	ssize_t			ret;
 	int				fd;
 	char			*data;

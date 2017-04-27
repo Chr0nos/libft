@@ -225,7 +225,8 @@ OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL_DIR=opengl
 	OPENGL=ft_shader_compile.o
-	INC += -I/usr/local/include
+	BREW_DIR=$(HOME)/.brew/include
+	INC += -I/usr/local/include -I$(BREW_DIR)
 else
 	OPENGL=
 	OPENGL_DIR=

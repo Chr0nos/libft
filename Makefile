@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/04/21 20:30:51 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/05/03 20:43:59 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -227,6 +227,7 @@ ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL=ft_shader_compile.o
 	BREW_DIR=$(HOME)/.brew/include
 	INC += -I/usr/local/include -I$(BREW_DIR)
+	FLAGS+=-Wno-reserved-id-macro
 else
 	OPENGL=
 	OPENGL_DIR=

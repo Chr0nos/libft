@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/05/03 20:43:59 by snicolet         ###   ########.fr       *#
+#    Updated: 2017/05/04 18:19:40 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -224,7 +224,8 @@ UNICODE=ft_buffwchar.o \
 OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL_DIR=opengl
-	OPENGL=ft_shader_compile.o
+	OPENGL=ft_shader_compile.o \
+		ft_opengl_buffer.o
 	BREW_DIR=$(HOME)/.brew/include
 	INC += -I/usr/local/include -I$(BREW_DIR)
 	FLAGS+=-Wno-reserved-id-macro

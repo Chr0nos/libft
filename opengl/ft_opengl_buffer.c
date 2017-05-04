@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/04 18:12:43 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/04 18:23:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/04 18:58:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "opengl.h"
 
-int			ft_opengl_buffer_load(GLuint *dest, GLint type, const void *data,
+int			ft_opengl_buffer_load(GLuint *dest, GLuint type, const void *data,
 	const size_t size)
 {
 	*dest = 0;
@@ -24,6 +24,6 @@ int			ft_opengl_buffer_load(GLuint *dest, GLint type, const void *data,
 		return (1);
 	}
 	glBindBuffer(type, *dest);
-	glBufferData(type, size, data, GL_STATIC_DRAW);
+	glBufferData(type, (GLsizeiptr)size, data, GL_STATIC_DRAW);
 	return (0);
 }

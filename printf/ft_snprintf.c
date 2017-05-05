@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/10 23:59:11 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/12 15:53:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/06 01:21:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			ft_sprintf(char *buffer, char *format, ...)
 	va_list				ap;
 	t_printf			pf;
 
+	pf.size = 0;
 	va_start(ap, format);
 	ft_vsnprintf(buffer, (unsigned int)-1, format, ap);
 	va_end(ap);

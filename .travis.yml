@@ -10,3 +10,6 @@ env:
     matrix:
         - OPENGL_ENABLED=yes
         - OPENGL_ENABLED=no
+os:
+    - linux
+    - osx

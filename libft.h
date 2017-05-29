@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 00:50:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/29 19:25:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # define SHORTIFY(x) ((unsigned short)x | (unsigned short)x << 8)
 # define INTIFY(x) ((unsigned int)x | (unsigned int)x << 16)
 # define LONGIFY(x) ((unsigned long)x | (unsigned long)x << 32)
+# define FT_MIN(x, y) ((x < y) ? x : y)
 # define _
 # include <string.h>
 # include "get_next_line.h"
@@ -291,5 +292,6 @@ char				*ft_readfile(const char *filepath, size_t *usize);
 
 
 int					ft_get_line(int const fd, char **line);
+int 	            ft_gl(char *dst, const int fd, const size_t dest_size);
 
 #endif

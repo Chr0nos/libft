@@ -211,6 +211,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_freesplit.o \
 	ft_get_next_line.o \
 	ft_get_line.o \
+	ft_gl.o \
 	ft_putptr.o \
 	ft_imaxtobuff.o \
 	ft_bitstobuff.o \

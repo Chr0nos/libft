@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/04/19 20:28:24 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/29 00:50:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,30 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include "ft_scanf.h"
+
+# ifndef GNL_BUFF_SIZE
+#  define GNL_BUFF_SIZE 80
+# endif
+
+# if GNL_BUFF_SIZE < 64
+#  define GNL_GROW_SIZE 64
+# else
+#  define GNL_GROW_SIZE GNL_BUFF_SIZE
+# endif
+# if GNL_BUFF_SIZE > 128
+#  define GNL_START_SIZE GNL_BUFF_SIZE
+# else
+#  define GNL_START_SIZE 128
+# endif
+
+typedef struct		s_gnl_buffer
+{
+	int				fd;
+	int				padding;
+	size_t			buf_size;
+	size_t			cursor;
+	char			*strb;
+}					t_gnlb;
 
 typedef struct		s_list
 {
@@ -264,5 +288,8 @@ int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
 char				*ft_readfile(const char *filepath, size_t *usize);
+
+
+int					ft_get_line(int const fd, char **line);
 
 #endif

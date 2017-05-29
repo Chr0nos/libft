@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/16 12:48:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/29 02:06:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,13 @@
 # define FT_SF_MOD_LL		(1u << 5)
 # define FT_SF_MOD_J		(1u << 6)
 # define FT_SF_MOD_Z		(1u << 7)
-# define FT_SF_FLAG_SKIP	(1u << 8)
-# define FT_SF_FLAG_PREC	(1u << 9)
-# define FT_SF_FLAG_MAXLEN  (1u << 10)
+# define FT_SF_MOD_NONE		(1u << 8)
+# define FT_SF_FLAG_SKIP	(1u << 9)
+# define FT_SF_FLAG_PREC	(1u << 10)
+# define FT_SF_FLAG_MAXLEN  (1u << 11)
+# define FT_SF_MOD_ANYI		0xf0
+# define FT_SF_MOD_ANYD		0x0c
+# define FT_SF_MOD_ANY		0xfc
 
 /*
 ** ft_sscanf documentation:
@@ -91,14 +95,19 @@ typedef struct		s_scanf
 	const char		*format;
 	int				total_len;
 	unsigned int	flags;
+	unsigned int	flags_mask;
 	int				precision;
 	unsigned int	min_width;
 	unsigned int	arg_done;
 	int				maxlen;
+	int				padding;
 }					t_scanf;
 
 int					ft_sscanf(const char *s, const char *format, ...);
+int					ft_sscanfq(const char *s, const char *format, ...);
+int					ft_sscanfqf(const char *s, const char *format, ...);
 const char			*ft_scanf_loadmods(const char *format, t_scanf *sf);
+unsigned int		ft_scanf_engine(const char *format, t_scanf *sf);
 
 /*
 ** setters functions, they are all used as functions pointer

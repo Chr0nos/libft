@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/16 12:48:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/29 02:08:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 		format++;
 	if (!*format)
 		return (format);
-	format = ft_scanf_loadmods(format, sf);
+	if (!(sf->flags & FT_SF_MOD_NONE))
+		format = ft_scanf_loadmods(format, sf);
 	while (p--)
 	{
 		sf->format = format;
@@ -80,11 +81,11 @@ static const char			*ft_scanf_skiper(const char *format, t_scanf *sf)
 	return (format);
 }
 
-static unsigned int			ft_scanf_engine(const char *format, t_scanf *sf)
+unsigned int				ft_scanf_engine(const char *format, t_scanf *sf)
 {
 	while ((*format) && (!((sf->flags & FT_SF_QUIT))))
 	{
-		sf->flags = 0;
+		sf->flags &= sf->flags_mask;
 		if (*format == '%')
 		{
 			format = ft_scanf_exec(format, sf);
@@ -114,6 +115,7 @@ int							ft_sscanf(const char *s, const char *format, ...)
 	sf = (t_scanf){
 		.total_len = 0,
 		.flags = 0,
+		.flags_mask = 0,
 		.str = s,
 		.str_origin = s,
 		.format = format,
@@ -121,7 +123,8 @@ int							ft_sscanf(const char *s, const char *format, ...)
 		.min_width = 0,
 		.arg_done = 0,
 		.maxlen = 0,
-		.ap = &ap
+		.ap = &ap,
+		.padding = 0
 	};
 	va_start(ap, format);
 	sf.flags |= ft_scanf_engine(format, &sf);

@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/05/29 00:13:08 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/05/29 01:56:51 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -116,6 +116,7 @@ PRINTF=ft_printf.o \
 
 SCANF_DIR=scanf
 SCANF=ft_scanf.o \
+	  ft_scanfq.o \
 	  ft_scanf_load.o \
 	  conv/ft_scanf_set_int.o \
 	  conv/ft_scanf_set_str.o \

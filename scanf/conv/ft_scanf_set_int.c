@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2017/03/04 14:16:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/29 01:48:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int			ft_scanf_set_int(t_scanf *sf)
 		return (1);
 	}
 	result = (int *)va_arg(*sf->ap, int *);
-	if (sf->flags & (FT_SF_MOD_J | FT_SF_MOD_Z | FT_SF_MOD_L | FT_SF_MOD_LL))
+	if (sf->flags & FT_SF_MOD_ANYI)
 		return (ft_scanf_set_bigint(sf, (void*)(size_t)result));
 	*result = ft_atoi(sf->str);
 	if (sf->flags & FT_SF_MOD_HH)

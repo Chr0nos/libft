@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 16:44:42 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 19:29:58 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/31 12:47:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int             ft_gl(char *dst, const int fd, const size_t dest_size)
         ptr = buff;
     }
     if ((nl = ft_strchr(ptr, '\n')))
-        ft_memcpy(dst, ptr, FT_MIN((size_t)nl - (size_t)ptr, dest_size - 1)),
-			dst[FT_MIN((size_t)nl - (size_t)ptr, dest_size - 1)] = 0;
+        (void)ft_memcpy(dst, ptr, FT_MIN((size_t)nl - (size_t)ptr, dest_size -
+			1)), dst[FT_MIN((size_t)nl - (size_t)ptr, dest_size - 1)] = 0;
     ptr = nl + 1;
     return (!!nl);
 }

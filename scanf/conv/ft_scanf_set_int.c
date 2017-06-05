@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 01:48:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:30:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,7 @@ static int	ft_scanf_set_bigint(t_scanf *sf, void *ptr)
 	if (*sf->str == '+')
 		sf->str++;
 	else if ((*sf->str == '-') && (*(sf->str++)))
-	{	
-	}
+		;
 	while (ft_isdigit(*sf->str))
 		nb = (nb * 10) + (*(sf->str++) - '0');
 	if (sf->flags & FT_SF_MOD_J)

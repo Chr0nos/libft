@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/04/16 11:31:43 by snicolet          #+#    #+#             */
-/*   Updated: 2017/04/16 11:51:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/05/30 15:54:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ GLuint				ft_shader_compile(GLuint type, const char *file)
 		return (0);
 	}
 	sh = glCreateShader(type);
-	glShaderSource(sh, 1, (const GLchar * const *)(size_t)&filecontent, NULL);
+	glShaderSource(sh, 1, (const GLchar *const *)(size_t)&filecontent, NULL);
 	glCompileShader(sh);
 	free(filecontent);
 	if (ft_shader_cerror(sh))

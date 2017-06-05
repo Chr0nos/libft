@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/29 01:53:51 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 02:17:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:29:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ int							ft_sscanfq(const char *s, const char *format, ...)
 ** this one don't take any modifiers either and don't set any parameter execept
 ** for the %N conversion (retrive the current format position)
 */
-
 
 int							ft_sscanfqf(const char *s, const char *format, ...)
 {

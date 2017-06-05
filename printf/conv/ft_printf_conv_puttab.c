@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/02/09 19:52:43 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/09 19:57:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:32:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,3 @@ void		ft_printf_conv_puttab(t_printf *pf)
 	}
 	pf->slen = pf->raw_len;
 }
-
-

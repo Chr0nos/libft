@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 19:25:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/05 15:32:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -289,9 +289,6 @@ int					ft_udigit_len(uintmax_t nb, unsigned int base);
 int					ft_digit_len(intmax_t nb, unsigned int base);
 int					ft_atonum(const char *str, int *nb);
 char				*ft_readfile(const char *filepath, size_t *usize);
-
-
 int					ft_get_line(int const fd, char **line);
-int 	            ft_gl(char *dst, const int fd, const size_t dest_size);
 
 #endif

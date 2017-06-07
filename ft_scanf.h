@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 21:51:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 22:14:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@
 # define FT_SF_MOD_ANYD		0x0c
 # define FT_SF_MOD_ANY		0xfc
 # define FT_SF_SPACE		(char *)(size_t)" \t\n\r\v"
+# define FT_SF_DIGIT		(char *)(size_t)"0123456789+-."
 
 /*
 ** ft_sscanf documentation:

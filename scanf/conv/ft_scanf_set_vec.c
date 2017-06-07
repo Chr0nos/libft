@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 21:51:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 22:14:31 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ int			ft_scanf_set_vec(t_scanf *sf)
 
 	ptr = va_arg(*sf->ap, void*);
 	vec_n = 0;
-	while ((vec_n < sf->precision) && (ft_strchr("0123456789+-.", *sf->str)))
+	while ((vec_n < sf->precision) && (ft_strchr(FT_SF_DIGIT, *sf->str)))
 	{
 		if (sf->flags & FT_SF_FLAG_SKIP)
 			;

@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/06 01:24:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:13:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int	ft_scanf_set_int_len(t_scanf *sf)
+int			ft_scanf_set_int_len(const t_scanf *sf)
 {
 	int			len;
 

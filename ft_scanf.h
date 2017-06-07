@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 02:06:37 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:13:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <string.h>
 
-# define FT_SF_CONVERTS	"dswfxo%Nn"
+# define FT_SF_CONVERTS	"dswfxo%Nnv"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -125,6 +125,14 @@ int					ft_scanf_set_percent(t_scanf *sf);
 int					ft_scanf_set_upn(t_scanf *sf);
 int					ft_scanf_set_n(t_scanf *sf);
 int					ft_scanf_set_end(t_scanf *sf);
+int					ft_scanf_set_vec(t_scanf *sf);
+
+/*
+** lenght calculation functions
+*/
+
+int					ft_scanf_set_int_len(const t_scanf *sf);
+int					ft_scanf_set_float_len(const char *str);
 
 typedef struct		s_scanf_set
 {
@@ -133,7 +141,7 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 10
+# define FT_SF_CONVCOUNT 11
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'%', 0, ft_scanf_set_percent},
@@ -141,6 +149,7 @@ static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'N', 0, ft_scanf_set_upn},
 	(t_scanf_set){'n', 0, ft_scanf_set_n},
 	(t_scanf_set){'w', 0, ft_scanf_set_word},
+	(t_scanf_set){'v', 0, ft_scanf_set_vec},
 	(t_scanf_set){'f', 0, ft_scanf_set_float},
 	(t_scanf_set){'x', 0, ft_scanf_set_hex},
 	(t_scanf_set){'o', 0, ft_scanf_set_octal},

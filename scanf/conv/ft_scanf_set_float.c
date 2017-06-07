@@ -6,13 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:32:28 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/07 02:36:57 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 19:51:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static int		ft_scanf_set_float_len(const char *str)
+int				ft_scanf_set_float_len(const char *str)
 {
 	int		len;
 

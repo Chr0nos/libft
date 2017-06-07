@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 20:13:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:43:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,23 @@
 ** modifiers:
 **     h : target is a int
 ** all other modifiers will be ignored
+** -----------------------------------------------------------------------------
+** %v : load a vector, important: this need to have the size of vector specified
+** by default the vector type is float
+** to modify type:
+** hh = char vector
+** h = int vector
+** l = double vector
+** the parser also needs to get the vector size, ex;
+** %4v = float[4]
+** %3hv = int[3]
+** %4lv = double[4]
+** the flag * is set the function just count
+** there is no any other flags supported by this parser
+** note: each vector could be separated by " \t\n\r\v" (like as \\S skipper)
+** the return code will be incrased by 1 if the vector has been fully parsed
+** in case of only 3 vectors set in a vector 4, the ret code will not be
+** incrased at all
 ** -----------------------------------------------------------------------------
 ** %N : set the current position pointer (char **) into the given string
 ** -----------------------------------------------------------------------------

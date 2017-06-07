@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 20:35:21 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 21:51:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ int			ft_scanf_set_vec(t_scanf *sf)
 		sf->str += ft_scanf_set_vec_len(sf);
 		vec_n++;
 		if (vec_n != sf->precision)
-			while ((*sf->str) && (ft_strchr(" \t\n\r\v", *sf->str)))
+			while ((*sf->str) && (ft_strchr(FT_SF_SPACE, *sf->str)))
 				sf->str++;
 	}
 	return (ft_scanf_set_vec_ret(vec_n, sf));

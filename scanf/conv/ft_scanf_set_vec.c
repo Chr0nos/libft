@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 20:19:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/06/07 20:35:21 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 ** h : int
 ** nothing: float
 ** l : double
-** ll : will be threat as l
 ** ---
 ** the number of items per vector is determined by the precision attribute ex:
 ** ft_sscanf(line, "%4v", &vector);
@@ -30,6 +29,13 @@ static int	ft_scanf_set_vec_len(const t_scanf *sf)
 	if (sf->flags & (FT_SF_MOD_HH | FT_SF_MOD_H))
 		return (ft_scanf_set_int_len(sf));
 	return (ft_scanf_set_float_len(sf->str));
+}
+
+static int	ft_scanf_set_vec_ret(const int vec_n, t_scanf *sf)
+{
+	if (vec_n != sf->precision)
+		sf->flags |= FT_SF_ERROR;
+	return (1);
 }
 
 int			ft_scanf_set_vec(t_scanf *sf)
@@ -57,5 +63,5 @@ int			ft_scanf_set_vec(t_scanf *sf)
 			while ((*sf->str) && (ft_strchr(" \t\n\r\v", *sf->str)))
 				sf->str++;
 	}
-	return (1);
+	return (ft_scanf_set_vec_ret(vec_n, sf));
 }

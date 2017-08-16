@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/05 15:32:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/08/16 10:48:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,9 @@ int					ft_lstunlink(t_list **lst, t_list *item);
 void				ft_lstprintf(t_printf *pf);
 void				ft_lstprintf_numeric(t_printf *pf);
 int					ft_lstissort_circular(t_list *lst,
-		int (*cmp)(t_list *, t_list *));
+	int (*cmp)(t_list *, t_list *));
+t_list		*ft_lstsearch(t_list *lst, t_list *item,
+	int (*cmp)(t_list *, t_list *));
 
 /*
 ** binary trees

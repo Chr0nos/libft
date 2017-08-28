@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2017/08/16 10:48:06 by snicolet         ###   ########.fr        #
+#    Updated: 2017/08/28 19:35:37 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -153,7 +153,7 @@ STRING=ft_putstr.o ft_putstr_fd.o ft_putstr_align_right.o \
 	ft_strnew.o ft_strdel.o ft_striter.o ft_striteri.o \
 	ft_strjoin.o \
 	ft_strany.o ft_strany_string.o \
-	ft_str_only.o ft_stronlystr.o ft_strnonly.o \
+	ft_stronlystr.o ft_strnonly.o \
 	ft_strdup.o ft_strndup.o \
 	ft_putstr_list.o \
 	ft_strtab_foreach.o \

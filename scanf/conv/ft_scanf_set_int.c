@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 20:13:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/08/26 07:56:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@ int			ft_scanf_set_int_len(const t_scanf *sf)
 	int			len;
 
 	len = 0;
-	while (ft_strany(sf->str[len], "\t\n\v\f\r+-"))
+	while (ft_strany(sf->str[len], "\t\n\v\f\r"))
+		len++;
+	if ((sf->str[len] == '+') || (sf->str[len] == '-'))
 		len++;
 	while (ft_isdigit(sf->str[len]))
 		len++;

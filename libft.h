@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/08/16 10:48:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/08/28 19:36:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,7 +142,6 @@ long				ft_atol(const char *str);
 int					ft_memcmp(const void *s1, const void *s2, size_t n);
 int					ft_strany(char c, const char *list);
 int					ft_strany_string(const char *str, const char *list);
-int					ft_str_only(const char c, const char *list);
 int					ft_strnonly(char *s, size_t n, char c);
 int					ft_stronlystr(char *str, char *list);
 int					ft_isalpha(int c);

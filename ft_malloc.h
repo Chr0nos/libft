@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/23 18:56:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/23 20:02:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,6 @@ typedef struct			s_mempage
 }						t_mempage;
 
 #endif
-
 
 t_memblock				*ft_block_init(t_memblock *block, const size_t size);
 t_mempage				*ft_page_init(t_mempage *page);

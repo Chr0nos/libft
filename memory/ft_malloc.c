@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/23 19:10:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/23 20:15:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ t_mempage		*ft_page_create()
 	t_memblock		*blocks;
 
 	size = (MEMTINY * 100) + (MEMSMALL * 100);
-	memory = mmap(NULL, PROT_WRITE | PROT_READ, MAP_PRIVATE, -1, NULL);
+	memory = mmap(NULL, size, PROT_WRITE | PROT_READ, MAP_PRIVATE, -1, 0);
 	blocks = memory + sizeof(t_mempage);
 	page = (t_mempage*)(size_t)memory;
-	page->block = blocks;
+	page->blocks = blocks;
 	ft_page_init(page);
 	return (page);
 }
@@ -57,6 +57,7 @@ void			*ft_malloc(size_t const size)
 {
 	static t_mempage		*page = NULL;
 
+	(void)size;
 	if (!page)
 	{
 		page = ft_page_create();

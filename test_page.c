@@ -37,6 +37,7 @@ static void		test_malloc(void)
 
 int		main(void)
 {
+	ft_printf("tiny: %lu - small: %lu\n", MEMTINY, MEMSMALL);
 	test_malloc_page();
 	test_malloc();
 	return (0);

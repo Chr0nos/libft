@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/24 23:20:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 00:58:15 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,5 @@ void					*ft_block_init_many(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count);
 t_mempage				*ft_page_create(t_mempage *parent);
 void					ft_page_delete(t_mempage *page);
+t_memblock				*ft_block_search(t_mempage *page, size_t const size);
+void					*ft_malloc(size_t const size);

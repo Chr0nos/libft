@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/24 23:22:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 00:54:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,6 @@ t_mempage		*ft_page_create(t_mempage *parent)
 	page->count = 200;
 	page->size = rawsize;
 	raw = (void*)((size_t)page->blocks + (sizeof(t_memblock) * page->count));
-	ft_printf("first raw: %p\n", raw);
 	raw = ft_block_init_many(page->blocks, raw, MEMSMALL, 100);
 	ft_block_init_many(&page->blocks[100], raw, MEMTINY, 100);
 	page->prev = parent;
@@ -98,14 +97,41 @@ void			ft_page_delete(t_mempage *page)
 		(sizeof(t_memblock) * page->count));
 }
 
+t_memblock		*ft_block_search(t_mempage *page, size_t const size)
+{
+	size_t			p;
+	t_memblock		*block;
+	const int		nobig = (size <= MEMSMALL) ? 1 : 0;
+
+	while (page)
+	{
+		p = page->count;
+		while (p--)
+		{
+			block = &page->blocks[p];
+			if ((nobig) && (block->flags & MEM_BIG))
+				continue ;
+			if ((block->size >= size) && (!(block->flags & MEM_USED)))
+				return (block);
+		}
+		page = page->next;
+	}
+	// todo
+	return (NULL);
+}
+
 void			*ft_malloc(size_t const size)
 {
 	static t_mempage		*page = NULL;
+	t_memblock				*block;
 
-	(void)size;
 	if (!page)
-	{
 		page = ft_page_create(NULL);
+	block = ft_block_search(page, size);
+	if (block)
+	{
+		block->flags |= MEM_USED;
+		return (block->content);
 	}
 	return (NULL);
 }

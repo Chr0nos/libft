@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/08/28 19:36:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 00:57:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "get_next_line.h"
 # include "ft_printf.h"
 # include "ft_scanf.h"
+# include "ft_malloc.h"
 
 # ifndef GNL_BUFF_SIZE
 #  define GNL_BUFF_SIZE 80

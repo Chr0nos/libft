@@ -26,8 +26,18 @@ static int		test_malloc_page(void)
 	return (0);
 }
 
+static void		test_malloc(void)
+{
+	char	*string;
+
+	string = ft_malloc(50);
+	ft_strcpy(string, "j'apprecie les fruits au sirop");
+	ft_putendl(string);
+}
+
 int		main(void)
 {
 	test_malloc_page();
+	test_malloc();
 	return (0);
 }

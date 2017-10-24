@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/24 18:49:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/24 23:20:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ typedef struct			s_mempage
 #endif
 
 t_memblock				*ft_block_init(t_memblock *block, const size_t size);
-void					*ft_block_init_many(t_mempage *page, void *raw,
+void					*ft_block_init_many(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count);
 t_mempage				*ft_page_create(t_mempage *parent);
 void					ft_page_delete(t_mempage *page);

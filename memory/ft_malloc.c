@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/24 18:59:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/24 23:22:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,15 +31,12 @@ t_memblock		*ft_block_init(t_memblock *block, const size_t size)
 
 /*
 ** intitialize "count" blocks of "blocksize" contained into "page"
-** returns the next "free" block (for others calls to this)
+** returns the next "free" raw block (for others calls to this)
 */
 
-void			*ft_block_init_many(t_mempage *page, void *raw,
+void			*ft_block_init_many(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count)
 {
-	t_memblock		*block;
-
-	block = page->blocks;
 	while (count--)
 	{
 		ft_block_init(block, blocksize);
@@ -47,7 +44,7 @@ void			*ft_block_init_many(t_mempage *page, void *raw,
 		raw = (void*)((size_t)raw + blocksize);
 		block++;
 	}
-	return (block);
+	return (raw);
 }
 
 /*
@@ -83,8 +80,8 @@ t_mempage		*ft_page_create(t_mempage *parent)
 	page->size = rawsize;
 	raw = (void*)((size_t)page->blocks + (sizeof(t_memblock) * page->count));
 	ft_printf("first raw: %p\n", raw);
-	raw = ft_block_init_many(page, raw, MEMSMALL, 100);
-	ft_block_init_many(page, raw, MEMTINY, 100);
+	raw = ft_block_init_many(page->blocks, raw, MEMSMALL, 100);
+	ft_block_init_many(&page->blocks[100], raw, MEMTINY, 100);
 	page->prev = parent;
 	if (parent)
 		parent->next = page;

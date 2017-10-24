@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/24 17:49:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/24 18:11:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,8 @@ void			ft_block_init_many(t_mempage *page, void *raw,
 	size_t const blocksize, size_t count)
 {
 	t_memblock		*block;
-	size_t			p;
 
 	block = page->blocks;
-	p = 0;
 	while (count--)
 	{
 		ft_block_init(block, blocksize);
@@ -71,18 +69,28 @@ t_mempage		*ft_page_create(t_mempage *parent)
 		return (NULL);
 	// la page est la premiere partie de la zone
 	page = (t_mempage*)(size_t)memory;
-	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	ft_bzero(page, sizeof(t_mempage));
+	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->count = 200;
 	page->size = rawsize;
 	raw = (void*)((size_t)page->blocks + (sizeof(t_memblock) * page->count));
 	ft_block_init_many(page, raw, MEMSMALL, 100);
 	raw = (void*)((size_t)raw + (MEMSMALL * 100));
-	ft_block_init_many(page, raw, MEMTINY, 100);
+	//ft_block_init_many(page, raw, MEMTINY, 100);
 	page->prev = parent;
 	if (parent)
 		parent->next = page;
 	return (page);
+}
+
+void			ft_page_delete(t_mempage *page)
+{
+	if (page->prev)
+		page->prev = page->next;
+	if (page->next)
+		page->next->prev = page->prev;
+	munmap(page, page->size + sizeof(t_mempage) +
+		(sizeof(t_memblock) * page->count));
 }
 
 void			*ft_malloc(size_t const size)

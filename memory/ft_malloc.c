@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/25 03:59:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 13:30:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,6 +103,7 @@ t_mempage		*ft_page_create_big(t_mempage *parent, size_t const size)
 	page = (t_mempage*)(size_t)memory;
 	ft_bzero(page, sizeof(t_mempage));
 	page->count = 1;
+	page->size = size;
 	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->blocks->size = size;
 	page->blocks->flags = MEM_BIG;
@@ -135,9 +136,9 @@ t_memblock		*ft_block_search(t_mempage *page, size_t const size)
 		while (p--)
 		{
 			block = &page->blocks[p];
-			if ((nobig) && (block->flags & (MEM_BIG | MEM_DISABLED)))
+			if ((nobig) && (block->flags & (MEM_BIG | MEM_DISABLED | MEM_USED)))
 				continue ;
-			if ((block->size >= size) && (!(block->flags & MEM_USED)))
+			if (block->size >= size)
 				return (block);
 		}
 		page = page->next;
@@ -152,7 +153,12 @@ void			*ft_malloc(size_t const size)
 	t_memblock				*block;
 
 	if (!page)
-		page = ft_page_create(NULL);
+	{
+		if (size > MEMSMALL)
+			page = ft_page_create_big(NULL, size);
+		else
+			page = ft_page_create(NULL);
+	}
 	block = ft_block_search(page, size);
 	if (block)
 	{

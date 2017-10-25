@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/25 00:54:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 03:59:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ void			*ft_block_init_many(t_memblock *block, void *raw,
 ** |                                SIZE   (all the mapped memory size)   |
 ** |        METADATA         |   (MEMTINY + MEMSMALL) or BIG  (rawsize)   |
 ** |--------|----------------|--------------------------------------------|
+** order of raw data: (in a classical page not a big one)
+** MEMSMALL -> MEMTINY
 */
 
 t_mempage		*ft_page_create(t_mempage *parent)
@@ -87,6 +89,30 @@ t_mempage		*ft_page_create(t_mempage *parent)
 	return (page);
 }
 
+t_mempage		*ft_page_create_big(t_mempage *parent, size_t const size)
+{
+	size_t		fullsize;
+	void		*memory;
+	t_mempage	*page;
+
+	fullsize = sizeof(t_mempage) + sizeof(t_memblock) + size;
+	memory = mmap(NULL, fullsize, PROT_READ | PROT_WRITE,
+		MAP_PRIVATE | MAP_ANON, -1, 0);
+	if (!memory)
+		return (NULL);
+	page = (t_mempage*)(size_t)memory;
+	ft_bzero(page, sizeof(t_mempage));
+	page->count = 1;
+	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
+	page->blocks->size = size;
+	page->blocks->flags = MEM_BIG;
+	page->blocks->content = (void*)((size_t)page->blocks + sizeof(t_memblock));
+	page->prev = parent;
+	if (parent)
+		parent->next = page;
+	return (page);
+}
+
 void			ft_page_delete(t_mempage *page)
 {
 	if (page->prev)
@@ -109,7 +135,7 @@ t_memblock		*ft_block_search(t_mempage *page, size_t const size)
 		while (p--)
 		{
 			block = &page->blocks[p];
-			if ((nobig) && (block->flags & MEM_BIG))
+			if ((nobig) && (block->flags & (MEM_BIG | MEM_DISABLED)))
 				continue ;
 			if ((block->size >= size) && (!(block->flags & MEM_USED)))
 				return (block);

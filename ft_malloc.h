@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/25 01:03:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 03:56:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # define MEMSMALL		(size_t)(getpagesize() * 32)
 # define MEM_USED		(1u << 0)
 # define MEM_BIG		(1u << 1)
+# define MEM_DISABLED	(1u << 2)
 
 typedef struct			s_memblock
 {
@@ -59,6 +60,8 @@ t_memblock				*ft_block_search(t_mempage *page, size_t const size);
 */
 
 t_mempage				*ft_page_create(t_mempage *parent);
+t_mempage				*ft_page_create_big(t_mempage *parent,
+	size_t const size);
 void					ft_page_delete(t_mempage *page);
 
 /*

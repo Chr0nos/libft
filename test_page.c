@@ -33,6 +33,7 @@ static void		test_malloc(void)
 	string = ft_malloc(50);
 	ft_strcpy(string, "j'apprecie les fruits au sirop");
 	ft_putendl(string);
+	ft_malloc(1310725);
 	ft_malloc_display();
 }
 

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/25 13:30:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/25 16:58:57 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,11 +124,19 @@ void			ft_page_delete(t_mempage *page)
 		(sizeof(t_memblock) * page->count));
 }
 
+t_mempage		*ft_page_store(t_mempage *userpage)
+{
+	static t_mempage		*page = NULL;
+
+	if (userpage)
+		page = userpage;
+	return (page);
+}
+
 t_memblock		*ft_block_search(t_mempage *page, size_t const size)
 {
 	size_t			p;
 	t_memblock		*block;
-	const int		nobig = (size <= MEMSMALL) ? 1 : 0;
 
 	while (page)
 	{
@@ -136,28 +144,60 @@ t_memblock		*ft_block_search(t_mempage *page, size_t const size)
 		while (p--)
 		{
 			block = &page->blocks[p];
-			if ((nobig) && (block->flags & (MEM_BIG | MEM_DISABLED | MEM_USED)))
+			if (block->flags & (MEM_BIG | MEM_DISABLED | MEM_USED))
 				continue ;
 			if (block->size >= size)
 				return (block);
 		}
 		page = page->next;
 	}
-	// todo
+	page = ft_page_create(page);
+	if (page)
+		return (page->blocks);
 	return (NULL);
+}
+
+void			ft_malloc_display(void)
+{
+	t_mempage	*page;
+	t_memblock	*block;
+	size_t		p;
+
+	page = ft_page_store(NULL);
+	ft_putstr("--- START ---\n");
+	while (page)
+	{
+		ft_printf("page informations: size: %lu - blocks count: %lu\n",
+			page->size, page->blocks);
+		p = 0;
+		while (p < page->count)
+		{
+			block = &page->blocks[p];
+			ft_printf("%s%s%p%s%lu%s%s\n",
+				"\tblock: ",
+				" - address: ", block->content,
+				" - size: ", block->size,
+				" - used: ", (block->flags & MEM_USED) ? "yes" : "no");
+			p++;
+		}
+		page = page->next;
+	}
+	ft_putstr("--- END ---\n");
 }
 
 void			*ft_malloc(size_t const size)
 {
-	static t_mempage		*page = NULL;
+	t_mempage				*page;
 	t_memblock				*block;
 
+	page = ft_page_store(NULL);
 	if (!page)
 	{
 		if (size > MEMSMALL)
 			page = ft_page_create_big(NULL, size);
 		else
 			page = ft_page_create(NULL);
+		ft_page_store(page);
 	}
 	block = ft_block_search(page, size);
 	if (block)

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/25 17:05:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/26 02:33:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 ** returns the block itself
 */
 
-t_memblock		*ft_block_init(t_memblock *block, const size_t size)
+t_memblock			*ft_block_init(t_memblock *block, const size_t size)
 {
 	block->size = size;
 	block->flags = 0;
@@ -34,7 +34,7 @@ t_memblock		*ft_block_init(t_memblock *block, const size_t size)
 ** returns the next "free" raw block (for others calls to this)
 */
 
-void			*ft_block_init_many(t_memblock *block, void *raw,
+void				*ft_block_init_many(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count)
 {
 	while (count--)
@@ -61,7 +61,7 @@ void			*ft_block_init_many(t_memblock *block, void *raw,
 ** MEMSMALL -> MEMTINY
 */
 
-t_mempage		*ft_page_create(t_mempage *parent)
+t_mempage			*ft_page_create(void)
 {
 	size_t			rawsize;
 	size_t			size;
@@ -83,13 +83,10 @@ t_mempage		*ft_page_create(t_mempage *parent)
 	raw = (void*)((size_t)page->blocks + (sizeof(t_memblock) * page->count));
 	raw = ft_block_init_many(page->blocks, raw, MEMSMALL, 100);
 	ft_block_init_many(&page->blocks[100], raw, MEMTINY, 100);
-	page->prev = parent;
-	if (parent)
-		parent->next = page;
 	return (page);
 }
 
-t_mempage		*ft_page_create_big(t_mempage *parent, size_t const size)
+t_mempage			*ft_page_create_big(size_t const size)
 {
 	size_t		fullsize;
 	void		*memory;
@@ -108,14 +105,13 @@ t_mempage		*ft_page_create_big(t_mempage *parent, size_t const size)
 	page->blocks->size = size;
 	page->blocks->flags = MEM_BIG;
 	page->blocks->content = (void*)((size_t)page->blocks + sizeof(t_memblock));
-	page->prev = parent;
-	if (parent)
-		parent->next = page;
 	return (page);
 }
 
-void			ft_page_delete(t_mempage *page)
+void				ft_page_delete(t_mempage *page)
 {
+	if (page == ft_page_store(NULL))
+		ft_page_store(page->next);
 	if (page->prev)
 		page->prev = page->next;
 	if (page->next)
@@ -124,7 +120,7 @@ void			ft_page_delete(t_mempage *page)
 		(sizeof(t_memblock) * page->count));
 }
 
-t_mempage		*ft_page_store(t_mempage *userpage)
+t_mempage			*ft_page_store(t_mempage *userpage)
 {
 	static t_mempage		*page = NULL;
 
@@ -133,7 +129,26 @@ t_mempage		*ft_page_store(t_mempage *userpage)
 	return (page);
 }
 
-t_memblock		*ft_block_search(t_mempage *page, size_t const size)
+t_mempage			*ft_page_add(t_mempage *page)
+{
+	t_mempage	*root;
+
+	if (!page)
+		return (NULL);
+	root = ft_page_store(NULL);
+	if (!root)
+	{
+		ft_page_store(page);
+		return (page);
+	}
+	while (root->next)
+		root = root->next;
+	root->next = page;
+	page->prev = root;
+	return (page);
+}
+
+t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 {
 	size_t			p;
 	t_memblock		*block;
@@ -151,20 +166,20 @@ t_memblock		*ft_block_search(t_mempage *page, size_t const size)
 		}
 		page = page->next;
 	}
-	page = ft_page_create(page);
+	page = ft_page_create();
 	if (page)
 		return (page->blocks);
 	return (NULL);
 }
 
-void			ft_malloc_display(void)
+void				ft_malloc_display(void)
 {
 	t_mempage	*page;
 	t_memblock	*block;
 	size_t		p;
 
-	page = ft_page_store(NULL);
 	ft_putstr("--- START ---\n");
+	page = ft_page_store(NULL);
 	while (page)
 	{
 		ft_printf("page informations: size: %lu - blocks count: %lu\n",
@@ -173,9 +188,8 @@ void			ft_malloc_display(void)
 		while (p < page->count)
 		{
 			block = &page->blocks[p];
-			ft_printf("%s%s%p%s%lu%s%s\n",
-				"\tblock: ",
-				" - address: ", block->content,
+			ft_printf("[%3lu]%s%p%s%6lu%s%s\n", p,
+				"\taddress: ", block->content,
 				" - size: ", block->size,
 				" - used: ", (block->flags & MEM_USED) ? "yes" : "no");
 			p++;
@@ -185,7 +199,23 @@ void			ft_malloc_display(void)
 	ft_putstr("--- END ---\n");
 }
 
-void			*ft_malloc(size_t const size)
+static inline void 	*ft_malloc_big(size_t const size)
+{
+	t_memblock	*block;
+	t_mempage	*page;
+
+	page = ft_page_create_big(size);
+	if (page)
+	{
+		ft_page_add(page);
+		block = page->blocks;
+		block->flags |= MEM_USED;
+		return (block);
+	}
+	return (NULL);
+}
+
+void				*ft_malloc(size_t const size)
 {
 	t_mempage				*page;
 	t_memblock				*block;
@@ -194,13 +224,12 @@ void			*ft_malloc(size_t const size)
 	if (!page)
 	{
 		if (size > MEMSMALL)
-			page = ft_page_create_big(NULL, size);
+			ft_page_add(ft_page_create_big(size));
 		else
-			page = ft_page_create(NULL);
-		ft_page_store(page);
+			ft_page_add(ft_page_create());
 	}
 	else if (size > MEMSMALL)
-		ft_page_create_big(page);
+		return (ft_malloc_big(size));
 	block = ft_block_search(page, size);
 	if (block)
 	{

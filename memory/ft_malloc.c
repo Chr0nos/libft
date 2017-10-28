@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/26 03:11:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/10/28 18:29:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ void				ft_malloc_display(void)
 	page = ft_page_store(NULL);
 	while (page)
 	{
-		ft_printf("page informations: size: %lu - blocks count: %lu\n",
-			page->size, page->count);
+		ft_printf("page informations: size: %lu - blocks count: %lu%s%p\n",
+			page->size, page->count, " - address: ", page);
 		p = 0;
 		while (p < page->count)
 		{
@@ -35,6 +35,7 @@ void				ft_malloc_display(void)
 				" - used: ", (block->flags & MEM_USED) ? "yes" : "no");
 			p++;
 		}
+		ft_putchar('\n');
 		page = page->next;
 	}
 	ft_putstr("--- END ---\n");
@@ -51,7 +52,7 @@ static inline void 	*ft_malloc_big(size_t const size)
 		ft_page_add(page);
 		block = page->blocks;
 		block->flags |= MEM_USED;
-		return (block);
+		return (block->content);
 	}
 	return (NULL);
 }
@@ -70,7 +71,7 @@ void				*ft_malloc(size_t const size)
 			ft_page_add(ft_page_create());
 	}
 	else if (size > MEMSMALL)
-		return (ft_malloc_big(size));
+		return (ft_page_add(ft_malloc_big(size)));
 	block = ft_block_search(page, size);
 	if (block)
 	{
@@ -78,4 +79,31 @@ void				*ft_malloc(size_t const size)
 		return (block->content);
 	}
 	return (NULL);
+}
+
+void				ft_free(void *ptr)
+{
+	t_mempage		*page;
+	size_t			p;
+
+	page = ft_page_store(NULL);
+	while (page)
+	{
+		if ((!page->count) || (ptr < page->blocks->content) ||
+			(ptr > (void*)((size_t)page->blocks->content + page->size)))
+		{
+			page = page->next;
+			continue ;
+		}
+		p = page->count;
+		while (p--)
+		{
+			if (page->blocks[p].content == ptr)
+			{
+				page->blocks[p].flags &= MEM_BIG;
+				return ;
+			}
+		}
+		page = page->next;
+	}
 }

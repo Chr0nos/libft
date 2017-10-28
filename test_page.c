@@ -30,21 +30,27 @@ static int		test_malloc_page(void)
 
 static void		test_malloc(void)
 {
-	char	*string;
+	//char	*string;
+	void	*ptrs[4];
 
-	string = ft_malloc(50);
-	ft_strcpy(string, "j'apprecie les fruits au sirop");
-	ft_putendl(string);
-	ft_malloc(1310725);
-	ft_malloc(1310742);
-	ft_malloc(16);
+	//string = ft_malloc(50);
+	//ft_strcpy(string, "j'apprecie les fruits au sirop");
+	//ft_putendl(string);
+	ptrs[0] = ft_malloc(1310725);
+	ptrs[1] = ft_malloc(1310742);
+	ptrs[2] = ft_malloc(16);
+	ft_malloc_display();
+	ft_free(ptrs[0]);
+	ft_free(ptrs[1]);
+	ft_free(ptrs[2]);
 	ft_malloc_display();
 }
 
 int		main(void)
 {
 	ft_printf("tiny: %lu - small: %lu\n", MEMTINY, MEMSMALL);
-	test_malloc_page();
+	(void)test_malloc_page;
+	//	test_malloc_page();
 	test_malloc();
 	return (0);
 }

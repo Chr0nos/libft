@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_page.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/26 03:11:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/02 12:25:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,7 +104,6 @@ t_mempage			*ft_page_add(t_mempage *page)
 	page->prev = root;
 	return (page);
 }
-
 
 // implementation foireuse... a la reflexion comment faire pour supprimer
 // l'ellement racine, NULL en parametre ne suffira pas, je dois trouver autre

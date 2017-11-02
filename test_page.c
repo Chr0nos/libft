@@ -36,9 +36,11 @@ static void		test_malloc(void)
 	//string = ft_malloc(50);
 	//ft_strcpy(string, "j'apprecie les fruits au sirop");
 	//ft_putendl(string);
-	ptrs[0] = ft_malloc(1310725);
-	ptrs[1] = ft_malloc(1310742);
+	ft_bzero(ptrs, sizeof(void*) * 4);
+	ptrs[0] = ft_malloc(MEMSMALL + 1);
+	ptrs[1] = ft_malloc(MEMSMALL + 2);
 	ptrs[2] = ft_malloc(16);
+	ft_printf("%s%p %p %p\n", "test pointers: ",  ptrs[0], ptrs[1], ptrs[2]);
 	ft_malloc_display();
 	ft_free(ptrs[0]);
 	ft_free(ptrs[1]);

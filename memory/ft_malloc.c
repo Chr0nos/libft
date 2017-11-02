@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/28 18:29:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/02 12:46:40 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,14 @@ void				*ft_malloc(size_t const size)
 	if (!page)
 	{
 		if (size > MEMSMALL)
-			ft_page_add(ft_page_create_big(size));
+			page = ft_page_add(ft_page_create_big(size));
 		else
-			ft_page_add(ft_page_create());
+			page = ft_page_add(ft_page_create());
 	}
 	else if (size > MEMSMALL)
-		return (ft_page_add(ft_malloc_big(size)));
+		return (ft_malloc_big(size));
 	block = ft_block_search(page, size);
+	ft_printf("%s%lu\n", "looking for a page of size: ", size);
 	if (block)
 	{
 		block->flags |= MEM_USED;

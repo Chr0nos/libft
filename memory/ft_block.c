@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:10:38 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 13:38:04 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 14:20:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 	size_t			p;
 	t_memblock		*block;
 
-	ft_printf("%s%lu\n", "block search: ", size);
 	if (size > MEMSMALL)
 		return (ft_block_search_big(size));
 	while (page)
@@ -77,9 +76,7 @@ t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 		}
 		page = page->next;
 	}
-	ft_putstr("block search: making a new std page\n");
-	page = ft_page_create();
-	ft_page_add(page);
+	page = ft_page_add(ft_page_create());
 	if (page)
 		return (ft_block_search(page, size));
 	return (NULL);

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 13:30:47 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 14:57:52 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # define MEM_USED		(1u << 0)
 # define MEM_BIG		(1u << 1)
 # define MEM_DISABLED	(1u << 2)
+
+typedef enum			e_malloc_mode
+{
+	READ,
+	WRITE
+}						t_malloc_mode;
 
 typedef struct			s_memblock
 {
@@ -63,7 +69,7 @@ t_memblock				*ft_block_search(t_mempage *page, size_t const size);
 t_mempage				*ft_page_create(void);
 t_mempage				*ft_page_create_big(size_t const size);
 void					ft_page_delete(t_mempage *page);
-t_mempage				*ft_page_store(t_mempage *userpage);
+t_mempage				*ft_page_store(t_mempage *userpage, t_malloc_mode mode);
 t_mempage				*ft_page_add(t_mempage *page);
 
 /*

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 13:42:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 14:58:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void				ft_malloc_display(void)
 	size_t		p;
 
 	ft_putstr("--- START ---\n");
-	page = ft_page_store(NULL);
+	page = ft_page_store(NULL, READ);
 	while (page)
 	{
 		ft_printf("page informations: size: %lu - blocks count: %lu%s%p\n",
@@ -46,7 +46,9 @@ void				*ft_malloc(size_t const size)
 	t_mempage				*page;
 	t_memblock				*block;
 
-	page = ft_page_store(NULL);
+	if (!size)
+		return (NULL);
+	page = ft_page_store(NULL, READ);
 	block = ft_block_search(page, size);
 	if (block)
 	{

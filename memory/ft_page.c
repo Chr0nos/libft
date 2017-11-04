@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 13:37:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 15:07:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ t_mempage			*ft_page_create_big(size_t const size)
 
 void				ft_page_delete(t_mempage *page)
 {
-	if (page == ft_page_store(NULL))
-		ft_page_store(page->next);
+	if (page == ft_page_store(NULL, READ))
+		ft_page_store(page->next, WRITE);
 	if (page->prev)
-		page->prev = page->next;
+		page->prev->next = page->next;
 	if (page->next)
 		page->next->prev = page->prev;
 	munmap(page, page->size + sizeof(t_mempage) +
@@ -93,10 +93,10 @@ t_mempage			*ft_page_add(t_mempage *page)
 
 	if (!page)
 		return (NULL);
-	root = ft_page_store(NULL);
+	root = ft_page_store(NULL, READ);
 	if (!root)
 	{
-		ft_page_store(page);
+		ft_page_store(page, WRITE);
 		return (page);
 	}
 	while (root->next)
@@ -106,14 +106,11 @@ t_mempage			*ft_page_add(t_mempage *page)
 	return (page);
 }
 
-// implementation foireuse... a la reflexion comment faire pour supprimer
-// l'ellement racine, NULL en parametre ne suffira pas, je dois trouver autre
-// chose
-t_mempage			*ft_page_store(t_mempage *userpage)
+t_mempage			*ft_page_store(t_mempage *userpage, t_malloc_mode mode)
 {
 	static t_mempage		*page = NULL;
 
-	if (userpage)
+	if (mode == WRITE)
 		page = userpage;
 	return (page);
 }

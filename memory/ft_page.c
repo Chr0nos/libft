@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/02 12:25:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 13:37:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ t_mempage			*ft_page_create_big(size_t const size)
 	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->blocks->size = size;
 	page->blocks->flags = MEM_BIG;
+	page->blocks->used_size = size;
 	page->blocks->content = (void*)((size_t)page->blocks + sizeof(t_memblock));
 	return (page);
 }

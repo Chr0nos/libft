@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/02 12:46:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 13:42:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ void				ft_malloc_display(void)
 		while (p < page->count)
 		{
 			block = &page->blocks[p];
-			ft_printf("[%3lu]%s%p%s%6lu%s%s\n", p,
-				"\taddress: ", block->content,
-				" - size: ", block->size,
-				" - used: ", (block->flags & MEM_USED) ? "yes" : "no");
+			ft_printf("[%3lu]%s%p%s%6lu%s%s%s%lu\n", p,
+				"\taddress: ", block->content, " - size: ", block->size,
+				" - used: ", (block->flags & MEM_USED) ? "yes" : "no",
+				" - used size: ", block->used_size);
 			p++;
 		}
 		ft_putchar('\n');
@@ -41,70 +41,18 @@ void				ft_malloc_display(void)
 	ft_putstr("--- END ---\n");
 }
 
-static inline void 	*ft_malloc_big(size_t const size)
-{
-	t_memblock	*block;
-	t_mempage	*page;
-
-	page = ft_page_create_big(size);
-	if (page)
-	{
-		ft_page_add(page);
-		block = page->blocks;
-		block->flags |= MEM_USED;
-		return (block->content);
-	}
-	return (NULL);
-}
-
 void				*ft_malloc(size_t const size)
 {
 	t_mempage				*page;
 	t_memblock				*block;
 
 	page = ft_page_store(NULL);
-	if (!page)
-	{
-		if (size > MEMSMALL)
-			page = ft_page_add(ft_page_create_big(size));
-		else
-			page = ft_page_add(ft_page_create());
-	}
-	else if (size > MEMSMALL)
-		return (ft_malloc_big(size));
 	block = ft_block_search(page, size);
-	ft_printf("%s%lu\n", "looking for a page of size: ", size);
 	if (block)
 	{
 		block->flags |= MEM_USED;
+		block->used_size = size;
 		return (block->content);
 	}
 	return (NULL);
-}
-
-void				ft_free(void *ptr)
-{
-	t_mempage		*page;
-	size_t			p;
-
-	page = ft_page_store(NULL);
-	while (page)
-	{
-		if ((!page->count) || (ptr < page->blocks->content) ||
-			(ptr > (void*)((size_t)page->blocks->content + page->size)))
-		{
-			page = page->next;
-			continue ;
-		}
-		p = page->count;
-		while (p--)
-		{
-			if (page->blocks[p].content == ptr)
-			{
-				page->blocks[p].flags &= MEM_BIG;
-				return ;
-			}
-		}
-		page = page->next;
-	}
 }

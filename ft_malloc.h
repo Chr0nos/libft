@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/10/28 17:35:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/04 13:30:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct			s_memblock
 {
 	size_t				size;
 	size_t				flags;
+	size_t				used_size;
 	void				*content;
 }						t_memblock;
 
@@ -44,7 +45,7 @@ typedef struct			s_mempage
 	t_memblock			*blocks;
 }						t_mempage;
 
-#endif
+extern t_mempage		*ft_page;
 
 /*
 ** blocks management
@@ -72,3 +73,5 @@ t_mempage				*ft_page_add(t_mempage *page);
 void					ft_free(void *ptr);
 void					ft_malloc_display(void);
 void					*ft_malloc(size_t const size);
+
+#endif

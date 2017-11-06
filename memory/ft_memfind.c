@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 23:35:23 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 00:02:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:59:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_malloc.h"
 
-static int	ft_memfind_laod(t_mempage *page, t_memblock *block,
+static int	ft_memfind_load(t_mempage *page, t_memblock *block,
 		t_mempage **upage, t_memblock **ublock)
 {
 	if (upage)
@@ -47,7 +47,7 @@ int			ft_memfind(void *ptr, t_mempage **upage, t_memblock **ublock)
 		while (block_index--)
 		{
 			if (ptr == page->blocks[block_index].content)
-				return (ft_memfind_laod(page, &page->blocks[block_index],
+				return (ft_memfind_load(page, &page->blocks[block_index],
 							upage, ublock));
 		}
 		page = page->next;

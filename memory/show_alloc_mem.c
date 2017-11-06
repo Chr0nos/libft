@@ -6,11 +6,22 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 19:05:49 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 19:32:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 22:34:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+static inline void	ft_malloc_showtype_title(char *title, const char *name,
+		const void *ptr)
+{
+	if (!*title)
+	{
+		ft_printf("%s%s\n", name, " : ", ptr);
+		*title = 1;
+	}
+
+}
 
 static size_t		ft_malloc_showtype(t_mempage *page, size_t const min,
 		size_t const max, const char * name)
@@ -29,11 +40,7 @@ static size_t		ft_malloc_showtype(t_mempage *page, size_t const min,
 		if ((block->flags & MEM_USED) &&
 				(block->size > min) && (block->size <= max))
 		{
-			if (!title)
-			{
-				ft_printf("%s%s\n", name, " : ", block);
-				title = 1;
-			}
+			ft_malloc_showtype_title(&title, name, block);
 			ft_printf("%p%s%p%s%lu%s",
 					block->content, " - ",
 					(size_t)block->content + block->size,

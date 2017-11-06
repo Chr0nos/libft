@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2017/11/04 17:03:39 by snicolet         ###   ########.fr        #
+#*   Updated: 2017/11/06 16:22:30 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -333,6 +333,9 @@ norminette:
 install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
+
+wrapper: $(NAME)
+	$(CC) $(FLAGS) $(EXTRA_FLAGS) -shared ft_malloc_wrapper.c -o libft_malloc.so -I. -lft -L.
 
 # normal rule
 #.PHONY: norminette so dll re all clean install

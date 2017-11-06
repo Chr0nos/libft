@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 16:03:04 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 18:42:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:23:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,4 +20,9 @@ void	*malloc(size_t size)
 void	free(void *ptr)
 {
 	ft_free(ptr);
+}
+
+void	*realloc(void *ptr, size_t size)
+{
+	return (ft_realloc(ptr, size));
 }

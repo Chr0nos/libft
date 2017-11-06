@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 19:25:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 23:58:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,7 @@ void					ft_malloc_display(void);
 void					show_alloc_mem(void);
 void					*ft_malloc(size_t const size);
 void					*ft_realloc(void *ptr, size_t size);
+int						ft_memfind(void *ptr,
+		t_mempage **upage, t_memblock **ublock);
 
 #endif

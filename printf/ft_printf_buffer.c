@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:36:31 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/11 10:23:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 18:47:12 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 
 void					ft_printf_flush_asprintf(t_printf *pf)
 {
-	pf->buff_asprintf = ft_realloc(pf->buff_asprintf,
+	pf->buff_asprintf = ft_realloc_fake(pf->buff_asprintf,
 		pf->size, pf->size + FT_PF_ASIZE);
 	if (!pf->buff_asprintf)
 	{

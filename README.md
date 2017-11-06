@@ -10,4 +10,7 @@ Optimisation        |         |     x    |
 Passage moulinette  |         |          | x
 Corrections         |         |          | x
 Printf              |         |          | x
-Sscanf              |         |     x    |
+Sscanf              |         |          | x
+Malloc				|		  |    x     |
+Free				|		  |          | x
+Realloc				|	x	  |			 |

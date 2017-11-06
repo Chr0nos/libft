@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 14:57:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 18:44:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,5 +79,6 @@ t_mempage				*ft_page_add(t_mempage *page);
 void					ft_free(void *ptr);
 void					ft_malloc_display(void);
 void					*ft_malloc(size_t const size);
+void					*ft_realloc(void *ptr, size_t size);
 
 #endif

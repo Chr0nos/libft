@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/11/06 16:22:30 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/11/06 18:48:36 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -86,7 +86,8 @@ MEMORY=ft_memset.o \
 	   ft_malloc.o \
 	   ft_page.o \
 	   ft_block.o \
-	   ft_free.o
+	   ft_free.o \
+	   ft_realloc_fake.o
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \
@@ -310,6 +311,7 @@ dll:
 #linker for libft.so
 $(LIBSO): $(ALLDIR) $(ALLOBJ)
 	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
+
 so:
 	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
@@ -334,7 +336,7 @@ install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
 
-wrapper: $(NAME)
+wrapper: so libft.so
 	$(CC) $(FLAGS) $(EXTRA_FLAGS) -shared ft_malloc_wrapper.c -o libft_malloc.so -I. -lft -L.
 
 # normal rule

@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_malloc_wrapper.c                                :+:      :+:    :+:   */
+/*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/06 16:03:04 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 18:42:34 by snicolet         ###   ########.fr       */
+/*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
+/*   Updated: 2017/11/06 18:47:56 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdlib.h>
 
-void	*malloc(size_t size)
+void	*ft_realloc_fake(void *ptr, size_t size, size_t new_size)
 {
-	return (ft_malloc(size));
-}
+	void	*dest;
 
-void	free(void *ptr)
-{
-	ft_free(ptr);
+	if (new_size < size)
+		return (0);
+	dest = malloc(new_size);
+	if (!dest)
+		return (0);
+	ft_memcpy(dest, ptr, size);
+	free(ptr);
+	return (dest);
 }

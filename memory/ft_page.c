@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 15:07:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 03:03:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,21 @@ t_mempage			*ft_page_create_big(size_t const size)
 	return (page);
 }
 
+/*
+** permanently delete a memory page, ensure to keep the page list coherent
+** the page will check the previous page and link it's next pointer to the
+** page next if any (otherwise a NULL will be set)
+** on MEM_BIG pages this is the default behavior
+*/
+
 void				ft_page_delete(t_mempage *page)
 {
-	if (page == ft_page_store(NULL, READ))
+	const t_mempage		*root = ft_page_store(NULL, READ);
+
+	if (page == root)
+	{
 		ft_page_store(page->next, WRITE);
+	}
 	if (page->prev)
 		page->prev->next = page->next;
 	if (page->next)

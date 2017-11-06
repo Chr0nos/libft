@@ -44,12 +44,13 @@ static void		test_malloc(void)
 	ft_printf("%s%p %p %p %p\n",
 		"test pointers: ",  ptrs[0], ptrs[1], ptrs[2], ptrs[3]);
 	// ft_malloc_display();
+	show_alloc_mem();
 	ft_free(ptrs[0]);
 	ft_free(ptrs[1]);
 	ft_free(ptrs[2]);
 	ft_free(ptrs[3]);
 	ft_free(string);
-	ft_malloc_display();
+//	ft_malloc_display();
 }
 
 int		main(void)

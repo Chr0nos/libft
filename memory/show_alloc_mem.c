@@ -6,19 +6,21 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 19:05:49 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 19:28:15 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/06 19:32:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void		ft_malloc_showtype(t_mempage *page, size_t const min,
+static size_t		ft_malloc_showtype(t_mempage *page, size_t const min,
 		size_t const max, const char * name)
 {
 	t_memblock	*block;
 	size_t		block_index;
+	size_t		total;
 	char		title;
 
+	total = 0;
 	title = 0;
 	block_index = 0;
 	while (block_index < page->count)
@@ -36,9 +38,11 @@ static void		ft_malloc_showtype(t_mempage *page, size_t const min,
 					block->content, " - ",
 					(size_t)block->content + block->size,
 					" : ", block->used_size, " octects\n");
+			total += block->used_size;
 		}
 		block_index++;
 	}
+	return (total);
 }
 
 void		show_alloc_mem(void)
@@ -50,10 +54,10 @@ void		show_alloc_mem(void)
 	page = ft_page_store(NULL, READ);
 	while (page)
 	{
-		ft_malloc_showtype(page, 0, MEMTINY, "TINY");
-		ft_malloc_showtype(page, MEMTINY, MEMSMALL, "SMALL");
-		ft_malloc_showtype(page, MEMSMALL, (size_t)-1, "LARGE");
+		total += ft_malloc_showtype(page, 0, MEMTINY, "TINY") +
+			ft_malloc_showtype(page, MEMTINY, MEMSMALL, "SMALL") +
+			ft_malloc_showtype(page, MEMSMALL, (size_t)-1, "LARGE");
 		page = page->next;
 	}
-	ft_printf("%s%lu\n", "Total:  ", total);
+	ft_printf("%s%lu%s", "Total : ", total, " octects\n");
 }

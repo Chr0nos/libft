@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 00:21:36 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 00:40:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ static inline void	*ft_realloc_core(t_memblock *block, size_t size)
 
 	ptr = ft_malloc(size);
 	if (!ptr)
+	{
+		ft_free(block->content);
 		return (NULL);
+	}
 	ft_memcpy(ptr, block->content, block->used_size);
 	ft_free(block->content);
 	return (ptr);

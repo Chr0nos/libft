@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 01:05:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 01:32:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ void				*ft_realloc(void *ptr, size_t size)
 	if (!ft_memfind(ptr, NULL, &block))
 	{
 		ft_putendl("failed to find item");
+		show_alloc_mem();
 		return (NULL);
 	}
 	if (block->size >= size)

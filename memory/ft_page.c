@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 19:19:38 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 21:12:24 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,9 @@
 ** |--------|----------------|--------------------------------------------|
 ** size = the size of ONE block raw
 ** amount = the amount of requested blocks
+** is the function amount is incremented to prevent memory lost
+** due to the multiple of getpagesize, the function will allocate "at last"
+** the amount of blocks, and the extra size will be available too.
 */
 
 t_mempage			*ft_page_create(size_t size, size_t amount)
@@ -38,18 +41,18 @@ t_mempage			*ft_page_create(size_t size, size_t amount)
 	if ((!amount) || (!size))
 		return  (NULL);
 	realsize = pagesize;
-	neededsize = size * amount + (sizeof(t_mempage) +
-		(sizeof(t_memblock) * amount));
+	neededsize = (size + sizeof(t_memblock)) * amount + sizeof(t_mempage);
 	while (realsize < neededsize)
 		realsize += pagesize;
+	amount += (realsize - neededsize) / (sizeof(t_memblock) + size);
 	if (!(memory = mmap(NULL, realsize, PROT_WRITE | PROT_READ,
-		MAP_PRIVATE | MAP_ANON, -1, 0)))
+			MAP_PRIVATE | MAP_ANON, -1, 0)))
 		return (NULL);
 	page = (t_mempage*)(size_t)memory;
 	ft_bzero(page, sizeof(*page));
-	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->count = amount;
-	page->size = size * amount;
+	page->size = realsize - (size * amount);
+	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->blocksize = size;
 	ft_block_init_many(page->blocks, (void*)((size_t)page->blocks +
 		(sizeof(t_memblock) * amount)), size, amount);
@@ -58,19 +61,24 @@ t_mempage			*ft_page_create(size_t size, size_t amount)
 
 t_mempage			*ft_page_create_big(size_t const size)
 {
-	size_t		fullsize;
-	void		*memory;
-	t_mempage	*page;
+	const size_t	pagesize = getpagesize();
+	size_t			realsize;
+	size_t			neededsize;
+	void			*memory;
+	t_mempage		*page;
 
-	fullsize = sizeof(t_mempage) + sizeof(t_memblock) + size;
-	memory = mmap(NULL, fullsize, PROT_READ | PROT_WRITE,
-		MAP_PRIVATE | MAP_ANON, -1, 0);
-	if (!memory)
+	neededsize = sizeof(t_mempage) + sizeof(t_memblock) + size;
+	realsize = pagesize;
+	while (realsize < neededsize)
+		realsize += pagesize;
+	if (!(memory = mmap(NULL, realsize, PROT_READ | PROT_WRITE,
+			MAP_PRIVATE | MAP_ANON, -1, 0)))
 		return (NULL);
 	page = (t_mempage*)(size_t)memory;
 	ft_bzero(page, sizeof(t_mempage));
 	page->count = 1;
-	page->size = size;
+	page->size = realsize - size;
+	page->blocksize = page->size;
 	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
 	page->blocks->used_size = size;
 	page->blocks->content = (void*)((size_t)page->blocks + sizeof(t_memblock));

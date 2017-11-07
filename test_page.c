@@ -46,6 +46,7 @@ static void		test_malloc(void)
 		"test pointers: ",  ptrs[0], ptrs[1], ptrs[2], ptrs[3]);
 	// ft_malloc_display();
 	show_alloc_mem();
+	ft_putendl("time to free");
 	ft_free(ptrs[0]);
 	ft_free(ptrs[1]);
 	ft_free(ptrs[2]);

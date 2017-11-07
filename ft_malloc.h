@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 21:02:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 23:37:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ typedef struct			s_mempage
 ** blocks management
 */
 
-void					*ft_block_init_many(t_memblock *block, void *raw,
+void					*ft_block_init(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count);
 t_memblock				*ft_block_search(t_mempage *page, size_t const size);
 

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:10:38 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 19:20:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 23:42:02 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** returns the next "free" raw block (for others calls to this)
 */
 
-void				*ft_block_init_many(t_memblock *block, void *raw,
+void				*ft_block_init(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count)
 {
 	while (count--)
@@ -33,7 +33,7 @@ static inline t_memblock	*ft_block_search_big(size_t const size)
 {
 	t_mempage	*bigpage;
 
-	bigpage = ft_page_create_big(size);
+	bigpage = ft_page_create(size, 1);
 	if (!bigpage)
 		return (NULL);
 	ft_page_add(bigpage);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memfind.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 23:35:23 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 00:59:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/08 00:05:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ int			ft_memfind(void *ptr, t_mempage **upage, t_memblock **ublock)
 	while (page)
 	{
 		if ((ptr < page->blocks->content) ||
-				(ptr > (void*)((size_t)page->blocks->content + page->size)))
+			(ptr > (void*)((size_t)page->blocks->content +
+			(page->count * page->blocksize))))
 		{
 			page = page->next;
 			continue ;

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 19:05:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 23:52:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void				*ft_realloc(void *ptr, size_t size)
 	}
 	if (!ft_memfind(ptr, &page, &block))
 	{
-		ft_putendl("failed to find item");
+		ft_printf("%s%p\n", "realloc cannot found the folowing pointer: ", ptr);
 		show_alloc_mem();
 		return (NULL);
 	}

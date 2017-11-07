@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 03:03:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 19:19:38 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,37 +18,41 @@
 ** t_mempage| t_memblock[]   |
 **    page  | blocks (meta)  |     raw memory pointed by blocks contents  |
 ** |--------|----------------|--------------------------------------------|
-** |   1    |       200      |        pointed by blocks->content          |
+** |   1    |       100      |        pointed by blocks->content          |
 ** |--------|----------------|--------------------------------------------|
-** |                                SIZE   (all the mapped memory size)   |
-** |        METADATA         |   (MEMTINY + MEMSMALL) or BIG  (rawsize)   |
+** |                                                                      |
+** |        METADATA         |    MEMTINY or MEMSMALL or BIG  (rawsize)   |
 ** |--------|----------------|--------------------------------------------|
-** order of raw data: (in a classical page not a big one)
-** MEMSMALL -> MEMTINY
+** size = the size of ONE block raw
+** amount = the amount of requested blocks
 */
 
-t_mempage			*ft_page_create(void)
+t_mempage			*ft_page_create(size_t size, size_t amount)
 {
-	size_t			rawsize;
-	size_t			size;
+	const size_t	pagesize = getpagesize();
+	size_t			realsize;
+	size_t			neededsize;
 	void			*memory;
-	void			*raw;
 	t_mempage		*page;
 
-	rawsize = (MEMTINY * 100) + (MEMSMALL * 100);
-	size = rawsize + (sizeof(t_memblock) * 200) + sizeof(t_mempage);
-	memory = mmap(NULL, size, PROT_WRITE | PROT_READ, MAP_PRIVATE | MAP_ANON,
-		-1, 0);
-	if (!memory)
+	if ((!amount) || (!size))
+		return  (NULL);
+	realsize = pagesize;
+	neededsize = size * amount + (sizeof(t_mempage) +
+		(sizeof(t_memblock) * amount));
+	while (realsize < neededsize)
+		realsize += pagesize;
+	if (!(memory = mmap(NULL, realsize, PROT_WRITE | PROT_READ,
+		MAP_PRIVATE | MAP_ANON, -1, 0)))
 		return (NULL);
 	page = (t_mempage*)(size_t)memory;
-	ft_bzero(page, sizeof(t_mempage));
+	ft_bzero(page, sizeof(*page));
 	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
-	page->count = 200;
-	page->size = rawsize;
-	raw = (void*)((size_t)page->blocks + (sizeof(t_memblock) * page->count));
-	raw = ft_block_init_many(page->blocks, raw, MEMSMALL, 100);
-	ft_block_init_many(&page->blocks[100], raw, MEMTINY, 100);
+	page->count = amount;
+	page->size = size * amount;
+	page->blocksize = size;
+	ft_block_init_many(page->blocks, (void*)((size_t)page->blocks +
+		(sizeof(t_memblock) * amount)), size, amount);
 	return (page);
 }
 
@@ -68,8 +72,6 @@ t_mempage			*ft_page_create_big(size_t const size)
 	page->count = 1;
 	page->size = size;
 	page->blocks = (t_memblock*)((size_t)page + sizeof(t_mempage));
-	page->blocks->size = size;
-	page->blocks->flags = MEM_BIG;
 	page->blocks->used_size = size;
 	page->blocks->content = (void*)((size_t)page->blocks + sizeof(t_memblock));
 	return (page);

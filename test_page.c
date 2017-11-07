@@ -10,20 +10,21 @@ static int		test_malloc_page(void)
 
 	headsize = sizeof(t_mempage) + (sizeof(t_memblock) * 200);
 	ft_printf("head size: %lu\n", headsize);
-	page = ft_page_create();
+	page = ft_page_create(MEMSMALL, 100);
 	if (!page)
 	{
 		ft_putstr("epic failure\n");
 		return (1);
 	}
 	ft_printf("page ptr %p\nsize: %lu\nblocks: %lu\n", page, page->size, page->count);
-	realsize = (size_t)page->blocks[199].content -  (size_t)page->blocks[0].content;
+	realsize = page->size;
 	ft_printf("real size: %lu\n", realsize);
 	// purge de toute la zone "raw"
+	ft_bzero(page->blocks->content, realsize);
 	ft_printf("purging %p\n", page->blocks->content);
-	ft_bzero(page->blocks->content, page->size);
+	//ft_bzero(page->blocks->content, page->size);
 	ft_printf("deleting page\n");
-//	ft_page_delete(page);
+	ft_page_delete(page);
 	ft_printf("done\n");
 	return (0);
 }
@@ -55,9 +56,10 @@ static void		test_malloc(void)
 
 int		main(void)
 {
+	ft_printf("page size: %lu\n", getpagesize());
 	ft_printf("tiny: %lu - small: %lu\n", MEMTINY, MEMSMALL);
 	(void)test_malloc_page;
-	//	test_malloc_page();
+	test_malloc_page();
 	test_malloc();
 	return (0);
 }

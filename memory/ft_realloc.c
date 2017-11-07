@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_realloc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 01:32:00 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 19:05:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ static inline void	*ft_realloc_core(t_memblock *block, size_t size)
 void				*ft_realloc(void *ptr, size_t size)
 {
 	t_memblock	*block;
+	t_mempage	*page;
 
 	if (!ptr)
 		return (ft_malloc(size));
@@ -43,16 +44,16 @@ void				*ft_realloc(void *ptr, size_t size)
 		ft_putendl("no size");
 		return (NULL);
 	}
-	if (!ft_memfind(ptr, NULL, &block))
+	if (!ft_memfind(ptr, &page, &block))
 	{
 		ft_putendl("failed to find item");
 		show_alloc_mem();
 		return (NULL);
 	}
-	if (block->size >= size)
+	if (page->blocksize >= size)
 	{
 		block->used_size = size;
 		return (ptr);
-	}	
+	}
 	return (ft_realloc_core(block, size));
 }

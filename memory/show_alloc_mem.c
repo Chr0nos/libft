@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   show_alloc_mem.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 19:05:49 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 22:34:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 19:17:36 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ static size_t		ft_malloc_showtype(t_mempage *page, size_t const min,
 	while (block_index < page->count)
 	{
 		block = &page->blocks[block_index];
-		if ((block->flags & MEM_USED) &&
-				(block->size > min) && (block->size <= max))
+		if ((block->used_size) &&
+				(page->blocksize > min) && (page->blocksize <= max))
 		{
 			ft_malloc_showtype_title(&title, name, block);
 			ft_printf("%p%s%p%s%lu%s",
 					block->content, " - ",
-					(size_t)block->content + block->size,
+					(size_t)block->content + page->blocksize,
 					" : ", block->used_size, " octects\n");
 			total += block->used_size;
 		}

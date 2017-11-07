@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 14:58:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 19:20:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,8 @@ void				ft_malloc_display(void)
 		{
 			block = &page->blocks[p];
 			ft_printf("[%3lu]%s%p%s%6lu%s%s%s%lu\n", p,
-				"\taddress: ", block->content, " - size: ", block->size,
-				" - used: ", (block->flags & MEM_USED) ? "yes" : "no",
+				"\taddress: ", block->content, " - size: ", page->blocksize,
+				" - used: ", (block->used_size > 0) ? "yes" : "no",
 				" - used size: ", block->used_size);
 			p++;
 		}
@@ -52,7 +52,6 @@ void				*ft_malloc(size_t const size)
 	block = ft_block_search(page, size);
 	if (block)
 	{
-		block->flags |= MEM_USED;
 		block->used_size = size;
 		return (block->content);
 	}

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:10:38 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/04 14:20:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/07 14:38:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 		{
 			block = &page->blocks[p];
 			if (block->flags & (MEM_BIG | MEM_DISABLED | MEM_USED))
+				continue ;
+			if ((size < MEMSMALL) && (block->size > MEMTINY))
 				continue ;
 			if (block->size >= size)
 				return (block);

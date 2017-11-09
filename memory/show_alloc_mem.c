@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 19:05:49 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 03:24:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/09 03:42:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void		show_alloc_mem(void)
 	page = ft_page_store(NULL, READ);
 	while (page)
 	{
-		ft_printf("%s%s\n", gettitle(page->blocksize), " : ");
+		ft_printf("%s%s%p\n", gettitle(page->blocksize), " : ", page);
 		p = 0;
 		while (p < page->count)
 		{

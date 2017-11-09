@@ -6,18 +6,21 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:57:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 23:37:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/09 01:29:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_MALLOC_H
 # define FT_MALLOC_H
 # include <unistd.h>
+# include <pthread.h>
 # define MEMTINY		128
 # define MEMSMALL		1024
 # define MEM_USED		(1u << 0)
 # define MEM_BIG		(1u << 1)
 # define MEM_DISABLED	(1u << 2)
+
+static pthread_mutex_t	g_memlock = PTHREAD_MUTEX_INITIALIZER;
 
 typedef enum			e_malloc_mode
 {

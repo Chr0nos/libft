@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/25 12:07:53 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 23:52:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/09 01:38:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,17 @@ static inline void	*ft_realloc_core(t_memblock *block, size_t size)
 {
 	void	*ptr;
 
+	pthread_mutex_unlock(&g_memlock);
 	ptr = ft_malloc(size);
 	if (!ptr)
 	{
-		ft_putendl("failed to allocate memory");
 		ft_free(block->content);
 		return (NULL);
 	}
+	pthread_mutex_lock(&g_memlock);
 	ft_memcpy(ptr, block->content,
 			(block->used_size < size) ? block->used_size : size);
+	pthread_mutex_unlock(&g_memlock);
 	ft_free(block->content);
 	return (ptr);
 }
@@ -44,15 +46,16 @@ void				*ft_realloc(void *ptr, size_t size)
 		ft_putendl("no size");
 		return (NULL);
 	}
+	pthread_mutex_lock(&g_memlock);
 	if (!ft_memfind(ptr, &page, &block))
 	{
-		ft_printf("%s%p\n", "realloc cannot found the folowing pointer: ", ptr);
-		show_alloc_mem();
+		pthread_mutex_unlock(&g_memlock);
 		return (NULL);
 	}
 	if (page->blocksize >= size)
 	{
 		block->used_size = size;
+		pthread_mutex_unlock(&g_memlock);
 		return (ptr);
 	}
 	return (ft_realloc_core(block, size));

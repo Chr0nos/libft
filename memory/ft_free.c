@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/04 13:42:02 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 01:33:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/09 02:21:42 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,13 @@ void				ft_free(void *ptr)
 {
 	t_mempage		*page;
 	t_memblock		*block;
+	pthread_mutex_t	*lock;
 
-	pthread_mutex_lock(&g_memlock);
+	lock = ft_memlock();
+	pthread_mutex_lock(lock);
 	if (!ft_memfind(ptr, &page, &block))
 	{
-		pthread_mutex_unlock(&g_memlock);
+		pthread_mutex_unlock(lock);
 		return ;
 	}
 	if (page->blocksize > MEMSMALL)
@@ -51,5 +53,5 @@ void				ft_free(void *ptr)
 		block->used_size = 0;
 		ft_free_emptypage(page);
 	}
-	pthread_mutex_unlock(&g_memlock);
+	pthread_mutex_unlock(lock);
 }

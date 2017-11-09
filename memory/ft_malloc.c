@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 01:32:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/09 02:23:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,18 +45,20 @@ void				*ft_malloc(size_t const size)
 {
 	t_mempage				*page;
 	t_memblock				*block;
+	pthread_mutex_t			*lock;
 
 	if (!size)
 		return (NULL);
-	pthread_mutex_lock(&g_memlock);
+	lock = ft_memlock();
+	pthread_mutex_lock(lock);
 	page = ft_page_store(NULL, READ);
 	block = ft_block_search(page, size);
 	if (block)
 	{
 		block->used_size = size;
-		pthread_mutex_unlock(&g_memlock);
+		pthread_mutex_unlock(lock);
 		return (block->content);
 	}
-	pthread_mutex_unlock(&g_memlock);
+	pthread_mutex_unlock(lock);
 	return (NULL);
 }

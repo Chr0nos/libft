@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/11/06 23:57:37 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/11/09 02:24:11 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -89,7 +89,8 @@ MEMORY=ft_memset.o \
 	   ft_free.o \
 	   ft_realloc_fake.o \
 	   show_alloc_mem.o \
-	   ft_memfind.o
+	   ft_memfind.o \
+	   ft_memlock.o
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \

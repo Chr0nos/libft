@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:10:38 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/07 23:42:02 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/10 17:32:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 ** returns the next "free" raw block (for others calls to this)
 */
 
-void				*ft_block_init(t_memblock *block, void *raw,
+void						*ft_block_init(t_memblock *block, void *raw,
 	size_t const blocksize, size_t count)
 {
 	while (count--)
@@ -40,7 +40,17 @@ static inline t_memblock	*ft_block_search_big(size_t const size)
 	return (bigpage->blocks);
 }
 
-t_memblock			*ft_block_search(t_mempage *page, size_t const size)
+static int					ft_block_skip(t_mempage **page, size_t const size)
+{
+	if ((*page)->blocksize < size)
+	{
+		*page = (*page)->next;
+		return (1);
+	}
+	return (0);
+}
+
+t_memblock					*ft_block_search(t_mempage *page, size_t const size)
 {
 	size_t			p;
 	t_memblock		*block;
@@ -49,11 +59,8 @@ t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 		return (ft_block_search_big(size));
 	while (page)
 	{
-		if (page->blocksize < size)
-		{
-			page = page->next;
+		if (ft_block_skip(&page, size))
 			continue ;
-		}
 		p = page->count;
 		while (p--)
 		{
@@ -64,7 +71,7 @@ t_memblock			*ft_block_search(t_mempage *page, size_t const size)
 		page = page->next;
 	}
 	page = ft_page_add(
-		ft_page_create((size <= MEMTINY) ? MEMTINY : MEMSMALL , 100));
+		ft_page_create((size <= MEMTINY) ? MEMTINY : MEMSMALL, 100));
 	if (page)
 		return (ft_block_search(page, size));
 	return (NULL);

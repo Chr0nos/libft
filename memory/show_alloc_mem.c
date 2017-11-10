@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/06 19:05:49 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 03:42:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/10 17:32:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static const char	*gettitle(size_t const size)
 	return ("LARGE");
 }
 
-void		show_alloc_mem(void)
+void				show_alloc_mem(void)
 {
 	size_t		total;
 	size_t		p;

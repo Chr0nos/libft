@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/06 18:48:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/10 17:33:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -184,7 +184,7 @@ void				ft_memdel(void **ap);
 void				*ft_memdup(const void *src, size_t size);
 void				*ft_realloc_fake(void *ptr, size_t size, size_t new_size);
 
-	/*
+/*
 ** function for chained lists
 */
 
@@ -230,7 +230,7 @@ void				ft_lstprintf(t_printf *pf);
 void				ft_lstprintf_numeric(t_printf *pf);
 int					ft_lstissort_circular(t_list *lst,
 	int (*cmp)(t_list *, t_list *));
-t_list		*ft_lstsearch(t_list *lst, t_list *item,
+t_list				*ft_lstsearch(t_list *lst, t_list *item,
 	int (*cmp)(t_list *, t_list *));
 
 /*

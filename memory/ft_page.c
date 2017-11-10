@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/08 00:01:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/10 17:31:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ static inline t_mempage	*ft_page_init(t_mempage *page, size_t const size,
 
 t_mempage				*ft_page_create(size_t size, size_t amount)
 {
-	const size_t	pagesize = getpagesize();
+	const size_t	pagesize = (size_t)getpagesize();
 	size_t			realsize;
 	size_t			neededsize;
 	void			*memory;
 
 	if ((!amount) || (!size))
-		return  (NULL);
+		return (NULL);
 	realsize = pagesize;
 	neededsize = (size + sizeof(t_memblock)) * amount + sizeof(t_mempage);
 	while (realsize < neededsize)

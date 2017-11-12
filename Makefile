@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2017/11/09 02:24:11 by snicolet         ###   ########.fr       *#
+#*   Updated: 2017/11/12 22:17:22 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ EXTRA_FLAGS=-pipe -Ofast
 FLAGS=-Wall -Werror -Wextra -Wno-unused-result
 #CC=clang
 ifeq ($(CC),clang)
-	EXTRA_FLAGS+=-Weverything -std=c99
+	EXTRA_FLAGS+=-Weverything
 else
 	FLAGS += -Wno-strict-aliasing
 endif

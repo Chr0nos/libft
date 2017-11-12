@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#    Updated: 2017/08/28 19:35:37 by snicolet         ###   ########.fr        #
+#*   Updated: 2017/11/12 22:17:22 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -82,7 +82,15 @@ MEMORY=ft_memset.o \
 	   ft_memalloc.o \
 	   ft_memdel.o \
 	   ft_memdup.o \
-	   ft_realloc.o
+	   ft_realloc.o \
+	   ft_malloc.o \
+	   ft_page.o \
+	   ft_block.o \
+	   ft_free.o \
+	   ft_realloc_fake.o \
+	   show_alloc_mem.o \
+	   ft_memfind.o \
+	   ft_memlock.o
 
 PRINTF_DIR=printf
 PRINTF=ft_printf.o \
@@ -306,6 +314,7 @@ dll:
 #linker for libft.so
 $(LIBSO): $(ALLDIR) $(ALLOBJ)
 	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
+
 so:
 	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
@@ -329,6 +338,9 @@ norminette:
 install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
+
+wrapper: so libft.so
+	$(CC) $(FLAGS) $(EXTRA_FLAGS) -shared ft_malloc_wrapper.c -o libft_malloc.so -I. -lft -L.
 
 # normal rule
 #.PHONY: norminette so dll re all clean install

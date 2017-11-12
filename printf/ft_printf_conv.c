@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 16:37:42 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 20:12:13 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/12 21:06:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ static inline void		ft_printd_conv_real(t_printf *pf, const TCO *conv)
 	if (conv->get_arg)
 		conv->get_arg(pf);
 	conv->set_len(pf);
-	if (!(pf->flags & FT_PF_FLAG_LESS))
+	if ((!(pf->flags & FT_PF_FLAG_LESS)) && (pf->flags & FT_PF_MINWIDTH))
 		ft_printf_padding(pf, ' ', pf->min_width - pf->slen);
 	if (conv->convert)
 		conv->convert(pf);

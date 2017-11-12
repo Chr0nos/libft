@@ -6,12 +6,13 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/26 03:09:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/12 18:57:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/12 21:15:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include <sys/mman.h>
+#include <unistd.h>
 
 /*
 ** memory management implementation:

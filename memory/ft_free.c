@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/04 13:42:02 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 02:21:42 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/12 18:51:23 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static inline void	ft_free_emptypage(t_mempage *page)
 		return ;
 	p = page->count;
 	while (p--)
-		if (page->blocks[p].used_size)
+		if (page->blocks[p].used_size != 0)
 			return ;
 	ft_page_delete(page);
 }

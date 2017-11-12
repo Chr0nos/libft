@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/10/23 15:55:06 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/09 02:23:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2017/11/12 18:23:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,15 @@ void				ft_malloc_display(void)
 	t_mempage	*page;
 	t_memblock	*block;
 	size_t		p;
+	size_t		index;
 
+	index = 0;
 	ft_putstr("--- START ---\n");
 	page = ft_page_store(NULL, READ);
 	while (page)
 	{
-		ft_printf("page informations: size: %lu - blocks count: %lu%s%p\n",
-			page->size, page->count, " - address: ", page);
-		p = 0;
+		ft_printf("page %u informations: size: %lu - blocks count: %lu%s%p\n",
+			index++, page->size, page->count, " - address: ", page, p = 0);
 		while (p < page->count)
 		{
 			block = &page->blocks[p];

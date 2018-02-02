@@ -129,6 +129,7 @@ SCANF=ft_scanf.o \
 	  ft_scanf_load.o \
 	  conv/ft_scanf_set_int.o \
 	  conv/ft_scanf_set_str.o \
+	  conv/ft_scanf_set_char.o \
 	  conv/ft_scanf_set_float.o \
 	  conv/ft_scanf_set_word.o \
 	  conv/ft_scanf_set_kernel.o \

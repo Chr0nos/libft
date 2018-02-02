@@ -135,6 +135,7 @@ unsigned int		ft_scanf_engine(const char *format, t_scanf *sf);
 
 int					ft_scanf_set_int(t_scanf *sf);
 int					ft_scanf_set_str(t_scanf *sf);
+int					ft_scanf_set_char(t_scanf *sf);
 int					ft_scanf_set_word(t_scanf *sf);
 int					ft_scanf_set_float(t_scanf *sf);
 int					ft_scanf_set_kernel(t_scanf *sf);
@@ -160,7 +161,7 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 11
+# define FT_SF_CONVCOUNT 12
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'%', 0, ft_scanf_set_percent},
@@ -172,6 +173,7 @@ static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'f', 0, ft_scanf_set_float},
 	(t_scanf_set){'x', 0, ft_scanf_set_hex},
 	(t_scanf_set){'o', 0, ft_scanf_set_octal},
+	(t_scanf_set){'c', 0, ft_scanf_set_char},
 	(t_scanf_set){'d', 0, ft_scanf_set_int},
 	(t_scanf_set){'s', 0, ft_scanf_set_str}
 };

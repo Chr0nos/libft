@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 00:06:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 13:15:10 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # define FT_SF_MOD_LL		(1u << 5)
 # define FT_SF_MOD_J		(1u << 6)
 # define FT_SF_MOD_Z		(1u << 7)
-# define FT_SF_MOD_NONE		(1u << 8)
-# define FT_SF_FLAG_SKIP	(1u << 9)
-# define FT_SF_FLAG_PREC	(1u << 10)
-# define FT_SF_FLAG_MAXLEN  (1u << 11)
+# define FT_SF_MOD_HASH		(1u << 8)
+# define FT_SF_MOD_NONE		(1u << 9)
+# define FT_SF_FLAG_SKIP	(1u << 10)
+# define FT_SF_FLAG_PREC	(1u << 11)
+# define FT_SF_FLAG_MAXLEN  (1u << 12)
 # define FT_SF_MOD_ANYI		0xf0
 # define FT_SF_MOD_ANYD		0x0c
 # define FT_SF_MOD_ANY		0xfc
@@ -53,6 +54,9 @@
 ** n chars into the following pointer (the memory has to be reserved before)
 ** this flag is NULL pointers protected, but in case of a null pointer the
 ** sscanf will stop the line parsing
+** possibles flags: #
+** if # is present: then the result will be malloc and the address will be
+** set into the user pointer, so it has to be a char** in this particular case
 ** -----------------------------------------------------------------------------
 ** %d : retrive int data
 ** modifiers: H HH L ll j z
@@ -196,9 +200,10 @@ typedef struct		s_scanf_mod
 	const char		*str;
 }					t_scanf_mod;
 
-# define FT_SF_MODS_COUNT 7
+# define FT_SF_MODS_COUNT 8
 
 static const t_scanf_mod g_scanf_mods[FT_SF_MODS_COUNT] = {
+	(t_scanf_mod){FT_SF_MOD_HASH, 1, "#"},
 	(t_scanf_mod){FT_SF_MOD_J, 1, "j"},
 	(t_scanf_mod){FT_SF_MOD_Z, 1, "z"},
 	(t_scanf_mod){FT_SF_MOD_H, 1, "h"},

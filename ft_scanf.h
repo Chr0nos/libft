@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 13:43:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 15:15:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,7 @@ void				ft_scanf_debug(const t_scanf *sf);
 
 int					ft_scanf_set_int(t_scanf *sf);
 int					ft_scanf_set_str(t_scanf *sf);
+int					ft_scanf_set_strcmp(t_scanf *sf);
 int					ft_scanf_set_char(t_scanf *sf);
 int					ft_scanf_set_word(t_scanf *sf);
 int					ft_scanf_set_float(t_scanf *sf);
@@ -187,7 +188,7 @@ static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
 	(t_scanf_set){'o', 0, ft_scanf_set_octal},
 	(t_scanf_set){'c', 0, ft_scanf_set_char},
 	(t_scanf_set){'d', 0, ft_scanf_set_int},
-	(t_scanf_set){'s', 0, ft_scanf_set_str}
+	(t_scanf_set){'s', 0, ft_scanf_set_strcmp}
 };
 
 /*

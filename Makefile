@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/02 23:53:30 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/02/03 15:15:06 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -130,6 +130,7 @@ SCANF=ft_scanf.o \
 	  ft_scanf_debug.o \
 	  conv/ft_scanf_set_int.o \
 	  conv/ft_scanf_set_str.o \
+	  conv/ft_scanf_set_strcmp.o \
 	  conv/ft_scanf_set_char.o \
 	  conv/ft_scanf_set_float.o \
 	  conv/ft_scanf_set_word.o \

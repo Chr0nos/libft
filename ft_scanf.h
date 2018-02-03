@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 13:15:10 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 13:43:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <string.h>
 
-# define FT_SF_CONVERTS	"dswfxo%Nnv"
+# define FT_SF_CONVERTS	"dswfxo%Nnvc"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -44,6 +44,7 @@
 ** hh : read a char size
 ** ll : read as long long
 ** l  : read as long
+** #  : alternative mode for current conversion
 ** -----------------------------------------------------------------------------
 ** %s : retrive all the left text in the parsed string
 ** modifiers: precision / maxlen

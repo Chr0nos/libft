@@ -6,11 +6,11 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 13:16:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 13:46:27 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.ht "
+#include "libft.h"
 #include <stdlib.h>
 
 int		ft_scanf_set_char(t_scanf *sf)
@@ -19,7 +19,7 @@ int		ft_scanf_set_char(t_scanf *sf)
 	size_t			maxlen;
 	size_t			len;
 
-	if (sf->flags & FT_SF_FLAG_HASH)
+	if (sf->flags & FT_SF_MOD_HASH)
 		return (ft_scanf_set_str(sf));
 	maxlen = (sf->flags & FT_SF_FLAG_MAXLEN) ? (size_t)sf->maxlen : 1;
 	len = ft_strplen(sf->str, &sf->str[maxlen]);

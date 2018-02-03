@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 14:59:23 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 01:34:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 00:10:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,9 +33,9 @@ static const char		*ft_scanf_loadprecision(const char *format, t_scanf *sf)
 
 static const char		*ft_scanf_loadmaxlen(const char *format, t_scanf *sf)
 {
-	const int		len = ft_atonum(format, &sf->precision);
+	const int		len = ft_atonum(format, &sf->maxlen);
 
-	if ((len) && (sf->precision >= 0))
+	if ((len) && (sf->maxlen >= 0))
 	{
 		format += len;
 		sf->flags |= FT_SF_FLAG_MAXLEN;

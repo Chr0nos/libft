@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 22:14:18 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 00:06:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@
 ** %s : retrive all the left text in the parsed string
 ** modifiers: precision / maxlen
 ** if maxlen AND precision are given, precision will be used, other is ignored
+** -----------------------------------------------------------------------------
+** %c : load the next char into the given char address,
+** to be usefull you can pass a maxlen then the sscanf function will load the
+** n chars into the following pointer (the memory has to be reserved before)
+** this flag is NULL pointers protected, but in case of a null pointer the
+** sscanf will stop the line parsing
 ** -----------------------------------------------------------------------------
 ** %d : retrive int data
 ** modifiers: H HH L ll j z
@@ -127,6 +133,7 @@ int					ft_sscanfq(const char *s, const char *format, ...);
 int					ft_sscanfqf(const char *s, const char *format, ...);
 const char			*ft_scanf_loadmods(const char *format, t_scanf *sf);
 unsigned int		ft_scanf_engine(const char *format, t_scanf *sf);
+void				ft_scanf_debug(const t_scanf *sf);
 
 /*
 ** setters functions, they are all used as functions pointer

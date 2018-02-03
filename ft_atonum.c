@@ -6,11 +6,15 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/06 21:36:40 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/06 21:40:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/03 00:09:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+
+/*
+** return the number lenght as a string of "str" and load it into "nb"
+*/
 
 int			ft_atonum(const char *str, int *nb)
 {

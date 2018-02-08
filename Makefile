@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/03 15:15:06 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/02/08 02:12:27 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ ifeq ($(CC),clang)
 else
 	FLAGS += -Wno-strict-aliasing
 endif
-COMPILE=$(CC) $(FLAGS) -I. $(EXTRA_FLAGS)
+COMPILE=$(CC) $(FLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so

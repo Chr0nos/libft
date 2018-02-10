@@ -6,12 +6,12 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/08 02:12:27 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/02/10 18:57:21 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 EXTRA_FLAGS=-pipe -Ofast
-FLAGS=-Wall -Werror -Wextra -Wno-unused-result
+FLAGS=-Wall -Werror -Wextra
 #CC=clang
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything

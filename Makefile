@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/10 18:57:21 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/02/11 05:27:32 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ FLAGS=-Wall -Werror -Wextra
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything
 else
-	FLAGS += -Wno-strict-aliasing
+	FLAGS += -Wno-strict-aliasing -Wno-unused-result
 endif
 COMPILE=$(CC) $(FLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib

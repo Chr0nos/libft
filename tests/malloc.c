@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   malloc.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/11 20:46:18 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/11 21:28:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/13 13:38:08 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include <pthread.h>
 #define THREADS_COUNT 420
 #define ALLOC_SIZE 1024
+#define REALLOC_SIZE 4096
 #define THREAD_OK 0
 
 static void		*thread_occur(void *ptr)
@@ -26,6 +27,8 @@ static void		*thread_occur(void *ptr)
 		return (NULL);
 	}
 	ft_bzero(test, ALLOC_SIZE);
+	test = ft_realloc(test, REALLOC_SIZE);
+	ft_bzero(test, REALLOC_SIZE);
 	sleep(1);
 	ft_free(test);
 	ft_printf("thread id %4u : test passed\n", (unsigned int)(size_t)ptr);

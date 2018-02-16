@@ -6,40 +6,42 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/14 11:20:52 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/16 12:19:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	ft_quicksort_part(void **tab, size_t start, size_t end,
-		int (*cmp)(void *, void *))
+static size_t	partition(void **tab, size_t start, size_t end,
+	int (*cmp)(void *, void *))
 {
-	void	*pivot;
+	size_t		i;
+	size_t		pivot;
 
-	pivot = tab[start];
-	while (1)
+	pivot = start;
+	i = start;
+	while (i <= end)
 	{
-		while (((*cmp)(tab[end], pivot) >= 0) && (start < end))
-			end--;
-		while ((*cmp)(tab[start], pivot) < 0)
-			start++;
-		if (start < end)
-			ft_swap_ptr(&tab[start], &tab[end]);
-		else
-			return (end);
+		if (cmp(tab[i], tab[start]) < 0)
+		{
+			pivot++;
+			ft_swap_ptr(&tab[i], &tab[pivot]);
+		}
+		i++;
 	}
+	ft_swap_ptr(&tab[start], &tab[pivot]);
+	return (pivot);
 }
 
 void			ft_quicksort(void **tab, size_t start, size_t end,
 	int (*cmp)(void *, void *))
 {
-	size_t		subend;
+	size_t		pivot;
 
-	if (start < end)
-	{
-		subend = ft_quicksort_part(tab, start, end - 1, cmp);
-		ft_quicksort(tab, start, subend, cmp);
-		ft_quicksort(tab, subend + 1, end, cmp);
-	}
+	if (start >= end)
+		return ;
+	pivot = partition(tab, start, end, cmp);
+	if (pivot)
+		ft_quicksort(tab, start, pivot - 1, cmp);
+	ft_quicksort(tab, pivot + 1, end, cmp);
 }

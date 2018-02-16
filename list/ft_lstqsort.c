@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/14 11:00:56 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/14 11:36:33 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/15 11:48:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ void		**ft_lstqsort(t_list *lst, int (*cmp)(void *, void *))
 	tab = ft_lsttotab_size(lst, size);
 	if (!tab)
 		return (NULL);
-	ft_quicksort(tab, 0, size, cmp);
+	ft_quicksort(tab, 0, size - 1, cmp);
 	return (tab);
 }

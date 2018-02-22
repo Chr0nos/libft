@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/14 11:34:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/16 12:36:29 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define LONGIFY(x) ((unsigned long)x | (unsigned long)x << 32)
 # define FT_MIN(x, y) ((x < y) ? x : y)
 # define _
+# define FT_CASTCMP(x) (int (*)(void *, void *))(size_t)x
 # include <string.h>
 # include "get_next_line.h"
 # include "ft_printf.h"

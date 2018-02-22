@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/10/07 16:35:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/16 12:19:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/17 14:38:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,7 @@ static size_t	partition(void **tab, size_t start, size_t end,
 	while (i <= end)
 	{
 		if (cmp(tab[i], tab[start]) < 0)
-		{
-			pivot++;
-			ft_swap_ptr(&tab[i], &tab[pivot]);
-		}
+			ft_swap_ptr(&tab[i], &tab[++pivot]);
 		i++;
 	}
 	ft_swap_ptr(&tab[start], &tab[pivot]);

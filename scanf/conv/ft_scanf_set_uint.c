@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 13:29:35 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/22 18:59:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/22 19:14:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,11 +30,13 @@ int						ft_scanf_set_uint(t_scanf *sf)
 
 	if (!len)
 	{
-		sf->flags |= FT_SF_QUIT;
+		sf->flags |= FT_SF_QUIT | FT_SF_ERROR;
 		return (1);
 	}
 	value = ft_basetoul(sf->str, "0123456789");
 	sf->str += len;
+	if (sf->flags & FT_SF_FLAG_SKIP)
+		return (1);
 	if (sf->flags & FT_SF_MOD_LL)
 		*va_arg(*sf->ap, unsigned long long *) = value;
 	else if (sf->flags & FT_SF_MOD_L)

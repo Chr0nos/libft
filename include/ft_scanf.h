@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/22 18:49:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/26 10:45:11 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # include <stdarg.h>
 # include <string.h>
 
-# define FT_SF_CONVERTS	"dswfxo%Nnvc"
+# define FT_SF_CONVERTS	"dswfxo%Nnvcu"
 
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
@@ -61,6 +61,9 @@
 ** -----------------------------------------------------------------------------
 ** %d : retrive int data
 ** modifiers: H HH L ll j z
+** -----------------------------------------------------------------------------
+** %u : retrive unsigned int data
+** modifiers : H HH L ll
 ** -----------------------------------------------------------------------------
 ** %x : retrive hexadecimal text into a unsigned int
 ** modifiers: H HH L LL

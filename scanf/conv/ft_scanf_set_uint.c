@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 13:29:35 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/26 10:41:16 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:53:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static unsigned int		ft_number_len(const char *str)
 		return (0);
 	while (ft_isdigit(*str))
 		str++;
-	return ((unsigned int)((size_t)origin - (size_t)str));
+	return ((unsigned int)((size_t)str - (size_t)origin));
 }
 
 int						ft_scanf_set_uint(t_scanf *sf)

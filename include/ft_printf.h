@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 01:14:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:16:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 ** the code should works with a buffer size equal to 0 but will be slow as hell
 */
 
-# define FT_PF_BSIZE		8192 * 4
+# define FT_PF_BSIZE		32768
 # define FT_PF_PRE_BSIZE	64
 # define FT_PF_ASIZE		1024
 # define FT_PF_CONVERTS		"sSpdDioOuUxXcCbnkKf"
@@ -119,6 +119,8 @@ int					ft_vsnprintf(char *buffer, size_t n, const char *format,
 	va_list ap);
 int					ft_asprintf(char **ret, const char *format, ...);
 int					ft_printf_stack(t_printf *pf, const char *format, ...);
+void				ft_printf_debug(const t_printf *pf);
+
 
 /*
 ** internal functions for printf, should not be executed manualy

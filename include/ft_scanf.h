@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/26 10:45:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:44:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,7 +168,7 @@ int					ft_scanf_set_vec(t_scanf *sf);
 ** lenght calculation functions
 */
 
-int					ft_scanf_set_int_len(const t_scanf *sf);
+unsigned int		ft_scanf_set_int_len(const t_scanf *sf);
 int					ft_scanf_set_float_len(const char *str);
 
 typedef struct		s_scanf_set

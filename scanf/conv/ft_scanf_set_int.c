@@ -6,19 +6,17 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 22:25:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:43:25 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			ft_scanf_set_int_len(const t_scanf *sf)
+unsigned int	ft_scanf_set_int_len(const t_scanf *sf)
 {
-	int			len;
+	unsigned int	len;
 
 	len = 0;
-	while (ft_strchr((char*)(size_t)" \t\n\r\v\f", sf->str[len]))
-		len++;
 	if ((sf->str[len] == '+') || (sf->str[len] == '-'))
 		len++;
 	while (ft_isdigit(sf->str[len]))
@@ -26,7 +24,7 @@ int			ft_scanf_set_int_len(const t_scanf *sf)
 	return (len);
 }
 
-static int	ft_scanf_set_bigint(t_scanf *sf, void *ptr)
+static int		ft_scanf_set_bigint(t_scanf *sf, void *ptr)
 {
 	intmax_t		nb;
 
@@ -42,9 +40,9 @@ static int	ft_scanf_set_bigint(t_scanf *sf, void *ptr)
 	return (1);
 }
 
-int			ft_scanf_set_int(t_scanf *sf)
+int				ft_scanf_set_int(t_scanf *sf)
 {
-	const int len = ft_scanf_set_int_len(sf);
+	const unsigned int len = ft_scanf_set_int_len(sf);
 
 	if (sf->flags & FT_SF_FLAG_SKIP)
 	{

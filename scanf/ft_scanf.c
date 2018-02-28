@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 22:38:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:47:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ static const char			*ft_scanf_skipword(const char *format, t_scanf *sf)
 ** this function skip some patterns if found in format:
 ** \\s : will sky any spaces at this place
 ** \\w : skip the next word in format
-** \\S : skip the next \t\v\r\n or spaces at this place
+** \\S : skip the next \t\v\r\n\f or spaces at this place
 ** \\n : skip until the next new line
 */
 
@@ -70,7 +70,7 @@ static const char			*ft_scanf_skiper(const char *format, t_scanf *sf)
 	else if (!ft_strncmp(format, "\\S", 2))
 	{
 		format += 2;
-		while (ft_strany(*sf->str, " \t\v\n\r"))
+		while (ft_strchr(" \t\n\r\v\f", *sf->str))
 			sf->str++;
 	}
 	else if (!ft_strncmp(format, "\\n", 2))

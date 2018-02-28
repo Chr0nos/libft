@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 15:42:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 19:40:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,9 +116,9 @@ int							ft_printf(const char *format, ...)
 int							ft_printf_stack(t_printf *pf,
 		const char *format, ...)
 {
-	va_list			ap;
-	va_list			*origin;
-	const size_t	oflags = pf->flags;
+	va_list				ap;
+	va_list				*origin;
+	const unsigned int	oflags = pf->flags;
 
 	va_start(ap, format);
 	origin = pf->ap;
@@ -126,6 +126,7 @@ int							ft_printf_stack(t_printf *pf,
 	ft_printf_engine(format, pf);
 	va_end(ap);
 	pf->flags = oflags;
+	pf->ap = origin;
 	if (pf->size)
 	{
 		write(pf->fd, pf->buffer, pf->size);

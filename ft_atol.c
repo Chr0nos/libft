@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/16 14:49:37 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/16 14:52:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:41:30 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ long	ft_atol(const char *str)
 
 	nb = 0;
 	negative = 0;
-	while ((ft_strany(*str, " \t\n\v\f\r")) && (*str))
+	while ((ft_strchr(" \t\v\r\v\f", *str)) && (*str))
 		str++;
 	if (*str == '+')
 		str++;

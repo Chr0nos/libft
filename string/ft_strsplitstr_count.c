@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:10:04 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 19:42:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:49:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ size_t		ft_strsplitstr_count(const char *str, const char *separators)
 	while (*str)
 	{
 		len++;
-		while ((*str) && (ft_strany(*str, separators)))
+		while ((*str) && (ft_strchr((char*)(size_t)separators, *str)))
 			str++;
 		if (!*str)
 			return (len + 1);

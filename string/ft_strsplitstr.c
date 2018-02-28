@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:15:02 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 19:34:49 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:47:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ char	**ft_strsplitstr(const char *str, const char *separators)
 	space = 0;
 	while (*str)
 	{
-		while ((*str) && (ft_strany(*str, separators)))
+		while ((*str) && (ft_strchr((char*)(size_t)separators, *str)))
 			str++;
 		if (*str)
 		{

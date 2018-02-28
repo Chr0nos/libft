@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:38:23 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/19 00:27:40 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:44:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static size_t		ft_scanf_set_hexlen(const char *str, const char *map)
 {
 	const char	*start = str;
 
-	while ((*str) && (ft_strany(*str, map)))
+	while ((*str) && (ft_strchr((char*)(size_t)map, *str)))
 		str++;
 	return ((size_t)str - (size_t)start);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2017/11/12 21:06:53 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:42:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static inline const char	*ft_printf_exec(const char *str, t_printf *pf)
 		return (str + 1);
 	}
 	seek = 0;
-	while ((*str) && (!ft_strany(*str, FT_PF_CONVERTS)))
+	while ((*str) && (!ft_strchr(FT_PF_CONVERTS, *str)))
 	{
 		if (!(seek = ft_printf_loadall(pf, str)))
 			break ;
@@ -111,4 +111,25 @@ int							ft_printf(const char *format, ...)
 		return ((int)(pf.total_len + pf.size));
 	}
 	return ((int)pf.total_len);
+}
+
+int							ft_printf_stack(t_printf *pf,
+		const char *format, ...)
+{
+	va_list			ap;
+	va_list			*origin;
+	const size_t	oflags = pf->flags;
+
+	va_start(ap, format);
+	origin = pf->ap;
+	pf->ap = &ap;
+	ft_printf_engine(format, pf);
+	va_end(ap);
+	pf->flags = oflags;
+	if (pf->size)
+	{
+		write(pf->fd, pf->buffer, pf->size);
+		return ((int)(pf->total_len + pf->size));
+	}
+	return ((int)pf->total_len);
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/05/09 18:19:35 by snicolet          #+#    #+#             */
-/*   Updated: 2016/05/09 18:27:46 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:48:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strsublenstr(const char *str, const char *separators)
 	p = 0;
 	while (str[p])
 	{
-		if (ft_strany(str[p], separators))
+		if (ft_strchr((char*)(size_t)separators, str[p]))
 			return (p);
 		p++;
 	}

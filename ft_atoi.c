@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/18 14:24:21 by snicolet          #+#    #+#             */
-/*   Updated: 2015/12/15 10:49:08 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:40:54 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int				ft_atoi(const char *str)
 
 	nb = 0;
 	negative = 0;
-	while ((ft_strany(*str, " \t\n\v\f\r")) && (*str))
+	while ((ft_strchr(" \t\n\r\v\f", *str)) && (*str))
 		str++;
 	if (*str == '+')
 		str++;

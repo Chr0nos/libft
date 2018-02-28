@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2016/10/10 20:20:30 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 15:43:06 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
-	if ((!ft_strany(*s, "123456789*")) || (pf->flags & FT_PF_PREC))
+	if ((!ft_strchr("0123456789*", *s)) || (pf->flags & FT_PF_PREC))
 		return (0);
 	pf->flags |= FT_PF_MINWIDTH;
 	if (*s == '*')

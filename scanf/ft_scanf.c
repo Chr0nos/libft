@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:15:33 by snicolet          #+#    #+#             */
-/*   Updated: 2017/05/29 02:08:44 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 22:38:41 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,10 @@ static inline const char	*ft_scanf_exec(const char *format, t_scanf *sf)
 	{
 		sf->format = format;
 		if (*format == g_scanf_set[p].letter)
-			return (format + g_scanf_set[p].set(sf));
+		{
+			g_scanf_set[p].set(sf);
+			return (format + 1);
+		}
 	}
 	return (format);
 }

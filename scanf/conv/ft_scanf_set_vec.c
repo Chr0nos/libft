@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 22:14:31 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 23:02:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,14 @@
 ** will set a vec4
 */
 
-static int	ft_scanf_set_vec_len(const t_scanf *sf)
+static unsigned int	ft_scanf_set_vec_len(const t_scanf *sf)
 {
 	if (sf->flags & (FT_SF_MOD_HH | FT_SF_MOD_H))
 		return (ft_scanf_set_int_len(sf));
-	return (ft_scanf_set_float_len(sf->str));
+	return ((unsigned int)ft_scanf_set_float_len(sf->str));
 }
 
-static int	ft_scanf_set_vec_ret(const int vec_n, t_scanf *sf)
+static int			ft_scanf_set_vec_ret(const int vec_n, t_scanf *sf)
 {
 	if (vec_n != sf->precision)
 		sf->flags |= FT_SF_ERROR;

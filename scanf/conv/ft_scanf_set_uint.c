@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/22 13:29:35 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/26 20:13:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/27 16:53:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static unsigned int		ft_number_len(const char *str)
 
 	if ((!str) || (!*str) || (!ft_strchr("0123456789", *str)))
 		return (0);
-	while ((*str) && (ft_isdigit(*str)))
+	while (ft_isdigit(*str))
 		str++;
 	return ((unsigned int)((size_t)str - (size_t)origin));
 }

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/04 00:31:01 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 15:43:06 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/01 09:12:04 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,11 @@ size_t					ft_printf_loadall(t_printf *pf, const char *str)
 {
 	size_t		seek;
 
+	if (*str == '0')
+	{
+		pf->flags |= FT_PF_FLAG_ZERO;
+		str++;
+	}
 	if ((seek = ft_printf_loadmin_width(pf, str)) > 0)
 		return (seek);
 	if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)

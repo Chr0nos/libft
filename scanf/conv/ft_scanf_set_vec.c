@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_scanf_set_vec.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
+/*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 23:02:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:30:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int			ft_scanf_set_vec_ret(const int vec_n, t_scanf *sf)
 	return (1);
 }
 
-int			ft_scanf_set_vec(t_scanf *sf)
+int					ft_scanf_set_vec(t_scanf *sf)
 {
 	void	*ptr;
 	int		vec_n;

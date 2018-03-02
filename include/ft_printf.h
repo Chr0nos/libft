@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/09/15 17:53:23 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 20:16:55 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/02 16:29:44 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,7 +120,6 @@ int					ft_vsnprintf(char *buffer, size_t n, const char *format,
 int					ft_asprintf(char **ret, const char *format, ...);
 int					ft_printf_stack(t_printf *pf, const char *format, ...);
 void				ft_printf_debug(const t_printf *pf);
-
 
 /*
 ** internal functions for printf, should not be executed manualy

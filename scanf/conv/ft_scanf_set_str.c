@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:11:48 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 13:40:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:00:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,11 @@ int							ft_scanf_set_str(t_scanf *sf)
 	if (!(sf->flags & FT_SF_FLAG_SKIP))
 	{
 		if (!(str = malloc(sizeof(char) * (len + 1))))
-		{
-			sf->flags |= FT_SF_ERROR | FT_SF_QUIT;
-			return (1);
-		}
+			return (FT_SF_ERROR);
 		ft_memcpy(str, sf->str, len);
 		str[len] = '\0';
 		*va_arg(*sf->ap, char **) = str;
 	}
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

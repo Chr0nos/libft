@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/02/03 15:05:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 15:18:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:54:18 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,6 @@ int			ft_scanf_set_strcmp(t_scanf *sf)
 		str++;
 	}
 	if ((*str) && (*str != *sf->str))
-		sf->flags |= FT_SF_QUIT | FT_SF_ERROR;
-	return (1);
+		return (FT_SF_ERROR);
+	return (FT_SF_OK);
 }

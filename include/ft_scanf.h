@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 22:44:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:50:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 
 # define FT_SF_CONVERTS	"dswfxo%Nnvcu"
 
+# define FT_SF_OK			0
 # define FT_SF_QUIT			(1u << 0)
 # define FT_SF_ERROR		(1u << 1)
 # define FT_SF_MOD_HH		(1u << 2)

@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/06/07 16:15:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 23:02:51 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:01:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ static unsigned int	ft_scanf_set_vec_len(const t_scanf *sf)
 static int			ft_scanf_set_vec_ret(const int vec_n, t_scanf *sf)
 {
 	if (vec_n != sf->precision)
-		sf->flags |= FT_SF_ERROR;
-	return (1);
+		return (FT_SF_ERROR);
+	return (FT_SF_OK);
 }
 
 int			ft_scanf_set_vec(t_scanf *sf)

@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 15:38:23 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 15:44:09 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:56:53 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int					ft_scanf_set_hex(t_scanf *sf)
 	unsigned long		val;
 
 	if (!len)
-	{
-		sf->flags |= FT_SF_ERROR;
-		return (1);
-	}
+		return (FT_SF_ERROR);
 	if (!(sf->flags & FT_SF_FLAG_SKIP))
 	{
 		val = ft_basetoul(sf->str, "0123456789abcdef");
@@ -46,5 +43,5 @@ int					ft_scanf_set_hex(t_scanf *sf)
 			*(unsigned int *)va_arg(*sf->ap, unsigned int*) = (unsigned int)val;
 	}
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

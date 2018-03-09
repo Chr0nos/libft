@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/12/26 15:04:59 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 19:55:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/02/28 20:32:46 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,9 @@ int							ft_printf_stack(t_printf *pf,
 	origin = pf->ap;
 	va_start(ap, format);
 	pf->ap = &ap;
+	ft_printf_debug(pf);
 	ft_printf_engine(format, pf);
+	ft_printf_debug(pf);
 	va_end(ap);
 	pf->ap = origin;
 	if (pf->size)

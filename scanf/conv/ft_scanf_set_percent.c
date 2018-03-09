@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/17 23:05:54 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/17 23:08:11 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:03:00 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 int			ft_scanf_set_percent(t_scanf *sf)
 {
-	if (*sf->str == '%')
-		sf->str++;
-	else
-		sf->flags |= FT_SF_ERROR;
-	return (1);
+	if (*sf->str != '%')
+		return (FT_SF_ERROR);
+	sf->str++;
+	return (FT_SF_OK);
 }

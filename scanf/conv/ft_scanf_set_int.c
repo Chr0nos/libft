@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:09:11 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/28 22:43:25 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:02:37 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ static int		ft_scanf_set_bigint(t_scanf *sf, void *ptr)
 		*(intmax_t*)ptr = nb;
 	else
 		*(ssize_t*)ptr = (ssize_t)nb;
-	return (1);
+	return (FT_SF_OK);
 }
 
 int				ft_scanf_set_int(t_scanf *sf)
@@ -47,13 +47,10 @@ int				ft_scanf_set_int(t_scanf *sf)
 	if (sf->flags & FT_SF_FLAG_SKIP)
 	{
 		sf->str += len;
-		return (1);
+		return (FT_SF_OK);
 	}
 	if ((!ft_isdigit(*sf->str)) && (!ft_strchr("+-", *sf->str)))
-	{
-		sf->flags |= FT_SF_QUIT | FT_SF_ERROR;
-		return (1);
-	}
+		return (FT_SF_ERROR);
 	if (sf->flags & FT_SF_MOD_ANYI)
 		return (ft_scanf_set_bigint(sf, va_arg(*sf->ap, void*)));
 	else if (sf->flags & FT_SF_MOD_HH)
@@ -63,5 +60,5 @@ int				ft_scanf_set_int(t_scanf *sf)
 	else
 		*va_arg(*sf->ap, int *) = ft_atoi(sf->str);
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

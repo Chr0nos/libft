@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/12 15:50:08 by snicolet          #+#    #+#             */
-/*   Updated: 2016/11/12 16:24:05 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:58:55 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,7 @@ int					ft_scanf_set_octal(t_scanf *sf)
 	unsigned long		v;
 
 	if (!len)
-	{
-		sf->flags |= FT_SF_ERROR;
-		return (1);
-	}
+		return (FT_SF_ERROR);
 	if (!(sf->flags & FT_SF_FLAG_SKIP))
 	{
 		v = ft_basetoul(sf->str, "01234567");
@@ -43,5 +40,5 @@ int					ft_scanf_set_octal(t_scanf *sf)
 			*(unsigned long *)va_arg(*sf->ap, unsigned long *) = v;
 	}
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

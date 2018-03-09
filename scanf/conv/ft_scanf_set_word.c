@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/06 13:37:34 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/11 10:26:41 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 18:01:47 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,13 +34,10 @@ int							ft_scanf_set_word(t_scanf *sf)
 	{
 		str = va_arg(*sf->ap, char **);
 		if (!(*str = malloc(sizeof(char) * (len + 1))))
-		{
-			sf->flags |= FT_SF_ERROR | FT_SF_QUIT;
-			return (1);
-		}
+			return (FT_SF_ERROR);
 		(*str)[len] = '\0';
 		ft_memcpy(*str, sf->str, len);
 	}
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

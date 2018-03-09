@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/01 15:32:28 by snicolet          #+#    #+#             */
-/*   Updated: 2017/06/07 19:51:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:56:33 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,5 @@ int				ft_scanf_set_float(t_scanf *sf)
 			*(float *)va_arg(*sf->ap, float*) = (float)ft_atod(sf->str);
 	}
 	sf->str += ft_scanf_set_float_len(sf->str);
-	return (1);
+	return (FT_SF_OK);
 }

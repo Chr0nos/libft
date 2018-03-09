@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/30 19:20:46 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/03 13:46:27 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/09 17:55:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,9 @@ int		ft_scanf_set_char(t_scanf *sf)
 	{
 		str = va_arg(*sf->ap, char*);
 		if (!str)
-		{
-			sf->flags |= FT_SF_QUIT | FT_SF_ERROR;
-			return (1);
-		}
+			return (FT_SF_ERROR);
 		ft_strncpy(str, sf->str, len);
 	}
 	sf->str += len;
-	return (1);
+	return (FT_SF_OK);
 }

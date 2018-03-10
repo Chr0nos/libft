@@ -6,19 +6,19 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/28 20:16:25 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/03/10 20:33:45 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 EXTRA_FLAGS=-pipe -Ofast
-FLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra
 #CC=clang
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything
 else
 	FLAGS += -Wno-strict-aliasing -Wno-unused-result
 endif
-COMPILE=$(CC) $(FLAGS) -I./include $(EXTRA_FLAGS)
+COMPILE=$(CC) $(CFLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
@@ -217,7 +217,7 @@ OBJ=ft_putchar.o ft_putchar_fd.o \
 	ft_toupper.o \
 	ft_rotx.o \
 	ft_brainfuck.o \
-	ft_sqrt.o ft_sqrtup.o \
+	ft_sqrtup.o \
 	ft_wsize.o \
 	ft_abs.o \
 	ft_tabcount.o \

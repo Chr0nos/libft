@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 07:44:28 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 07:48:03 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,15 @@ static size_t		getline_read(t_getline *gl)
 	ssize_t		readed;
 
 	if (!(gl->flags & FT_GETL_OPEN))
-		return (ft_getline_error(gl, FT_GETL_NONE, "file is not open"));
+		return ((size_t)ft_getline_error(gl, FT_GETL_NONE, "file is not open"));
 	spaceleft = FT_GETL_BUFFSIZE - gl->buffpos;
 	if (!spaceleft)
-		return (ft_getline_error(gl, FT_GETL_FULL, "no space left") + 1);
+		return ((size_t)ft_getline_error(gl, FT_GETL_FULL,
+					"no space left") + 1);
 	readed = read(gl->fd, &gl->buffer[gl->buffpos], spaceleft - 1);
 	if (readed < 0)
-		return (ft_getline_error(gl,FT_GETL_IOERR, "input/output failure") + 1);
+		return ((size_t)ft_getline_error(gl,FT_GETL_IOERR,
+					"input/output failure") + 1);
 	if (readed == 0)
 	{
 		ft_printf("closing\n");
@@ -72,12 +74,12 @@ int					ft_getline_sread(t_getline *gl,
 			readed = endpos - gl->buffer;
 			if ((size_t)readed > size)
 				return (getline_truncate(gl, buffer, size));
-			ft_memcpy(buffer, gl->buffer, readed);
+			ft_memcpy(buffer, gl->buffer, (size_t)readed);
 			buffer[readed] = '\0';
-			gl->buffpos -= readed;
+			gl->buffpos -= (size_t)readed;
 			ft_memmove(gl->buffer, &gl->buffer[readed + 1], gl->buffpos - 1);
 		//	ft_printf("seq read: %ld : %p - %p\n", readed, endpos, &gl->buffer[readed + 1]);
-			return (readed);
+			return ((size_t)readed);
 		}
 		if (getline_read(gl))
 			return (ft_getline_sread(gl, buffer, size));

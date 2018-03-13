@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 10:09:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 15:57:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ static size_t		getline_read(t_getline *gl)
 		return (0);
 	}
 	gl->buffpos += (size_t)readed;
-	gl->buffer[gl->buffpos + readed] = '\0';
+	gl->buffer[gl->buffpos] = '\0';
 	return ((size_t)readed);
 }
 
@@ -44,8 +44,13 @@ static int			getline_truncate(t_getline *gl, char *buffer, size_t size)
 {
 	size_t		cpysize = (size < gl->buffpos) ? size : gl->buffpos;
 
-	ft_printf("%s", "warning: truncated read\n");
-	ft_memcpy(buffer, gl->buffer, cpysize);
+	if (cpysize)
+	{
+		if (gl->flags & FT_GETL_NOTRUNC)
+			return (ft_getline_error(gl, FT_GETL_TRUNC, "truncate disabled"));
+		ft_printf("%s", "warning: truncated read\n");
+		ft_memcpy(buffer, gl->buffer, cpysize);
+	}
 	buffer[cpysize] = '\0';
 	gl->buffpos = 0;
 	gl->buffer[0] = '\0';
@@ -90,10 +95,7 @@ int					ft_getline_sread(t_getline *gl,
 		endpos = ft_strchr_old(gl->buffer, '\n');
 		if (endpos)
 			return (getline_subseq(gl, endpos, buffer, size));
-		if (getline_read(gl))
-			;
-		//	return (ft_getline_sread(gl, buffer, size));
-		//ft_printf("%s %x\n", "no end", (int)*gl->buffer);
+		getline_read(gl);
 		return (getline_truncate(gl, buffer, size));
 	}
 	ft_printf("%s", "dead end\n");

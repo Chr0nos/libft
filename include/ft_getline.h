@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 09:24:59 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 10:11:48 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 # define FT_GETL_QUIET	(1u << 5)
 # define FT_GETL_TRUNC	(1u << 6)
 # define FT_GETL_OPENF	(1u << 7)
+# define FT_GETL_NOTRUNC (1u << 8)
 
 /*
 ** this is my new multi purposes lines reader, a line cannot exeed

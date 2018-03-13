@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/02/28 20:16:25 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/03/13 04:47:28 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -240,6 +240,9 @@ UNICODE=ft_buffwchar.o \
 	ft_wcharlen.o \
 	ft_wstrlen.o
 
+GETLINE_DIR=getline
+GETLINE=ft_getline.o
+
 OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL_DIR=opengl
@@ -269,6 +272,7 @@ ALLDIR=$(OBJBUILDDIR) \
 	$(OBJBUILDDIR)/$(UNICODE_DIR) \
 	$(OBJBUILDDIR)/$(SCANF_DIR) \
 	$(OBJBUILDDIR)/$(SCANF_DIR)/conv \
+	$(OBJBUILDDIR)/$(GETLINE_DIR) \
 	$(OBJBUILDDIR)/$(OPENGL_DIR)
 
 # all .obj listed with directories
@@ -280,6 +284,7 @@ ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
 	$(STRING:%.o=$(OBJBUILDDIR)/$(STRING_DIR)/%.o) \
 	$(UNICODE:%.o=$(OBJBUILDDIR)/$(UNICODE_DIR)/%.o) \
 	$(SCANF:%.o=$(OBJBUILDDIR)/$(SCANF_DIR)/%.o) \
+	$(GETLINE:%.o=$(OBJBUILDDIR)/$(GETLINE_DIR)/%.o) \
 	$(OPENGL:%.o=$(OBJBUILDDIR)/$(OPENGL_DIR)/%.o)
 
 # all .c files listes with directories
@@ -291,6 +296,7 @@ ALLSRC=$(OBJ:%.o=%.c) \
 	$(STRING:%.o=$(STRING_DIR)/%.c) \
 	$(UNICODE:%.o=$(UNICODE_DIR)/%.c) \
 	$(SCANF:%.o=$(SCANF_DIR)/%.c) \
+	$(GETLINE:%.o=$(GETLINE_DIR)/%.c) \
 	$(OPENGL:%.o=$(OPENGL_DIR)/%.c)
 
 all: $(NAME)

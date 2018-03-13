@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 05:03:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 06:48:22 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,5 +47,7 @@ unsigned int			ft_getline_init(t_getline *gl, const char *filepath,
 int						ft_getline_read(t_getline *gl, char **line);
 int						ft_getline_sread(t_getline *gl,
 		char *buffer, size_t size);
+int						ft_getline_error(t_getline *gl, unsigned int flags,
+		const char *msg);
 
 #endif

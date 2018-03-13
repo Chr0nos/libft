@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 07:48:03 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 08:02:14 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ static size_t		getline_read(t_getline *gl)
 		gl->flags &= ~FT_GETL_OPEN;
 	}
 	ft_printf("readed: %ld\n", readed);
-	gl->buffer[readed + 1] = '\0';
 	gl->buffpos += (size_t)readed;
+	gl->buffer[gl->buffpos + readed + 1] = '\0';
 	return ((size_t)readed);
 }
 
@@ -77,7 +77,7 @@ int					ft_getline_sread(t_getline *gl,
 			ft_memcpy(buffer, gl->buffer, (size_t)readed);
 			buffer[readed] = '\0';
 			gl->buffpos -= (size_t)readed;
-			ft_memmove(gl->buffer, &gl->buffer[readed + 1], gl->buffpos - 1);
+			ft_memmove(gl->buffer, &gl->buffer[readed + 1], gl->buffpos);
 		//	ft_printf("seq read: %ld : %p - %p\n", readed, endpos, &gl->buffer[readed + 1]);
 			return ((size_t)readed);
 		}

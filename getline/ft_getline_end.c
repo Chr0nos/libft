@@ -1,32 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_getline_init.c                                  :+:      :+:    :+:   */
+/*   ft_getline_end.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/03/13 06:42:49 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 09:54:54 by snicolet         ###   ########.fr       */
+/*   Created: 2018/03/13 09:22:32 by snicolet          #+#    #+#             */
+/*   Updated: 2018/03/13 09:25:45 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_getline.h"
 #include <unistd.h>
-#include <fcntl.h>
 
-unsigned int		ft_getline_init(t_getline *gl, const char *filepath,
-		const unsigned int flags)
+void	ft_getline_end(t_getline *gl)
 {
-	gl->filepath = filepath;
+	if (gl->flags & FT_GETL_OPEN)
+	{
+		close(gl->fd);
+		gl->fd = 0;
+		gl->flags &= ~FT_GETL_OPEN;
+	}
 	gl->buffpos = 0;
 	gl->buffer[0] = '\0';
-	gl->flags = (flags & FT_GETL_QUIET);
-	gl->fd = open(filepath, O_RDONLY);
-	if (gl->fd <= 0)
-	{
-		ft_getline_error(gl, FT_GETL_OPENF, "failed to open."); 
-		return (gl->flags);
-	}
-	gl->flags |= FT_GETL_OPEN;
-	return (FT_GETL_OK);
 }

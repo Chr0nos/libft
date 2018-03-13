@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/03/13 06:49:19 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/03/13 09:25:15 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -243,7 +243,8 @@ UNICODE=ft_buffwchar.o \
 GETLINE_DIR=getline
 GETLINE=ft_getline.o \
 		ft_getline_init.o \
-		ft_getline_error.o
+		ft_getline_error.o \
+		ft_getline_end.o
 
 OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)

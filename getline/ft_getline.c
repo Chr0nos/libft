@@ -6,13 +6,12 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 08:02:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 10:09:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_getline.h"
-#include <fcntl.h>
 #include <unistd.h>
 
 static size_t		getline_read(t_getline *gl)
@@ -23,23 +22,21 @@ static size_t		getline_read(t_getline *gl)
 	if (!(gl->flags & FT_GETL_OPEN))
 		return ((size_t)ft_getline_error(gl, FT_GETL_NONE, "file is not open"));
 	spaceleft = FT_GETL_BUFFSIZE - gl->buffpos;
-	if (!spaceleft)
+	if (spaceleft < 2)
 		return ((size_t)ft_getline_error(gl, FT_GETL_FULL,
 					"no space left") + 1);
+	ft_printf("possible max read: %lu\n", spaceleft - 1);
 	readed = read(gl->fd, &gl->buffer[gl->buffpos], spaceleft - 1);
 	if (readed < 0)
 		return ((size_t)ft_getline_error(gl,FT_GETL_IOERR,
 					"input/output failure") + 1);
 	if (readed == 0)
 	{
-		ft_printf("closing\n");
-		close(gl->fd);
-		gl->fd = 0;
-		gl->flags &= ~FT_GETL_OPEN;
+		ft_getline_end(gl);
+		return (0);
 	}
-	ft_printf("readed: %ld\n", readed);
 	gl->buffpos += (size_t)readed;
-	gl->buffer[gl->buffpos + readed + 1] = '\0';
+	gl->buffer[gl->buffpos + readed] = '\0';
 	return ((size_t)readed);
 }
 
@@ -56,10 +53,32 @@ static int			getline_truncate(t_getline *gl, char *buffer, size_t size)
 	return ((int)cpysize);
 }
 
+/*
+** reads a sub part in the current storage (gl->buffer)
+** endpos points to the next \n
+** copy the line to "buffer" and remove this from gl->buffer with ft_memmove
+*/
+
+static int			getline_subseq(t_getline *gl, char *endpos,
+		char *buffer, const size_t size)
+{
+	const ssize_t		readed = endpos - gl->buffer;
+
+	if (!endpos)
+		return (-1);
+	if ((size_t)readed > size)
+		return (getline_truncate(gl, buffer, size));
+	ft_memcpy(buffer, gl->buffer, (size_t)readed);
+	buffer[readed] = '\0';
+	gl->buffpos -= (size_t)readed;
+	ft_memmove(gl->buffer, &gl->buffer[readed + 1], gl->buffpos + 1);
+	gl->buffer[gl->buffpos] = '\0';
+	return ((int)readed);
+}
+
 int					ft_getline_sread(t_getline *gl,
 		char *buffer, size_t size)
 {
-	ssize_t		readed;
 	char		*endpos;
 
 	if ((!(gl->flags & FT_GETL_OPEN)) || (gl->flags & FT_GETL_ERROR))
@@ -68,24 +87,15 @@ int					ft_getline_sread(t_getline *gl,
 		getline_read(gl);
 	if (gl->buffpos > 0)
 	{
-		endpos = strchr(gl->buffer, '\n');
+		endpos = ft_strchr_old(gl->buffer, '\n');
 		if (endpos)
-		{
-			readed = endpos - gl->buffer;
-			if ((size_t)readed > size)
-				return (getline_truncate(gl, buffer, size));
-			ft_memcpy(buffer, gl->buffer, (size_t)readed);
-			buffer[readed] = '\0';
-			gl->buffpos -= (size_t)readed;
-			ft_memmove(gl->buffer, &gl->buffer[readed + 1], gl->buffpos);
-		//	ft_printf("seq read: %ld : %p - %p\n", readed, endpos, &gl->buffer[readed + 1]);
-			return ((size_t)readed);
-		}
+			return (getline_subseq(gl, endpos, buffer, size));
 		if (getline_read(gl))
-			return (ft_getline_sread(gl, buffer, size));
-		ft_printf("%s %x\n", "no end", (int)*gl->buffer);
-		return (0);
+			;
+		//	return (ft_getline_sread(gl, buffer, size));
+		//ft_printf("%s %x\n", "no end", (int)*gl->buffer);
+		return (getline_truncate(gl, buffer, size));
 	}
 	ft_printf("%s", "dead end\n");
-	return (-1);
+	return ((gl->flags & FT_GETL_ERROR) ? -1 : 0);
 }

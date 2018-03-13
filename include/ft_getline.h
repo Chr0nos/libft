@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 06:48:22 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 09:24:59 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,5 +49,6 @@ int						ft_getline_sread(t_getline *gl,
 		char *buffer, size_t size);
 int						ft_getline_error(t_getline *gl, unsigned int flags,
 		const char *msg);
+void					ft_getline_end(t_getline *gl);
 
 #endif

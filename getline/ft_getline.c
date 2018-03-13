@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 06:58:14 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 07:44:28 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static size_t		getline_read(t_getline *gl)
 	spaceleft = FT_GETL_BUFFSIZE - gl->buffpos;
 	if (!spaceleft)
 		return (ft_getline_error(gl, FT_GETL_FULL, "no space left") + 1);
-	readed = read(gl->fd, &gl->buffer[gl->buffpos], spaceleft);
+	readed = read(gl->fd, &gl->buffer[gl->buffpos], spaceleft - 1);
 	if (readed < 0)
 		return (ft_getline_error(gl,FT_GETL_IOERR, "input/output failure") + 1);
 	if (readed == 0)
@@ -51,7 +51,7 @@ static int			getline_truncate(t_getline *gl, char *buffer, size_t size)
 	gl->buffpos = 0;
 	gl->buffer[0] = '\0';
 	gl->flags |= FT_GETL_TRUNC;
-	return (cpysize);
+	return ((int)cpysize);
 }
 
 int					ft_getline_sread(t_getline *gl,

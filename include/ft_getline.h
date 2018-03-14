@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 10:11:48 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/03/13 16:03:20 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,15 @@
 ** usage:
 ** ft_getline_init(&gl, FT_GETL_NONE);
 ** then while (ft_getline_sread(&gl, buffer, size) > 0)
+** ----------------------------------------------------------------------------
+** About the structure bellow:
+** filepath : current file path
+** buffer   : internal buffer used to store lines, don't link anything to it !
+** buffpos  : write position in the buffer, this is where read will start to
+**            insert ( &buffer[buffpos] will be used )
+** fd       : the filepath file descriptor if the open has succeed
+** flags    : binaries operators used, they can provite you some informations
+**            about what happened like error type.
 */
 
 typedef struct 			s_getline

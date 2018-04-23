@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/03/23 03:04:40 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/04/20 19:16:10 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -332,7 +332,7 @@ $(LIBSO): $(ALLDIR) $(ALLOBJ)
 	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
 
 so:
-	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
+	make CFLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
 #cleaners
 mrproper: fclean

@@ -6,19 +6,19 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/03/13 09:25:15 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/04/20 19:16:10 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
 EXTRA_FLAGS=-pipe -Ofast
-FLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra
 #CC=clang
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything
 else
-	FLAGS += -Wno-strict-aliasing -Wno-unused-result
+	CFLAGS += -Wno-strict-aliasing -Wno-unused-result
 endif
-COMPILE=$(CC) $(FLAGS) -I./include $(EXTRA_FLAGS)
+COMPILE=$(CC) $(CFLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar
 LIBSO=libft.so
@@ -332,7 +332,7 @@ $(LIBSO): $(ALLDIR) $(ALLOBJ)
 	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
 
 so:
-	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
+	make CFLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
 #cleaners
 mrproper: fclean

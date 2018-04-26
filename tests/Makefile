@@ -15,7 +15,7 @@ malloc:
 
 gl:
 	make -C ../
-	clang -Weverything -Wno-padded -Werror test_getline.c -o getline -I../include -L.. -lft
+	clang -Weverything -Werror test_getline.c -o getline -I../include -L.. -lft
 	./getline test_getline.c
 
 clean:

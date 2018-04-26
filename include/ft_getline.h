@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:08:01 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:22:34 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GETLINE_H
 # define FT_GETLINE_H
 # include <string.h>
-# define FT_GETL_BUFFSIZE 161
+# define FT_GETL_BUFFSIZE 4096
 # define FT_GETL_OK		0
 # define FT_GETL_NONE	0
 # define FT_GETL_ERROR	(1u << 0)

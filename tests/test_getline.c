@@ -6,13 +6,13 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 23:40:57 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:07:39 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:18:09 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_getline.h"
-#define LINE_SIZE 4000
+#define LINE_SIZE 100
 
 int		main(int ac, char **av)
 {

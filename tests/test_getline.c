@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 23:40:57 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/24 00:08:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:07:39 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,12 @@ int		main(int ac, char **av)
 		ft_dprintf(STDERR_FILENO, "%s%s\n" "error: failed to open: ", av[1]);
 		return (EXIT_FAILURE);
 	}
+	ft_printf("buffptr %p - buffer: %p\n", gl.buffptr, gl.buffer);
 	i = 0;
-	while (ft_getline_sread(&gl, line, LINE_SIZE) >= 0)
-		ft_printf("[%3lu] -> %s\n", i++, line);
+	while (ft_getline_read(&gl, (t_buffer){line, LINE_SIZE}) >= 0)
+		ft_printf("[%3lu] %c> %s\n", i++,
+				(gl.flags & FT_GETL_TRUNC) ? '=' : '-' ,line);
+	ft_printf("%s%hb\n", "exiting properly: ", gl.flags);
 	ft_getline_end(&gl);
-	ft_printf("%s", "exiting properly\n");
 	return (EXIT_SUCCESS);
 }

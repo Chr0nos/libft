@@ -6,14 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/17 22:15:23 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:08:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GETLINE_H
 # define FT_GETLINE_H
 # include <string.h>
-# define FT_GETL_BUFFSIZE 4096
+# define FT_GETL_BUFFSIZE 161
 # define FT_GETL_OK		0
 # define FT_GETL_NONE	0
 # define FT_GETL_ERROR	(1u << 0)
@@ -37,27 +37,31 @@
 ** About the structure bellow:
 ** filepath : current file path
 ** buffer   : internal buffer used to store lines, don't link anything to it !
-** buffpos  : write position in the buffer, this is where read will start to
-**            insert ( &buffer[buffpos] will be used )
+** buffptr  : write position in the buffer, this is where read will start to
+**            insert
 ** fd       : the filepath file descriptor if the open has succeed
 ** flags    : binaries operators used, they can provite you some informations
 **            about what happened like error type.
 */
 
-typedef struct 			s_getline
+typedef struct			s_getline
 {
 	const char			*filepath;
 	char				buffer[FT_GETL_BUFFSIZE];
-	size_t				buffpos;
+	char				*buffptr;
 	int					fd;
 	unsigned int		flags;
 }						t_getline;
 
+typedef struct			s_buffer
+{
+	char				*data;
+	size_t				size;
+}						t_buffer;
+
 unsigned int			ft_getline_init(t_getline *gl, const char *filepath,
 		const unsigned int flags);
-int						ft_getline_read(t_getline *gl, char **line);
-int						ft_getline_sread(t_getline *gl,
-		char *buffer, size_t size);
+ssize_t					ft_getline_read(t_getline *gl, t_buffer buffer);
 int						ft_getline_error(t_getline *gl, unsigned int flags,
 		const char *msg);
 void					ft_getline_end(t_getline *gl);

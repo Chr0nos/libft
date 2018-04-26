@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 09:22:32 by snicolet          #+#    #+#             */
-/*   Updated: 2018/03/13 09:25:45 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/26 22:37:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,6 @@ void	ft_getline_end(t_getline *gl)
 		gl->fd = 0;
 		gl->flags &= ~FT_GETL_OPEN;
 	}
-	gl->buffpos = 0;
+	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE];
 	gl->buffer[0] = '\0';
 }

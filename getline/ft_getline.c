@@ -6,13 +6,48 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:06:20 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:31:50 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "ft_getline.h"
 #include <unistd.h>
+#include <fcntl.h>
+
+unsigned int	ft_getline_init(t_getline *gl, const char *filepath,
+		const unsigned int flags)
+{
+	if (FT_GETL_BUFFSIZE < 2)
+	{
+		gl->flags = FT_GETL_ERROR;
+		return (FT_GETL_ERROR);
+	}
+	gl->filepath = filepath;
+	gl->buffer[0] = '\0';
+	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE - 1];
+	gl->flags = (flags & (FT_GETL_QUIET | FT_GETL_NOTRUNC));
+	gl->fd = open(filepath, O_RDONLY);
+	if (gl->fd <= 0)
+	{
+		ft_getline_error(gl, FT_GETL_OPENF, "failed to open.");
+		return (gl->flags);
+	}
+	gl->flags |= FT_GETL_OPEN;
+	return (FT_GETL_OK);
+}
+
+void			ft_getline_end(t_getline *gl)
+{
+	if (gl->flags & FT_GETL_OPEN)
+	{
+		close(gl->fd);
+		gl->fd = 0;
+		gl->flags &= ~FT_GETL_OPEN;
+	}
+	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE];
+	gl->buffer[0] = '\0';
+}
 
 static int		ft_getline_fill(t_getline *gl, char *endpos, t_buffer *buffer)
 {

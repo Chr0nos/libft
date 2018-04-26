@@ -6,13 +6,14 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:22:34 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 00:30:35 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_GETLINE_H
 # define FT_GETLINE_H
 # include <string.h>
+# include "libft.h"
 # define FT_GETL_BUFFSIZE 4096
 # define FT_GETL_OK		0
 # define FT_GETL_NONE	0
@@ -52,12 +53,6 @@ typedef struct			s_getline
 	int					fd;
 	unsigned int		flags;
 }						t_getline;
-
-typedef struct			s_buffer
-{
-	char				*data;
-	size_t				size;
-}						t_buffer;
 
 unsigned int			ft_getline_init(t_getline *gl, const char *filepath,
 		const unsigned int flags);

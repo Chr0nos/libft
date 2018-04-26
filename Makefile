@@ -242,9 +242,7 @@ UNICODE=ft_buffwchar.o \
 
 GETLINE_DIR=getline
 GETLINE=ft_getline.o \
-		ft_getline_init.o \
 		ft_getline_error.o \
-		ft_getline_end.o
 
 OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)

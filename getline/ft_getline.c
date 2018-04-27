@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:31:50 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:15:17 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,18 @@ unsigned int	ft_getline_init(t_getline *gl, const char *filepath,
 	gl->buffer[0] = '\0';
 	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE - 1];
 	gl->flags = (flags & (FT_GETL_QUIET | FT_GETL_NOTRUNC));
-	gl->fd = open(filepath, O_RDONLY);
-	if (gl->fd <= 0)
+	if (!(flags & (FT_GETL_QUIET | FT_GETL_STDIN)))
+		ft_printf("openning \"%s\" ...\n", (filepath) ? filepath : "stdin");
+	gl->fd = (filepath) ? open(filepath, O_RDONLY) : STDIN_FILENO;
+	if (gl->fd < 0)
 	{
 		ft_getline_error(gl, FT_GETL_OPENF, "failed to open.");
 		return (gl->flags);
 	}
+	else if (gl->fd == STDIN_FILENO)
+		gl->flags |= FT_GETL_STDIN;
 	gl->flags |= FT_GETL_OPEN;
+	gl->reads = 0;
 	return (FT_GETL_OK);
 }
 
@@ -41,12 +46,15 @@ void			ft_getline_end(t_getline *gl)
 {
 	if (gl->flags & FT_GETL_OPEN)
 	{
-		close(gl->fd);
+		if (gl->fd != STDIN_FILENO)
+			close(gl->fd);
 		gl->fd = 0;
 		gl->flags &= ~FT_GETL_OPEN;
 	}
 	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE];
 	gl->buffer[0] = '\0';
+	if (!(gl->flags & (FT_GETL_QUIET | FT_GETL_STDIN)))
+		ft_printf("%s%s\"\n", "closed \"", gl->filepath);
 }
 
 static int		ft_getline_fill(t_getline *gl, char *endpos, t_buffer *buffer)
@@ -90,11 +98,9 @@ static int		ft_getline_load(t_getline *gl)
 	else
 		gl->buffptr = gl->buffer;
 	readlen = read(gl->fd, gl->buffptr, bsize - readlen);
+	gl->reads += 1;
 	if (readlen < 0)
-	{
-		gl->flags |= FT_GETL_ERROR;
-		return (-1);
-	}
+		return (ft_getline_error(gl, FT_GETL_NONE, "read failed"));
 	if (!readlen)
 	{
 		gl->flags |= FT_GETL_DONE;

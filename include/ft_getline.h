@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/12 23:59:42 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 00:30:35 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:05:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # define FT_GETL_OPENF	(1u << 7)
 # define FT_GETL_NOTRUNC (1u << 8)
 # define FT_GETL_DONE	(1u << 9)
+# define FT_GETL_STDIN	(1u << 10)
 
 /*
 ** this is my new multi purposes lines reader, a line cannot exeed
@@ -52,6 +53,7 @@ typedef struct			s_getline
 	char				*buffptr;
 	int					fd;
 	unsigned int		flags;
+	size_t				reads;
 }						t_getline;
 
 unsigned int			ft_getline_init(t_getline *gl, const char *filepath,

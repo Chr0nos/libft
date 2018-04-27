@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 02:58:43 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 14:18:51 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ unsigned int	ft_getline_init(t_getline *gl, const char *filepath,
 	gl->filepath = filepath;
 	gl->buffer[0] = '\0';
 	gl->buffptr = &gl->buffer[FT_GETL_BUFFSIZE - 1];
+	gl->buffptr[0] = '\0';
 	gl->flags = (flags & (FT_GETL_QUIET | FT_GETL_NOTRUNC));
 	if (!(flags & (FT_GETL_QUIET | FT_GETL_STDIN)))
 		ft_printf("openning \"%s\" ...\n", (filepath) ? filepath : "stdin");

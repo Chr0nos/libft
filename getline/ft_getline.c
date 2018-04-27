@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 02:15:17 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:17:19 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ static int		ft_getline_load(t_getline *gl)
 		gl->flags |= FT_GETL_TRUNC;
 	else
 		gl->buffptr = gl->buffer;
-	readlen = read(gl->fd, gl->buffptr, bsize - readlen);
+	readlen = read(gl->fd, gl->buffptr, bsize - (size_t)readlen);
 	gl->reads += 1;
 	if (readlen < 0)
 		return (ft_getline_error(gl, FT_GETL_NONE, "read failed"));

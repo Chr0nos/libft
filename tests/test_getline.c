@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/04/23 23:40:57 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 02:09:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:35:01 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,5 @@ int		main(int ac, char **av)
 
 	if (ac < 2)
 		return (EXIT_FAILURE);
-	test_std(av[1], (t_buffer){line, LINE_SIZE});
-	return (EXIT_SUCCESS);
+	return (test_std(av[1], (t_buffer){line, LINE_SIZE}));
 }

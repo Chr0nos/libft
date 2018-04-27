@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/03/13 00:39:54 by snicolet          #+#    #+#             */
-/*   Updated: 2018/04/27 02:17:19 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:58:43 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,5 @@ ssize_t			ft_getline_read(t_getline *gl, t_buffer buffer)
 			return (retload);
 	}
 	ft_printf("%s\n", "warning: grey code reached ");
-	gl->flags |= FT_GETL_ERROR;
-	return (-1);
+	return (ft_getline_error(gl, FT_GETL_NONE, "dead end reached"));
 }

@@ -171,7 +171,7 @@ void				ft_pf_arg_double(t_printf *pf);
 ** convert functions
 */
 
-void				ft_pf_conv_unknow(t_printf *pf, char c);
+void				ft_pf_conv_unknow(t_printf *pf, const char c);
 void				ft_pf_conv_int(t_printf *pf);
 void				ft_pf_conv_str(t_printf *pf);
 void				ft_pf_conv_percent(t_printf *pf);

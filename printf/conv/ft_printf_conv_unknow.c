@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void		ft_pf_conv_unknow(t_printf *pf, char c)
+void		ft_pf_conv_unknow(t_printf *pf, const char c)
 {
 	if (!(pf->flags & FT_PF_FLAG_LESS))
 		ft_printf_padding(pf, (pf->flags & FT_PF_FLAG_ZERO) ? '0' : ' ',

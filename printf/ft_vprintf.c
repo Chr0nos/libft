@@ -39,6 +39,7 @@ int		ft_vdprintf(int fd, const char *format, va_list ap)
 	va_list		vac;
 	char		buf[FT_PF_BSIZE];
 
+	buf[0] = '\0';
 	va_copy(vac, ap);
 	pf.buffer = buf;
 	ft_printf_init(&pf, &vac);

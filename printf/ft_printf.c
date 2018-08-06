@@ -84,6 +84,7 @@ int							ft_dprintf(int fd, const char *format, ...)
 	t_printf	pf;
 	char		buf[FT_PF_BSIZE];
 
+	buf[0] = '\0';
 	va_start(ap, format);
 	pf.buffer = buf;
 	ft_printf_init(&pf, &ap);
@@ -104,6 +105,7 @@ int							ft_printf(const char *format, ...)
 	t_printf	pf;
 	char		buf[FT_PF_BSIZE];
 
+	buf[0] = '\0';
 	va_start(ap, format);
 	pf.buffer = buf;
 	ft_printf_init(&pf, &ap);
@@ -147,9 +149,11 @@ int							ft_printf_stack(t_printf *pf,
 	ft_printf_engine(format, &sub_pf);
 	va_end(ap);
 	pf->buff_asprintf = sub_pf.buff_asprintf;
-	pf->buff_start += sub_pf.total_len;
+	pf->buff_start = sub_pf.buff_start;
 	pf->total_len += sub_pf.total_len;
-	pf->slen += sub_pf.total_len;
-	pf->space_left -= sub_pf.total_len;
-	return ((int)sub_pf.total_len);
+	pf->slen += sub_pf.size;
+	pf->space_left = sub_pf.space_left;
+	pf->size += sub_pf.size;
+	pf->raw_len += sub_pf.raw_len;
+	return ((int)sub_pf.size);
 }

@@ -82,8 +82,10 @@ int							ft_dprintf(int fd, const char *format, ...)
 {
 	va_list		ap;
 	t_printf	pf;
+	char		buf[FT_PF_BSIZE];
 
 	va_start(ap, format);
+	pf.buffer = buf;
 	ft_printf_init(&pf, &ap);
 	pf.fd = fd;
 	ft_printf_engine(format, &pf);
@@ -100,8 +102,10 @@ int							ft_printf(const char *format, ...)
 {
 	va_list		ap;
 	t_printf	pf;
+	char		buf[FT_PF_BSIZE];
 
 	va_start(ap, format);
+	pf.buffer = buf;
 	ft_printf_init(&pf, &ap);
 	ft_printf_engine(format, &pf);
 	va_end(ap);
@@ -113,22 +117,39 @@ int							ft_printf(const char *format, ...)
 	return ((int)pf.total_len);
 }
 
+/*
+** this if probably the most complicated function of this printf implementation
+** this function's purpose is to be called INSIDE a previous call of printf,
+** like ft_printf, ft_snprintf etc, in a normal case this is called inside a
+** callback function of printf (%k or %K)
+** this one make a new sub t_printf environement and re-run a ft_printf_engine
+** then the revelant informations are sent to the original structure.
+** the big idea here is to prevent a maximum of "write" syscalls, and prevent
+** too many stack usage (each ft_printf call causes a FT_PF_BSIZE buf in the
+** stack, this is not acceptable for many calls inside a callback function)
+*/
+
 int							ft_printf_stack(t_printf *pf,
 		const char *format, ...)
 {
 	va_list				ap;
-	va_list				*origin;
+	t_printf			sub_pf;
 
-	origin = pf->ap;
+	ft_bzero(&sub_pf, sizeof(t_printf));
+	sub_pf.buffer = pf->buffer;
+	sub_pf.buff_asprintf = pf->buff_asprintf;
 	va_start(ap, format);
-	pf->ap = &ap;
-	ft_printf_engine(format, pf);
+	ft_printf_init(&sub_pf, &ap);
+	sub_pf.flags &= FT_PF_ALLOW;
+	sub_pf.space_left = pf->space_left;
+	sub_pf.buffer_maxsize = pf->buffer_maxsize;
+	sub_pf.fd = pf->fd;
+	ft_printf_engine(format, &sub_pf);
 	va_end(ap);
-	pf->ap = origin;
-	if (pf->size)
-	{
-		write(pf->fd, pf->buffer, pf->size);
-		return ((int)(pf->total_len + pf->size));
-	}
-	return ((int)pf->total_len);
+	pf->buff_asprintf = sub_pf.buff_asprintf;
+	pf->buff_start += sub_pf.total_len;
+	pf->total_len += sub_pf.total_len;
+	pf->slen += sub_pf.total_len;
+	pf->space_left -= sub_pf.total_len;
+	return ((int)sub_pf.total_len);
 }

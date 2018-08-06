@@ -81,13 +81,17 @@ struct s_printf;
 ** space_left = the remaining left space in buffer
 ** raw_value = the current value after the arg retrive function
 ** buff_asprintf = the origin of a asprintf buffer, in non asprintf functions,
-**  this value will NOT be set
+**  this value will NOT be se
+** buffer = the real buffer start, this will NOT be changed at any time in
+** the printf implementation, only buff_start is incremented
+** in the past, buffer was in the stack (in the struct delaration, now it's
+** in the first function frame, this design was made to allow recursivity
+** with ft_printf_stack)
 */
 
 typedef struct		s_printf
 {
 	va_list			*ap;
-	char			buffer[FT_PF_BSIZE];
 	char			*buff_start;
 	char			*buff_asprintf;
 	char			pre_buffer[FT_PF_PRE_BSIZE];
@@ -102,6 +106,7 @@ typedef struct		s_printf
 	size_t			space_left;
 	size_t			buffer_maxsize;
 	intmax_t		raw_value;
+	char			*buffer;
 }					t_printf;
 
 /*

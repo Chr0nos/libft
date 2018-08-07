@@ -53,7 +53,7 @@ static void                 ft_printf_stack_end(t_printf *pf,
 	pf->space_left = child->space_left;
 	pf->size += child->size;
 	pf->raw_len += child->raw_len;
-	pf->flags |= child->flags & FT_PF_QUIT;
+	pf->flags |= child->flags & (FT_PF_QUIT | FT_PF_ERROR);
     pf->raw_value = child->raw_value;
 }
 

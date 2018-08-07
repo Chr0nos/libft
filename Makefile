@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/04/20 19:16:10 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/08/07 17:59:14 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -106,6 +106,7 @@ PRINTF=ft_printf.o \
 	ft_printf_conv.o \
 	ft_printf_padding.o \
 	ft_printf_debug.o \
+	ft_printf_stack.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o \

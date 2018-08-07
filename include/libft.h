@@ -230,6 +230,7 @@ t_list				*ft_lstndup(t_list *lst, size_t n, void *(*f)(void *));
 t_list				*ft_lstat(t_list *lst, int p);
 t_list				*ft_lstdupsort(t_list *lst, int (*cmp)(t_list *, t_list *));
 t_list				*ft_lstmin(t_list *lst, int (*cmp)(t_list *, t_list *));
+t_list				*ft_lstnewi(const void *content, const size_t content_size);
 size_t				ft_lststrlen(t_list *lst);
 size_t				ft_lstsize(t_list *lst);
 int					ft_lstissort(t_list *lst, int (*cmp)(t_list *, t_list *));

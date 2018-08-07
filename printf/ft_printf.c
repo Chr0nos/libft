@@ -155,5 +155,6 @@ int							ft_printf_stack(t_printf *pf,
 	pf->space_left = sub_pf.space_left;
 	pf->size += sub_pf.size;
 	pf->raw_len += sub_pf.raw_len;
+	pf->flags |= sub_pf.flags & FT_PF_QUIT;
 	return ((int)sub_pf.size);
 }

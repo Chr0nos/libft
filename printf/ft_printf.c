@@ -142,6 +142,7 @@ int							ft_printf_stack(t_printf *pf,
 	sub_pf.buff_asprintf = pf->buff_asprintf;
 	va_start(ap, format);
 	ft_printf_init(&sub_pf, &ap);
+	sub_pf.buff_start = &pf->buffer[pf->size];
 	sub_pf.flags &= FT_PF_ALLOW;
 	sub_pf.space_left = pf->space_left;
 	sub_pf.buffer_maxsize = pf->buffer_maxsize;

@@ -25,3 +25,30 @@ t_list		*ft_lstnew(const void *content, size_t content_size)
 	x->next = NULL;
 	return (x);
 }
+
+/*
+** create a new t_list item with content continously allocated after it
+*/
+
+t_list		*ft_lstnewi(const void *content, const size_t content_size)
+{
+	const size_t		bsize = content_size + sizeof(t_list);
+	t_list				*x;
+
+	x = malloc(sizeof(bsize));
+	if (!x)
+		return (NULL);
+	if (!content)
+	{
+		x->content = NULL;
+		x->content_size = 0;
+	}
+	else
+	{
+		x->content = ft_memcpy(((void*)((size_t)x + sizeof(t_list))), content,
+			content_size);
+		x->content_size = content_size;
+	}
+	x->next = NULL;
+	return (x);
+}

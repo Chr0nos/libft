@@ -6,7 +6,7 @@
 #    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/03/10 20:59:48 by snicolet         ###   ########.fr       *#
+#*   Updated: 2018/08/07 17:59:14 by snicolet         ###   ########.fr       *#
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CFLAGS=-Wall -Werror -Wextra
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything
 else
-	FLAGS += -Wno-strict-aliasing -Wno-unused-result
+	CFLAGS += -Wno-strict-aliasing -Wno-unused-result
 endif
 COMPILE=$(CC) $(CFLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib
@@ -106,6 +106,7 @@ PRINTF=ft_printf.o \
 	ft_printf_conv.o \
 	ft_printf_padding.o \
 	ft_printf_debug.o \
+	ft_printf_stack.o \
 	conv/ft_printf_conv_int.o \
 	conv/ft_printf_conv_str.o \
 	conv/ft_printf_conv_percent.o \
@@ -240,6 +241,10 @@ UNICODE=ft_buffwchar.o \
 	ft_wcharlen.o \
 	ft_wstrlen.o
 
+GETLINE_DIR=getline
+GETLINE=ft_getline.o \
+		ft_getline_error.o \
+
 OPENGL_ENABLED=no
 ifeq ($(OPENGL_ENABLED), yes)
 	OPENGL_DIR=opengl
@@ -269,6 +274,7 @@ ALLDIR=$(OBJBUILDDIR) \
 	$(OBJBUILDDIR)/$(UNICODE_DIR) \
 	$(OBJBUILDDIR)/$(SCANF_DIR) \
 	$(OBJBUILDDIR)/$(SCANF_DIR)/conv \
+	$(OBJBUILDDIR)/$(GETLINE_DIR) \
 	$(OBJBUILDDIR)/$(OPENGL_DIR)
 
 # all .obj listed with directories
@@ -280,6 +286,7 @@ ALLOBJ=$(OBJ:%.o=$(OBJBUILDDIR)/%.o) \
 	$(STRING:%.o=$(OBJBUILDDIR)/$(STRING_DIR)/%.o) \
 	$(UNICODE:%.o=$(OBJBUILDDIR)/$(UNICODE_DIR)/%.o) \
 	$(SCANF:%.o=$(OBJBUILDDIR)/$(SCANF_DIR)/%.o) \
+	$(GETLINE:%.o=$(OBJBUILDDIR)/$(GETLINE_DIR)/%.o) \
 	$(OPENGL:%.o=$(OBJBUILDDIR)/$(OPENGL_DIR)/%.o)
 
 # all .c files listes with directories
@@ -291,6 +298,7 @@ ALLSRC=$(OBJ:%.o=%.c) \
 	$(STRING:%.o=$(STRING_DIR)/%.c) \
 	$(UNICODE:%.o=$(UNICODE_DIR)/%.c) \
 	$(SCANF:%.o=$(SCANF_DIR)/%.c) \
+	$(GETLINE:%.o=$(GETLINE_DIR)/%.c) \
 	$(OPENGL:%.o=$(OPENGL_DIR)/%.c)
 
 all: $(NAME)
@@ -323,7 +331,7 @@ $(LIBSO): $(ALLDIR) $(ALLOBJ)
 	$(COMPILE) -shared $(ALLOBJ) -o $(LIBSO)
 
 so:
-	make FLAGS="-fPIC $(FLAGS)" $(LIBSO)
+	make CFLAGS="-fPIC $(FLAGS)" $(LIBSO)
 
 #cleaners
 mrproper: fclean

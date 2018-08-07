@@ -18,9 +18,9 @@ int		ft_vsnprintf(char *buffer, size_t n, const char *format, va_list ap)
 	va_list		vac;
 
 	va_copy(vac, ap);
+	pf.buffer = buffer;
 	ft_printf_init(&pf, &vac);
 	pf.flags |= FT_PF_NOWRITE;
-	pf.buff_start = buffer;
 	pf.space_left = n;
 	pf.buffer_maxsize = n;
 	ft_printf_engine(format, &pf);
@@ -37,8 +37,11 @@ int		ft_vdprintf(int fd, const char *format, va_list ap)
 {
 	t_printf	pf;
 	va_list		vac;
+	char		buf[FT_PF_BSIZE];
 
+	buf[0] = '\0';
 	va_copy(vac, ap);
+	pf.buffer = buf;
 	ft_printf_init(&pf, &vac);
 	pf.fd = fd;
 	ft_printf_engine(format, &pf);

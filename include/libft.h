@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2015/08/17 10:32:34 by snicolet          #+#    #+#             */
-/*   Updated: 2018/02/16 12:36:29 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/04/27 02:42:13 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,12 @@ typedef struct		s_btree
 	struct s_btree	*right;
 	void			*data;
 }					t_btree;
+
+typedef struct		s_buffer
+{
+	char			*data;
+	size_t			size;
+}					t_buffer;
 
 void				ft_putchar(int c);
 void				ft_putchar_fd(int c, int fd);
@@ -224,6 +230,7 @@ t_list				*ft_lstndup(t_list *lst, size_t n, void *(*f)(void *));
 t_list				*ft_lstat(t_list *lst, int p);
 t_list				*ft_lstdupsort(t_list *lst, int (*cmp)(t_list *, t_list *));
 t_list				*ft_lstmin(t_list *lst, int (*cmp)(t_list *, t_list *));
+t_list				*ft_lstnewi(const void *content, const size_t content_size);
 size_t				ft_lststrlen(t_list *lst);
 size_t				ft_lstsize(t_list *lst);
 int					ft_lstissort(t_list *lst, int (*cmp)(t_list *, t_list *));

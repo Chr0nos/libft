@@ -13,5 +13,10 @@
 malloc:
 	clang -Weverything -Werror malloc.c -o malloc -I../include -L.. -lft -lpthread
 
+gl:
+	make -C ../
+	clang -Weverything -Werror test_getline.c -o getline -I../include -L.. -lft
+	./getline test_getline.c
+
 clean:
 	$(RM) malloc

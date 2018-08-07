@@ -13,6 +13,13 @@
 #include "libft.h"
 #include "ft_printf.h"
 
+/*
+** setup a new children for pf, the children sepration's purpose is to prevent
+** any corruption inside the parent, the children's information are limited.
+** each children have it's own va_list.
+** only flags in FT_PF_ALLOW will be transmited
+*/
+
 static void                 ft_printf_stack_init(const t_printf *pf,
     t_printf *child, va_list *ap)
 {
@@ -27,6 +34,15 @@ static void                 ft_printf_stack_init(const t_printf *pf,
     child->fd = pf->fd;
 }
 
+/*
+** this function put some steps information to the parent t_printf, like
+** the new position in the buffer,
+** it is very important to call it at the end of a stacking of printf calls,
+** there is only one flag allowd to be push to the parent: FT_PF_ERROR,
+** if you need to transmit any data to the parent, use pf->raw_value, this one
+** will be peacefully given to parent.
+*/
+
 static void                 ft_printf_stack_end(t_printf *pf,
     const t_printf *child)
 {
@@ -38,6 +54,7 @@ static void                 ft_printf_stack_end(t_printf *pf,
 	pf->size += child->size;
 	pf->raw_len += child->raw_len;
 	pf->flags |= child->flags & FT_PF_QUIT;
+    pf->raw_value = child->raw_value;
 }
 
 /*
@@ -50,6 +67,7 @@ static void                 ft_printf_stack_end(t_printf *pf,
 ** the big idea here is to prevent a maximum of "write" syscalls, and prevent
 ** too many stack usage (each ft_printf call causes a FT_PF_BSIZE buf in the
 ** stack, this is not acceptable for many calls inside a callback function)
+** does not send NULL for pf (SEGFAULT)
 */
 
 int							ft_printf_stack(t_printf *pf,

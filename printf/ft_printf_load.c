@@ -86,7 +86,7 @@ static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)
 		}
 		return (1);
 	}
-	seek = ft_atonum(s, &pf->min_width);
+	seek = (unsigned int)ft_atonum(s, &pf->min_width);
 	return (seek);
 }
 

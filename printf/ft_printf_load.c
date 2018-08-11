@@ -73,7 +73,7 @@ static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)
 {
 	size_t		seek;
 
-	if ((!ft_strchr("0123456789*", *s)) || (pf->flags & FT_PF_PREC))
+	if (pf->flags & FT_PF_PREC)
 		return (0);
 	pf->flags |= FT_PF_MINWIDTH;
 	if (*s == '*')
@@ -86,10 +86,7 @@ static size_t			ft_printf_loadmin_width(t_printf *pf, const char *s)
 		}
 		return (1);
 	}
-	pf->min_width = ft_atoi(s);
-	seek = 0;
-	while (ft_isdigit(s[seek]))
-		seek++;
+	seek = ft_atonum(s, &pf->min_width);
 	return (seek);
 }
 
@@ -99,13 +96,9 @@ size_t					ft_printf_loadall(t_printf *pf, const char *str)
 
 	if (*str == '0')
 		pf->flags |= FT_PF_FLAG_ZERO;
-	if ((seek = ft_printf_loadmin_width(pf, str)) > 0)
-		return (seek);
-	if ((seek = (size_t)ft_printf_loadflags(pf, *str)) > 0)
-		return (seek);
-	if ((seek = ft_printf_loadmodifiers(pf, str)) > 0)
-		return (seek);
-	if ((seek = ft_printf_loadprecision(pf, str)) > 0)
-		return (seek);
-	return (0);
+	seek = ft_printf_loadmin_width(pf, str);
+	seek += ft_printf_loadflags(pf, str[seek]);
+	seek += ft_printf_loadmodifiers(pf, &str[seek]);
+	seek += ft_printf_loadprecision(pf, &str[seek]);
+	return (seek);
 }

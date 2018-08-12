@@ -17,7 +17,7 @@
 ** (flag / modifier / precision) loaders functions
 */
 
-static int				ft_printf_loadflags(t_printf *pf, const char c)
+static unsigned int		ft_printf_loadflags(t_printf *pf, const char c)
 {
 	int		p;
 

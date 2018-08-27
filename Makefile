@@ -364,9 +364,9 @@ info:
 # this rule is degisned to work with snicolet/android-build docker image
 arm:
 	make CC="arm-linux-androideabi-gcc \
-		-I /opt/android-ndk/android-ndk-r17b/sysroot/usr/include/ \
-		-I /opt/android-ndk/android-ndk-r17b/sysroot/usr/include/arm-linux-androideabi/ \
-		--sysroot=$NDK_SYSROOT" \
+		-I $(NDK_ROOT)/sysroot/usr/include/ \
+		-I $(NDK_ROOT)/sysroot/usr/include/arm-linux-androideabi/ \
+		--sysroot=$(NDK_SYSROOT)" \
 		CFLAGS="-Wall -Werror -Wextra -Wno-attributes -Wno-strict-aliasing"
 
 # normal rule

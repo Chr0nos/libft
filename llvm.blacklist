@@ -1,0 +1,3 @@
+# yeah i know that the addresse sanitizer will not like my ft_strlen
+fun:ft_strlen
+fun:ft_strchr

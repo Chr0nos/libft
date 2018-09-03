@@ -13,11 +13,17 @@
 EXTRA_FLAGS=-pipe -Ofast
 CFLAGS=-Wall -Werror -Wextra
 #CC=clang
+ifeq ($(DEBUG),1)
+	CC=clang
+	EXTRA_FLAGS += -fsanitize=address -fsanitize-blacklist=llvm.blacklist -g3
+endif
+
 ifeq ($(CC),clang)
 	EXTRA_FLAGS+=-Weverything
 else
 	CFLAGS += -Wno-strict-aliasing -Wno-unused-result
 endif
+
 COMPILE=$(CC) $(CFLAGS) -I./include $(EXTRA_FLAGS)
 RANLIB=ranlib
 AR=ar

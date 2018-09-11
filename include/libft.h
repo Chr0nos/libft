@@ -244,6 +244,7 @@ t_list				*ft_lstsearch(t_list *lst, t_list *item,
 void				**ft_lstqsort(t_list *lst, int (*cmp)(void *, void *));
 void				**ft_lsttotab_size(t_list *lst, const size_t size);
 void				**ft_lsttotab(t_list *lst);
+void				ft_lsttotab_load(t_list *lst, void **tab, size_t n);
 
 /*
 ** binary trees

@@ -36,3 +36,22 @@ void	**ft_lsttotab_size(t_list *lst, const size_t size)
 	tab[p] = NULL;
 	return (tab);
 }
+
+/*
+** takes all lst->content items and put it into a tab, if the list is too small
+** then the missing filds will be set to NULL
+*/
+
+void		ft_lsttotab_load(t_list *lst, void **tab, size_t n)
+{
+	size_t		i;
+
+	i = 0;
+	while ((lst) && (i < n))
+	{
+		tab[i++] = lst->content;
+		lst = lst->next;
+	}
+	while (i < n)
+		tab[i++] = NULL;
+}

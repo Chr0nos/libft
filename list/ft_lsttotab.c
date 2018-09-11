@@ -55,3 +55,21 @@ void		ft_lsttotab_load(t_list *lst, void **tab, size_t n)
 	while (i < n)
 		tab[i++] = NULL;
 }
+
+void		ft_lsttotab_loadrev(t_list *lst, void **tab, size_t n)
+{
+	size_t			i;
+
+	if (!n)
+		return ;
+	i = ft_lstsize(lst);
+	if (i > n)
+		i = n - 1;
+	tab[i] = NULL;
+	while (i--)
+	{
+		tab[i] = lst->content;
+		lst = lst->next;
+	}
+}
+

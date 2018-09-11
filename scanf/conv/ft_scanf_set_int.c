@@ -24,19 +24,30 @@ unsigned int	ft_scanf_set_int_len(const t_scanf *sf)
 	return (len);
 }
 
-static int		ft_scanf_set_bigint(t_scanf *sf, void *ptr)
+static int		ft_scanf_set_bigint(t_scanf *sf, void *ptr,
+	const unsigned int step)
 {
 	intmax_t		nb;
+	char			negative;
 
+	negative = 0;
 	nb = 0;
-	if ((*sf->str == '+') || (*sf->str == '-'))
+	if (*sf->str == '+')
 		sf->str++;
+	else if (*sf->str == '-')
+	{
+		sf->str++;
+		negative = 1;
+	}
 	while (ft_isdigit(*sf->str))
 		nb = (nb * 10) + (*(sf->str++) - '0');
+	if (negative)
+		nb *= -1;
 	if (sf->flags & FT_SF_MOD_J)
 		*(intmax_t*)ptr = nb;
 	else
 		*(ssize_t*)ptr = (ssize_t)nb;
+	sf->str += step - (negative == 1 ? 1 : 0);
 	return (FT_SF_OK);
 }
 
@@ -52,7 +63,7 @@ int				ft_scanf_set_int(t_scanf *sf)
 	if ((!ft_isdigit(*sf->str)) && (!ft_strchr("+-", *sf->str)))
 		return (FT_SF_ERROR);
 	if (sf->flags & FT_SF_MOD_ANYI)
-		return (ft_scanf_set_bigint(sf, va_arg(*sf->ap, void*)));
+		return (ft_scanf_set_bigint(sf, va_arg(*sf->ap, void*), len));
 	else if (sf->flags & FT_SF_MOD_HH)
 		*va_arg(*sf->ap, char *) = (char)ft_atoi(sf->str);
 	else if (sf->flags & FT_SF_MOD_H)

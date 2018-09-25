@@ -361,8 +361,8 @@ install: so
 	cp libft.h /usr/include/
 	cp libft.so /usr/lib/
 
-wrapper: so libft.so
-	$(CC) $(FLAGS) $(EXTRA_FLAGS) -shared ft_malloc_wrapper.c -o libft_malloc.so -I. -lft -L.
+libft_malloc.so: libft.a
+	$(CC) $(FLAGS) $(EXTRA_FLAGS) -shared ft_malloc_wrapper.c -o libft_malloc.so -I./include -lft -L.
 
 info:
 	$(CC) --version

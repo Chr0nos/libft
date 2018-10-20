@@ -6,7 +6,7 @@
 /*   By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/10/20 15:07:35 by snicolet          #+#    #+#             */
-/*   Updated: 2017/02/11 10:24:26 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/10/20 15:17:05 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void				ft_pf_len_double(t_printf *pf)
 	pf->slen = (int)ft_strlen(str);
 	ft_memcpy(pf->pre_buffer, str, (unsigned int)pf->slen);
 	pf->raw_len = pf->slen;
-	// TODO: fixer ici la taille de pf->rawlen
 	free(str);
 }
 

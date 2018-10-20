@@ -6,7 +6,7 @@
 /*   By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/07 17:58:06 by snicolet          #+#    #+#             */
-/*   Updated: 2018/08/07 17:58:07 by snicolet         ###   ########.fr       */
+/*   Updated: 2018/10/20 15:15:49 by snicolet         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,18 +20,18 @@
 ** only flags in FT_PF_ALLOW will be transmited
 */
 
-static void                 ft_printf_stack_init(const t_printf *pf,
-    t_printf *child, va_list *ap)
+static void					ft_printf_stack_init(const t_printf *pf,
+	t_printf *child, va_list *ap)
 {
-    ft_bzero(child, sizeof(*child));
-    child->ap = ap;
-    child->buffer = pf->buffer;
-    child->buff_asprintf = pf->buff_asprintf;
-    child->buff_start = &pf->buffer[pf->size];
-    child->flags = pf->flags & FT_PF_ALLOW;
-    child->space_left = pf->space_left;
-    child->buffer_maxsize = pf->buffer_maxsize;
-    child->fd = pf->fd;
+	ft_bzero(child, sizeof(*child));
+	child->ap = ap;
+	child->buffer = pf->buffer;
+	child->buff_asprintf = pf->buff_asprintf;
+	child->buff_start = &pf->buffer[pf->size];
+	child->flags = pf->flags & FT_PF_ALLOW;
+	child->space_left = pf->space_left;
+	child->buffer_maxsize = pf->buffer_maxsize;
+	child->fd = pf->fd;
 }
 
 /*
@@ -43,8 +43,8 @@ static void                 ft_printf_stack_init(const t_printf *pf,
 ** will be peacefully given to parent.
 */
 
-static void                 ft_printf_stack_end(t_printf *pf,
-    const t_printf *child)
+static void					ft_printf_stack_end(t_printf *pf,
+	const t_printf *child)
 {
 	pf->buff_asprintf = child->buff_asprintf;
 	pf->buff_start = child->buff_start;
@@ -54,7 +54,7 @@ static void                 ft_printf_stack_end(t_printf *pf,
 	pf->size += child->size;
 	pf->raw_len += child->raw_len;
 	pf->flags |= child->flags & (FT_PF_QUIT | FT_PF_ERROR);
-    pf->raw_value = child->raw_value;
+	pf->raw_value = child->raw_value;
 }
 
 /*
@@ -71,15 +71,15 @@ static void                 ft_printf_stack_end(t_printf *pf,
 */
 
 int							ft_printf_stack(t_printf *pf,
-		const char *format, ...)
+	const char *format, ...)
 {
 	va_list				ap;
 	t_printf			sub_pf;
 
 	va_start(ap, format);
-    ft_printf_stack_init(pf, &sub_pf, &ap);
+	ft_printf_stack_init(pf, &sub_pf, &ap);
 	ft_printf_engine(format, &sub_pf);
 	va_end(ap);
-    ft_printf_stack_end(pf, &sub_pf);
+	ft_printf_stack_end(pf, &sub_pf);
 	return ((int)sub_pf.size);
 }

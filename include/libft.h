@@ -163,7 +163,7 @@ int					ft_is_printable(char c);
 int					ft_str_is_printable(char *str);
 int					ft_is_sorted(void **tab, size_t size,
 	int (*cmp)(void *, void *));
-int					ft_match(char *s1, const char *s2);
+int					ft_match(const char *s1, const char *s2);
 char				*ft_strdup(const char *str);
 char				*ft_strndup(const char *s, size_t n);
 size_t				ft_strlen(const char *str);

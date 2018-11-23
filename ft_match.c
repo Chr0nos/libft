@@ -12,7 +12,7 @@
 
 #include "libft.h"
 
-int		ft_match(char *s1, const char *s2)
+int		ft_match(const char *s1, const char *s2)
 {
 	if (!*s1)
 	{

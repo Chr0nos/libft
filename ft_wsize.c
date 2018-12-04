@@ -19,10 +19,10 @@ int	ft_wsize(const size_t size, char *buf, const size_t n)
 
 	x = (double)size;
 	unit = 0;
-	while ((x >= 1024.0) && (unit < 7))
+	while ((x >= 1024.0) && (unit < 9))
 	{
 		x /= 1024.0;
 		unit++;
 	}
-	return (ft_snprintf(buf, n, "%.2f%c", x, "bKMGTPE"[unit]));
+	return (ft_snprintf(buf, n, "%.2f%c", x, "bKMGTPEZY"[unit]));
 }

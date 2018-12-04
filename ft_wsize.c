@@ -12,42 +12,17 @@
 
 #include "libft.h"
 
-static int	flush_int(int nb, char *buffer)
+int	ft_wsize(const size_t size, char *buf, const size_t n)
 {
-	char	*x;
-	int		xl;
+	double	x;
+	size_t	unit;
 
-	x = ft_itoa(nb);
-	xl = (int)ft_strlen(x);
-	if (xl > 2)
-		xl = 2;
-	ft_memcpy(buffer, x, (unsigned int)xl);
-	ft_strdel(&x);
-	return (xl);
-}
-
-void		ft_wsize(unsigned long long size, char *buffer)
-{
-	int			k;
-	int			p;
-	int			rest;
-
-	rest = 0;
-	k = 0;
-	while ((size > 1024) && (k < 6))
+	x = (double)size;
+	unit = 0;
+	while ((x >= 1024.0) && (unit < 7))
 	{
-		rest = size % 1024;
-		size /= 1024;
-		k++;
+		x /= 1024.0;
+		unit++;
 	}
-	if ((!(p = 0)) && (size == 0))
-		buffer[p++] = '0';
-	p += flush_int((int)size, &buffer[p]);
-	if (rest)
-	{
-		buffer[p++] = '.';
-		p += flush_int((int)rest, &buffer[p]);
-	}
-	buffer[p++] = "bKMGTE"[k];
-	buffer[p] = '\0';
+	return (ft_snprintf(buf, n, "%.2f%c", x, "bKMGTPE"[unit]));
 }

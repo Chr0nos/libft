@@ -273,7 +273,7 @@ char				*ft_brainfuck(char *str, unsigned char *ptr);
 float				ft_sqrt(float nb);
 int					ft_sqrtup(int nb);
 char				*ft_strremove(char *s, const char *list);
-void				ft_wsize(unsigned long long size, char *buffer);
+int					ft_wsize(const size_t size, char *buf, const size_t n);
 int					ft_abs(int x);
 void				ft_stralign_right(char *buffer, unsigned int len);
 void				ft_stralign_left(char *buffer, unsigned int len);

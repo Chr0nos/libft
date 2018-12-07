@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: snicolet <snicolet@student.42.fr>          +#+  +:+       +#+         #
+#    By: snicolet <marvin@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2015/08/17 10:20:32 by snicolet          #+#    #+#              #
-#*   Updated: 2018/12/04 22:29:00 by snicolet         ###   ########.fr       *#
+#    Updated: 2018/12/07 18:25:01 by snicolet         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -132,7 +132,8 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_double.o \
 	conv/ft_printf_conv_file.o \
 	conv/ft_printf_conv_puttab.o \
-	conv/ft_printf_conv_padding.o
+	conv/ft_printf_conv_padding.o \
+	conv/ft_printf_conv_wsize.o
 
 SCANF_DIR=scanf
 SCANF=ft_scanf.o \

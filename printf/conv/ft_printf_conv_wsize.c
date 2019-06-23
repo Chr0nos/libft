@@ -20,4 +20,5 @@ void ft_printf_conv_wsize(struct s_printf *pf)
 	len = ft_printf_append(pf, buf,
 		(size_t)ft_wsize((size_t)pf->raw_value, buf, 80));
 	pf->slen += len;
+	pf->raw_len += len;
 }

@@ -179,9 +179,10 @@ typedef struct		s_scanf_set
 	int				(*set)(t_scanf *sf);
 }					t_scanf_set;
 
-# define FT_SF_CONVCOUNT 13
+# define FT_SF_CONVCOUNT 14
 
 static const t_scanf_set g_scanf_set[FT_SF_CONVCOUNT] = {
+	(t_scanf_set){'k', 0, ft_scanf_set_kernel},
 	(t_scanf_set){'%', 0, ft_scanf_set_percent},
 	(t_scanf_set){'$', 0, ft_scanf_set_end},
 	(t_scanf_set){'N', 0, ft_scanf_set_upn},

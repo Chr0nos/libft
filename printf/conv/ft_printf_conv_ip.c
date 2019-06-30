@@ -14,7 +14,7 @@
 
 void        ft_printf_conv_ip(struct s_printf *pf)
 {
-    const unsigned int      ip = (int)pf->raw_value;
+    const unsigned int      ip = (unsigned int)pf->raw_value;
 
     ft_printf_stack(pf, "%u.%u.%u.%u",
         (ip & 0xff000000) >> 24,

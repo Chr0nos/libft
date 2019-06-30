@@ -192,6 +192,7 @@ void				ft_printf_conv_file(t_printf *pf);
 void				ft_printf_conv_puttab(t_printf *pf);
 void				ft_printf_conv_padding(t_printf *pf);
 void				ft_printf_conv_wsize(struct s_printf *pf);
+void        		ft_printf_conv_ip(struct s_printf *pf);
 
 /*
 ** len calculation functions

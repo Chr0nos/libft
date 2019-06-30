@@ -12,7 +12,7 @@
 
 EXTRA_FLAGS=-pipe -Ofast
 CFLAGS=-Wall -Werror -Wextra
-#CC=clang
+# CC=clang
 ifeq ($(DEBUG),1)
 	CC=clang
 	EXTRA_FLAGS += -fsanitize=address -fsanitize-blacklist=llvm.blacklist -g3
@@ -133,7 +133,8 @@ PRINTF=ft_printf.o \
 	conv/ft_printf_conv_file.o \
 	conv/ft_printf_conv_puttab.o \
 	conv/ft_printf_conv_padding.o \
-	conv/ft_printf_conv_wsize.o
+	conv/ft_printf_conv_wsize.o \
+	conv/ft_printf_conv_ip.o
 
 SCANF_DIR=scanf
 SCANF=ft_scanf.o \

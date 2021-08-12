@@ -11,7 +11,7 @@
 # **************************************************************************** #
 
 EXTRA_FLAGS=-pipe -Ofast
-CFLAGS=-Wall -Werror -Wextra
+CFLAGS=-Wall -Werror -Wextra -Wno-array-bounds
 # CC=clang
 ifeq ($(DEBUG),1)
 	CC=clang

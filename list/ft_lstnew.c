@@ -35,20 +35,18 @@ t_list		*ft_lstnewi(const void *content, const size_t content_size)
 	const size_t		bsize = content_size + sizeof(t_list);
 	t_list				*x;
 
-	x = malloc(sizeof(bsize));
+	x = (t_list*)malloc(bsize);
 	if (!x)
 		return (NULL);
+	x->next = NULL;
 	if (!content)
 	{
 		x->content = NULL;
 		x->content_size = 0;
+		return (x);
 	}
-	else
-	{
-		x->content = ft_memcpy(((void*)((size_t)x + sizeof(t_list))), content,
-			content_size);
-		x->content_size = content_size;
-	}
-	x->next = NULL;
+	x->content = ft_memcpy(((void*)((size_t)x + sizeof(t_list))), content,
+		content_size);
+	x->content_size = content_size;
 	return (x);
 }
